@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "manifest-control-family.schema.json",
+  "title": "Manifest control family",
+  "description": "Derived contract for bundle, projection, and generator control declarations.",
+  "type": "object",
+  "required": [
+    "kind",
+    "name",
+    "manifest_class"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel-manifest-control"
+    },
+    "name": {
+      "type": "string"
+    },
+    "manifest_class": {
+      "type": "string",
+      "enum": [
+        "bundle",
+        "projection",
+        "generator"
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "invariants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

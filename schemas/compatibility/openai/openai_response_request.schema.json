@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAI response request",
+  "description": "Compatibility-only contract for provider request payloads.",
+  "type": "object",
+  "required": [
+    "request_id",
+    "input"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string"
+    },
+    "input": {
+      "type": "string"
+    },
+    "conversation_context": {
+      "$ref": "openai_conversation_context.schema.json"
+    },
+    "model": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

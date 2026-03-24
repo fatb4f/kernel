@@ -1,0 +1,16 @@
+{
+  "scope": "admission",
+  "status": "placeholder_only",
+  "allowed_content": [
+    "normalized-state admission scope statements",
+    "deny-style invariant placeholders"
+  ],
+  "excluded_content": [
+    "runtime orchestration",
+    "provider workflow semantics"
+  ],
+  "derived_from": [
+    "policy/control_plane.cue"
+  ],
+  "notes": "Valid structural-only admission scope example."
+}

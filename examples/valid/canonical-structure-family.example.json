@@ -1,0 +1,22 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "kernel.core.boundary-index",
+  "fragments": [
+    {
+      "name": "boundary-objects",
+      "class": "core",
+      "source_refs": [
+        "structures/core/boundary-objects.index.json"
+      ],
+      "description": "Indexes authority-safe boundary object families."
+    }
+  ],
+  "relations": [
+    {
+      "from": "boundary-objects",
+      "to": "manifest-control-family",
+      "relation": "declares-owned-surface"
+    }
+  ],
+  "notes": "Minimal valid structure-module example."
+}

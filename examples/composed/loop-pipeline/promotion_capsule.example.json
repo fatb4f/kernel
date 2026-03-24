@@ -1,0 +1,9 @@
+{
+  "packet_id": "pkt-r07-03",
+  "base_ref": "main",
+  "evidence_paths": [
+    "reconciliation/example-partition.json",
+    "reconciliation/example-translation-records.json"
+  ],
+  "notes": "Historical promotion capsule illustration only."
+}

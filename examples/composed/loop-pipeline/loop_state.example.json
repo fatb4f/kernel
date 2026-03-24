@@ -1,0 +1,6 @@
+{
+  "phase": "PLAN",
+  "decision": "IN_PROGRESS",
+  "transition_gate": "PENDING",
+  "notes": "Historical loop-pipeline state example retained as composed only."
+}

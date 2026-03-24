@@ -1,0 +1,9 @@
+{
+  "generated_by_packet": "pkt-r07-03",
+  "class": "invalid",
+  "files": [
+    "canonical-structure-family.invalid.example.json",
+    "manifest-control-family.invalid.example.json",
+    "policy-scope-index-family.invalid.example.json"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "generated_by_packet": "pkt-r07-01",
+  "class": "compatibility",
+  "authority_status": "non-kernel-core controlled compatibility family",
+  "families": [
+    {
+      "name": "openai-contract-family",
+      "evidence": [
+        "reconciliation/openai-family-index.json",
+        "reconciliation/manifest-translation-map.json#/concepts/3",
+        "reconciliation/manifest-translation-map.json#/concepts/4"
+      ],
+      "owned_surface_examples": [
+        "structures/adapters/openai/",
+        "schemas/compatibility/openai/"
+      ],
+      "notes": "Provider-specific request/review/conversation/manifests remain fenced from kernel-core authority."
+    }
+  ]
+}

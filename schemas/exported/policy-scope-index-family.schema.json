@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "policy-scope-index-family.schema.json",
+  "title": "Policy scope index family",
+  "description": "Derived contract for a structural-only policy scope index.",
+  "type": "object",
+  "required": [
+    "scope",
+    "status",
+    "allowed_content",
+    "excluded_content"
+  ],
+  "properties": {
+    "scope": {
+      "type": "string",
+      "enum": [
+        "admission",
+        "data"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "placeholder_only",
+        "structural_only"
+      ]
+    },
+    "allowed_content": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "excluded_content": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "derived_from": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

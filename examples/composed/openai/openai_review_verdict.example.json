@@ -1,0 +1,13 @@
+{
+  "kind": "openai-review-verdict",
+  "request_id": "rr-001",
+  "verdict": "needs_info",
+  "findings": [
+    "bundle shape covered",
+    "review loop process needs fuller grounding"
+  ],
+  "next_actions": [
+    "add reviewed.request/reviewed.response flow",
+    "recheck contract bindings"
+  ]
+}

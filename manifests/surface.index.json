@@ -1,0 +1,41 @@
+{
+  "packet_id": "pkt-r06-04",
+  "active_manifest_root": "corrected-kernel-skeleton/kernel/manifests/",
+  "active_classes": [
+    {
+      "class_id": "bundle",
+      "path": "corrected-kernel-skeleton/kernel/manifests/bundles/",
+      "status": "active"
+    },
+    {
+      "class_id": "projection",
+      "path": "corrected-kernel-skeleton/kernel/manifests/projections/",
+      "status": "active"
+    },
+    {
+      "class_id": "generator",
+      "path": "corrected-kernel-skeleton/kernel/manifests/generators/",
+      "status": "active"
+    }
+  ],
+  "deferred_manifest_families": [
+    {
+      "legacy_family": "provider-specific external runtime freeze",
+      "target_class": "deferred compatibility bundle manifest",
+      "materialization": "deferred",
+      "reason": "provider-specific content is fenced from kernel-core authority in this tranche"
+    }
+  ],
+  "non_target_manifest_families": [
+    {
+      "legacy_family": "cargo and workspace manifest coupling",
+      "status": "historical_or_deferred_runtime",
+      "reason": "runtime/tooling coupling is not part of active kernel manifests/"
+    }
+  ],
+  "ambiguity_closed": {
+    "active_surface": "manifests/",
+    "singular_manifest_surface_allowed": false,
+    "cargo_manifest_is_kernel_manifest": false
+  }
+}

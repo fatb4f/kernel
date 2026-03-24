@@ -1,0 +1,20 @@
+{
+  "scope": "data",
+  "status": "placeholder_only",
+  "allowed_content": [
+    "normalized-state class declarations",
+    "named data families",
+    "static data-assumption placeholders"
+  ],
+  "excluded_content": [
+    "runtime materialization logic",
+    "executable normalization",
+    "provider workflow semantics",
+    "controller execution behavior"
+  ],
+  "derived_from": [
+    "policy/control_plane.cue",
+    "policy/README.md"
+  ],
+  "notes": "This packet records only static data assumptions needed for later admission."
+}

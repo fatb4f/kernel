@@ -1,0 +1,16 @@
+{
+  "generated_by_packet": "pkt-r07-02",
+  "authority_status": "controlled compatibility only",
+  "families": [
+    {
+      "name": "openai-contract-family",
+      "root": "openai/",
+      "owning_boundary_object_id": "bo-004"
+    },
+    {
+      "name": "loop-pipeline-runtime-family",
+      "root": "loop-pipeline/",
+      "owning_boundary_object_id": "bo-006"
+    }
+  ]
+}

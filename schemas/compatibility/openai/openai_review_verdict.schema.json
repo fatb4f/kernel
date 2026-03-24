@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAI review verdict",
+  "description": "Compatibility-only review-verdict contract.",
+  "type": "object",
+  "required": [
+    "kind",
+    "request_id",
+    "verdict"
+  ],
+  "properties": {
+    "kind": {
+      "const": "openai-review-verdict"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "approve",
+        "needs_info",
+        "reject"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

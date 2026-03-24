@@ -1,0 +1,9 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "kernel.core.bad-example",
+  "fragments": [
+    {
+      "name": "bad-fragment"
+    }
+  ]
+}

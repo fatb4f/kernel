@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAI response snapshot",
+  "description": "Compatibility-only contract for provider response snapshots.",
+  "type": "object",
+  "required": [
+    "snapshot_id",
+    "request_id",
+    "status"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "running",
+        "completed",
+        "failed"
+      ]
+    },
+    "output_text": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

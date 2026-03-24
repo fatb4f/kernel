@@ -1,0 +1,22 @@
+{
+  "scope": "admission",
+  "status": "placeholder_only",
+  "allowed_content": [
+    "normalized-state admission scope statements",
+    "admission-relevant state families",
+    "deny-style invariant placeholders"
+  ],
+  "excluded_content": [
+    "runtime orchestration",
+    "cargo authority",
+    "just command surfaces",
+    "script control flow",
+    "provider workflow semantics",
+    "loop-pipeline execution semantics"
+  ],
+  "derived_from": [
+    "policy/control_plane.cue",
+    "policy/README.md"
+  ],
+  "notes": "No runnable CUE packages are created in pkt-r06-05."
+}

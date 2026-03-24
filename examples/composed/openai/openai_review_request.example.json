@@ -1,0 +1,14 @@
+{
+  "kind": "openai-review-request",
+  "request_id": "rr-001",
+  "subject": "reviewed.response process",
+  "materials": [
+    "PLAN/README.md",
+    "request.instance.json",
+    "batch.manifest.json"
+  ],
+  "criteria": [
+    "bundle shape complete",
+    "response process explicit"
+  ]
+}

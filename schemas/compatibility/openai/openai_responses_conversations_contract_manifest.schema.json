@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAI responses conversations contract manifest",
+  "description": "Compatibility-only manifest for the fenced OpenAI contract family.",
+  "type": "object",
+  "required": [
+    "kind",
+    "version",
+    "schemas"
+  ],
+  "properties": {
+    "kind": {
+      "const": "openai-responses-conversations-contract"
+    },
+    "version": {
+      "type": "string"
+    },
+    "schemas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

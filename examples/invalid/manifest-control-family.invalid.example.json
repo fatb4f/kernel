@@ -1,0 +1,6 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "broken-bundle",
+  "manifest_class": "runtime",
+  "outputs": "generated/state/broken.json"
+}

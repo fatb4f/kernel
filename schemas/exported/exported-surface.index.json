@@ -1,0 +1,21 @@
+{
+  "generated_by_packet": "pkt-r07-02",
+  "authority_status": "derived contracts only",
+  "families": [
+    {
+      "name": "canonical-structure-family",
+      "schema": "canonical-structure-family.schema.json",
+      "owning_boundary_object_id": "bo-001"
+    },
+    {
+      "name": "manifest-control-family",
+      "schema": "manifest-control-family.schema.json",
+      "owning_boundary_object_id": "bo-002"
+    },
+    {
+      "name": "policy-scope-index-family",
+      "schema": "policy-scope-index-family.schema.json",
+      "owning_boundary_object_id": "bo-003"
+    }
+  ]
+}

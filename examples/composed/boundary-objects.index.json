@@ -1,0 +1,28 @@
+{
+  "generated_by_packet": "pkt-r07-01",
+  "class": "examples",
+  "authority_status": "non-authoritative composed example family",
+  "families": [
+    {
+      "name": "openai-example-family",
+      "evidence": [
+        "reconciliation/openai-family-index.json#/matches/9",
+        "reconciliation/openai-family-index.json#/matches/10"
+      ],
+      "owned_surface_examples": [
+        "examples/composed/openai/"
+      ],
+      "notes": "Provider-specific review request/verdict examples remain illustrative only."
+    },
+    {
+      "name": "loop-pipeline-family",
+      "evidence": [
+        "reconciliation/loop-pipeline-index.json"
+      ],
+      "owned_surface_examples": [
+        "examples/composed/loop-pipeline/"
+      ],
+      "notes": "Loop-pipeline artifacts stay historical/composed and are not promoted into authority."
+    }
+  ]
+}

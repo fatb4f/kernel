@@ -1,0 +1,47 @@
+{
+  "generated_by_packet": "pkt-r07-01",
+  "class": "kernel-core",
+  "authority_status": "authoritative structural family only",
+  "families": [
+    {
+      "name": "canonical-structure-family",
+      "evidence": [
+        "corrected-kernel-skeleton/kernel/kernel.spec.json#/planes/structure",
+        "corrected-kernel-skeleton/kernel/kernel.spec.json#/repo_tree/children/structures"
+      ],
+      "owned_surface_examples": [
+        "structures/core/",
+        "structures/relations/",
+        "structures/extensions/"
+      ],
+      "notes": "Reusable structural semantics survive here; schema exports remain derived."
+    },
+    {
+      "name": "manifest-control-family",
+      "evidence": [
+        "reconciliation/manifest-translation-map.json"
+      ],
+      "owned_surface_examples": [
+        "manifests/bundles/",
+        "manifests/projections/",
+        "manifests/generators/"
+      ],
+      "notes": "Manifest control objects are kernel-owned, but not runtime code."
+    },
+    {
+      "name": "policy-scope-index-family",
+      "evidence": [
+        "reconciliation/cue-scope-boundary.md"
+      ],
+      "owned_surface_examples": [
+        "policy/admission/scope.index.json",
+        "policy/data/scope.index.json"
+      ],
+      "notes": "Control boundary only; normalize/admit behavior remains deferred."
+    }
+  ],
+  "exclusions": [
+    "OpenAI-specific contracts",
+    "Loop-pipeline runtime state families"
+  ]
+}

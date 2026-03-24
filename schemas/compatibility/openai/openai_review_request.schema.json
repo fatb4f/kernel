@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenAI review request",
+  "description": "Compatibility-only review-request contract.",
+  "type": "object",
+  "required": [
+    "kind",
+    "request_id",
+    "subject",
+    "materials"
+  ],
+  "properties": {
+    "kind": {
+      "const": "openai-review-request"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

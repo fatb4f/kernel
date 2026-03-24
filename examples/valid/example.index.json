@@ -1,0 +1,9 @@
+{
+  "generated_by_packet": "pkt-r07-03",
+  "class": "valid",
+  "files": [
+    "canonical-structure-family.example.json",
+    "manifest-control-family.bundle.example.json",
+    "policy-scope-index-family.admission.example.json"
+  ]
+}

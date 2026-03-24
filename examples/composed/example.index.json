@@ -1,0 +1,11 @@
+{
+  "generated_by_packet": "pkt-r07-03",
+  "class": "composed",
+  "files": [
+    "boundary-objects.index.json",
+    "openai/openai_review_request.example.json",
+    "openai/openai_review_verdict.example.json",
+    "loop-pipeline/loop_state.example.json",
+    "loop-pipeline/promotion_capsule.example.json"
+  ]
+}

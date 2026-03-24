@@ -1,0 +1,16 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "kernel-core-bundle",
+  "manifest_class": "bundle",
+  "inputs": [
+    "structures/core/**",
+    "manifests/bundles/**"
+  ],
+  "outputs": [
+    "generated/state/kernel-core-bundle.index.json"
+  ],
+  "invariants": [
+    "exports are derived",
+    "provider compatibility excluded"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loop pipeline state",
+  "description": "Historical compatibility contract for loop-pipeline state.",
+  "type": "object",
+  "required": [
+    "phase",
+    "decision",
+    "transition_gate"
+  ],
+  "properties": {
+    "phase": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string"
+    },
+    "transition_gate": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
