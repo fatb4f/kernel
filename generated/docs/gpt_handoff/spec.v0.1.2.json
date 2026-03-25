@@ -1,0 +1,258 @@
+{
+  "kind": "chatgpt_packet_sidecar_spec.v1",
+  "spec_version": "0.1.2",
+  "status": "temporary_sidecar",
+  "summary": "ChatGPT owns a single canonical packet.definition artifact. Local realization is governed by scm.pattern. Approval and realization binding are mandatory, standalone, and basis-fingerprint-bound. The contract is intentionally shallow, temporary, and removable.",
+  "artifact_identity": {
+    "canonical_filename": "spec.v0.1.2.json",
+    "canonical_path": "generated/docs/gpt_handoff/spec.v0.1.2.json",
+    "changelog_path": "generated/docs/gpt_handoff/.changelog/v0.1.2.md"
+  },
+  "workflow": {
+    "model": [
+      "request",
+      "packet.definition drafted by ChatGPT",
+      "packet.definition reviewed by human",
+      "packet.definition approved",
+      "realized locally via scm.pattern"
+    ],
+    "states": [
+      "REQUESTED",
+      "DEFINITION_DRAFTED",
+      "DEFINITION_UNDER_REVIEW",
+      "REQUIRES_REAPPROVAL",
+      "DEFINITION_APPROVED",
+      "REALIZED_VIA_SCM_PATTERN",
+      "CLOSED"
+    ],
+    "transitions": [
+      "REQUESTED -> DEFINITION_DRAFTED",
+      "DEFINITION_DRAFTED -> DEFINITION_UNDER_REVIEW",
+      "DEFINITION_UNDER_REVIEW -> DEFINITION_APPROVED | REQUIRES_REAPPROVAL | REQUESTED",
+      "DEFINITION_APPROVED -> REALIZED_VIA_SCM_PATTERN -> CLOSED",
+      "Any semantic change to the approved basis forces DEFINITION_APPROVED -> REQUIRES_REAPPROVAL",
+      "REQUIRES_REAPPROVAL -> DEFINITION_UNDER_REVIEW only after a revised definition is resubmitted"
+    ],
+    "boundary_rules": [
+      "ChatGPT may only create or revise packet.definition",
+      "ChatGPT does not realize work",
+      "ChatGPT does not approve work",
+      "Human approval is required before realization",
+      "A valid scm.pattern binding is required before approval and realization",
+      "scm.pattern governs local realization after approval",
+      "unchanged required inputs must not trigger regeneration"
+    ]
+  },
+  "authority": {
+    "entrypoint": "control/scm.pattern/authority.manifest.json",
+    "entrypoint_status": "only_top_level_authority_entrypoint_for_this_sidecar",
+    "precedence": [
+      "control/scm.pattern/authority.manifest.json",
+      "control/scm.pattern/**",
+      "delegated validation schemas declared by the authority manifest",
+      "templates",
+      "generated artifacts"
+    ],
+    "conflict_resolution": [
+      "workflow docs define lifecycle and review semantics",
+      "schemas define object shape and field validity",
+      "templates render or scaffold only",
+      "generated files are instances only",
+      "fail closed on control/schema drift"
+    ],
+    "delegated_surfaces": [
+      {
+        "path": "control/scm.pattern/**",
+        "role": "workflow_authority",
+        "status": "normative_for_lifecycle"
+      },
+      {
+        "path": "schemas/sidecar/chatgpt-packet/**",
+        "role": "validation_surface",
+        "status": "delegated_validation_only"
+      },
+      {
+        "path": "templates/**",
+        "role": "rendering_surface",
+        "status": "scaffold_only"
+      }
+    ],
+    "manifest_contract": {
+      "path": "control/scm.pattern/authority.manifest.json",
+      "validated_by": "schemas/sidecar/chatgpt-packet/authority.manifest.schema.json",
+      "required_fields": [
+        "kind",
+        "spec_version",
+        "sidecar_status",
+        "workflow_authority_root",
+        "validation_surface_root",
+        "template_surface_root",
+        "precedence",
+        "conflict_resolution",
+        "approval_basis_inputs",
+        "delegated_surfaces",
+        "deprecation_note"
+      ],
+      "required_field_notes": {
+        "sidecar_status": "Must declare that the implementation is temporary and shallow.",
+        "approval_basis_inputs": "Must enumerate the approval basis inputs that are fingerprinted for approval validity.",
+        "delegated_surfaces": "Must name delegated surfaces and their subordinate roles.",
+        "deprecation_note": "Must state that deeper normalization is deferred and removal should remain mechanical."
+      }
+    },
+    "sidecar_notes": [
+      "This is a temporary sidecar implementation.",
+      "Keep the contract shallow and easy to remove later.",
+      "Do not embed this deeper into kernel-core than necessary."
+    ]
+  },
+  "artifacts": {
+    "canonical_machine": [
+      "packets/<packet_id>/machine/packet.definition.json",
+      "packets/<packet_id>/machine/regen.record.json"
+    ],
+    "canonical_human": [
+      "packets/<packet_id>/human/packet.definition.md"
+    ],
+    "boundary": [
+      "packets/<packet_id>/machine/scm.pattern.binding.json",
+      "packets/<packet_id>/machine/packet.approval.json"
+    ],
+    "required_packet_sections": [
+      "request",
+      "scope",
+      "control",
+      "decomposition",
+      "artifacts",
+      "tooling",
+      "authority",
+      "scm_pattern",
+      "review_state",
+      "regen"
+    ],
+    "realization_rule": "No packet may be approved, realized, or closed without a valid scm.pattern binding.",
+    "binding_rule": "scm.pattern.binding.json is mandatory and part of the approval and realization boundary."
+  },
+  "approval": {
+    "canonical_artifact": "packets/<packet_id>/machine/packet.approval.json",
+    "required": true,
+    "verdict_enum": [
+      "APPROVED",
+      "REVISE",
+      "REJECTED",
+      "STALE",
+      "SUPERSEDED"
+    ],
+    "basis": [
+      "packet.definition.json",
+      "scm.pattern.binding.json",
+      "approval-relevant authority refs named in the authority manifest"
+    ],
+    "fingerprint_rule": "Approval is valid only for the exact canonicalized approval basis.",
+    "approval_basis_fingerprint_rule": "The approval basis fingerprint is computed from canonicalized packet.definition.json, scm.pattern.binding.json, and the approval-relevant authority refs declared in the authority manifest.",
+    "state_rule": {
+      "on_semantic_change_after_approval": "Mark the prior packet.approval.json verdict STALE and set packet.definition.review_state to REQUIRES_REAPPROVAL.",
+      "resubmission_transition": "A revised definition must move from REQUIRES_REAPPROVAL to DEFINITION_UNDER_REVIEW before a fresh approval can be issued.",
+      "realization_gate": "REALIZED_VIA_SCM_PATTERN is allowed only when packet.definition.review_state is DEFINITION_APPROVED and packet.approval.json carries a matching approval_basis_fingerprint."
+    },
+    "non_semantic_rule": "Formatting-only changes do not invalidate approval.",
+    "supersession_rule": "A fresh packet.approval.json supersedes any older approval artifacts for the same packet_id."
+  },
+  "packet_definition": {
+    "path": "packets/<packet_id>/machine/packet.definition.json",
+    "purpose": "Single canonical machine-readable packet artifact.",
+    "review_state_enum": [
+      "DEFINITION_DRAFTED",
+      "DEFINITION_UNDER_REVIEW",
+      "REQUIRES_REAPPROVAL",
+      "DEFINITION_APPROVED"
+    ],
+    "required_sections": {
+      "request": "Why this packet exists.",
+      "scope": "Bounded slice, constraints, and non-goals.",
+      "control": "Control-theoretic envelope.",
+      "decomposition": "Packet-style work breakdown.",
+      "artifacts": "Expected outputs and evidence.",
+      "tooling": "Validators, scripts, and execution assumptions.",
+      "authority": "Control and schema references.",
+      "scm_pattern": "Summary plus binding reference to the standalone realization contract.",
+      "review_state": "Informational status aligned to the workflow state model.",
+      "regen": "Regeneration lock and fingerprint data."
+    }
+  },
+  "scm_pattern_binding": {
+    "path": "packets/<packet_id>/machine/scm.pattern.binding.json",
+    "required": true,
+    "purpose": "Explicit local realization binding for the adopted scm.pattern route.",
+    "minimum_fields": [
+      "packet_id",
+      "pattern_id",
+      "route_id",
+      "authority_manifest_ref",
+      "realization_scope",
+      "human_intervention_points",
+      "promotion_constraints"
+    ]
+  },
+  "human_synthesis": {
+    "path": "packets/<packet_id>/human/packet.definition.md",
+    "source": "Derived from structured machine content only.",
+    "required_sections": [
+      "Contextual framing",
+      "Problem model and bounded scope",
+      "Theory and synthesis basis",
+      "Control-theoretic envelope",
+      "Authority surface and contract map",
+      "Tooling and execution model",
+      "Evidence, validation, and gates",
+      "Risks, disturbances, and rollback",
+      "Approval question",
+      "Artifact index"
+    ],
+    "requirements": [
+      "Must not contradict packet.definition.json",
+      "Must be sufficient for human reconstruction of packet intent without source code",
+      "Must distinguish authoritative fields from explanatory prose"
+    ]
+  },
+  "regen": {
+    "path": "packets/<packet_id>/machine/regen.record.json",
+    "purpose": "Prevent unnecessary regeneration.",
+    "rule": "Regeneration is blocked unless required inputs change.",
+    "inputs": [
+      "request",
+      "authority refs",
+      "templates",
+      "source packet",
+      "prior generated outputs"
+    ],
+    "fingerprinting": "Use canonicalized JSON with stable key order and no whitespace sensitivity."
+  },
+  "schemas": {
+    "surface_root": "schemas/sidecar/chatgpt-packet/",
+    "required": [
+      "authority.manifest.schema.json",
+      "packet.definition.schema.json",
+      "scm.pattern.binding.schema.json",
+      "packet.approval.schema.json",
+      "regen.record.schema.json"
+    ],
+    "optional": [
+      "artifact.manifest.schema.json"
+    ]
+  },
+  "templates": {
+    "required": [
+      "packet.definition.template.json",
+      "packet.definition.template.md",
+      "scm.pattern.binding.template.json",
+      "packet.approval.template.json",
+      "regen.record.template.json"
+    ]
+  },
+  "migration_notes": [
+    "Treat any existing kernel compatibility paths as temporary delegated validation only, not a second authority root.",
+    "Keep the sidecar shallow so removal is mechanical later.",
+    "Do not introduce separate plan or implement artifact families in the final model."
+  ]
+}
