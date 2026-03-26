@@ -1,10 +1,10 @@
 {
   "kind": "gpt_handoff.regen.record",
-  "spec_version": "0.1.3",
+  "spec_version": "0.1.4",
   "packet_id": "pkt-kernel-chain-of-trust-001",
   "policy": "Regeneration is blocked unless required inputs change.",
   "required_inputs": {
-    "spec_ref": "generated/docs/gpt_handoff/spec.v0.1.3.json",
+    "spec_ref": "generated/docs/gpt_handoff/spec.v0.1.4.json",
     "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
     "authority_manifest_schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
     "packet_definition_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.definition.json",

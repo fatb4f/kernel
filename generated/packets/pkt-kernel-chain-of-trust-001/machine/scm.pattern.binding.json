@@ -29,7 +29,12 @@
       "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.review.decision.json"
     ],
     "read_paths": [
-      "generated/docs/gpt_handoff/spec.v0.1.3.json",
+      "generated/docs/gpt_handoff/spec.v0.1.4.json",
+      "pipeline/chatgpt.packet.pipeline.manifest.json",
+      "pipeline/chatgpt.execution.policy.json",
+      "pipeline/chatgpt.validation.manifest.json",
+      "pipeline/chatgpt.gate.policy.json",
+      "pipeline/problem_set.schema.json",
       "control/trust/root.signers.json",
       "control/scm.pattern/authority.manifest.json",
       "control/scm.pattern/authority.manifest.validation.json",

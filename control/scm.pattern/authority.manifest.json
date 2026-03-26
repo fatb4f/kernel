@@ -22,7 +22,13 @@
   "approval_basis_inputs": [
     "control/scm.pattern/authority.manifest.json",
     "control/trust/root.signers.json",
-    "control/trust/delegations/chatgpt.packet-sidecar.json"
+    "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "pipeline/chatgpt.packet.pipeline.manifest.json",
+    "pipeline/chatgpt.execution.policy.json",
+    "pipeline/chatgpt.validation.manifest.json",
+    "pipeline/chatgpt.gate.policy.json",
+    "pipeline/problem_set.schema.json",
+    "schemas/chatgpt-packet/**"
   ],
   "delegated_surfaces": [
     {
@@ -31,7 +37,12 @@
       "status": "normative_for_lifecycle"
     },
     {
-      "path": "schemas/control/scm.pattern/**",
+      "path": "pipeline/**",
+      "role": "execution_runtime",
+      "status": "normative_for_packet_authoring"
+    },
+    {
+      "path": "schemas/chatgpt-packet/**",
       "role": "validation_surface",
       "status": "delegated_validation_only"
     },
@@ -41,5 +52,5 @@
       "status": "scaffold_only"
     }
   ],
-  "deprecation_note": "This sidecar remains intentionally shallow and removable. Deeper normalization into kernel-core is deferred."
+  "deprecation_note": "This authority surface remains intentionally shallow and removable. The operational packet runtime stays local and realization remains outside the ChatGPT boundary."
 }

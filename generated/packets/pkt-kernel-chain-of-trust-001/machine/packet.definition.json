@@ -1,28 +1,31 @@
 {
   "artifact_type": "gpt_handoff.packet.definition",
   "artifact_version": "0.1.0",
-  "spec_ref": "generated/docs/gpt_handoff/spec.v0.1.3.json",
+  "spec_ref": "generated/docs/gpt_handoff/spec.v0.1.4.json",
   "packet_id": "pkt-kernel-chain-of-trust-001",
-  "title": "Kernel chain-of-trust implementation for temporary ChatGPT packet sidecar",
+  "title": "Kernel chain-of-trust implementation for the operational ChatGPT packet pipeline",
   "workflow_state": "DEFINITION_UNDER_REVIEW",
   "review_state": "DEFINITION_UNDER_REVIEW",
-  "summary": "Implement the kernel-owned chain of trust for the temporary ChatGPT packet sidecar without deepening the sidecar into kernel-core. Kernel establishes the trust root. The sidecar consumes delegated trust only.",
+  "summary": "Implement the kernel-owned chain of trust for the operational ChatGPT packet pipeline without deepening realization into ChatGPT. Kernel establishes the trust root. ChatGPT authors packet artifacts only. Local tooling validates, admits, and realizes them.",
   "ownership": {
     "trust_root_owner": "kernel",
-    "delegated_consumer": "temporary_chatgpt_packet_sidecar"
+    "delegated_consumer": "operational_chatgpt_packet_pipeline"
   },
   "constraints": [
-    "This is a shallow, temporary sidecar only.",
+    "This is a shallow operational pipeline boundary only.",
     "Do not deepen this into kernel-core.",
     "Do not introduce separate plan or implement artifact families.",
+    "ChatGPT may author packet artifacts only.",
     "Use scm.pattern as the local realization surface.",
+    "Use the packet.review.request.json and packet.review.decision.json boundary for human review.",
     "All artifact paths must be repo-relative where applicable.",
     "packet.definition.json remains the single canonical machine-readable packet artifact.",
     "scm.pattern.binding.json remains mandatory.",
     "packet.review.request.json is the pre-decision review artifact.",
     "packet.review.decision.json exists only after a human decision is issued.",
     "root.trust.evidence.json provides the packet-local trust boundary without copying kernel trust state.",
-    "packet.approval.json, if retained, is transitional only and non-authoritative."
+    "packet.approval.json, if retained, is transitional only and non-authoritative.",
+    "problem_set is the only admissible ingress contract for generation."
   ],
   "realization": {
     "local_realization_surface": "scm.pattern",
@@ -31,7 +34,7 @@
   },
   "inputs": [
     {
-      "ref": "generated/docs/gpt_handoff/spec.v0.1.3.json",
+      "ref": "generated/docs/gpt_handoff/spec.v0.1.4.json",
       "role": "packet_spec"
     },
     {
@@ -41,6 +44,26 @@
     {
       "ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
       "role": "kernel_authority_manifest_schema"
+    },
+    {
+      "ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+      "role": "execution_pipeline_manifest"
+    },
+    {
+      "ref": "pipeline/chatgpt.execution.policy.json",
+      "role": "execution_policy"
+    },
+    {
+      "ref": "pipeline/chatgpt.validation.manifest.json",
+      "role": "validation_manifest"
+    },
+    {
+      "ref": "pipeline/chatgpt.gate.policy.json",
+      "role": "gate_policy"
+    },
+    {
+      "ref": "pipeline/problem_set.schema.json",
+      "role": "ingress_contract"
     }
   ],
   "deliverables": {
@@ -95,6 +118,10 @@
     "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
     "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
     "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "pipeline_manifest_ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "pipeline/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "pipeline/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "pipeline/chatgpt.gate.policy.json",
     "packet_local_evidence_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json"
   },
   "review_lifecycle": {
@@ -117,7 +144,7 @@
   },
   "admissibility_rules": [
     "Kernel establishes trust root.",
-    "The sidecar consumes delegated trust only.",
+    "ChatGPT authors packet artifacts only.",
     "No downstream artifact is admissible from file presence alone.",
     "root.trust.evidence.json must carry canonical refs and fingerprints for the kernel trust chain.",
     "Authority manifest validation and signature refs must both resolve and match the declared fingerprints.",
@@ -140,7 +167,7 @@
   "regeneration": {
     "blocked_unless_required_inputs_change": true,
     "required_inputs": [
-      "generated/docs/gpt_handoff/spec.v0.1.3.json",
+      "generated/docs/gpt_handoff/spec.v0.1.4.json",
       "control/scm.pattern/authority.manifest.json",
       "schemas/control/scm.pattern/authority.manifest.schema.json"
     ]

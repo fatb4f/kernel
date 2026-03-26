@@ -1,0 +1,37 @@
+{
+  "kind": "kernel.chatgpt_validation_manifest",
+  "version": "0.1.0",
+  "status": "active",
+  "validation_order": [
+    "validate problem_set schema",
+    "validate packet.definition schema",
+    "validate scm.pattern.binding schema",
+    "validate review.request schema",
+    "validate root.trust.evidence schema",
+    "validate regen.record schema",
+    "validate artifact.manifest schema",
+    "resolve refs",
+    "verify fingerprint consistency",
+    "check markdown versus JSON consistency",
+    "check no realization boundary crossed"
+  ],
+  "required_checks": [
+    "all required artifacts exist",
+    "all required artifacts validate",
+    "refs resolve",
+    "repo-relative paths only",
+    "human markdown does not contradict JSON",
+    "binding matches packet scope",
+    "approval placeholder is non-authoritative",
+    "stale approval blocks promotion"
+  ],
+  "failure_codes": [
+    "MISSING_INPUT",
+    "SCHEMA_MISMATCH",
+    "REF_UNRESOLVED",
+    "STALE_FINGERPRINT",
+    "BINDING_MISMATCH",
+    "REALIZATION_ATTEMPT",
+    "NON_AUTHORITATIVE_APPROVAL"
+  ]
+}
