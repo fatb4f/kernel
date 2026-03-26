@@ -1,0 +1,61 @@
+{
+  "kind": "kernel.bundle_closure_manifest",
+  "artifact_version": "0.1.0",
+  "bundle_id": "kernel-workflow-closeout",
+  "bundle_name": "kernel-workflow-closeout.bundle",
+  "bundle_path": "kernel-workflow-closeout.bundle.tgz",
+  "status": "closed",
+  "selection_mode": "explicit_include_list",
+  "purpose": "Closeout bundle for the kernel-spec defined workflow, including the Jsonnet-rendered reference docs and their generator inputs.",
+  "closure_scope": {
+    "included_paths": [
+      "kernel.spec.md",
+      "kernel.spec.json",
+      "manifests/generators/reference-docs.generator.json",
+      "render/jsonnet/reference/reference-docs.libsonnet",
+      "generated/docs/reference/*.md"
+    ],
+    "excluded_paths": [
+      "generated/docs/gpt_handoff/spec.v0.1.2.json",
+      "generated/docs/gpt_handoff/spec.v0.1.3.json",
+      "schemas/sidecar/chatgpt-packet/**",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/**"
+    ]
+  },
+  "closure_contract": {
+    "self_resolving": true,
+    "local_admission_boundary": "outside_bundle",
+    "local_realization_boundary": "outside_chatgpt",
+    "known_residuals": [
+      "Jsonnet runtime is external to the bundle and must be supplied by the host environment.",
+      "The bundle captures the kernel workflow reference set only; it is not a substitute for the host executor."
+    ]
+  },
+  "closure_checks": [
+    {
+      "name": "json_syntax",
+      "status": "required"
+    },
+    {
+      "name": "internal_ref_resolution",
+      "status": "required"
+    },
+    {
+      "name": "schema_alignment",
+      "status": "required"
+    },
+    {
+      "name": "historical_surface_excluded",
+      "status": "required"
+    },
+    {
+      "name": "bundle_membership_matches_manifest",
+      "status": "required"
+    }
+  ],
+  "notes": [
+    "This bundle packages the kernel-spec workflow reference docs and the Jsonnet source that renders them.",
+    "The workflow reference docs remain downstream material, not authority.",
+    "The bundle is closed for selection, not a substitute for execution."
+  ]
+}
