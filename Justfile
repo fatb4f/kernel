@@ -33,3 +33,24 @@ bundle-attest-verify ATTESTATION='chatgpt-pipeline.bundle.attestation.json' SIGN
 
 bundle-digest BUNDLE='chatgpt-pipeline.bundle.tgz' ATTESTATION='chatgpt-pipeline.bundle.attestation.json':
 	sha256sum {{BUNDLE}} {{ATTESTATION}}
+
+reference-slice-validate RUN_ID='':
+	bash scripts/reference_docs_validate.sh {{RUN_ID}}
+
+reference-slice-export RUN_ID='':
+	bash scripts/reference_docs_export.sh {{RUN_ID}}
+
+reference-slice-normalize RUN_ID='':
+	bash scripts/reference_docs_normalize.sh {{RUN_ID}}
+
+reference-slice-admit RUN_ID='':
+	bash scripts/reference_docs_admit.sh {{RUN_ID}}
+
+reference-slice-render RUN_ID='':
+	bash scripts/reference_docs_render.sh {{RUN_ID}}
+
+reference-slice-drift RUN_ID='':
+	bash scripts/reference_docs_drift.sh {{RUN_ID}}
+
+reference-slice RUN_ID='':
+	bash scripts/run_reference_docs_executable_slice.sh {{RUN_ID}}

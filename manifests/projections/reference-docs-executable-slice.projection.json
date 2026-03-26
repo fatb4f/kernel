@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "reference-docs-executable-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/reference-docs-executable-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/reference/executable-slice.jsonnet"
+  ],
+  "outputs": [
+    "generated/docs/reference/executable-slice.md",
+    "generated/state/render/reference-docs-executable-slice/<run-id>/render-report.json",
+    "generated/state/integrity/reference-docs-executable-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits documentation output only.",
+    "The projection must remain repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the first executable reference-docs slice."
+}

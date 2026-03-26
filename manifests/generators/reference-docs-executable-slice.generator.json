@@ -1,0 +1,24 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "reference-docs-executable-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/reference-docs-executable-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "kernel.spec.json"
+  ],
+  "outputs": [
+    "schemas/exported/reference-docs-executable-slice-input.schema.json",
+    "generated/state/source-validation/reference-docs-executable-slice/<run-id>/source-validation.json",
+    "generated/state/export/reference-docs-executable-slice/<run-id>/export-report.json",
+    "generated/state/normalization/reference-docs-executable-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/reference-docs-executable-slice/<run-id>/source-map.json",
+    "generated/state/normalization/reference-docs-executable-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The canonical structural module is the source of truth for this slice.",
+    "The exported renderer-input schema is derived output only.",
+    "Normalization regularizes source and manifest content without deciding legality."
+  ],
+  "notes": "Generator control object for the first executable reference-docs slice."
+}

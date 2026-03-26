@@ -1,0 +1,62 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "reference-docs-executable-slice",
+  "fragments": [
+    {
+      "name": "overview",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.md#/2",
+        "kernel.spec.md#/3",
+        "generated/packets/pkt-kernel-json-centric-workflow-003/human/packet.definition.md"
+      ],
+      "description": "Summarize the first executable JSON-centric workflow slice."
+    },
+    {
+      "name": "pipeline",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.md#/3",
+        "kernel.spec.md#/10"
+      ],
+      "description": "Record the fixed raw -> normalized -> admitted -> rendered pipeline."
+    },
+    {
+      "name": "gates",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.md#/11",
+        "generated/docs/reference/gates.md"
+      ],
+      "description": "Capture the six-gate execution model and evidence classes."
+    },
+    {
+      "name": "admission",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.md#/8",
+        "kernel.spec.md#/12",
+        "generated/docs/reference/admission-artifacts.md"
+      ],
+      "description": "State the admission evidence contract and renderer-visible admitted state boundary."
+    }
+  ],
+  "relations": [
+    {
+      "from": "overview",
+      "to": "pipeline",
+      "relation": "introduces"
+    },
+    {
+      "from": "pipeline",
+      "to": "gates",
+      "relation": "enforced_by"
+    },
+    {
+      "from": "gates",
+      "to": "admission",
+      "relation": "materializes"
+    }
+  ],
+  "notes": "Authoritative source module for the first executable reference-docs slice. The renderer consumes admitted state only and emits one derived Markdown page."
+}
