@@ -3,19 +3,12 @@ set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 COSIGN_KEY := "/mnt/admin_vault/kernel-bundle-signer-001/bundle-signer.key"
 COSIGN_PUB := "/mnt/admin_vault/kernel-bundle-signer-001/bundle-signer.pub"
 BUNDLE_MANIFEST := "manifests/bundles/bundle-closure.manifest.json"
-WORKFLOW_CLOSEOUT_MANIFEST := "manifests/bundles/kernel-workflow-closeout.manifest.json"
 
 bundle-build MANIFEST=BUNDLE_MANIFEST:
 	bash scripts/build_bundle.sh {{MANIFEST}}
 
-bundle-workflow-closeout:
-	bash scripts/build_bundle.sh {{WORKFLOW_CLOSEOUT_MANIFEST}}
-
 bundle-list MANIFEST=BUNDLE_MANIFEST:
 	jq -r '.closure_scope.included_paths[]' {{MANIFEST}}
-
-bundle-workflow-closeout-list:
-	jq -r '.closure_scope.included_paths[]' {{WORKFLOW_CLOSEOUT_MANIFEST}}
 
 bundle-attest MANIFEST=BUNDLE_MANIFEST BUNDLE='chatgpt-pipeline.bundle.tgz' ATTESTATION='chatgpt-pipeline.bundle.attestation.json':
 	bash scripts/build_bundle_attestation.sh {{MANIFEST}} {{BUNDLE}} {{ATTESTATION}}

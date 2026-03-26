@@ -1,61 +1,109 @@
 {
-  "kind": "kernel.bundle_closure_manifest",
+  "kind": "kernel.closeout_checklist_manifest",
   "artifact_version": "0.1.0",
-  "bundle_id": "kernel-workflow-closeout",
-  "bundle_name": "kernel-workflow-closeout.bundle",
-  "bundle_path": "kernel-workflow-closeout.bundle.tgz",
-  "status": "closed",
-  "selection_mode": "explicit_include_list",
-  "purpose": "Closeout bundle for the kernel-spec defined workflow, including the Jsonnet-rendered reference docs and their generator inputs.",
-  "closure_scope": {
-    "included_paths": [
-      "kernel.spec.md",
-      "kernel.spec.json",
-      "manifests/generators/reference-docs.generator.json",
-      "render/jsonnet/reference/reference-docs.libsonnet",
-      "generated/docs/reference/*.md"
+  "checklist_id": "kernel-workflow-closeout",
+  "checklist_name": "kernel workflow closeout",
+  "status": "open",
+  "purpose": "Checklist for validating that the operational workflow mirrors the kernel-spec-defined source-to-render model.",
+  "validation_target": "operational workflow mirrors kernel-spec definition",
+  "scope": {
+    "authority_model": [
+      "canonical structural model is authoritative",
+      "JSON Structure is authoring syntax only",
+      "JSON Schema is a derived export boundary",
+      "CUE admits normalized state",
+      "Jsonnet renders admitted state only"
     ],
-    "excluded_paths": [
-      "generated/docs/gpt_handoff/spec.v0.1.2.json",
-      "generated/docs/gpt_handoff/spec.v0.1.3.json",
-      "schemas/sidecar/chatgpt-packet/**",
-      "generated/packets/pkt-gpt-handoff-sidecar-001/**"
+    "source_to_render_pipeline": [
+      "raw sources -> normalized state -> admitted state -> rendered artifacts"
+    ],
+    "validation_axes": [
+      "authority model",
+      "source-to-render pipeline",
+      "plane boundaries",
+      "gate model",
+      "admission artifact convention",
+      "Jsonnet rendering contract"
+    ],
+    "plane_boundaries": [
+      "structures/ contains the canonical source model",
+      "schemas/exported/ contains derived contracts only",
+      "schemas/compatibility/ is restricted compatibility surface only",
+      "policy/ contains legality and admission logic",
+      "render/jsonnet/ contains renderers that consume admitted state only",
+      "manifests/ contains control objects for bundles, projections, and generators",
+      "generated/ contains committed derived artifacts and evidence views",
+      "build/ contains disposable local outputs only"
     ]
   },
-  "closure_contract": {
-    "self_resolving": true,
-    "local_admission_boundary": "outside_bundle",
-    "local_realization_boundary": "outside_chatgpt",
-    "known_residuals": [
-      "Jsonnet runtime is external to the bundle and must be supplied by the host environment.",
-      "The bundle captures the kernel workflow reference set only; it is not a substitute for the host executor."
-    ]
-  },
-  "closure_checks": [
+  "checklist_items": [
     {
-      "name": "json_syntax",
-      "status": "required"
+      "id": "c1",
+      "label": "Kernel spec is normative",
+      "expected_evidence": [
+        "kernel.spec.md",
+        "kernel.spec.json"
+      ],
+      "status": "done"
     },
     {
-      "name": "internal_ref_resolution",
-      "status": "required"
+      "id": "c2",
+      "label": "Canonical structural authoring plane is declared",
+      "expected_evidence": [
+        "structures/"
+      ],
+      "status": "done"
     },
     {
-      "name": "schema_alignment",
-      "status": "required"
+      "id": "c3",
+      "label": "Derived schema exports are separated from authority",
+      "expected_evidence": [
+        "schemas/exported/"
+      ],
+      "status": "done"
     },
     {
-      "name": "historical_surface_excluded",
-      "status": "required"
+      "id": "c4",
+      "label": "Admission policy is defined over normalized state",
+      "expected_evidence": [
+        "policy/",
+        "generated/state/admission/<control-object-id>/<run-id>/decision.json",
+        "generated/state/admission/<control-object-id>/<run-id>/violations.json",
+        "generated/state/admission/<control-object-id>/<run-id>/admitted-state.json"
+      ],
+      "status": "done"
     },
     {
-      "name": "bundle_membership_matches_manifest",
-      "status": "required"
+      "id": "c5",
+      "label": "Jsonnet reference docs are rendered from admitted state",
+      "expected_evidence": [
+        "render/jsonnet/reference/reference-docs.libsonnet",
+        "generated/docs/reference/README.md",
+        "generated/docs/reference/workflow.md",
+        "generated/docs/reference/gates.md",
+        "generated/docs/reference/admission-artifacts.md"
+      ],
+      "status": "done"
+    },
+    {
+      "id": "c6",
+      "label": "Manifest declarations exist for bundle, projection, and generator control objects",
+      "expected_evidence": [
+        "manifests/bundles/",
+        "manifests/projections/",
+        "manifests/generators/"
+      ],
+      "status": "done"
     }
   ],
+  "completion_criteria": [
+    "All checklist items are done and the evidence matches the kernel-spec model.",
+    "The operational workflow is consistent across spec, manifests, policy, render, and generated docs.",
+    "No renderer, exporter, or compatibility shim is treated as authority."
+  ],
   "notes": [
-    "This bundle packages the kernel-spec workflow reference docs and the Jsonnet source that renders them.",
-    "The workflow reference docs remain downstream material, not authority.",
-    "The bundle is closed for selection, not a substitute for execution."
+    "This is a checklist control object, not a bundle artifact.",
+    "It exists to validate the operational workflow against the kernel-spec-defined model.",
+    "The manifest remains downstream metadata; it does not establish authority."
   ]
 }
