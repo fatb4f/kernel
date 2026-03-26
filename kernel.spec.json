@@ -198,6 +198,195 @@
       "Every renderer declares its admitted-state inputs and output class."
     ]
   },
+  "normative_implementation": {
+    "scope_and_authority": {
+      "pipeline": [
+        "raw sources",
+        "normalized state",
+        "admitted state",
+        "rendered artifacts"
+      ],
+      "canonical_structural_model": "the sole authoritative source model",
+      "json_structure": "authoring syntax only; not the authority object",
+      "json_schema": "derived exported boundary contract",
+      "cue": "admission over normalized state",
+      "jsonnet": "render from admitted state only"
+    },
+    "plane_boundaries": {
+      "structures/": "canonical source model",
+      "schemas/exported/": "derived contracts only",
+      "schemas/compatibility/": "tightly controlled compatibility shims",
+      "policy/": "legality and admission logic",
+      "render/jsonnet/": "rendering layer over admitted state",
+      "manifests/": "control objects declaring bundles, projections, and generators",
+      "generated/": "committed derived artifacts and evidence views",
+      "build/": "disposable local outputs only",
+      "downstream_compatibility_hacks": "must not be elevated into the authority plane"
+    },
+    "repository_layout_obligations": {
+      "required_top_level_areas": [
+        "structures/{core,extensions,relations,adapters}",
+        "schemas/{exported,compatibility}",
+        "policy/{kernel,admission,data}",
+        "render/jsonnet",
+        "manifests/{bundles,projections,generators}",
+        "examples/{valid,invalid,composed}",
+        "generated/{docs,schemas,registries,state}",
+        "build/"
+      ],
+      "forbidden_top_level_area": "state/ unless later reintroduced explicitly as a source declaration area",
+      "generated_state": "committed derived state",
+      "build_state": "ephemeral only"
+    },
+    "normalization_contract": {
+      "description": "Normalization transforms raw source material into a regularized kernel dataset suitable for admission.",
+      "allowed_operations": [
+        "resolve imports and references",
+        "canonicalize aliases",
+        "apply declared defaults",
+        "normalize ordering and container shape",
+        "expand declared composition into explicit normalized objects",
+        "preserve provenance links to source modules"
+      ],
+      "forbidden_operations": [
+        "decide legality or admissibility",
+        "invent semantic facts",
+        "silently discard source information unless declared",
+        "resolve semantic conflicts without emitting evidence",
+        "render final downstream artifacts"
+      ],
+      "required_outputs": [
+        "normalized-state.json",
+        "source-map.json",
+        "normalization-report.json"
+      ]
+    },
+    "admission_contract": {
+      "description": "Admission evaluates legality over normalized state only.",
+      "responsibilities": [
+        "evaluate legality",
+        "evaluate completeness",
+        "evaluate allowed composition",
+        "emit explicit decision artifacts"
+      ],
+      "forbidden_inputs": [
+        "arbitrary mixed inputs in place of normalized state"
+      ],
+      "evidence": [
+        "decision.json",
+        "violations.json",
+        "admitted-state.json"
+      ]
+    },
+    "derived_artifact_policy": {
+      "exports_and_rendered_artifacts": "must be treated as derived outputs",
+      "exported_schemas": "must not be hand-edited",
+      "committed_derived_artifacts": "must be regen-clean",
+      "toolchain_versions": "must be pinned or otherwise policy-controlled"
+    },
+    "manifest_obligations": {
+      "requirement": "Every bundle, projection, and generator must be declared by a manifest control object.",
+      "prohibition": "No bundle, projection, or generator may exist as an undeclared side-effect of ad hoc tooling."
+    },
+    "gate_model": {
+      "gates": [
+        {
+          "id": "G1",
+          "name": "Source validity",
+          "required_evidence": [
+            "source-validation.json"
+          ],
+          "deny_condition": "parse or import failure"
+        },
+        {
+          "id": "G2",
+          "name": "Contract export",
+          "required_evidence": [
+            "export-report.json"
+          ],
+          "deny_condition": "regen drift or export failure"
+        },
+        {
+          "id": "G3",
+          "name": "Normalization",
+          "required_evidence": [
+            "normalized-state.json",
+            "source-map.json",
+            "normalization-report.json"
+          ],
+          "deny_condition": "nondeterminism or normalization failure"
+        },
+        {
+          "id": "G4",
+          "name": "Admission",
+          "required_evidence": [
+            "decision.json",
+            "violations.json",
+            "admitted-state.json"
+          ],
+          "deny_condition": "legality failure"
+        },
+        {
+          "id": "G5",
+          "name": "Rendering",
+          "required_evidence": [
+            "render-report.json"
+          ],
+          "deny_condition": "renderer reads non-admitted input or render failure"
+        },
+        {
+          "id": "G6",
+          "name": "Drift and integrity",
+          "required_evidence": [
+            "drift-report.json"
+          ],
+          "deny_condition": "unapproved diff, missing output, or hand-edited derived file"
+        }
+      ],
+      "reason_code_families": [
+        "SRC_*",
+        "EXPORT_*",
+        "NORM_*",
+        "ADMIT_*",
+        "RENDER_*",
+        "DRIFT_*"
+      ]
+    },
+    "admission_artifact_convention": {
+      "path": "generated/state/admission/<control-object-id>/<run-id>/",
+      "run_id": [
+        "sortable ISO-like timestamp",
+        "monotonic build identifier",
+        "or both"
+      ],
+      "required_files": [
+        "decision.json",
+        "violations.json",
+        "admitted-state.json"
+      ],
+      "minimum_semantics": {
+        "decision.json": "allow/deny summary, policy bundle ID, input digests, and tool versions",
+        "violations.json": "machine-readable list, empty on allow",
+        "admitted-state.json": "exact renderer-visible admitted dataset"
+      }
+    },
+    "completion_criteria": [
+      "prose authority exists",
+      "control objects validate",
+      "outputs are typed",
+      "normalization boundary is explicit",
+      "gate IDs and evidence artifacts are fixed",
+      "admission artifacts are no longer implicit"
+    ],
+    "required_implementation_order": [
+      "KERNEL_SPEC.md",
+      "manifests/kernel.bundle.schema.json",
+      "manifests/output-classes.schema.json",
+      "policy/contracts/normalization.md",
+      "ci/gate-matrix.md",
+      "admission artifact materialization"
+    ]
+  },
   "invariants": [
     "Canonical model is authoritative; exports are derived.",
     "Exported schemas are not hand-edited.",
@@ -209,7 +398,8 @@
     "Normalization regularizes structure only; it does not decide legality.",
     "Every admission run emits an explicit decision artifact.",
     "Every renderer declares its admitted-state inputs and output class.",
-    "Toolchain versions for normalize/admit/render are pinned or policy-controlled."
+    "Toolchain versions for normalize/admit/render are pinned or policy-controlled.",
+    "No renderer, exporter, or compatibility shim may establish authority; authority exists only in the canonical structural model under structures/."
   ],
   "artifact_classes": [
     "contract-export",
