@@ -12,13 +12,13 @@
     "root_trust_evidence_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json"
   },
   "output_fingerprints": {
-    "packet_definition": "<packet-definition-sha256>",
-    "scm_pattern_binding": "<scm-pattern-binding-sha256>",
-    "packet_approval": "<packet-approval-sha256>",
-    "root_trust_evidence": "<root-trust-evidence-sha256>",
-    "artifact_manifest": "<artifact-manifest-sha256>"
+    "packet_definition": "5b970cc32eeb79c662dafd2702918584bf9444ca61fc6512943f59a926853735",
+    "scm_pattern_binding": "b61b0ee74da8a69d093b37fd810345a8d193d2ced217c5e9ec79f58c88b93af7",
+    "packet_approval": "2a3797c261aa786eda4ffe3668169d3daaf7b4377689ef3c1f2dd071958ddcd7",
+    "root_trust_evidence": "7d64182565b1a625e706c503062c98a8c890cc8e3a13985111c003c26c203b2d",
+    "artifact_manifest": "7a8811bf59b4c8e01c1d54a8f9c790be9d16540bc0bf1061e7cbcb16baaaa2e3"
   },
-  "approval_basis_fingerprint": "<approval-basis-sha256>",
+  "approval_basis_fingerprint": "7224a6b5c6b25262f5a2db040a47543918a7f25231477c27dab7a6728d4eea1a",
   "status": "GENERATED",
   "notes": "If the required input fingerprints remain unchanged, regeneration should be skipped."
 }

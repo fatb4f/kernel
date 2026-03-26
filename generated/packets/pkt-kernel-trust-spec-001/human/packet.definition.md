@@ -4,8 +4,8 @@
 Kernel trust spec implementation for the dual-lane trust surface
 
 ## Status
-- workflow_state: DEFINITION_UNDER_REVIEW
-- review_state: DEFINITION_UNDER_REVIEW
+- workflow_state: DEFINITION_APPROVED
+- review_state: DEFINITION_APPROVED
 
 ## Summary
 Implement the normative kernel trust spec as a dual-lane control surface. Root attestation establishes delegated authority, bundle sign exercises that authority over the concrete bundle payload, and packet-local evidence records the admission dependency chain. The kernel owns trust. The root public key, bundle-signer delegation, bundle signature, and bundle attestation are now materialized.
@@ -25,7 +25,7 @@ Implement the normative kernel trust spec as a dual-lane control surface. Root a
 - Use scm.pattern as the local realization surface
 - Use repo-relative paths only
 - packet.definition.json remains the canonical machine-readable packet artifact
-- packet.approval.json, if retained, is transitional only and non-authoritative
+- packet.approval.json, if retained, is superseded compatibility evidence only and non-authoritative
 - problem_set is the only admissible ingress contract for generation
 
 ## Trust Surface

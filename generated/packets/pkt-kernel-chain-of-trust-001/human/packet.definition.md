@@ -4,8 +4,8 @@
 Kernel chain-of-trust implementation for the operational ChatGPT packet pipeline
 
 ## Status
-- workflow_state: DEFINITION_UNDER_REVIEW
-- review_state: DEFINITION_UNDER_REVIEW
+- workflow_state: DEFINITION_APPROVED
+- review_state: DEFINITION_APPROVED
 
 ## Summary
 Implement the kernel-owned chain of trust for the operational ChatGPT packet pipeline without deepening realization into ChatGPT. Kernel establishes the trust root. ChatGPT authors packet artifacts only. Local tooling validates, admits, and realizes them.
@@ -23,8 +23,8 @@ Implement the kernel-owned chain of trust for the operational ChatGPT packet pip
 - packet.review.request.json is the pre-decision artifact
 - packet.review.decision.json exists only after a human decision
 - root.trust.evidence.json defines the packet-local trust boundary
-- regen.record.json is required while the packet is under review
-- packet.approval.json is transitional only if retained
+- regen.record.json records the regeneration basis for the packet
+- packet.approval.json is superseded compatibility evidence only if retained
 - problem_set is the only admissible ingress contract for generation
 
 ## Kernel trust requirements

@@ -2,8 +2,8 @@
   "artifact_type": "gpt_handoff.root.trust.evidence",
   "artifact_version": "0.1.0",
   "packet_id": "pkt-kernel-trust-spec-001",
-  "workflow_state": "DEFINITION_UNDER_REVIEW",
-  "review_state": "DEFINITION_UNDER_REVIEW",
+  "workflow_state": "DEFINITION_APPROVED",
+  "review_state": "DEFINITION_APPROVED",
   "canonical_refs": {
     "root_signers_ref": "control/trust/root.signers.json",
     "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",

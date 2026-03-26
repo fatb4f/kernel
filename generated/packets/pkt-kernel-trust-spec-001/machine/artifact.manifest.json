@@ -2,8 +2,8 @@
   "artifact_type": "gpt_handoff.artifact.manifest",
   "artifact_version": "0.1.0",
   "packet_id": "pkt-kernel-trust-spec-001",
-  "workflow_state": "DEFINITION_UNDER_REVIEW",
-  "review_state": "DEFINITION_UNDER_REVIEW",
+  "workflow_state": "DEFINITION_APPROVED",
+  "review_state": "DEFINITION_APPROVED",
   "required_artifacts": [
     {
       "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.definition.json",

@@ -4,8 +4,8 @@
   "spec_ref": "control/trust/trust.spec.json",
   "packet_id": "pkt-kernel-trust-spec-001",
   "title": "Kernel trust spec implementation for the dual-lane trust surface",
-  "workflow_state": "DEFINITION_UNDER_REVIEW",
-  "review_state": "DEFINITION_UNDER_REVIEW",
+  "workflow_state": "DEFINITION_APPROVED",
+  "review_state": "DEFINITION_APPROVED",
   "summary": "Implement the kernel trust spec as a dual-lane control surface: root attestation establishes delegated authority, bundle sign exercises that authority over a concrete bundle payload, and packet-local evidence records the admission dependency chain. Kernel remains the trust owner. The root public key, bundle-signer delegation, bundle signature, and bundle attestation are now materialized.",
   "ownership": {
     "trust_root_owner": "kernel",
@@ -21,7 +21,7 @@
     "Keep realization outside the ChatGPT boundary.",
     "Use repo-relative paths only.",
     "packet.definition.json remains the canonical machine-readable packet artifact.",
-    "packet.approval.json, if retained, is transitional only and non-authoritative.",
+    "packet.approval.json, if retained, is superseded compatibility evidence only and non-authoritative.",
     "problem_set is the only admissible ingress contract for generation."
   ],
   "realization": {
@@ -112,7 +112,7 @@
       {
         "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.approval.json",
         "kind": "compatibility_placeholder",
-        "transitional": true,
+        "superseded": true,
         "authoritative": false
       },
       {
@@ -139,11 +139,12 @@
     "packet_local_evidence_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json"
   },
   "review_lifecycle": {
-    "current_phase": "REQUEST_SUBMITTED",
+    "current_phase": "DECISION_ISSUED",
     "current_required_artifacts": [
       "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.request.json",
       "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json",
-      "generated/packets/pkt-kernel-trust-spec-001/machine/regen.record.json"
+      "generated/packets/pkt-kernel-trust-spec-001/machine/regen.record.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.decision.json"
     ],
     "post_decision_required_artifacts": [
       "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.decision.json"
@@ -151,7 +152,7 @@
     "compatibility_artifacts": [
       {
         "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.approval.json",
-        "purpose": "transitional_compatibility_only",
+        "purpose": "superseded_compatibility_only",
         "authoritative": false
       }
     ]
