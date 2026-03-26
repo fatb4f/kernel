@@ -1,0 +1,46 @@
+{
+  "artifact_type": "gpt_handoff.artifact.manifest",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-trust-spec-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "required_artifacts": [
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.definition.json",
+      "kind": "packet_definition"
+    },
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/scm.pattern.binding.json",
+      "kind": "scm_pattern_binding"
+    },
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.request.json",
+      "kind": "packet_review_request"
+    },
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json",
+      "kind": "root_trust_evidence"
+    },
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/regen.record.json",
+      "kind": "regen_record"
+    },
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.approval.json",
+      "kind": "compatibility_placeholder",
+      "transitional": true,
+      "authoritative": false
+    },
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/human/packet.definition.md",
+      "kind": "derived_human_definition"
+    }
+  ],
+  "conditional_artifacts": [
+    {
+      "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.decision.json",
+      "kind": "packet_review_decision",
+      "required_when": "human_review_decision_issued == true"
+    }
+  ]
+}

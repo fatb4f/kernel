@@ -1,0 +1,66 @@
+{
+  "artifact_type": "gpt_handoff.root.trust.evidence",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-trust-spec-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "canonical_refs": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "bundle_manifest_ref": "manifests/bundles/bundle-closure.manifest.json",
+    "trust_spec_ref": "control/trust/trust.spec.json"
+  },
+  "canonical_fingerprints": {
+    "root_signers": {
+      "algorithm": "sha256",
+      "value": "6f23e0088cb86ccdae38a94614da4dcb6d48735c59a8d6bd94345ffe6caae071"
+    },
+    "root_delegation": {
+      "algorithm": "sha256",
+      "value": "504a661b23cf3a5d6af8256cc8dc9d0ef9b6c54956c51c67e53a1359ccc6620d"
+    },
+    "authority_manifest": {
+      "algorithm": "sha256",
+      "value": "5c84118cb034678f85e4240c55134b9b939698c6b5be6f59ea877c327ec94896"
+    },
+    "authority_manifest_validation": {
+      "algorithm": "sha256",
+      "value": "f5955cba103636e3c44a42065bf414a32769c217c752444f2439e93f59824957"
+    },
+    "authority_manifest_signature": {
+      "algorithm": "sha256",
+      "value": "a3abb64ae0a50d463149f97c515acb972c5c1f9e128034f5844ede9723042a02"
+    },
+    "bundle_manifest": {
+      "algorithm": "sha256",
+      "value": "cb9d9bf1e9341c08a049749ad407fa7f09e7370398bef13ba1c28729de5a67f9"
+    },
+    "trust_spec": {
+      "algorithm": "sha256",
+      "value": "5ae72f2643e89c7d5fba96c5d5a7eef4204f9e911ee04354ec1a915952341750"
+    }
+  },
+  "evidence_requirements": {
+    "all_refs_must_resolve": true,
+    "all_fingerprints_must_match": true,
+    "signature_must_verify": true,
+    "delegation_must_be_in_scope": true
+  },
+  "closeout": {
+    "implementation_status": "STRUCTURALLY_DEFINED",
+    "unresolved_dependency": {
+      "path": "control/trust/root.signers.json",
+      "field": "signers[0].public_key",
+      "state": "PLACEHOLDER",
+      "reason": "The kernel root public key has not yet been materialized in the repository."
+    },
+    "notes": [
+      "This packet establishes the trust control surface structurally.",
+      "Cryptographic completeness remains pending until the root key is introduced."
+    ]
+  },
+  "status": "DECLARED_REQUIRED_EVIDENCE"
+}

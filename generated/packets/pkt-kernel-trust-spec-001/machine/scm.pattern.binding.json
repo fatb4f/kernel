@@ -1,0 +1,61 @@
+{
+  "artifact_type": "gpt_handoff.scm_pattern.binding",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-trust-spec-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "surface": "scm.pattern",
+  "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+  "authority_manifest_schema_ref": "schemas/chatgpt-packet/authority.manifest.schema.json",
+  "kernel_trust": {
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json",
+    "root_signers_ref": "control/trust/root.signers.json",
+    "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json"
+  },
+  "realization_scope": {
+    "write_paths": [
+      "generated/packets/pkt-kernel-trust-spec-001/machine/packet.definition.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/scm.pattern.binding.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.request.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/regen.record.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/artifact.manifest.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/packet.approval.json",
+      "generated/packets/pkt-kernel-trust-spec-001/human/packet.definition.md"
+    ],
+    "conditional_write_paths": [
+      "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.decision.json"
+    ],
+    "read_paths": [
+      "control/trust/trust.spec.json",
+      "control/trust/trust.spec.md",
+      "control/trust/root.signers.json",
+      "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "control/scm.pattern/authority.manifest.json",
+      "control/scm.pattern/authority.manifest.validation.json",
+      "control/scm.pattern/authority.manifest.signature.json",
+      "manifests/bundles/bundle-closure.manifest.json",
+      "pipeline/chatgpt.packet.pipeline.manifest.json",
+      "pipeline/chatgpt.execution.policy.json",
+      "pipeline/chatgpt.validation.manifest.json",
+      "pipeline/chatgpt.gate.policy.json",
+      "pipeline/problem_set.schema.json"
+    ]
+  },
+  "human_intervention_points": [
+    "root key materialization",
+    "delegated signer issuance",
+    "bundle-sign backend selection",
+    "admission approval"
+  ],
+  "promotion_constraints": [
+    "do not promote while the root public key remains placeholder material",
+    "do not promote while the delegation material remains placeholder-based",
+    "do not treat packet-local evidence as trust source",
+    "do not allow realization outside scm.pattern"
+  ],
+  "repo_relative_packet_root": "generated/packets/pkt-kernel-trust-spec-001",
+  "notes": "This packet implements the normative trust spec as a dual-lane control surface. Root authority and routine bundle signing remain separate, and the kernel root public key is still unresolved."
+}

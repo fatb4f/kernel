@@ -1,0 +1,182 @@
+{
+  "artifact_type": "gpt_handoff.packet.definition",
+  "artifact_version": "0.1.0",
+  "spec_ref": "control/trust/trust.spec.json",
+  "packet_id": "pkt-kernel-trust-spec-001",
+  "title": "Kernel trust spec implementation for the dual-lane trust surface",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "summary": "Implement the kernel trust spec as a dual-lane control surface: root attestation establishes delegated authority, bundle sign exercises that authority over a concrete bundle payload, and packet-local evidence records the admission dependency chain. Kernel remains the trust owner. The root public key is still placeholder material.",
+  "ownership": {
+    "trust_root_owner": "kernel",
+    "delegated_consumer": "chatgpt_packet_pipeline"
+  },
+  "constraints": [
+    "Keep the root key offline.",
+    "Do not treat packet-local evidence as a trust source.",
+    "Do not collapse root attestation and bundle signing into one lane.",
+    "Do not introduce a general-purpose PKI.",
+    "Do not claim cryptographic completion while the root public key remains placeholder material.",
+    "Use scm.pattern as the local realization surface.",
+    "Keep realization outside the ChatGPT boundary.",
+    "Use repo-relative paths only.",
+    "packet.definition.json remains the canonical machine-readable packet artifact.",
+    "packet.approval.json, if retained, is transitional only and non-authoritative.",
+    "problem_set is the only admissible ingress contract for generation."
+  ],
+  "realization": {
+    "local_realization_surface": "scm.pattern",
+    "canonical_packet_root": "generated/packets/pkt-kernel-trust-spec-001",
+    "repo_relative_paths_only": true
+  },
+  "inputs": [
+    {
+      "ref": "control/trust/trust.spec.json",
+      "role": "trust_control_spec"
+    },
+    {
+      "ref": "control/trust/trust.spec.md",
+      "role": "trust_control_spec_md"
+    },
+    {
+      "ref": "control/trust/root.signers.json",
+      "role": "kernel_root_signer_set"
+    },
+    {
+      "ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "role": "kernel_delegation"
+    },
+    {
+      "ref": "control/scm.pattern/authority.manifest.json",
+      "role": "kernel_authority_manifest"
+    },
+    {
+      "ref": "manifests/bundles/bundle-closure.manifest.json",
+      "role": "bundle_closure_manifest"
+    },
+    {
+      "ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+      "role": "execution_pipeline_manifest"
+    },
+    {
+      "ref": "pipeline/chatgpt.execution.policy.json",
+      "role": "execution_policy"
+    },
+    {
+      "ref": "pipeline/chatgpt.validation.manifest.json",
+      "role": "validation_manifest"
+    },
+    {
+      "ref": "pipeline/chatgpt.gate.policy.json",
+      "role": "gate_policy"
+    },
+    {
+      "ref": "pipeline/problem_set.schema.json",
+      "role": "ingress_contract"
+    }
+  ],
+  "deliverables": {
+    "required_now": [
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.definition.json",
+        "kind": "packet_definition"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/scm.pattern.binding.json",
+        "kind": "scm_pattern_binding"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.request.json",
+        "kind": "packet_review_request"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json",
+        "kind": "root_trust_evidence"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/regen.record.json",
+        "kind": "regen_record"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/artifact.manifest.json",
+        "kind": "artifact_manifest"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.approval.json",
+        "kind": "compatibility_placeholder",
+        "transitional": true,
+        "authoritative": false
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/human/packet.definition.md",
+        "kind": "derived_human_definition"
+      }
+    ],
+    "conditional": [
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.decision.json",
+        "kind": "packet_review_decision",
+        "required_when": "human_review_decision_issued == true"
+      }
+    ]
+  },
+  "kernel_trust_requirements": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "bundle_manifest_ref": "manifests/bundles/bundle-closure.manifest.json",
+    "trust_spec_ref": "control/trust/trust.spec.json",
+    "packet_local_evidence_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json"
+  },
+  "review_lifecycle": {
+    "current_phase": "REQUEST_SUBMITTED",
+    "current_required_artifacts": [
+      "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.request.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json",
+      "generated/packets/pkt-kernel-trust-spec-001/machine/regen.record.json"
+    ],
+    "post_decision_required_artifacts": [
+      "generated/packets/pkt-kernel-trust-spec-001/machine/packet.review.decision.json"
+    ],
+    "compatibility_artifacts": [
+      {
+        "ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.approval.json",
+        "purpose": "transitional_compatibility_only",
+        "authoritative": false
+      }
+    ]
+  },
+  "admissibility_rules": [
+    "Kernel establishes trust root.",
+    "ChatGPT authors packet artifacts only.",
+    "No downstream artifact is admissible from file presence alone.",
+    "root.trust.evidence.json must carry canonical refs and fingerprints for the trust chain.",
+    "Authority manifest and root delegation must both resolve.",
+    "Bundle signing is distinct from root authorization.",
+    "Downstream artifacts must validate against their own declared schemas.",
+    "Human review remains separate from root trust."
+  ],
+  "staleness_rules": {
+    "semantic_change_marks_stale": [
+      "control/trust/trust.spec.json",
+      "control/trust/trust.spec.md",
+      "control/trust/root.signers.json",
+      "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "control/scm.pattern/authority.manifest.json",
+      "manifests/bundles/bundle-closure.manifest.json",
+      "review_basis_fingerprint"
+    ],
+    "formatting_only_change_does_not_mark_stale": true,
+    "fingerprint_basis": "canonical_json"
+  },
+  "regeneration": {
+    "blocked_unless_required_inputs_change": true,
+    "required_inputs": [
+      "control/trust/trust.spec.json",
+      "control/trust/root.signers.json",
+      "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "control/scm.pattern/authority.manifest.json",
+      "manifests/bundles/bundle-closure.manifest.json"
+    ]
+  }
+}

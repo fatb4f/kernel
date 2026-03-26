@@ -1,0 +1,212 @@
+{
+  "document": {
+    "name": "TRUST_SPEC",
+    "version": "v1",
+    "status": "normative",
+    "purpose": "Define the kernel trust control surface for the ChatGPT packet pipeline."
+  },
+  "scope": {
+    "applies_to": [
+      "control/trust/",
+      "generated/packets/<packet_id>/machine/root.trust.evidence.json"
+    ],
+    "does_not_define": [
+      "kernel-wide architecture",
+      "general-purpose PKI",
+      "a specific signing backend"
+    ],
+    "governed_by": [
+      "kernel.spec.md",
+      "kernel.spec.json"
+    ]
+  },
+  "trust_model": {
+    "purpose": [
+      "root attestation",
+      "bundle sign",
+      "packet trust evidence"
+    ],
+    "authority_split": [
+      "The kernel root establishes authority.",
+      "A delegated signer exercises authority within a bounded scope.",
+      "The packet never establishes trust; it only records the trust objects it depends on."
+    ],
+    "dual_lanes": {
+      "root_attestation_lane": {
+        "purpose": [
+          "authorize the delegated signer",
+          "constrain signer role and scope",
+          "keep the root key offline",
+          "reserve root use for authorization, rotation, revocation, and trust metadata updates"
+        ],
+        "outputs": [
+          "root signer set",
+          "root-signed delegation artifact"
+        ]
+      },
+      "bundle_sign_lane": {
+        "purpose": [
+          "sign the concrete bundle payload",
+          "attach claims about the bundle contents and validation state"
+        ],
+        "outputs": [
+          "bundle signature",
+          "bundle attestation"
+        ]
+      },
+      "packet_lane": {
+        "purpose": [
+          "pin the exact trust artifacts and fingerprints used during admission"
+        ],
+        "output": "packet-local root.trust.evidence.json"
+      }
+    }
+  },
+  "current_repo_surface": {
+    "root_signer_set": {
+      "path": "control/trust/root.signers.json",
+      "role": "pinned root trust anchor",
+      "status": [
+        "signer identity is declared",
+        "signer role is declared",
+        "root public key is still placeholder material"
+      ]
+    },
+    "delegation_artifact": {
+      "path": "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "role": "shallow kernel delegation for the ChatGPT packet sidecar",
+      "constraints": [
+        "cannot establish root authority",
+        "cannot mutate root authority",
+        "cannot mutate the root signer set",
+        "cannot self-approve",
+        "cannot broaden delegation scope"
+      ]
+    },
+    "authority_manifest": {
+      "path": "control/scm.pattern/authority.manifest.json",
+      "role": "operational authority surface for the packet pipeline",
+      "responsibilities": [
+        "precedence",
+        "conflict resolution",
+        "approval basis inputs",
+        "delegated surfaces",
+        "deprecation note"
+      ]
+    },
+    "packet_trust_evidence": {
+      "path": "generated/packets/<packet_id>/machine/root.trust.evidence.json",
+      "role": "packet-local admission boundary",
+      "status": [
+        "reference index for the trust objects and fingerprints the packet depends on",
+        "does not recreate trust"
+      ]
+    }
+  },
+  "required_artifacts": {
+    "root_lane": [
+      "control/trust/root.signers.json",
+      "control/trust/delegations/<signer>.json"
+    ],
+    "optional_root_lane": [
+      "control/trust/delegations/<signer>.signature.json"
+    ],
+    "bundle_lane": [
+      "manifests/bundles/bundle-closure.manifest.json",
+      "chatgpt-pipeline.bundle.tgz",
+      "chatgpt-pipeline.bundle.tgz.sig",
+      "chatgpt-pipeline.bundle.attestation.json"
+    ],
+    "packet_lane": [
+      "generated/packets/<packet_id>/machine/root.trust.evidence.json"
+    ],
+    "recommended_packet_refs": [
+      "generated/packets/<packet_id>/machine/packet.definition.json",
+      "generated/packets/<packet_id>/machine/scm.pattern.binding.json",
+      "generated/packets/<packet_id>/machine/packet.review.request.json",
+      "generated/packets/<packet_id>/machine/regen.record.json",
+      "generated/packets/<packet_id>/machine/artifact.manifest.json"
+    ]
+  },
+  "artifact_contracts": {
+    "root_signer_set": {
+      "minimum_concepts": [
+        "signer identity",
+        "signer algorithm",
+        "public key",
+        "active status",
+        "threshold"
+      ]
+    },
+    "delegation_artifact": {
+      "minimum_concepts": [
+        "delegate id",
+        "delegate role",
+        "delegated public key",
+        "allowed actions",
+        "allowed targets",
+        "issued by root",
+        "validity window",
+        "active status"
+      ]
+    },
+    "bundle_attestation": {
+      "minimum_concepts": [
+        "bundle reference",
+        "bundle fingerprint",
+        "predicate reference, if used",
+        "attested claims",
+        "signer identity",
+        "issuance timestamp"
+      ]
+    },
+    "packet_trust_evidence": {
+      "minimum_concepts": [
+        "root signer set reference",
+        "delegation reference",
+        "bundle manifest reference",
+        "bundle reference",
+        "bundle signature reference",
+        "bundle attestation reference",
+        "fingerprints for each pinned artifact"
+      ]
+    }
+  },
+  "verification_order": [
+    "Load control/trust/root.signers.json.",
+    "Confirm the expected root public key is present and active.",
+    "Verify the root-signed delegation.",
+    "Confirm the delegated signer is authorized for bundle signing and attestation.",
+    "Verify the bundle signature against the delegated signer key.",
+    "Verify the bundle attestation signature.",
+    "Confirm attestation claims match the actual bundle and included refs.",
+    "Confirm packet-local root.trust.evidence.json matches the used trust artifacts."
+  ],
+  "invariants": [
+    "Root authority stays offline.",
+    "Root authority is used only for authorization, rotation, revocation, and trust metadata updates.",
+    "Routine bundle signing is performed only by a delegated signer.",
+    "Packet-local evidence never establishes trust.",
+    "The repo must distinguish the closure bundle manifest from the signed bundle payload.",
+    "Trust artifacts must be explicit and path-stable.",
+    "Placeholder root key material is not cryptographic trust material.",
+    "Admission fails closed on missing, stale, or mismatched trust artifacts."
+  ],
+  "implementation_status": {
+    "current_state": [
+      "structural model is defined",
+      "delegation surface exists",
+      "bundle closure selection exists",
+      "packet-local trust evidence exists",
+      "root public key materialization is still pending"
+    ],
+    "conclusion": "The trust objective is planned and structurally represented, but not cryptographically complete."
+  },
+  "non_goals": [
+    "Define the full kernel baseline.",
+    "Define a general-purpose PKI.",
+    "Require a specific signing backend.",
+    "Claim the root key is already materialized.",
+    "Make packet presence equivalent to trust."
+  ]
+}

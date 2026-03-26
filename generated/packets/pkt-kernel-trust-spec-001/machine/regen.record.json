@@ -1,0 +1,27 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.1.4",
+  "packet_id": "pkt-kernel-trust-spec-001",
+  "policy": "Regeneration is blocked unless required inputs change.",
+  "required_inputs": {
+    "spec_ref": "control/trust/trust.spec.json",
+    "spec_md_ref": "control/trust/trust.spec.md",
+    "root_signers_ref": "control/trust/root.signers.json",
+    "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "bundle_manifest_ref": "manifests/bundles/bundle-closure.manifest.json",
+    "packet_definition_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.definition.json",
+    "scm_pattern_binding_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/scm.pattern.binding.json",
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json"
+  },
+  "output_fingerprints": {
+    "packet_definition": "<packet-definition-sha256>",
+    "scm_pattern_binding": "<scm-pattern-binding-sha256>",
+    "packet_approval": "<packet-approval-sha256>",
+    "root_trust_evidence": "<root-trust-evidence-sha256>",
+    "artifact_manifest": "<artifact-manifest-sha256>"
+  },
+  "approval_basis_fingerprint": "<approval-basis-sha256>",
+  "status": "GENERATED",
+  "notes": "If the required input fingerprints remain unchanged, regeneration should be skipped."
+}
