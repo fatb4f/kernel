@@ -9,10 +9,17 @@
   "operational_status_gate": {
     "target": "core kernel operational status",
     "mode": "fail_closed",
+    "current_status": "BLOCKED",
+    "current_status_ref": "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json",
+    "blockers": [
+      "jsonnet_cli_missing",
+      "jsonnet_runtime_unavailable"
+    ],
     "decision_basis": [
       "all checklist_items marked done",
       "completion_criteria satisfied",
-      "evidence matches kernel-spec model"
+      "evidence matches kernel-spec model",
+      "Jsonnet CLI/runtime is available for rendering"
     ],
     "on_failure": "core kernel operational status remains not closed"
   },
@@ -87,11 +94,12 @@
       "id": "c5",
       "label": "Jsonnet reference docs are rendered from admitted state",
       "expected_evidence": [
-        "render/jsonnet/reference/reference-docs.libsonnet",
-        "generated/docs/reference/README.md",
-        "generated/docs/reference/workflow.md",
-        "generated/docs/reference/gates.md",
-        "generated/docs/reference/admission-artifacts.md"
+      "render/jsonnet/reference/reference-docs.libsonnet",
+      "generated/docs/reference/README.md",
+      "generated/docs/reference/workflow.md",
+      "generated/docs/reference/gates.md",
+      "generated/docs/reference/admission-artifacts.md",
+      "generated/docs/reference/operational-status.md"
       ],
       "status": "done"
     },
@@ -115,6 +123,7 @@
     "This is a checklist control object, not a bundle artifact.",
     "It exists to validate the operational workflow against the kernel-spec-defined model.",
     "It gates the core kernel operational status.",
+    "Current baseline remains BLOCKED because the Jsonnet CLI/runtime is not available locally.",
     "The manifest remains downstream metadata; it does not establish authority."
   ]
 }

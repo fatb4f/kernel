@@ -1,0 +1,12 @@
+{
+  "kind": "kernel.operational_status_violations",
+  "artifact_version": "0.1.0",
+  "control_object_id": "kernel-workflow-closeout",
+  "run_id": "2026-03-26T21-34-43Z",
+  "violations": [
+    {
+      "code": "RENDER_RUNTIME_MISSING",
+      "message": "Jsonnet CLI/runtime is unavailable, so the rendered workflow artifact lane cannot be executed."
+    }
+  ]
+}

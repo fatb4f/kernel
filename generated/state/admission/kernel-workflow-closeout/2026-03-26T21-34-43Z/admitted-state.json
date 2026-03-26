@@ -1,0 +1,39 @@
+{
+  "kind": "kernel.operational_status_snapshot",
+  "artifact_version": "0.1.0",
+  "control_object_id": "kernel-workflow-closeout",
+  "run_id": "2026-03-26T21-34-43Z",
+  "status": "BLOCKED",
+  "kernel_spec_alignment": "structural",
+  "checklist_items": [
+    {
+      "id": "c1",
+      "status": "done"
+    },
+    {
+      "id": "c2",
+      "status": "done"
+    },
+    {
+      "id": "c3",
+      "status": "done"
+    },
+    {
+      "id": "c4",
+      "status": "done"
+    },
+    {
+      "id": "c5",
+      "status": "done"
+    },
+    {
+      "id": "c6",
+      "status": "done"
+    }
+  ],
+  "blockers": [
+    "jsonnet_cli_missing",
+    "jsonnet_runtime_unavailable"
+  ],
+  "summary": "The kernel-spec-defined workflow is structurally in place, but the operational render lane is blocked on local Jsonnet availability."
+}

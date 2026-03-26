@@ -28,6 +28,7 @@ The canonical structural model is authoritative. JSON Structure is only an autho
 - [workflow.md](workflow.md)
 - [gates.md](gates.md)
 - [admission-artifacts.md](admission-artifacts.md)
+- [operational-status.md](operational-status.md)
 
 ## Source inputs
 

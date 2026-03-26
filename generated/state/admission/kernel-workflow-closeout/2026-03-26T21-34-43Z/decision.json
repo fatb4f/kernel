@@ -1,0 +1,28 @@
+{
+  "kind": "kernel.operational_status_decision",
+  "artifact_version": "0.1.0",
+  "control_object_id": "kernel-workflow-closeout",
+  "run_id": "2026-03-26T21-34-43Z",
+  "decision": "BLOCKED",
+  "policy_bundle_id": "kernel-workflow-closeout",
+  "input_digests": {
+    "kernel_spec_md_sha256": "pending",
+    "kernel_spec_json_sha256": "pending",
+    "workflow_reference_docs_sha256": "pending",
+    "reference_generator_sha256": "pending"
+  },
+  "tool_versions": {
+    "jsonnet": "unavailable",
+    "shell": "bash"
+  },
+  "blockers": [
+    {
+      "code": "RENDER_RUNTIME_MISSING",
+      "reason": "Jsonnet CLI/runtime is not available on this machine."
+    }
+  ],
+  "notes": [
+    "The kernel-spec workflow is structurally defined and the checklist items are marked done.",
+    "The operational status remains blocked because the rendering lane cannot be executed locally."
+  ]
+}
