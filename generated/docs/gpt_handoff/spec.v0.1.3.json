@@ -2,7 +2,7 @@
   "kind": "chatgpt_packet_sidecar_spec.v1",
   "spec_version": "0.1.3",
   "status": "temporary_sidecar",
-  "summary": "ChatGPT owns a single canonical packet.definition artifact. Local realization is governed by scm.pattern. Approval and realization binding are mandatory, standalone, and basis-fingerprint-bound. The contract is intentionally shallow, temporary, and removable.",
+  "summary": "ChatGPT owns a single canonical packet.definition artifact. Local realization is governed by scm.pattern. The pre-decision review request is the boundary artifact, the review decision is conditional and human-issued, and packet.approval.json is transitional compatibility only if retained. The contract is intentionally shallow, temporary, and removable.",
   "artifact_identity": {
     "canonical_filename": "spec.v0.1.3.json",
     "canonical_path": "generated/docs/gpt_handoff/spec.v0.1.3.json",
@@ -116,6 +116,13 @@
     ],
     "boundary": [
       "packets/<packet_id>/machine/scm.pattern.binding.json",
+      "packets/<packet_id>/machine/packet.review.request.json",
+      "packets/<packet_id>/machine/root.trust.evidence.json"
+    ],
+    "conditional_boundary": [
+      "packets/<packet_id>/machine/packet.review.decision.json"
+    ],
+    "compatibility_artifacts": [
       "packets/<packet_id>/machine/packet.approval.json"
     ],
     "required_packet_sections": [
@@ -127,45 +134,30 @@
       "tooling",
       "authority",
       "scm_pattern",
+      "kernel_trust_requirements",
+      "review_lifecycle",
       "workflow_state",
       "review_state",
       "regen"
     ],
-    "realization_rule": "No packet may be approved, realized, or closed without a valid scm.pattern binding.",
-    "binding_rule": "scm.pattern.binding.json is mandatory and part of the approval and realization boundary."
+    "realization_rule": "No packet may be approved, realized, or closed without a valid scm.pattern binding and, after human review, a matching packet.review.decision.json.",
+    "binding_rule": "scm.pattern.binding.json is mandatory and part of the review, approval, and realization boundary."
   },
-  "approval": {
-    "canonical_artifact": "packets/<packet_id>/machine/packet.approval.json",
-    "required": true,
-    "verdict_enum": [
+  "review": {
+    "request_artifact": "packets/<packet_id>/machine/packet.review.request.json",
+    "decision_artifact": "packets/<packet_id>/machine/packet.review.decision.json",
+    "decision_required_after_human_review": true,
+    "decision_verdict_enum": [
       "APPROVED",
       "REVISE",
       "REJECTED",
       "STALE",
       "SUPERSEDED"
     ],
-    "basis": [
-      "packet.definition.json",
-      "scm.pattern.binding.json",
-      "control/scm.pattern/authority.manifest.json",
-      "approval-relevant authority refs named in the authority manifest"
-    ],
-    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
-    "fingerprint_rule": "Approval is valid only for the exact canonicalized approval basis.",
-    "approval_basis_fingerprint_rule": "The approval basis fingerprint is computed from canonicalized packet.definition.json, scm.pattern.binding.json, control/scm.pattern/authority.manifest.json, and the approval-relevant authority refs declared in the authority manifest.",
-    "state_rule": {
-      "on_semantic_change_after_approval": "Mark the prior packet.approval.json verdict STALE and set packet.definition.workflow_state to REQUIRES_REAPPROVAL and packet.definition.review_state to REQUIRES_REAPPROVAL.",
-      "resubmission_transition": "A revised definition must move from REQUIRES_REAPPROVAL to DEFINITION_UNDER_REVIEW before a fresh approval can be issued.",
-      "realization_gate": "REALIZED_VIA_SCM_PATTERN is allowed only when packet.definition.workflow_state is DEFINITION_APPROVED, packet.definition.review_state is DEFINITION_APPROVED, and packet.approval.json carries a matching approval_basis_fingerprint.",
-      "authority_manifest_change_rule": "Any semantic change to control/scm.pattern/authority.manifest.json marks prior approval STALE."
-    },
-    "non_semantic_rule": "Formatting-only changes do not invalidate approval.",
-    "supersession_rule": "A fresh packet.approval.json supersedes any older approval artifacts for the same packet_id.",
-    "required_fields": [
-      "authority_manifest_ref",
-      "authority_manifest_fingerprint",
-      "approval_basis_fingerprint"
-    ]
+    "request_role": "pre_decision_review_submission",
+    "decision_role": "human_issued_review_outcome",
+    "compatibility_artifact": "packets/<packet_id>/machine/packet.approval.json",
+    "compatibility_artifact_role": "transitional_non_authoritative_only"
   },
   "packet_definition": {
     "path": "packets/<packet_id>/machine/packet.definition.json",
@@ -201,7 +193,9 @@
       "artifacts": "Expected outputs and evidence.",
       "tooling": "Validators, scripts, and execution assumptions.",
       "authority": "Control and schema references.",
+      "kernel_trust_requirements": "Kernel-owned trust root, validation, and delegation refs for the sidecar trust chain.",
       "scm_pattern": "Summary plus binding reference to the standalone realization contract.",
+      "review_lifecycle": "Pre-decision review request, human decision, and compatibility review artifact semantics.",
       "workflow_state": "Canonical packet lifecycle state.",
       "review_state": "Review-only substate aligned to the workflow lifecycle.",
       "regen": "Regeneration lock and fingerprint data."
@@ -233,7 +227,7 @@
       "Tooling and execution model",
       "Evidence, validation, and gates",
       "Risks, disturbances, and rollback",
-      "Approval question",
+      "Review question",
       "Artifact index"
     ],
     "requirements": [
