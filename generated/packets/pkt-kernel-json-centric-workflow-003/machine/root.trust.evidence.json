@@ -1,0 +1,56 @@
+{
+  "artifact_type": "gpt_handoff.root.trust.evidence",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-json-centric-workflow-003",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "canonical_refs": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json"
+  },
+  "canonical_fingerprints": {
+    "root_signers": {
+      "algorithm": "sha256",
+      "value": "c99fd80640700529449b2f9d53e5bedc10eba31f8cc53a75a78d6d3dd059c42c"
+    },
+    "authority_manifest": {
+      "algorithm": "sha256",
+      "value": "66c17ede5423e3adee7223d3666ce2e3b13c7c87d6827a22b08570f84b3d055e"
+    },
+    "authority_manifest_validation": {
+      "algorithm": "sha256",
+      "value": "455fc544368bc9b0f2a1c094882470bbe741a597fa82b2ea741c88980948ffb9"
+    },
+    "authority_manifest_signature": {
+      "algorithm": "sha256",
+      "value": "c5f232961254abbd686dcd5def44eb725ea9480a9cefdfbc92bf32c8da6071b8"
+    },
+    "delegation": {
+      "algorithm": "sha256",
+      "value": "49ac0354bfad32895734ac4a9751a814b433f53cb988642414572bab6d224d2f"
+    }
+  },
+  "evidence_requirements": {
+    "all_refs_must_resolve": true,
+    "all_fingerprints_must_match": true,
+    "signature_must_verify": true,
+    "delegation_must_be_in_scope": true
+  },
+  "closeout": {
+    "implementation_status": "DECLARED",
+    "unresolved_dependency": {
+      "path": "kernel.spec.json",
+      "field": "executable_workflow",
+      "state": "OPEN",
+      "reason": "This packet preserves the original executable JSON-centric workflow issue draft as a packet artifact rather than claiming the workflow is fully implemented."
+    },
+    "notes": [
+      "This packet records the executable JSON-centric workflow issue draft under generated/packets.",
+      "It is a packetized specification of the requested implementation slice, not evidence that the workflow is already executable."
+    ]
+  },
+  "status": "DECLARED_REQUIRED_EVIDENCE"
+}

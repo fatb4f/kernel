@@ -1,0 +1,31 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.1.4",
+  "packet_id": "pkt-kernel-json-centric-workflow-003",
+  "policy": "Regeneration is blocked unless required inputs change.",
+  "required_inputs": {
+    "spec_ref": "kernel.spec.json",
+    "spec_md_ref": "kernel.spec.md",
+    "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+    "workflow_readme_ref": "generated/docs/reference/README.md",
+    "workflow_reference_ref": "generated/docs/reference/workflow.md",
+    "gates_reference_ref": "generated/docs/reference/gates.md",
+    "admission_artifacts_reference_ref": "generated/docs/reference/admission-artifacts.md",
+    "operational_status_ref": "generated/docs/reference/operational-status.md",
+    "jsonnet_renderer_ref": "render/jsonnet/reference/reference-docs.libsonnet",
+    "generator_control_ref": "manifests/generators/reference-docs.generator.json",
+    "packet_definition_ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.definition.json",
+    "scm_pattern_binding_ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/scm.pattern.binding.json",
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json"
+  },
+  "output_fingerprints": {
+    "packet_definition": "11517ba8cef3bdd5fa2294af19682be2046d6fd9bd5bdcd2790670ee36be6ddd",
+    "scm_pattern_binding": "9c2b7b25a6e455c03c456bf1fa95f3f5e045a6bc3fbfea468ad5de449e2f65d0",
+    "packet_approval": "332f54cccdbc019c768bce93f365d5fc7cf19c7ae208601e270ec339a5985b94",
+    "root_trust_evidence": "aca1136110fe43f94f1e2dd333fe5eb93c1011662bca47fd8745823a30ae5bb2",
+    "artifact_manifest": "b67279f19736edeee4b3f0b752085cf9521b87a3cf67083a2a04a072e29598d9"
+  },
+  "approval_basis_fingerprint": "f365cb74d305c6f249b01a14a6cccdc663aa39e46fc07fe7b998259554cd4d17",
+  "status": "GENERATED",
+  "notes": "If the required input fingerprints remain unchanged, regeneration should be skipped."
+}

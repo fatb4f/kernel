@@ -1,0 +1,190 @@
+{
+  "artifact_type": "gpt_handoff.packet.definition",
+  "artifact_version": "0.1.0",
+  "spec_ref": "kernel.spec.json",
+  "packet_id": "pkt-kernel-json-centric-workflow-003",
+  "title": "Implement executable JSON-centric kernel workflow",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "summary": "Implement the first executable kernel workflow slice for the JSON-centric kernel model. The canonical structural model is authority, JSON Structure is authoring syntax only, JSON Schema is derived, CUE admits normalized state, and Jsonnet renders admitted state only.",
+  "ownership": {
+    "trust_root_owner": "kernel",
+    "delegated_consumer": "kernel_core_json_workflow"
+  },
+  "constraints": [
+    "Keep the canonical structural model authoritative.",
+    "Use JSON Structure as authoring syntax only.",
+    "Treat JSON Schema as derived/exported boundary contracts.",
+    "Run admission over normalized state only.",
+    "Render from admitted state only.",
+    "Do not let Jsonnet read raw authoring sources directly.",
+    "Do not hand-edit exported schemas or committed generated artifacts.",
+    "Do not collapse normalization, admission, and rendering into one opaque step.",
+    "Use manifest control objects for bundles, projections, and generators.",
+    "Use repo-relative paths only.",
+    "packet.definition.json remains the canonical machine-readable packet artifact.",
+    "packet.approval.json, if retained, is superseded compatibility evidence only and non-authoritative.",
+    "problem_set is the only admissible ingress contract for generation."
+  ],
+  "realization": {
+    "local_realization_surface": "scm.pattern",
+    "canonical_packet_root": "generated/packets/pkt-kernel-json-centric-workflow-003",
+    "repo_relative_paths_only": true
+  },
+  "inputs": [
+    {
+      "ref": "kernel.spec.json",
+      "role": "normative_kernel_spec"
+    },
+    {
+      "ref": "kernel.spec.md",
+      "role": "normative_kernel_spec_md"
+    },
+    {
+      "ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+      "role": "operational_status_gate_manifest"
+    },
+    {
+      "ref": "generated/docs/reference/README.md",
+      "role": "workflow_reference_readme"
+    },
+    {
+      "ref": "generated/docs/reference/workflow.md",
+      "role": "workflow_reference"
+    },
+    {
+      "ref": "generated/docs/reference/gates.md",
+      "role": "gate_reference"
+    },
+    {
+      "ref": "generated/docs/reference/admission-artifacts.md",
+      "role": "admission_artifact_reference"
+    },
+    {
+      "ref": "generated/docs/reference/operational-status.md",
+      "role": "operational_status_baseline"
+    },
+    {
+      "ref": "render/jsonnet/reference/reference-docs.libsonnet",
+      "role": "jsonnet_renderer"
+    },
+    {
+      "ref": "manifests/generators/reference-docs.generator.json",
+      "role": "generator_control_object"
+    }
+  ],
+  "deliverables": {
+    "required_now": [
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.definition.json",
+        "kind": "packet_definition"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/scm.pattern.binding.json",
+        "kind": "scm_pattern_binding"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.review.request.json",
+        "kind": "packet_review_request"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json",
+        "kind": "root_trust_evidence"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/regen.record.json",
+        "kind": "regen_record"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/artifact.manifest.json",
+        "kind": "artifact_manifest"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.approval.json",
+        "kind": "compatibility_placeholder",
+        "superseded": true,
+        "authoritative": false
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/human/packet.definition.md",
+        "kind": "derived_human_definition"
+      }
+    ],
+    "conditional": [
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.review.decision.json",
+        "kind": "packet_review_decision",
+        "required_when": "human_review_decision_issued == true"
+      }
+    ]
+  },
+  "kernel_trust_requirements": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "packet_local_evidence_ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json"
+  },
+  "review_lifecycle": {
+    "current_phase": "DEFINITION_UNDER_REVIEW",
+    "current_required_artifacts": [
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.definition.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/scm.pattern.binding.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.review.request.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/regen.record.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/artifact.manifest.json"
+    ],
+    "post_decision_required_artifacts": [
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.review.decision.json"
+    ],
+    "compatibility_artifacts": [
+      {
+        "ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.approval.json",
+        "purpose": "superseded_compatibility_only",
+        "authoritative": false
+      }
+    ]
+  },
+  "admissibility_rules": [
+    "Kernel establishes trust root.",
+    "Jsonnet renders admitted state only.",
+    "CUE admits normalized state only.",
+    "No downstream artifact is admissible from file presence alone.",
+    "Exported schemas and rendered artifacts are derived outputs.",
+    "Manifest control objects must declare bundle, projection, and generator surfaces.",
+    "Human review remains separate from root trust."
+  ],
+  "staleness_rules": {
+    "semantic_change_marks_stale": [
+      "kernel.spec.json",
+      "kernel.spec.md",
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+      "generated/docs/reference/README.md",
+      "generated/docs/reference/workflow.md",
+      "generated/docs/reference/gates.md",
+      "generated/docs/reference/admission-artifacts.md",
+      "generated/docs/reference/operational-status.md",
+      "render/jsonnet/reference/reference-docs.libsonnet",
+      "manifests/generators/reference-docs.generator.json"
+    ],
+    "formatting_only_change_does_not_mark_stale": true,
+    "fingerprint_basis": "canonical_json"
+  },
+  "regeneration": {
+    "blocked_unless_required_inputs_change": true,
+    "required_inputs": [
+      "kernel.spec.json",
+      "kernel.spec.md",
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+      "generated/docs/reference/README.md",
+      "generated/docs/reference/workflow.md",
+      "generated/docs/reference/gates.md",
+      "generated/docs/reference/admission-artifacts.md",
+      "generated/docs/reference/operational-status.md",
+      "render/jsonnet/reference/reference-docs.libsonnet",
+      "manifests/generators/reference-docs.generator.json"
+    ]
+  }
+}

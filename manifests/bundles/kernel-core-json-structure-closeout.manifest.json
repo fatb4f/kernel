@@ -1,0 +1,460 @@
+{
+  "kind": "kernel.closeout_checklist_manifest",
+  "artifact_version": "0.2.0",
+  "checklist_id": "kernel-core-json-structure-closeout",
+  "checklist_name": "kernel core json structure closeout",
+  "status": "open",
+  "purpose": "Checklist control object for validating and closing out materialization of the full kernel core JSON structure defined by kernel.spec.json, including authority, pipeline, plane boundaries, contracts, gates, admission artifacts, and component/tool surfaces.",
+  "validation_target": "kernel core JSON structure is fully materialized and consistent with kernel.spec.json",
+  "operational_status_gate": {
+    "target": "core kernel operational status",
+    "mode": "fail_closed",
+    "current_status": "BLOCKED",
+    "current_status_ref": "generated/state/admission/kernel-core-json-structure-closeout/2026-03-26T00-00-00Z/decision.json",
+    "blockers": [
+      "structures_core_not_materialized",
+      "json_structure_toolchain_not_declared",
+      "schemas_exported_not_materialized",
+      "json_schema_toolchain_not_declared",
+      "cue_policy_not_materialized",
+      "cue_toolchain_not_declared",
+      "jsonnet_rendering_not_materialized",
+      "jsonnet_runtime_unavailable",
+      "normalization_outputs_not_materialized",
+      "admission_evidence_not_materialized",
+      "render_evidence_not_materialized",
+      "drift_integrity_evidence_not_materialized"
+    ],
+    "decision_basis": [
+      "all checklist_items marked done",
+      "all kernel_core_components marked done",
+      "completion_criteria satisfied",
+      "evidence matches the full kernel.spec.json authority, state-flow, plane, contract, gate, and artifact model",
+      "required toolchains for json-structure, json-schema, CUE, and Jsonnet are available and policy-controlled",
+      "no renderer, exporter, or compatibility shim is treated as authority"
+    ],
+    "on_failure": "core kernel operational status remains not closed"
+  },
+  "scope": {
+    "authority_model": [
+      "canonical structural model is authoritative",
+      "JSON Structure is authoring syntax only",
+      "JSON Schema is a derived export boundary",
+      "CUE admits normalized state",
+      "Jsonnet renders admitted state only",
+      "Structurize/Avrotize is a derived interop/codegen bridge"
+    ],
+    "source_to_render_pipeline": [
+      "raw sources -> normalized state -> admitted state -> rendered artifacts"
+    ],
+    "validation_axes": [
+      "document authority",
+      "authority model",
+      "state flow and boundary rules",
+      "plane definitions",
+      "repository semantics and layout obligations",
+      "normalization contract",
+      "admission contract",
+      "rendering contract",
+      "manifest obligations",
+      "gate model",
+      "reason code families",
+      "admission artifact convention",
+      "invariants",
+      "artifact classes",
+      "implementation order",
+      "component materialization",
+      "toolchain availability and control"
+    ],
+    "plane_boundaries": [
+      "structures/ contains the canonical source model",
+      "schemas/exported/ contains derived contracts only",
+      "schemas/compatibility/ is restricted compatibility surface only",
+      "policy/ contains legality and admission logic",
+      "render/jsonnet/ contains renderers that consume admitted state only",
+      "manifests/ contains control objects for bundles, projections, and generators",
+      "generated/ contains committed derived artifacts and evidence views",
+      "build/ contains disposable local outputs only"
+    ],
+    "kernel_core_structure_coverage": [
+      "document",
+      "authority_model",
+      "state_flow",
+      "planes",
+      "repo_semantics",
+      "repo_tree",
+      "normalization_contract",
+      "admission_contract",
+      "rendering_contract",
+      "normative_implementation",
+      "invariants",
+      "artifact_classes",
+      "gate_model",
+      "admission_artifact_convention",
+      "implementation_order",
+      "completion_condition"
+    ],
+    "component_materialization_rule": [
+      "Each kernel core component must declare its source area, derived outputs, evidence artifacts, and associated tools.",
+      "Each component must map to one or more checklist items and concrete repository evidence paths."
+    ]
+  },
+  "kernel_core_components": [
+    {
+      "id": "kc1",
+      "name": "canonical-structural-model",
+      "plane": "structure",
+      "spec_sections": [
+        "authority_model",
+        "planes.structure",
+        "repo_tree.structures",
+        "normative_implementation.plane_boundaries",
+        "normative_implementation.repository_layout_obligations"
+      ],
+      "expected_evidence": [
+        "structures/core/",
+        "structures/extensions/",
+        "structures/relations/",
+        "structures/adapters/"
+      ],
+      "associated_tools": [
+        "JSON Structure authoring/validation tooling",
+        "source parser/import resolver",
+        "source validation runner"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "kc2",
+      "name": "contract-export-surface",
+      "plane": "contract",
+      "spec_sections": [
+        "authority_model.json_schema",
+        "planes.contract",
+        "repo_semantics",
+        "normative_implementation.derived_artifact_policy",
+        "gate_model.gates[G2]"
+      ],
+      "expected_evidence": [
+        "schemas/exported/",
+        "schemas/compatibility/",
+        "generated/schemas/",
+        "source-validation.json",
+        "export-report.json"
+      ],
+      "associated_tools": [
+        "JSON Schema exporter",
+        "schema validator",
+        "codegen/export runner"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "kc3",
+      "name": "normalization-layer",
+      "plane": "structure-to-policy boundary",
+      "spec_sections": [
+        "state_flow",
+        "normalization_contract",
+        "normative_implementation.normalization_contract",
+        "gate_model.gates[G3]"
+      ],
+      "expected_evidence": [
+        "normalized-state.json",
+        "source-map.json",
+        "normalization-report.json"
+      ],
+      "associated_tools": [
+        "normalizer",
+        "reference resolver",
+        "provenance/source-map generator"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "kc4",
+      "name": "admission-policy-surface",
+      "plane": "policy",
+      "spec_sections": [
+        "authority_model.cue",
+        "planes.policy",
+        "admission_contract",
+        "normative_implementation.admission_contract",
+        "gate_model.gates[G4]",
+        "admission_artifact_convention"
+      ],
+      "expected_evidence": [
+        "policy/kernel/",
+        "policy/admission/",
+        "policy/data/",
+        "generated/state/admission/<control-object-id>/<run-id>/decision.json",
+        "generated/state/admission/<control-object-id>/<run-id>/violations.json",
+        "generated/state/admission/<control-object-id>/<run-id>/admitted-state.json"
+      ],
+      "associated_tools": [
+        "CUE admission bundles",
+        "admission runner",
+        "policy evidence materializer"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "kc5",
+      "name": "rendering-surface",
+      "plane": "artifact",
+      "spec_sections": [
+        "authority_model.jsonnet",
+        "planes.artifact",
+        "rendering_contract",
+        "normative_implementation.plane_boundaries",
+        "gate_model.gates[G5]"
+      ],
+      "expected_evidence": [
+        "render/jsonnet/",
+        "generated/docs/",
+        "generated/registries/",
+        "render-report.json"
+      ],
+      "associated_tools": [
+        "Jsonnet renderer",
+        "renderer entrypoints",
+        "artifact generation runner"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "kc6",
+      "name": "manifest-control-surface",
+      "plane": "control",
+      "spec_sections": [
+        "repo_semantics.manifests",
+        "normative_implementation.manifest_obligations"
+      ],
+      "expected_evidence": [
+        "manifests/bundles/",
+        "manifests/projections/",
+        "manifests/generators/"
+      ],
+      "associated_tools": [
+        "manifest validators",
+        "bundle/projection/generator registry tooling"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "kc7",
+      "name": "drift-integrity-surface",
+      "plane": "integrity",
+      "spec_sections": [
+        "normative_implementation.derived_artifact_policy",
+        "gate_model.gates[G6]",
+        "invariants"
+      ],
+      "expected_evidence": [
+        "drift-report.json",
+        "generated/",
+        "build/"
+      ],
+      "associated_tools": [
+        "drift detector",
+        "regen-clean verifier",
+        "integrity checks"
+      ],
+      "status": "open"
+    }
+  ],
+  "checklist_items": [
+    {
+      "id": "c1",
+      "label": "Kernel spec remains the normative source for the kernel core JSON structure",
+      "spec_coverage": [
+        "document",
+        "normative_implementation"
+      ],
+      "expected_evidence": [
+        "kernel.spec.json",
+        "kernel.spec.md"
+      ],
+      "status": "done"
+    },
+    {
+      "id": "c2",
+      "label": "Authority model is fully represented in the manifest scope",
+      "spec_coverage": [
+        "authority_model"
+      ],
+      "expected_evidence": [
+        "canonical structural model authority declaration",
+        "JSON Structure authoring-only declaration",
+        "JSON Schema derived-boundary declaration",
+        "CUE admission declaration",
+        "Jsonnet admitted-state-only rendering declaration",
+        "Structurize/Avrotize derived bridge declaration"
+      ],
+      "status": "done"
+    },
+    {
+      "id": "c3",
+      "label": "State-flow pipeline and boundary rules are fixed",
+      "spec_coverage": [
+        "state_flow"
+      ],
+      "expected_evidence": [
+        "raw sources -> normalized state -> admitted state -> rendered artifacts",
+        "boundary rules preventing renderers from reading raw sources directly"
+      ],
+      "status": "done"
+    },
+    {
+      "id": "c4",
+      "label": "Plane definitions and repository semantics are covered end-to-end",
+      "spec_coverage": [
+        "planes",
+        "repo_semantics",
+        "repo_tree"
+      ],
+      "expected_evidence": [
+        "structures/{core,extensions,relations,adapters}",
+        "schemas/{exported,compatibility}",
+        "policy/{kernel,admission,data}",
+        "render/jsonnet/",
+        "manifests/{bundles,projections,generators}",
+        "examples/{valid,invalid,composed}",
+        "generated/{docs,schemas,registries,state}",
+        "build/"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "c5",
+      "label": "Normalization contract is materialized with required outputs",
+      "spec_coverage": [
+        "normalization_contract",
+        "normative_implementation.normalization_contract",
+        "gate_model.G3"
+      ],
+      "expected_evidence": [
+        "normalized-state.json",
+        "source-map.json",
+        "normalization-report.json"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "c6",
+      "label": "Admission contract is materialized with explicit decision artifacts",
+      "spec_coverage": [
+        "admission_contract",
+        "normative_implementation.admission_contract",
+        "admission_artifact_convention",
+        "gate_model.G4"
+      ],
+      "expected_evidence": [
+        "generated/state/admission/<control-object-id>/<run-id>/decision.json",
+        "generated/state/admission/<control-object-id>/<run-id>/violations.json",
+        "generated/state/admission/<control-object-id>/<run-id>/admitted-state.json"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "c7",
+      "label": "Rendering contract is materialized and constrained to admitted state",
+      "spec_coverage": [
+        "rendering_contract",
+        "gate_model.G5"
+      ],
+      "expected_evidence": [
+        "render/jsonnet/",
+        "render-report.json",
+        "declared renderer inputs and output classes"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "c8",
+      "label": "Manifest control objects exist for bundle, projection, and generator surfaces",
+      "spec_coverage": [
+        "normative_implementation.manifest_obligations"
+      ],
+      "expected_evidence": [
+        "manifests/bundles/",
+        "manifests/projections/",
+        "manifests/generators/"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "c9",
+      "label": "Gate model G1-G6 and reason code families are declared and linked to evidence",
+      "spec_coverage": [
+        "gate_model",
+        "normative_implementation.gate_model"
+      ],
+      "expected_evidence": [
+        "source-validation.json",
+        "export-report.json",
+        "normalized-state.json",
+        "source-map.json",
+        "normalization-report.json",
+        "decision.json",
+        "violations.json",
+        "admitted-state.json",
+        "render-report.json",
+        "drift-report.json",
+        "SRC_*",
+        "EXPORT_*",
+        "NORM_*",
+        "ADMIT_*",
+        "RENDER_*",
+        "DRIFT_*"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "c10",
+      "label": "Invariants, artifact classes, implementation order, and completion conditions are preserved as closeout obligations",
+      "spec_coverage": [
+        "invariants",
+        "artifact_classes",
+        "implementation_order",
+        "completion_condition"
+      ],
+      "expected_evidence": [
+        "typed output classes",
+        "toolchain control declarations",
+        "implementation order references",
+        "completion condition references"
+      ],
+      "status": "open"
+    },
+    {
+      "id": "c11",
+      "label": "Kernel core component matrix covers structure, schema, normalization, CUE admission, Jsonnet rendering, manifests, and drift integrity",
+      "spec_coverage": [
+        "authority_model",
+        "state_flow",
+        "repo_tree",
+        "gate_model"
+      ],
+      "expected_evidence": [
+        "kernel_core_components[*]"
+      ],
+      "status": "done"
+    }
+  ],
+  "completion_criteria": [
+    "All checklist items are done and the evidence matches the full kernel.spec.json model.",
+    "All kernel_core_components are materialized with concrete evidence paths and associated tools.",
+    "The operational workflow is consistent across structures, schemas, policy, render, manifests, generated outputs, and evidence artifacts.",
+    "Normalization, admission, rendering, and drift gates emit their required evidence artifacts.",
+    "No renderer, exporter, compatibility shim, or downstream tool surface is treated as authority.",
+    "Required toolchains for json-structure, json-schema, CUE, and Jsonnet are available and policy-controlled."
+  ],
+  "notes": [
+    "This manifest updates the supplied closeout checklist from workflow-mirror coverage to full kernel core JSON structure coverage.",
+    "The manifest remains downstream control metadata and does not establish authority.",
+    "Current status is intentionally BLOCKED because the user stated that the core components are defined in spec but not materialized.",
+    "Checklist items c1-c3 and c11 are marked done because the spec and manifest coverage now exist; materialization items remain open.",
+    "The component matrix is the operational bridge between the normative spec and future repository/tool materialization."
+  ]
+}

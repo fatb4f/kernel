@@ -1,0 +1,40 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.request",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-json-centric-workflow-003",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "submitted_by": {
+    "role": "chatgpt_packet_generator"
+  },
+  "review_scope": "definition",
+  "requested_outcomes": [
+    "APPROVED",
+    "REJECTED",
+    "REVISE"
+  ],
+  "review_basis_refs": [
+    "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.definition.json",
+    "generated/packets/pkt-kernel-json-centric-workflow-003/machine/scm.pattern.binding.json",
+    "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json",
+    "generated/packets/pkt-kernel-json-centric-workflow-003/machine/artifact.manifest.json",
+    "kernel.spec.json",
+    "kernel.spec.md",
+    "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+    "generated/docs/reference/README.md",
+    "generated/docs/reference/workflow.md",
+    "generated/docs/reference/gates.md",
+    "generated/docs/reference/admission-artifacts.md",
+    "generated/docs/reference/operational-status.md"
+  ],
+  "kernel_trust": {
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json"
+  },
+  "human_action_required": true,
+  "approval_authority": false,
+  "artifact_status": "REVIEW_REQUEST_SUBMITTED"
+}

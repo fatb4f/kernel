@@ -1,0 +1,61 @@
+{
+  "artifact_type": "gpt_handoff.scm_pattern.binding",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-json-centric-workflow-003",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "surface": "scm.pattern",
+  "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+  "authority_manifest_schema_ref": "schemas/chatgpt-packet/authority.manifest.schema.json",
+  "kernel_trust": {
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json",
+    "root_signers_ref": "control/trust/root.signers.json",
+    "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json"
+  },
+  "realization_scope": {
+    "write_paths": [
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.definition.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/scm.pattern.binding.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.review.request.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/regen.record.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/artifact.manifest.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.approval.json",
+      "generated/packets/pkt-kernel-json-centric-workflow-003/human/packet.definition.md"
+    ],
+    "conditional_write_paths": [
+      "generated/packets/pkt-kernel-json-centric-workflow-003/machine/packet.review.decision.json"
+    ],
+    "read_paths": [
+      "kernel.spec.json",
+      "kernel.spec.md",
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+      "generated/docs/reference/README.md",
+      "generated/docs/reference/workflow.md",
+      "generated/docs/reference/gates.md",
+      "generated/docs/reference/admission-artifacts.md",
+      "generated/docs/reference/operational-status.md",
+      "render/jsonnet/reference/reference-docs.libsonnet",
+      "manifests/generators/reference-docs.generator.json",
+      "control/trust/root.signers.json",
+      "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "control/scm.pattern/authority.manifest.json",
+      "control/scm.pattern/authority.manifest.validation.json",
+      "control/scm.pattern/authority.manifest.signature.json"
+    ]
+  },
+  "human_intervention_points": [
+    "review of executable workflow scope",
+    "jsonnet runtime availability",
+    "admission gate implementation"
+  ],
+  "promotion_constraints": [
+    "do not promote while Jsonnet is unavailable",
+    "do not promote while normalize/admit/render evidence is missing",
+    "do not allow realization outside scm.pattern"
+  ],
+  "repo_relative_packet_root": "generated/packets/pkt-kernel-json-centric-workflow-003",
+  "notes": "This packet preserves the original executable JSON-centric workflow issue draft as a kernel packet artifact. It captures the normative kernel-spec workflow, the operational closeout gate, and the required next implementation slice."
+}
