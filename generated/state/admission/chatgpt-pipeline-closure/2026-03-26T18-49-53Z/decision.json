@@ -1,0 +1,20 @@
+{
+  "kind": "kernel.admission_decision",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-pipeline-closure",
+  "run_id": "2026-03-26T18-49-53Z",
+  "decision": "ALLOW",
+  "policy_bundle_id": "chatgpt-pipeline-closure",
+  "input_digests": {
+    "bundle_closure_manifest_sha256": "60f65207f5098f766a57824f178a86517200beffb81ea2cda3f1c1885fa7e73a"
+  },
+  "tool_versions": {
+    "extraction": "cp (GNU coreutils) 9.10",
+    "shell": "bash"
+  },
+  "notes": [
+    "Bundle selection is explicit and closed.",
+    "Admission is limited to the manifest-selected operational ChatGPT pipeline surface.",
+    "Historical sidecar surfaces are excluded from the extracted snapshot."
+  ]
+}

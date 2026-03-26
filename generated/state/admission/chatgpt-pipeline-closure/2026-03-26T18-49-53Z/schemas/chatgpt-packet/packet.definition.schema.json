@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/chatgpt-packet/packet.definition.schema.json",
+  "title": "ChatGPT packet definition",
+  "description": "Canonical packet artifact emitted from a single problem_set input.",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "spec_ref",
+    "packet_id",
+    "title",
+    "workflow_state",
+    "review_state",
+    "summary",
+    "ownership",
+    "constraints",
+    "realization",
+    "inputs",
+    "deliverables",
+    "kernel_trust_requirements",
+    "review_lifecycle",
+    "admissibility_rules",
+    "staleness_rules",
+    "regeneration"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "gpt_handoff.packet.definition"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "spec_ref": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "workflow_state": {
+      "type": "string"
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "ownership": {
+      "type": "object"
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "realization": {
+      "type": "object"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "deliverables": {
+      "type": "object"
+    },
+    "kernel_trust_requirements": {
+      "type": "object"
+    },
+    "review_lifecycle": {
+      "type": "object"
+    },
+    "admissibility_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "staleness_rules": {
+      "type": "object"
+    },
+    "regeneration": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

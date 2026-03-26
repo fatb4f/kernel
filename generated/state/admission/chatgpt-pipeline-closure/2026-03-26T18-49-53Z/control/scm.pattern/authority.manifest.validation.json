@@ -1,0 +1,22 @@
+{
+  "artifact_type": "kernel.authority_manifest.validation",
+  "artifact_version": "0.1.0",
+  "target_ref": "control/scm.pattern/authority.manifest.json",
+  "schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+  "canonicalization": "kernel.canonical_json.v1",
+  "validation_result": "VALID",
+  "target_fingerprint": {
+    "algorithm": "sha256",
+    "value": "<authority-manifest-sha256>"
+  },
+  "schema_fingerprint": {
+    "algorithm": "sha256",
+    "value": "<authority-schema-sha256>"
+  },
+  "validator": {
+    "name": "jsonschema-cli",
+    "version": "<version>",
+    "invocation": "jsonschema validate --instance control/scm.pattern/authority.manifest.json --schema schemas/control/scm.pattern/authority.manifest.schema.json"
+  },
+  "timestamp": "<RFC3339>"
+}

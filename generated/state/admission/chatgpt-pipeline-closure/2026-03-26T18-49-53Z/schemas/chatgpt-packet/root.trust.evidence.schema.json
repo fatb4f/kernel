@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/chatgpt-packet/root.trust.evidence.schema.json",
+  "title": "Kernel trust evidence",
+  "description": "Packet-local trust boundary evidence referencing kernel-owned authority state.",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "packet_id",
+    "workflow_state",
+    "review_state",
+    "canonical_refs",
+    "canonical_fingerprints",
+    "evidence_requirements",
+    "status"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "gpt_handoff.root.trust.evidence"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "workflow_state": {
+      "type": "string"
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "canonical_refs": {
+      "type": "object"
+    },
+    "canonical_fingerprints": {
+      "type": "object"
+    },
+    "evidence_requirements": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

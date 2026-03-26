@@ -1,0 +1,7 @@
+{
+  "kind": "kernel.admission_violations",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-pipeline-closure",
+  "run_id": "2026-03-26T18-49-53Z",
+  "violations": []
+}

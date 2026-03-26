@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/chatgpt-packet/packet.review.decision.schema.json",
+  "title": "ChatGPT packet review decision",
+  "description": "Human-issued review outcome artifact.",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "packet_id",
+    "issued_by",
+    "verdict",
+    "approval_authority",
+    "review_basis_fingerprint",
+    "issued_at"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "gpt_handoff.packet.review.decision"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "issued_by": {
+      "type": "object"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "REVISE",
+        "REJECTED",
+        "STALE",
+        "SUPERSEDED"
+      ]
+    },
+    "approval_authority": {
+      "type": "boolean"
+    },
+    "review_basis_fingerprint": {
+      "type": "object"
+    },
+    "stale_on": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "formatting_only_changes_do_not_stale": {
+      "type": "boolean"
+    },
+    "issued_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

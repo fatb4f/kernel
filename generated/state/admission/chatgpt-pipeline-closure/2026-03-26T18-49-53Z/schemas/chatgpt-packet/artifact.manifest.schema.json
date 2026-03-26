@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/chatgpt-packet/artifact.manifest.schema.json",
+  "title": "Packet artifact manifest",
+  "description": "Manifest of required and conditional packet artifacts.",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "packet_id",
+    "workflow_state",
+    "review_state",
+    "required_artifacts",
+    "conditional_artifacts"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "gpt_handoff.artifact.manifest"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "workflow_state": {
+      "type": "string"
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "required_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "conditional_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

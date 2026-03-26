@@ -1,0 +1,36 @@
+{
+  "kind": "kernel.chatgpt_execution_policy",
+  "version": "0.1.0",
+  "status": "active",
+  "entry_contract": "pipeline/problem_set.schema.json",
+  "rules": [
+    "Exactly one problem_set is admissible as ingress.",
+    "No hidden secondary planning artifact is allowed.",
+    "No separate plan or implement families are allowed.",
+    "Outputs must be repo-relative under generated/packets/<packet_id>/.",
+    "Regeneration occurs only when required inputs change materially.",
+    "ChatGPT may author packet artifacts only; it may not realize them."
+  ],
+  "prohibited_actions": [
+    "scope_widening",
+    "authority_mutation",
+    "realization",
+    "policy_editing"
+  ],
+  "execution_order": [
+    "problem_set normalization",
+    "packet definition generation",
+    "binding generation",
+    "review request generation",
+    "trust evidence generation",
+    "regeneration record generation",
+    "artifact manifest generation",
+    "human synthesis rendering"
+  ],
+  "regeneration_triggers": [
+    "problem_set fingerprint change",
+    "authority manifest change",
+    "schema change",
+    "required output contract change"
+  ]
+}

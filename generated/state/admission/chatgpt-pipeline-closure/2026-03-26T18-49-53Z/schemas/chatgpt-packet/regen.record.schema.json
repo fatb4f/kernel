@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/chatgpt-packet/regen.record.schema.json",
+  "title": "Packet regeneration record",
+  "description": "Regeneration trace for packet artifacts.",
+  "type": "object",
+  "required": [
+    "kind",
+    "spec_version",
+    "packet_id",
+    "policy",
+    "required_inputs",
+    "output_fingerprints",
+    "approval_basis_fingerprint",
+    "status",
+    "notes"
+  ],
+  "properties": {
+    "kind": {
+      "const": "gpt_handoff.regen.record"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "policy": {
+      "type": "string"
+    },
+    "required_inputs": {
+      "type": "object"
+    },
+    "output_fingerprints": {
+      "type": "object"
+    },
+    "approval_basis_fingerprint": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

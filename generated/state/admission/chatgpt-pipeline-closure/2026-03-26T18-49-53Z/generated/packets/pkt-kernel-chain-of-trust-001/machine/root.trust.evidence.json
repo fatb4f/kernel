@@ -1,0 +1,43 @@
+{
+  "artifact_type": "gpt_handoff.root.trust.evidence",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-chain-of-trust-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "canonical_refs": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json"
+  },
+  "canonical_fingerprints": {
+    "root_signers": {
+      "algorithm": "sha256",
+      "value": "<root-signers-sha256>"
+    },
+    "authority_manifest": {
+      "algorithm": "sha256",
+      "value": "<authority-manifest-sha256>"
+    },
+    "authority_manifest_validation": {
+      "algorithm": "sha256",
+      "value": "<authority-manifest-validation-sha256>"
+    },
+    "authority_manifest_signature": {
+      "algorithm": "sha256",
+      "value": "<authority-manifest-signature-sha256>"
+    },
+    "delegation": {
+      "algorithm": "sha256",
+      "value": "<chatgpt-packet-sidecar-delegation-sha256>"
+    }
+  },
+  "evidence_requirements": {
+    "all_refs_must_resolve": true,
+    "all_fingerprints_must_match": true,
+    "signature_must_verify": true,
+    "delegation_must_be_in_scope": true
+  },
+  "status": "DECLARED_REQUIRED_EVIDENCE"
+}

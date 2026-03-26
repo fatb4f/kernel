@@ -1,0 +1,15 @@
+{
+  "artifact_type": "kernel.root_signer_set",
+  "artifact_version": "0.1.0",
+  "ownership": "kernel",
+  "signer_role": "kernel_root_authority",
+  "threshold": 1,
+  "signers": [
+    {
+      "signer_id": "kernel-root-001",
+      "algorithm": "ed25519",
+      "public_key": "<public-key>",
+      "status": "ACTIVE"
+    }
+  ]
+}

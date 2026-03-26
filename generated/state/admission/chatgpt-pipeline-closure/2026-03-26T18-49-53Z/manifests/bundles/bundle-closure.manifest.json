@@ -1,0 +1,67 @@
+{
+  "kind": "kernel.bundle_closure_manifest",
+  "artifact_version": "0.1.0",
+  "bundle_id": "chatgpt-pipeline-closure",
+  "bundle_name": "chatgpt-pipeline.bundle",
+  "bundle_path": "chatgpt-pipeline.bundle.tgz",
+  "status": "closed",
+  "selection_mode": "explicit_include_list",
+  "purpose": "Selective closure bundle for the operational ChatGPT packet pipeline and one representative packet instance.",
+  "closure_scope": {
+    "included_paths": [
+      "pipeline/*.json",
+      "control/scm.pattern/authority.manifest.json",
+      "control/scm.pattern/authority.manifest.validation.json",
+      "control/scm.pattern/authority.manifest.signature.json",
+      "control/trust/root.signers.json",
+      "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "schemas/control/scm.pattern/authority.manifest.schema.json",
+      "schemas/chatgpt-packet/*.json",
+      "generated/docs/gpt_handoff/spec.v0.1.4.json",
+      "generated/docs/gpt_handoff/.changelog/v0.1.4.md",
+      "generated/packets/pkt-kernel-chain-of-trust-001/**"
+    ],
+    "excluded_paths": [
+      "generated/docs/gpt_handoff/spec.v0.1.2.json",
+      "generated/docs/gpt_handoff/spec.v0.1.3.json",
+      "schemas/sidecar/chatgpt-packet/**",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/**"
+    ]
+  },
+  "closure_contract": {
+    "self_resolving": true,
+    "local_admission_boundary": "outside_bundle",
+    "local_realization_boundary": "outside_chatgpt",
+    "known_residuals": [
+      "Placeholder trust values remain in the trust artifacts until materialized by local execution.",
+      "The local enforcement runner is not bundled here and must be supplied by the host environment."
+    ]
+  },
+  "closure_checks": [
+    {
+      "name": "json_syntax",
+      "status": "required"
+    },
+    {
+      "name": "internal_ref_resolution",
+      "status": "required"
+    },
+    {
+      "name": "schema_alignment",
+      "status": "required"
+    },
+    {
+      "name": "historical_surface_excluded",
+      "status": "required"
+    },
+    {
+      "name": "bundle_membership_matches_manifest",
+      "status": "required"
+    }
+  ],
+  "notes": [
+    "This manifest captures the minimal operational bundle surface only.",
+    "Historical sidecar docs remain outside the closure bundle.",
+    "The bundle is closed for selection, not a substitute for the missing local executor."
+  ]
+}

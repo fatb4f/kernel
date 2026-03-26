@@ -1,0 +1,24 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.1.4",
+  "packet_id": "pkt-kernel-chain-of-trust-001",
+  "policy": "Regeneration is blocked unless required inputs change.",
+  "required_inputs": {
+    "spec_ref": "generated/docs/gpt_handoff/spec.v0.1.4.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+    "packet_definition_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.definition.json",
+    "scm_pattern_binding_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/scm.pattern.binding.json",
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json"
+  },
+  "output_fingerprints": {
+    "packet_definition": "<packet-definition-sha256>",
+    "scm_pattern_binding": "<scm-pattern-binding-sha256>",
+    "packet_approval": "<packet-approval-sha256>",
+    "root_trust_evidence": "<root-trust-evidence-sha256>",
+    "artifact_manifest": "<artifact-manifest-sha256>"
+  },
+  "approval_basis_fingerprint": "<approval-basis-sha256>",
+  "status": "GENERATED",
+  "notes": "If the required input fingerprints remain unchanged, regeneration should be skipped."
+}
