@@ -6,6 +6,16 @@
   "status": "open",
   "purpose": "Checklist for validating that the operational workflow mirrors the kernel-spec-defined source-to-render model.",
   "validation_target": "operational workflow mirrors kernel-spec definition",
+  "operational_status_gate": {
+    "target": "core kernel operational status",
+    "mode": "fail_closed",
+    "decision_basis": [
+      "all checklist_items marked done",
+      "completion_criteria satisfied",
+      "evidence matches kernel-spec model"
+    ],
+    "on_failure": "core kernel operational status remains not closed"
+  },
   "scope": {
     "authority_model": [
       "canonical structural model is authoritative",
@@ -104,6 +114,7 @@
   "notes": [
     "This is a checklist control object, not a bundle artifact.",
     "It exists to validate the operational workflow against the kernel-spec-defined model.",
+    "It gates the core kernel operational status.",
     "The manifest remains downstream metadata; it does not establish authority."
   ]
 }
