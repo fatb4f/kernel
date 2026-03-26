@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/control/scm.pattern/authority.manifest.schema.json",
+  "title": "Kernel SCM pattern authority manifest",
+  "description": "Kernel-owned root authority manifest for the temporary ChatGPT packet sidecar.",
+  "type": "object",
+  "required": [
+    "kind",
+    "spec_version",
+    "sidecar_status",
+    "workflow_authority_root",
+    "validation_surface_root",
+    "template_surface_root",
+    "precedence",
+    "conflict_resolution",
+    "approval_basis_inputs",
+    "delegated_surfaces",
+    "deprecation_note"
+  ],
+  "properties": {
+    "kind": {
+      "const": "chatgpt-sidecar-authority-manifest"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "sidecar_status": {
+      "type": "string"
+    },
+    "workflow_authority_root": {
+      "type": "string"
+    },
+    "validation_surface_root": {
+      "type": "string"
+    },
+    "template_surface_root": {
+      "type": "string"
+    },
+    "precedence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflict_resolution": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approval_basis_inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "delegated_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "role",
+          "status"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "deprecation_note": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

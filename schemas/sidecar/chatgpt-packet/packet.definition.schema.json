@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/sidecar/chatgpt-packet/packet.definition.schema.json",
+  "title": "ChatGPT packet definition",
+  "description": "Canonical machine-readable packet artifact for the temporary sidecar.",
+  "type": "object",
+  "required": [
+    "kind",
+    "spec_version",
+    "packet_id",
+    "title",
+    "request",
+    "scope",
+    "control",
+    "decomposition",
+    "artifacts",
+    "tooling",
+    "authority",
+    "scm_pattern",
+    "workflow_state",
+    "review_state",
+    "regen"
+  ],
+  "properties": {
+    "kind": {
+      "const": "gpt_handoff.packet.definition"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "request": {
+      "type": "object"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "control": {
+      "type": "object"
+    },
+    "decomposition": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "object"
+    },
+    "tooling": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "scm_pattern": {
+      "type": "object"
+    },
+    "workflow_state": {
+      "type": "string"
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "regen": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

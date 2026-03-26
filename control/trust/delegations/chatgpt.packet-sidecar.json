@@ -1,0 +1,45 @@
+{
+  "artifact_type": "kernel.delegation",
+  "artifact_version": "0.1.0",
+  "delegate_id": "chatgpt_packet_sidecar",
+  "ownership": "kernel",
+  "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+  "authority_manifest_fingerprint": {
+    "algorithm": "sha256",
+    "value": "<authority-manifest-sha256>"
+  },
+  "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+  "scope": {
+    "paths": [
+      "generated/packets/*"
+    ],
+    "allowed_artifact_kinds": [
+      "packet.definition",
+      "scm.pattern.binding",
+      "packet.review.request",
+      "packet.review.decision",
+      "packet.review.attestation",
+      "packet.approval",
+      "packet.definition.md",
+      "artifact.manifest",
+      "root.trust.evidence",
+      "regen.record"
+    ],
+    "disallowed_actions": [
+      "establish_root_authority",
+      "mutate_root_authority",
+      "mutate_root_signer_set",
+      "self_approve",
+      "broaden_delegation_scope"
+    ]
+  },
+  "issued_by": {
+    "role": "kernel_root_authority",
+    "signer_id": "kernel-root-001"
+  },
+  "signature_algorithm": "ed25519",
+  "signature": "<signature-over-canonical-delegation>",
+  "issued_at": "<RFC3339>",
+  "expires_at": "<RFC3339>",
+  "status": "ACTIVE"
+}

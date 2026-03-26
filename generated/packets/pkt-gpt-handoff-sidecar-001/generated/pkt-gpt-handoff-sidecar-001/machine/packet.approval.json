@@ -1,0 +1,31 @@
+{
+  "kind": "gpt_handoff.packet.approval",
+  "spec_version": "0.1.3",
+  "packet_id": "pkt-gpt-handoff-sidecar-001",
+  "packet_definition_ref": "generated/packets/pkt-gpt-handoff-sidecar-001/machine/packet.definition.json",
+  "packet_definition_fingerprint": "765bacfb4cc930a134051a221f39286d9bcaf68bd259d68d2bca5e5ca68f7157",
+  "scm_pattern_binding_ref": "generated/packets/pkt-gpt-handoff-sidecar-001/machine/scm.pattern.binding.json",
+  "scm_pattern_binding_fingerprint": "606a6b97b49b35241e0074db1a6baf65d4995a3d828bd3150b02988afd29c7f7",
+  "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+  "authority_manifest_fingerprint": "0b073e82d6547881d6c2aa48260ab783e4a79b8e061726f69fdd7f972c354ec9",
+  "approval_basis_fingerprint": "34f06a835f46e773cbeb13585df843cf7b4ca2fe91a1363993ba8f16bc18f9af",
+  "verdict": "REVISE",
+  "issued_by": {
+    "role": "chatgpt_sidecar_generator",
+    "authority_note": "Placeholder review artifact generated to satisfy the mandatory boundary contract. Human approval is still required."
+  },
+  "findings": [
+    "Packet artifacts are generated and fingerprint-bound.",
+    "Human review is still required before realization through scm.pattern."
+  ],
+  "required_revisions": [
+    "Replace this placeholder review artifact with a human-issued approval decision if realization is desired."
+  ],
+  "invalidation_rules": [
+    "Any semantic change to packet.definition.json marks this artifact STALE.",
+    "Any semantic change to scm.pattern.binding.json marks this artifact STALE.",
+    "Any semantic change to control/scm.pattern/authority.manifest.json marks this artifact STALE.",
+    "Formatting-only changes do not invalidate approval."
+  ],
+  "timestamp": "2026-03-26T00:03:14Z"
+}

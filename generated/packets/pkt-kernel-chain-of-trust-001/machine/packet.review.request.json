@@ -1,0 +1,33 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.request",
+  "artifact_version": "0.1.0",
+  "packet_id": "pkt-kernel-chain-of-trust-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "submitted_by": {
+    "role": "chatgpt_sidecar_generator"
+  },
+  "review_scope": "definition",
+  "requested_outcomes": [
+    "APPROVED",
+    "REJECTED",
+    "REVISE"
+  ],
+  "review_basis_refs": [
+    "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.definition.json",
+    "generated/packets/pkt-kernel-chain-of-trust-001/machine/scm.pattern.binding.json",
+    "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json",
+    "generated/packets/pkt-kernel-chain-of-trust-001/machine/artifact.manifest.json",
+    "generated/docs/gpt_handoff/spec.v0.1.3.json"
+  ],
+  "kernel_trust": {
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json"
+  },
+  "human_action_required": true,
+  "approval_authority": false,
+  "artifact_status": "REVIEW_REQUEST_SUBMITTED"
+}

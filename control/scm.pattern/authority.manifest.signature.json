@@ -1,0 +1,25 @@
+{
+  "artifact_type": "kernel.authority_manifest.signature",
+  "artifact_version": "0.1.0",
+  "target_ref": "control/scm.pattern/authority.manifest.json",
+  "target_fingerprint": {
+    "algorithm": "sha256",
+    "value": "<authority-manifest-sha256>"
+  },
+  "validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+  "schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+  "schema_fingerprint": {
+    "algorithm": "sha256",
+    "value": "<authority-schema-sha256>"
+  },
+  "trusted_signer_set_ref": "control/trust/root.signers.json",
+  "issued_by": {
+    "role": "kernel_root_authority",
+    "signer_id": "kernel-root-001"
+  },
+  "signature_algorithm": "ed25519",
+  "signature": "<signature-over-canonical-basis>",
+  "issued_at": "<RFC3339>",
+  "expires_at": "<RFC3339>",
+  "status": "ACTIVE"
+}

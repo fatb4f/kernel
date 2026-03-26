@@ -1,0 +1,196 @@
+{
+  "kind": "gpt_handoff.packet.definition",
+  "spec_version": "0.1.3",
+  "packet_id": "pkt-gpt-handoff-sidecar-001",
+  "title": "Temporary gpt_handoff packet-definition sidecar",
+  "request": {
+    "source": "conversation request",
+    "request_summary": "Generate the gpt_handoff packet artifacts as a shallow, temporary ChatGPT sidecar implementation aligned to spec v0.1.3.",
+    "requested_outputs": [
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/packet.definition.json",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/scm.pattern.binding.json",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/packet.approval.json",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/human/packet.definition.md",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/regen.record.json"
+    ],
+    "constraints": [
+      "Treat the sidecar as shallow and temporary",
+      "Use scm.pattern as the local realization surface",
+      "Do not introduce separate plan or implement artifact families",
+      "Keep all paths repo-relative"
+    ]
+  },
+  "scope": {
+    "in_scope": [
+      "Packet definition artifacts only",
+      "Realization binding to scm.pattern",
+      "Approval boundary artifact generation",
+      "Human-readable packet synthesis derived from structured content",
+      "Regeneration control metadata"
+    ],
+    "out_of_scope": [
+      "Implementation bundles",
+      "Repo realization or code changes",
+      "Promotion or closure actions",
+      "Kernel-core architectural merge"
+    ],
+    "repo_relative_root": "generated/packets/pkt-gpt-handoff-sidecar-001",
+    "invariants": [
+      "packet.definition.json is the single canonical machine-readable packet artifact",
+      "scm.pattern.binding.json is mandatory",
+      "packet.approval.json is mandatory",
+      "Human approval is required before realization",
+      "Formatting-only changes do not invalidate approval"
+    ]
+  },
+  "control": {
+    "controlled_system": "Temporary gpt_handoff sidecar packet-definition lifecycle",
+    "controller_roles": [
+      "ChatGPT artifact generator",
+      "Human reviewer and approver",
+      "Local scm.pattern realization operator"
+    ],
+    "observed_state": [
+      "workflow_state",
+      "review_state",
+      "approval artifact validity",
+      "approval_basis_fingerprint match"
+    ],
+    "control_inputs": [
+      "definition revision",
+      "review submission",
+      "human approval verdict",
+      "regeneration trigger evaluation"
+    ],
+    "feedback_signals": [
+      "approval verdict",
+      "fingerprint drift detection",
+      "binding validity",
+      "schema validation outcome"
+    ],
+    "gate_conditions": [
+      "No realization without valid scm.pattern.binding.json",
+      "No realization without matching approval_basis_fingerprint",
+      "Semantic change after approval forces reapproval"
+    ],
+    "failure_modes": [
+      "stale approval after semantic drift",
+      "missing binding artifact",
+      "schema drift between authority and packet content"
+    ],
+    "rollback_path": [
+      "Mark packet.approval.json verdict STALE",
+      "Set workflow_state to DEFINITION_UNDER_REVIEW",
+      "Revise packet.definition.json and resubmit for human review"
+    ]
+  },
+  "decomposition": {
+    "work_items": [
+      {
+        "id": "wd-01",
+        "name": "Define packet basis",
+        "description": "Capture request, scope, control envelope, and authority references in the canonical packet definition."
+      },
+      {
+        "id": "wd-02",
+        "name": "Bind realization route",
+        "description": "Create a mandatory scm.pattern binding that limits realization to the adopted local sidecar route."
+      },
+      {
+        "id": "wd-03",
+        "name": "Compute approval basis",
+        "description": "Canonicalize packet.definition.json, scm.pattern.binding.json, and authority.manifest.json and compute stable SHA-256 fingerprints."
+      },
+      {
+        "id": "wd-04",
+        "name": "Render human synthesis",
+        "description": "Produce packet.definition.md directly from the structured machine artifacts without adding contradictory semantics."
+      },
+      {
+        "id": "wd-05",
+        "name": "Record regeneration basis",
+        "description": "Persist the required-input fingerprints so unchanged inputs do not trigger regeneration."
+      }
+    ],
+    "dependencies": [
+      [
+        "wd-01",
+        "wd-02"
+      ],
+      [
+        "wd-01",
+        "wd-03"
+      ],
+      [
+        "wd-02",
+        "wd-03"
+      ],
+      [
+        "wd-01",
+        "wd-04"
+      ],
+      [
+        "wd-03",
+        "wd-05"
+      ]
+    ],
+    "acceptance_conditions": [
+      "All mandatory artifacts exist at repo-relative paths",
+      "Approval basis fingerprint is reproducible from canonicalized content",
+      "Human synthesis does not contradict packet.definition.json"
+    ]
+  },
+  "artifacts": {
+    "canonical_machine": [
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/packet.definition.json",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/scm.pattern.binding.json",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/packet.approval.json",
+      "generated/packets/pkt-gpt-handoff-sidecar-001/machine/regen.record.json"
+    ],
+    "canonical_human": [
+      "generated/packets/pkt-gpt-handoff-sidecar-001/human/packet.definition.md"
+    ],
+    "supporting": [
+      "control/scm.pattern/authority.manifest.json"
+    ],
+    "realization_rule": "No packet may be approved, realized, or closed without a valid scm.pattern binding."
+  },
+  "tooling": {
+    "generation_mode": "file-based sidecar artifact generation",
+    "validation_surface": "schemas/sidecar/chatgpt-packet/**",
+    "canonicalization": "Stable JSON serialization with sorted keys and whitespace-insensitive hashing",
+    "hash_algorithm": "sha256",
+    "execution_assumptions": [
+      "Artifacts are tracked locally under generated/packets/<packet_id>",
+      "Authority entrypoint exists at control/scm.pattern/authority.manifest.json",
+      "Human approval is external to ChatGPT generation"
+    ]
+  },
+  "authority": {
+    "entrypoint": "control/scm.pattern/authority.manifest.json",
+    "workflow_authority_root": "control/scm.pattern/**",
+    "validation_surface_root": "schemas/sidecar/chatgpt-packet/**",
+    "template_surface_root": "templates/**",
+    "precedence": [
+      "control/scm.pattern/authority.manifest.json",
+      "control/scm.pattern/**",
+      "schemas/sidecar/chatgpt-packet/**",
+      "templates/**",
+      "generated/**"
+    ]
+  },
+  "scm_pattern": {
+    "pattern_id": "scm.pattern",
+    "binding_ref": "generated/packets/pkt-gpt-handoff-sidecar-001/machine/scm.pattern.binding.json",
+    "route_summary": "temporary-sidecar-definition-review",
+    "local_tracking_root": "generated/packets/pkt-gpt-handoff-sidecar-001",
+    "realization_surface": "Local realization occurs only after human approval through the adopted scm.pattern route."
+  },
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "regen": {
+    "regen_ref": "generated/packets/pkt-gpt-handoff-sidecar-001/machine/regen.record.json",
+    "policy": "Regeneration is blocked unless required inputs change.",
+    "formatting_only_rule": "Formatting-only changes do not invalidate approval."
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/sidecar/chatgpt-packet/scm.pattern.binding.schema.json",
+  "title": "ChatGPT scm.pattern binding",
+  "description": "Binding contract for the temporary sidecar realization route.",
+  "type": "object",
+  "required": [
+    "kind",
+    "spec_version",
+    "packet_id",
+    "pattern_id",
+    "route_id",
+    "authority_manifest_ref",
+    "realization_scope",
+    "human_intervention_points",
+    "promotion_constraints",
+    "repo_relative_packet_root",
+    "notes"
+  ],
+  "properties": {
+    "kind": {
+      "const": "gpt_handoff.scm_pattern.binding"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "pattern_id": {
+      "type": "string"
+    },
+    "route_id": {
+      "type": "string"
+    },
+    "authority_manifest_ref": {
+      "type": "string"
+    },
+    "authority_manifest_schema_ref": {
+      "type": "string"
+    },
+    "kernel_trust": {
+      "type": "object"
+    },
+    "realization_scope": {
+      "type": "object"
+    },
+    "human_intervention_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "promotion_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repo_relative_packet_root": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

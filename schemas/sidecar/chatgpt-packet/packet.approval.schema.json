@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/sidecar/chatgpt-packet/packet.approval.schema.json",
+  "title": "ChatGPT packet approval",
+  "description": "Compatibility placeholder for the pre-decision review boundary.",
+  "type": "object",
+  "required": [
+    "kind",
+    "spec_version",
+    "packet_id",
+    "workflow_state",
+    "review_state",
+    "verdict",
+    "approval_authority",
+    "human_action_required",
+    "artifact_status",
+    "issued_by",
+    "canonical_review_artifact_ref",
+    "authoritative_review_state",
+    "does_not_satisfy_realization_gate"
+  ],
+  "properties": {
+    "kind": {
+      "const": "gpt_handoff.packet.approval"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "workflow_state": {
+      "type": "string"
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "verdict": {
+      "type": "string"
+    },
+    "approval_authority": {
+      "type": "boolean"
+    },
+    "human_action_required": {
+      "type": "boolean"
+    },
+    "artifact_status": {
+      "type": "string"
+    },
+    "issued_by": {
+      "type": "object"
+    },
+    "canonical_review_artifact_ref": {
+      "type": "string"
+    },
+    "authoritative_review_state": {
+      "type": "boolean"
+    },
+    "does_not_satisfy_realization_gate": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

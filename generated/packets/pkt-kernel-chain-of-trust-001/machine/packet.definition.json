@@ -1,0 +1,148 @@
+{
+  "artifact_type": "gpt_handoff.packet.definition",
+  "artifact_version": "0.1.0",
+  "spec_ref": "generated/docs/gpt_handoff/spec.v0.1.3.json",
+  "packet_id": "pkt-kernel-chain-of-trust-001",
+  "title": "Kernel chain-of-trust implementation for temporary ChatGPT packet sidecar",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "summary": "Implement the kernel-owned chain of trust for the temporary ChatGPT packet sidecar without deepening the sidecar into kernel-core. Kernel establishes the trust root. The sidecar consumes delegated trust only.",
+  "ownership": {
+    "trust_root_owner": "kernel",
+    "delegated_consumer": "temporary_chatgpt_packet_sidecar"
+  },
+  "constraints": [
+    "This is a shallow, temporary sidecar only.",
+    "Do not deepen this into kernel-core.",
+    "Do not introduce separate plan or implement artifact families.",
+    "Use scm.pattern as the local realization surface.",
+    "All artifact paths must be repo-relative where applicable.",
+    "packet.definition.json remains the single canonical machine-readable packet artifact.",
+    "scm.pattern.binding.json remains mandatory.",
+    "packet.review.request.json is the pre-decision review artifact.",
+    "packet.review.decision.json exists only after a human decision is issued.",
+    "root.trust.evidence.json provides the packet-local trust boundary without copying kernel trust state.",
+    "packet.approval.json, if retained, is transitional only and non-authoritative."
+  ],
+  "realization": {
+    "local_realization_surface": "scm.pattern",
+    "canonical_packet_root": "generated/packets/pkt-kernel-chain-of-trust-001",
+    "repo_relative_paths_only": true
+  },
+  "inputs": [
+    {
+      "ref": "generated/docs/gpt_handoff/spec.v0.1.3.json",
+      "role": "packet_spec"
+    },
+    {
+      "ref": "control/scm.pattern/authority.manifest.json",
+      "role": "kernel_authority_manifest"
+    },
+    {
+      "ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+      "role": "kernel_authority_manifest_schema"
+    }
+  ],
+  "deliverables": {
+    "required_now": [
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.definition.json",
+        "kind": "packet_definition"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/scm.pattern.binding.json",
+        "kind": "scm_pattern_binding"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.review.request.json",
+        "kind": "packet_review_request"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json",
+        "kind": "root_trust_evidence"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/regen.record.json",
+        "kind": "regen_record"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/artifact.manifest.json",
+        "kind": "artifact_manifest"
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.approval.json",
+        "kind": "compatibility_placeholder",
+        "transitional": true,
+        "authoritative": false
+      },
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/human/packet.definition.md",
+        "kind": "derived_human_definition"
+      }
+    ],
+    "conditional": [
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.review.decision.json",
+        "kind": "packet_review_decision",
+        "required_when": "human_review_decision_issued == true"
+      }
+    ]
+  },
+  "kernel_trust_requirements": {
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "packet_local_evidence_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json"
+  },
+  "review_lifecycle": {
+    "current_phase": "REQUEST_SUBMITTED",
+    "current_required_artifacts": [
+      "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.review.request.json",
+      "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json",
+      "generated/packets/pkt-kernel-chain-of-trust-001/machine/regen.record.json"
+    ],
+    "post_decision_required_artifacts": [
+      "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.review.decision.json"
+    ],
+    "compatibility_artifacts": [
+      {
+        "ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.approval.json",
+        "purpose": "transitional_compatibility_only",
+        "authoritative": false
+      }
+    ]
+  },
+  "admissibility_rules": [
+    "Kernel establishes trust root.",
+    "The sidecar consumes delegated trust only.",
+    "No downstream artifact is admissible from file presence alone.",
+    "root.trust.evidence.json must carry canonical refs and fingerprints for the kernel trust chain.",
+    "Authority manifest validation and signature refs must both resolve and match the declared fingerprints.",
+    "Delegation must verify and remain in scope.",
+    "Downstream artifacts must validate against their own declared schemas.",
+    "Human review remains a separate decision surface and is not implied by root trust."
+  ],
+  "staleness_rules": {
+    "semantic_change_marks_stale": [
+      "control/trust/root.signers.json",
+      "control/scm.pattern/authority.manifest.json",
+      "control/scm.pattern/authority.manifest.validation.json",
+      "control/scm.pattern/authority.manifest.signature.json",
+      "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "review_basis_fingerprint"
+    ],
+    "formatting_only_change_does_not_mark_stale": true,
+    "fingerprint_basis": "canonical_json"
+  },
+  "regeneration": {
+    "blocked_unless_required_inputs_change": true,
+    "required_inputs": [
+      "generated/docs/gpt_handoff/spec.v0.1.3.json",
+      "control/scm.pattern/authority.manifest.json",
+      "schemas/control/scm.pattern/authority.manifest.schema.json"
+    ]
+  }
+}
