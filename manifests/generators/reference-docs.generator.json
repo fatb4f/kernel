@@ -1,0 +1,22 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "reference-docs-generator",
+  "manifest_class": "generator",
+  "inputs": [
+    "kernel.spec.json",
+    "kernel.spec.md",
+    "generated/state/admission/<control-object-id>/<run-id>/admitted-state.json"
+  ],
+  "outputs": [
+    "generated/docs/reference/README.md",
+    "generated/docs/reference/workflow.md",
+    "generated/docs/reference/gates.md",
+    "generated/docs/reference/admission-artifacts.md"
+  ],
+  "invariants": [
+    "Jsonnet renders from admitted state only.",
+    "Generated reference docs are downstream material, not authority.",
+    "No renderer reads raw authoring sources directly."
+  ],
+  "notes": "Operational reference docs for the kernel workflow, rendered through Jsonnet from admitted state."
+}
