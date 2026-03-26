@@ -1,0 +1,42 @@
+{
+  "source_module_ref": "structures/core/reference-docs-executable-slice.module.json",
+  "generator_ref": "manifests/generators/reference-docs-executable-slice.generator.json",
+  "projection_ref": "manifests/projections/reference-docs-executable-slice.projection.json",
+  "field_sources": {
+    "sections": [
+      {
+        "id": "overview",
+        "refs": [
+          "kernel.spec.md#/2",
+          "kernel.spec.md#/3",
+          "generated/packets/pkt-kernel-json-centric-workflow-003/human/packet.definition.md"
+        ]
+      },
+      {
+        "id": "pipeline",
+        "refs": [
+          "kernel.spec.md#/3",
+          "kernel.spec.md#/10"
+        ]
+      },
+      {
+        "id": "gates",
+        "refs": [
+          "kernel.spec.md#/11",
+          "generated/docs/reference/gates.md"
+        ]
+      },
+      {
+        "id": "admission",
+        "refs": [
+          "kernel.spec.md#/8",
+          "kernel.spec.md#/12",
+          "generated/docs/reference/admission-artifacts.md"
+        ]
+      }
+    ],
+    "output_path": [
+      "manifests/projections/reference-docs-executable-slice.projection.json"
+    ]
+  }
+}

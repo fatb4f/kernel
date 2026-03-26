@@ -26,4 +26,14 @@ This scaffold corrects the uploaded physical skeleton to match the normative rep
 
 ## Notes
 
-This remains a structural baseline only. It does **not** implement normalize/admit/render or any controller/runtime logic.
+This repo is no longer a structural baseline only.
+
+The first executable slice is now materialized for `reference-docs-executable-slice`, including:
+
+- authoritative source under `structures/`
+- derived schema export under `schemas/exported/`
+- normalization outputs under `generated/state/normalization/`
+- CUE admission artifacts under `generated/state/admission/`
+- Jsonnet-rendered documentation under `generated/docs/reference/executable-slice.md`
+
+The broader kernel-core closeout remains incomplete. Other source families, generators, admission bundles, and rendered outputs are still only partially materialized.

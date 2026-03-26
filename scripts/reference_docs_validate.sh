@@ -27,7 +27,7 @@ jq -n \
   --arg schema_ref "${REFERENCE_DOCS_SOURCE_SCHEMA}" \
   --arg instance_ref "${REFERENCE_DOCS_SOURCE_MODULE}" \
   --arg validated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-  --argfile tool_output "${tmp_json}" \
+  --slurpfile tool_output "${tmp_json}" \
   --argjson reason_codes "${reason_codes}" \
   '{
     gate: "G1",
@@ -39,7 +39,7 @@ jq -n \
     validated_at: $validated_at,
     reason_codes: $reason_codes,
     tool: "check-jsonschema",
-    tool_output: $tool_output
+    tool_output: $tool_output[0]
   }' >"${report_path}"
 
 rm -f "${tmp_json}"

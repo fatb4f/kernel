@@ -14,6 +14,7 @@ mkdir -p "${integrity_dir}"
 
 tmp_dir="$(mktemp -d)"
 trap 'rm -rf "${tmp_dir}"' EXIT
+mkdir -p "${tmp_dir}/generated/docs/reference"
 
 tmp_schema="${tmp_dir}/reference-docs-executable-slice-input.schema.json"
 fragment_ids="$(jq '[.fragments[].name]' "${repo_root}/${REFERENCE_DOCS_SOURCE_MODULE}")"
@@ -136,9 +137,10 @@ if ! cmp -s "${tmp_schema}" "${repo_root}/${REFERENCE_DOCS_EXPORTED_SCHEMA}"; th
 fi
 
 "${jsonnet_bin}" \
-  --multi "${tmp_dir}" \
+  --string \
+  --output-file "${tmp_dir}/${REFERENCE_DOCS_RENDERED_DOC}" \
   --ext-code-file admitted_state="${admission_dir}/admitted-state.json" \
-  "${repo_root}/${REFERENCE_DOCS_RENDER_TEMPLATE}" >/dev/null
+  "${repo_root}/${REFERENCE_DOCS_RENDER_TEMPLATE}"
 
 if ! cmp -s "${tmp_dir}/${REFERENCE_DOCS_RENDERED_DOC}" "${repo_root}/${REFERENCE_DOCS_RENDERED_DOC}"; then
   printf '%s\n' "Rendered documentation drift detected" >&2

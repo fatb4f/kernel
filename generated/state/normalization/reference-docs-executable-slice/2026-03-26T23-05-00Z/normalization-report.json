@@ -1,0 +1,14 @@
+{
+  "gate": "G3",
+  "control_object_id": "reference-docs-executable-slice",
+  "run_id": "2026-03-26T23-05-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-26T23:05:31Z",
+  "operations": [
+    "mapped structural fragments to renderer input sections",
+    "canonicalized section titles",
+    "bound repo-relative output path",
+    "recorded source-to-normalized provenance"
+  ],
+  "forbidden_operations_performed": []
+}

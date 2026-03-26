@@ -144,7 +144,7 @@ jq -n \
   --arg schema_ref "${REFERENCE_DOCS_EXPORTED_SCHEMA}" \
   --arg exported_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
   --argjson fragment_ids "${fragment_ids}" \
-  --argfile tool_output "${tmp_json}" \
+  --slurpfile tool_output "${tmp_json}" \
   --argjson reason_codes "${reason_codes}" \
   '{
     gate: "G2",
@@ -157,7 +157,7 @@ jq -n \
     exported_at: $exported_at,
     reason_codes: $reason_codes,
     tool: "jq + check-jsonschema",
-    tool_output: $tool_output
+    tool_output: $tool_output[0]
   }' >"${report_path}"
 
 rm -f "${tmp_json}"

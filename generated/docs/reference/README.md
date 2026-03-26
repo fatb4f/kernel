@@ -29,6 +29,7 @@ The canonical structural model is authoritative. JSON Structure is only an autho
 - [gates.md](gates.md)
 - [admission-artifacts.md](admission-artifacts.md)
 - [operational-status.md](operational-status.md)
+- [executable-slice.md](executable-slice.md)
 
 ## Source inputs
 
@@ -38,6 +39,9 @@ This reference set is aligned to:
 - [kernel.spec.json](../../../kernel.spec.json)
 - [reference-docs.libsonnet](../../../render/jsonnet/reference/reference-docs.libsonnet)
 - [reference-docs.generator.json](../../../manifests/generators/reference-docs.generator.json)
+- [reference-docs-executable-slice.module.json](../../../structures/core/reference-docs-executable-slice.module.json)
+- [reference-docs-executable-slice.generator.json](../../../manifests/generators/reference-docs-executable-slice.generator.json)
+- [reference-docs-executable-slice.projection.json](../../../manifests/projections/reference-docs-executable-slice.projection.json)
 
 ## Operational rule
 

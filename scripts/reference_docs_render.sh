@@ -13,9 +13,10 @@ jsonnet_bin="$(reference_docs_jsonnet_bin)"
 mkdir -p "${render_dir}"
 
 "${jsonnet_bin}" \
-  --multi "${repo_root}" \
+  --string \
+  --output-file "${repo_root}/${REFERENCE_DOCS_RENDERED_DOC}" \
   --ext-code-file admitted_state="${admission_dir}/admitted-state.json" \
-  "${repo_root}/${REFERENCE_DOCS_RENDER_TEMPLATE}" >/tmp/reference-docs-executable-slice.rendered
+  "${repo_root}/${REFERENCE_DOCS_RENDER_TEMPLATE}"
 
 jq -n \
   --arg control_object_id "${REFERENCE_DOCS_CONTROL_ID}" \
@@ -40,5 +41,3 @@ jq -n \
     outputs: [$rendered_doc],
     rendered_at: $rendered_at
   }' >"${render_dir}/render-report.json"
-
-rm -f /tmp/reference-docs-executable-slice.rendered

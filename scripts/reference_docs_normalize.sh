@@ -13,12 +13,12 @@ mkdir -p "${out_dir}"
 jsonnet_bin="$(reference_docs_jsonnet_bin)"
 
 jq -n \
-  --argfile source "${repo_root}/${REFERENCE_DOCS_SOURCE_MODULE}" \
+  --slurpfile source "${repo_root}/${REFERENCE_DOCS_SOURCE_MODULE}" \
   --arg runtime_path "${jsonnet_bin}" \
   '{
     kind: "kernel.reference_docs.slice_input",
     control_object_id: "reference-docs-executable-slice",
-    source_module_id: $source.id,
+    source_module_id: $source[0].id,
     source_module_ref: "structures/core/reference-docs-executable-slice.module.json",
     export_schema_ref: "schemas/exported/reference-docs-executable-slice-input.schema.json",
     generator_ref: "manifests/generators/reference-docs-executable-slice.generator.json",
@@ -33,9 +33,9 @@ jq -n \
       output_class: "documentation"
     },
     sections: [
-      $source.fragments[] | {
+      $source[0].fragments[] | {
         id: .name,
-        title: (.name | gsub("-"; " ") | split(" ") | map(.[0:1] | ascii_upcase + .[1:]) | join(" ")),
+        title: (.name | split("-") | map((.[0:1] | ascii_upcase) + .[1:]) | join(" ")),
         summary: .description,
         source_refs: (.source_refs // [])
       }
@@ -47,14 +47,14 @@ check-jsonschema \
   "${out_dir}/normalized-state.json" >/dev/null
 
 jq -n \
-  --argfile source "${repo_root}/${REFERENCE_DOCS_SOURCE_MODULE}" \
+  --slurpfile source "${repo_root}/${REFERENCE_DOCS_SOURCE_MODULE}" \
   '{
     source_module_ref: "structures/core/reference-docs-executable-slice.module.json",
     generator_ref: "manifests/generators/reference-docs-executable-slice.generator.json",
     projection_ref: "manifests/projections/reference-docs-executable-slice.projection.json",
     field_sources: {
       sections: [
-        $source.fragments[] | {
+        $source[0].fragments[] | {
           id: .name,
           refs: (.source_refs // [])
         }

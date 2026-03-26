@@ -1,0 +1,21 @@
+{
+  "gate": "G2",
+  "control_object_id": "reference-docs-executable-slice",
+  "run_id": "2026-03-26T23-05-00Z",
+  "status": "PASS",
+  "source_ref": "structures/core/reference-docs-executable-slice.module.json",
+  "schema_ref": "schemas/exported/reference-docs-executable-slice-input.schema.json",
+  "fragment_ids": [
+    "overview",
+    "pipeline",
+    "gates",
+    "admission"
+  ],
+  "exported_at": "2026-03-26T23:05:30Z",
+  "reason_codes": [],
+  "tool": "jq + check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}
