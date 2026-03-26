@@ -69,7 +69,7 @@
       "status": [
         "signer identity is declared",
         "signer role is declared",
-        "root public key is still placeholder material"
+        "root public key is materialized in-repo"
       ]
     },
     "delegation_artifact": {
@@ -81,6 +81,16 @@
         "cannot mutate the root signer set",
         "cannot self-approve",
         "cannot broaden delegation scope"
+      ]
+    },
+    "bundle_signer_delegation": {
+      "path": "control/trust/delegations/kernel-bundle-signer-001.json",
+      "signature_path": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
+      "role": "root-signed delegation for the operational bundle signer",
+      "status": [
+        "delegated signer identity is declared",
+        "delegated signer public key is materialized",
+        "root signature over the delegation is materialized"
       ]
     },
     "authority_manifest": {
@@ -198,9 +208,11 @@
       "delegation surface exists",
       "bundle closure selection exists",
       "packet-local trust evidence exists",
-      "root public key materialization is still pending"
+      "root public key materialization is complete",
+      "root-signed bundle-signer delegation is complete",
+      "bundle signature and bundle attestation artifacts are materialized"
     ],
-    "conclusion": "The trust objective is planned and structurally represented, but not cryptographically complete."
+    "conclusion": "The trust objective is structurally represented, with root authority, bundle-signer delegation, bundle signature, and bundle attestation materialized."
   },
   "non_goals": [
     "Define the full kernel baseline.",

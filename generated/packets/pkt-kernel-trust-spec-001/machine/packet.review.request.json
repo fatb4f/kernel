@@ -22,6 +22,8 @@
     "control/trust/trust.spec.md",
     "control/trust/root.signers.json",
     "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "control/trust/delegations/kernel-bundle-signer-001.json",
+    "control/trust/delegations/kernel-bundle-signer-001.signature.json",
     "control/scm.pattern/authority.manifest.json",
     "manifests/bundles/bundle-closure.manifest.json",
     "pipeline/chatgpt.packet.pipeline.manifest.json",
@@ -33,6 +35,8 @@
   "kernel_trust": {
     "root_signers_ref": "control/trust/root.signers.json",
     "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "bundle_signer_delegation_ref": "control/trust/delegations/kernel-bundle-signer-001.json",
+    "bundle_signer_delegation_signature_ref": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
     "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
     "bundle_manifest_ref": "manifests/bundles/bundle-closure.manifest.json",
     "packet_trust_evidence_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json"

@@ -11,6 +11,8 @@
     "root_trust_evidence_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json",
     "root_signers_ref": "control/trust/root.signers.json",
     "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "bundle_signer_delegation_ref": "control/trust/delegations/kernel-bundle-signer-001.json",
+    "bundle_signer_delegation_signature_ref": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
     "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
     "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json"
   },
@@ -33,6 +35,8 @@
       "control/trust/trust.spec.md",
       "control/trust/root.signers.json",
       "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "control/trust/delegations/kernel-bundle-signer-001.json",
+      "control/trust/delegations/kernel-bundle-signer-001.signature.json",
       "control/scm.pattern/authority.manifest.json",
       "control/scm.pattern/authority.manifest.validation.json",
       "control/scm.pattern/authority.manifest.signature.json",
@@ -45,17 +49,15 @@
     ]
   },
   "human_intervention_points": [
-    "root key materialization",
     "delegated signer issuance",
     "bundle-sign backend selection",
     "admission approval"
   ],
   "promotion_constraints": [
-    "do not promote while the root public key remains placeholder material",
-    "do not promote while the delegation material remains placeholder-based",
+    "do not promote while the bundle signature and bundle attestation artifacts are missing",
     "do not treat packet-local evidence as trust source",
     "do not allow realization outside scm.pattern"
   ],
   "repo_relative_packet_root": "generated/packets/pkt-kernel-trust-spec-001",
-  "notes": "This packet implements the normative trust spec as a dual-lane control surface. Root authority and routine bundle signing remain separate, and the kernel root public key is still unresolved."
+  "notes": "This packet implements the normative trust spec as a dual-lane control surface. Root authority and routine bundle signing remain separate, and the root key, bundle-signer delegation, bundle signature, and bundle attestation are materialized."
 }

@@ -6,7 +6,7 @@
   "title": "Kernel trust spec implementation for the dual-lane trust surface",
   "workflow_state": "DEFINITION_UNDER_REVIEW",
   "review_state": "DEFINITION_UNDER_REVIEW",
-  "summary": "Implement the kernel trust spec as a dual-lane control surface: root attestation establishes delegated authority, bundle sign exercises that authority over a concrete bundle payload, and packet-local evidence records the admission dependency chain. Kernel remains the trust owner. The root public key is still placeholder material.",
+  "summary": "Implement the kernel trust spec as a dual-lane control surface: root attestation establishes delegated authority, bundle sign exercises that authority over a concrete bundle payload, and packet-local evidence records the admission dependency chain. Kernel remains the trust owner. The root public key, bundle-signer delegation, bundle signature, and bundle attestation are now materialized.",
   "ownership": {
     "trust_root_owner": "kernel",
     "delegated_consumer": "chatgpt_packet_pipeline"
@@ -16,7 +16,7 @@
     "Do not treat packet-local evidence as a trust source.",
     "Do not collapse root attestation and bundle signing into one lane.",
     "Do not introduce a general-purpose PKI.",
-    "Do not claim cryptographic completion while the root public key remains placeholder material.",
+    "Do not claim cryptographic completion until the bundle-sign artifacts are materialized.",
     "Use scm.pattern as the local realization surface.",
     "Keep realization outside the ChatGPT boundary.",
     "Use repo-relative paths only.",
@@ -41,6 +41,14 @@
     {
       "ref": "control/trust/root.signers.json",
       "role": "kernel_root_signer_set"
+    },
+    {
+      "ref": "control/trust/delegations/kernel-bundle-signer-001.json",
+      "role": "bundle_signer_delegation"
+    },
+    {
+      "ref": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
+      "role": "bundle_signer_delegation_signature"
     },
     {
       "ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
@@ -123,6 +131,8 @@
   "kernel_trust_requirements": {
     "root_signers_ref": "control/trust/root.signers.json",
     "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "bundle_signer_delegation_ref": "control/trust/delegations/kernel-bundle-signer-001.json",
+    "bundle_signer_delegation_signature_ref": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
     "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
     "bundle_manifest_ref": "manifests/bundles/bundle-closure.manifest.json",
     "trust_spec_ref": "control/trust/trust.spec.json",
@@ -151,7 +161,7 @@
     "ChatGPT authors packet artifacts only.",
     "No downstream artifact is admissible from file presence alone.",
     "root.trust.evidence.json must carry canonical refs and fingerprints for the trust chain.",
-    "Authority manifest and root delegation must both resolve.",
+    "Authority manifest and trust delegations must all resolve.",
     "Bundle signing is distinct from root authorization.",
     "Downstream artifacts must validate against their own declared schemas.",
     "Human review remains separate from root trust."
@@ -162,6 +172,8 @@
       "control/trust/trust.spec.md",
       "control/trust/root.signers.json",
       "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "control/trust/delegations/kernel-bundle-signer-001.json",
+      "control/trust/delegations/kernel-bundle-signer-001.signature.json",
       "control/scm.pattern/authority.manifest.json",
       "manifests/bundles/bundle-closure.manifest.json",
       "review_basis_fingerprint"
@@ -175,6 +187,8 @@
       "control/trust/trust.spec.json",
       "control/trust/root.signers.json",
       "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "control/trust/delegations/kernel-bundle-signer-001.json",
+      "control/trust/delegations/kernel-bundle-signer-001.signature.json",
       "control/scm.pattern/authority.manifest.json",
       "manifests/bundles/bundle-closure.manifest.json"
     ]

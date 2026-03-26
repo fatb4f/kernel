@@ -7,6 +7,8 @@
   "canonical_refs": {
     "root_signers_ref": "control/trust/root.signers.json",
     "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "bundle_signer_delegation_ref": "control/trust/delegations/kernel-bundle-signer-001.json",
+    "bundle_signer_delegation_signature_ref": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
     "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
     "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
     "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
@@ -16,11 +18,19 @@
   "canonical_fingerprints": {
     "root_signers": {
       "algorithm": "sha256",
-      "value": "6f23e0088cb86ccdae38a94614da4dcb6d48735c59a8d6bd94345ffe6caae071"
+      "value": "b96db4f72fdf028731cf45f21dd189493d9d13ee87b46a7932b7e5f2b1948683"
     },
     "root_delegation": {
       "algorithm": "sha256",
       "value": "504a661b23cf3a5d6af8256cc8dc9d0ef9b6c54956c51c67e53a1359ccc6620d"
+    },
+    "bundle_signer_delegation": {
+      "algorithm": "sha256",
+      "value": "0fab1342e0d681fc13f03f6967831caaf5ff0dc6e3d07ff9c58e6fe6d3348c83"
+    },
+    "bundle_signer_delegation_signature": {
+      "algorithm": "sha256",
+      "value": "67062eaf875f873a7ceb8c3a6b7dfcb78b1bfadf0970f22c74fdf3f871ed8c34"
     },
     "authority_manifest": {
       "algorithm": "sha256",
@@ -50,16 +60,16 @@
     "delegation_must_be_in_scope": true
   },
   "closeout": {
-    "implementation_status": "STRUCTURALLY_DEFINED",
+    "implementation_status": "CLOSED",
     "unresolved_dependency": {
-      "path": "control/trust/root.signers.json",
-      "field": "signers[0].public_key",
-      "state": "PLACEHOLDER",
-      "reason": "The kernel root public key has not yet been materialized in the repository."
+      "path": "chatgpt-pipeline.bundle.tgz",
+      "field": "signature_and_attestation",
+      "state": "RESOLVED",
+      "reason": "The root key, bundle-signer delegation, bundle signature, and bundle attestation artifacts are now materialized."
     },
     "notes": [
-      "This packet establishes the trust control surface structurally.",
-      "Cryptographic completeness remains pending until the root key is introduced."
+      "This packet establishes the trust control surface structurally and now records the fully materialized bundle-sign lane.",
+      "Cryptographic completeness is achieved for the current trust surface."
     ]
   },
   "status": "DECLARED_REQUIRED_EVIDENCE"

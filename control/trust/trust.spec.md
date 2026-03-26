@@ -91,7 +91,7 @@ Current status:
 
 - signer identity is declared
 - signer role is declared
-- root public key is still placeholder material
+- root public key is materialized in-repo
 
 ### 4.2 Delegation artifact
 
@@ -111,7 +111,24 @@ Current constraints:
 - cannot self-approve
 - cannot broaden delegation scope
 
-### 4.3 Authority manifest
+### 4.3 Bundle signer delegation
+
+Path:
+
+- `control/trust/delegations/kernel-bundle-signer-001.json`
+- `control/trust/delegations/kernel-bundle-signer-001.signature.json`
+
+Current role:
+
+- root-signed delegation for the operational bundle signer
+
+Current status:
+
+- delegated signer identity is declared
+- delegated signer public key is materialized
+- root signature over the delegation is materialized
+
+### 4.4 Authority manifest
 
 Path:
 
@@ -129,7 +146,7 @@ Current responsibilities:
 - delegated surfaces
 - deprecation note
 
-### 4.4 Packet-local trust evidence
+### 4.5 Packet-local trust evidence
 
 Path:
 
@@ -286,9 +303,11 @@ Current implementation status:
 - delegation surface exists
 - bundle closure selection exists
 - packet-local trust evidence exists
-- root public key materialization is still pending
+- root public key materialization is complete
+- root-signed bundle-signer delegation is complete
+- bundle signature and bundle attestation artifacts are materialized
 
-The trust objective is therefore planned and structurally represented, but not cryptographically complete.
+The trust objective is therefore structurally represented, with root authority, bundle-signer delegation, bundle signature, and bundle attestation materialized.
 
 ---
 
@@ -299,4 +318,3 @@ The trust objective is therefore planned and structurally represented, but not c
 - This spec does not require a specific signing backend.
 - This spec does not claim the root key is already materialized.
 - This spec does not make packet presence equivalent to trust.
-

@@ -39,5 +39,18 @@
     "signature_must_verify": true,
     "delegation_must_be_in_scope": true
   },
+  "closeout": {
+    "implementation_status": "CLOSED",
+    "unresolved_dependency": {
+      "path": "control/trust/root.signers.json",
+      "field": "public_key",
+      "state": "RESOLVED",
+      "reason": "The kernel root public key has been materialized in the repository."
+    },
+    "notes": [
+      "The chain-of-trust implementation is structurally closed and the kernel root key is materialized.",
+      "Cryptographic instantiation is complete for the current trust surface."
+    ]
+  },
   "status": "DECLARED_REQUIRED_EVIDENCE"
 }

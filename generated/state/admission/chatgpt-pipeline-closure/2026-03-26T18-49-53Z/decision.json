@@ -15,6 +15,7 @@
   "notes": [
     "Bundle selection is explicit and closed.",
     "Admission is limited to the manifest-selected operational ChatGPT pipeline surface.",
-    "Historical sidecar surfaces are excluded from the extracted snapshot."
+    "Historical sidecar surfaces are excluded from the extracted snapshot.",
+    "The chain-of-trust implementation is closed and the kernel trust surface is now materially instantiated, including the root signer set and bundle-sign lane."
   ]
 }

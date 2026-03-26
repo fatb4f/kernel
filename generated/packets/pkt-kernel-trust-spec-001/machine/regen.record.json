@@ -8,6 +8,8 @@
     "spec_md_ref": "control/trust/trust.spec.md",
     "root_signers_ref": "control/trust/root.signers.json",
     "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "bundle_signer_delegation_ref": "control/trust/delegations/kernel-bundle-signer-001.json",
+    "bundle_signer_delegation_signature_ref": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
     "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
     "bundle_manifest_ref": "manifests/bundles/bundle-closure.manifest.json",
     "packet_definition_ref": "generated/packets/pkt-kernel-trust-spec-001/machine/packet.definition.json",

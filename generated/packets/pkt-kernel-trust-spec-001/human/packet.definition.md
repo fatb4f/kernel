@@ -8,7 +8,7 @@ Kernel trust spec implementation for the dual-lane trust surface
 - review_state: DEFINITION_UNDER_REVIEW
 
 ## Summary
-Implement the normative kernel trust spec as a dual-lane control surface. Root attestation establishes delegated authority, bundle sign exercises that authority over the concrete bundle payload, and packet-local evidence records the admission dependency chain. The kernel owns trust. The root public key is still placeholder material.
+Implement the normative kernel trust spec as a dual-lane control surface. Root attestation establishes delegated authority, bundle sign exercises that authority over the concrete bundle payload, and packet-local evidence records the admission dependency chain. The kernel owns trust. The root public key, bundle-signer delegation, bundle signature, and bundle attestation are now materialized.
 
 ## Objectives
 - preserve the root-lane and bundle-lane split
@@ -21,7 +21,7 @@ Implement the normative kernel trust spec as a dual-lane control surface. Root a
 - Do not collapse root attestation and bundle signing into one lane
 - Do not treat packet-local evidence as a trust source
 - Do not introduce a general-purpose PKI
-- Do not claim cryptographic completion while the root public key remains placeholder material
+- Do not claim cryptographic completion until the bundle-sign artifacts are materialized
 - Use scm.pattern as the local realization surface
 - Use repo-relative paths only
 - packet.definition.json remains the canonical machine-readable packet artifact

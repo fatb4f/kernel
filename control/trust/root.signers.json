@@ -8,7 +8,7 @@
     {
       "signer_id": "kernel-root-001",
       "algorithm": "ed25519",
-      "public_key": "<public-key>",
+      "public_key": "QrKwfq196rW5UpkKklV6j0RtWNzt8fVmw8EfF6vM5L0=",
       "status": "ACTIVE"
     }
   ]

@@ -1,0 +1,38 @@
+{
+  "artifact_type": "kernel.delegation",
+  "artifact_version": "0.1.0",
+  "delegate_id": "kernel-bundle-signer-001",
+  "delegate_role": "bundle_signer",
+  "delegate_signer": {
+    "signer_id": "kernel-bundle-signer-001",
+    "algorithm": "ecdsa-p256",
+    "public_key": "hF/jeZsUqXmKqNRlLHKm7ofwOYa57VA7UGHlxMh7aUA="
+  },
+  "scope": {
+    "allowed_actions": [
+      "sign_bundle",
+      "attest_bundle"
+    ],
+    "allowed_targets": [
+      "chatgpt-pipeline.bundle.tgz",
+      "chatgpt-pipeline.bundle.tgz.sig",
+      "chatgpt-pipeline.bundle.attestation.json"
+    ],
+    "disallowed_actions": [
+      "establish_root_authority",
+      "mutate_root_authority",
+      "mutate_root_signer_set",
+      "self_approve",
+      "broaden_delegation_scope"
+    ]
+  },
+  "issued_by": {
+    "role": "kernel_root_authority",
+    "signer_id": "kernel-root-001"
+  },
+  "signature_algorithm": "ed25519",
+  "signature_ref": "control/trust/delegations/kernel-bundle-signer-001.signature.json",
+  "issued_at": "2026-03-26T20:18:39Z",
+  "expires_at": "2027-03-26T20:18:39Z",
+  "status": "ACTIVE"
+}

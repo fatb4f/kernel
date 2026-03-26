@@ -1,0 +1,17 @@
+{
+  "artifact_type": "kernel.delegation.signature",
+  "artifact_version": "0.1.0",
+  "delegation_ref": "control/trust/delegations/kernel-bundle-signer-001.json",
+  "delegation_fingerprint": {
+    "algorithm": "sha256",
+    "value": "0fab1342e0d681fc13f03f6967831caaf5ff0dc6e3d07ff9c58e6fe6d3348c83"
+  },
+  "issued_by": {
+    "role": "kernel_root_authority",
+    "signer_id": "kernel-root-001"
+  },
+  "signature_algorithm": "ed25519",
+  "signature": "/xQBL4l69q3TBNiL1D5+9SruYW/EOa/qv7yTMjM+O1cZjnIiNZuDOkIz2Gh6/J8sGCHQHE3ajs+I1MP7/y1/DA==",
+  "issued_at": "2026-03-26T20:18:39Z",
+  "status": "ACTIVE"
+}
