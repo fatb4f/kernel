@@ -560,7 +560,7 @@ def write_log_artifacts(
         "run_id": run_id,
         "decision": "ALLOW",
         "summary": "problem_set ingress generated a canonical packet and passed local dry-run admission.",
-        "policy_bundle_id": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+        "policy_bundle_id": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
         "input_digests": {
             "problem_set": problem_set["fingerprint"],
         },

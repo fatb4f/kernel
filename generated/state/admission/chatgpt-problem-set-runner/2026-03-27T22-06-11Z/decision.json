@@ -1,0 +1,30 @@
+{
+  "artifact_type": "kernel.admission.decision",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-problem-set-runner",
+  "run_id": "2026-03-27T22-06-11Z",
+  "decision": "ALLOW",
+  "summary": "problem_set ingress generated a canonical packet and passed local dry-run admission.",
+  "policy_bundle_id": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+  "input_digests": {
+    "problem_set": {
+      "algorithm": "sha256",
+      "value": "a3c8d63459b52ad42ce9dafb2b26f9b33104afc5a86e87fb473ff2f99cc761c2"
+    }
+  },
+  "tool_versions": {
+    "python": "3.14.3",
+    "runner": "scripts/run_chatgpt_problem_set.py",
+    "packet_runner": "scripts/run_chatgpt_packet_file.py"
+  },
+  "result": {
+    "run_id": "2026-03-27T22-06-11Z",
+    "mode": "DRY_RUN",
+    "packet_root": "generated/packets/pkt-operationalize-chatgpt-pipeline-001",
+    "log_root": "generated/state/admission/chatgpt-packet-file-runner/2026-03-27T22-06-11Z",
+    "packet_id": "pkt-operationalize-chatgpt-pipeline-001",
+    "review_gate": "PASS",
+    "realization_gate": "WAITING_HUMAN_REVIEW",
+    "next_step": "Issue authoritative packet.review.decision.json before realization."
+  }
+}
