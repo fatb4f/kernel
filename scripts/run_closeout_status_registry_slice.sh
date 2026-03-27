@@ -208,9 +208,8 @@ jq -n \
   --slurpfile boundary "${repo_root}/${boundary_registry}" \
   --arg runtime_path "${jsonnet_runtime}" \
   'def checklist_observed($item):
-      if $item.id == "c1" or $item.id == "c2" or $item.id == "c3" or $item.id == "c11" then "materialized"
-      elif $item.id == "c4" then "materialized"
-      elif $item.id == "c5" or $item.id == "c6" or $item.id == "c7" or $item.id == "c8" or $item.id == "c9" or $item.id == "c10" then "partial"
+      if $item.id == "c1" or $item.id == "c2" or $item.id == "c3" or $item.id == "c4" or $item.id == "c5" or $item.id == "c6" or $item.id == "c7" or $item.id == "c8" or $item.id == "c11" then "materialized"
+      elif $item.id == "c9" or $item.id == "c10" then "partial"
       else "open"
       end;
     def checklist_evidence($item):
@@ -218,32 +217,26 @@ jq -n \
       elif $item.id == "c2" then ["kernel.spec.json#/authority_model", "generated/docs/reference/workflow.md"]
       elif $item.id == "c3" then ["kernel.spec.json#/state_flow", "generated/docs/reference/workflow.md"]
       elif $item.id == "c4" then ["structures/", "schemas/", "policy/", "render/jsonnet/", "manifests/", "generated/", "build/"]
-      elif $item.id == "c5" then ["generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalized-state.json", "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json", "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json"]
-      elif $item.id == "c6" then ["generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json", "generated/state/admission/core-closeout-status-slice/2026-03-26T23-20-00Z/decision.json", "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/decision.json"]
-      elif $item.id == "c7" then ["render/jsonnet/reference/executable-slice.jsonnet", "render/jsonnet/reference/core-closeout-status.jsonnet", "render/jsonnet/registry/boundary-family-registry.jsonnet"]
+      elif $item.id == "c5" then ["generated/registries/normalization-surfaces.index.json", "generated/state/normalization/normalization-surface-slice/2026-03-27T00-45-00Z/normalized-state.json"]
+      elif $item.id == "c6" then ["generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json", "generated/state/admission/core-closeout-status-slice/2026-03-26T23-20-00Z/decision.json", "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/decision.json", "generated/state/admission/policy-scope-surface-slice/2026-03-27T00-10-00Z/decision.json"]
+      elif $item.id == "c7" then ["render/jsonnet/reference/executable-slice.jsonnet", "render/jsonnet/reference/core-closeout-status.jsonnet", "render/jsonnet/registry/boundary-family-registry.jsonnet", "render/jsonnet/registry/policy-scope-surfaces.jsonnet", "render/jsonnet/registry/drift-integrity-surfaces.jsonnet", "render/jsonnet/registry/normalization-surfaces.jsonnet"]
       elif $item.id == "c8" then ["manifests/bundles/", "manifests/projections/", "manifests/generators/"]
-      elif $item.id == "c9" then ["generated/state/source-validation/reference-docs-executable-slice/2026-03-26T23-05-00Z/source-validation.json", "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json", "generated/state/render/boundary-family-registry-slice/2026-03-26T23-40-00Z/render-report.json", "generated/state/integrity/boundary-family-registry-slice/2026-03-26T23-40-00Z/drift-report.json"]
-      elif $item.id == "c10" then ["kernel.spec.json#/completion_condition", "schemas/exported/", "generated/registries/kernel-core-closeout-status.index.json"]
+      elif $item.id == "c9" then ["generated/state/source-validation/reference-docs-executable-slice/2026-03-26T23-05-00Z/source-validation.json", "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json", "generated/state/render/normalization-surface-slice/2026-03-27T00-45-00Z/render-report.json", "generated/state/integrity/drift-integrity-surface-slice/2026-03-27T00-30-00Z/drift-report.json"]
+      elif $item.id == "c10" then ["kernel.spec.json#/completion_condition", "schemas/exported/", "generated/registries/kernel-core-closeout-status.index.json", "generated/registries/normalization-surfaces.index.json", "generated/registries/drift-integrity-surfaces.index.json"]
       else ["manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/kernel_core_components"]
       end;
     def component_observed($component):
-      if $component.id == "kc1" then "materialized"
-      elif $component.id == "kc2" then "materialized"
-      elif $component.id == "kc3" then "partial"
-      elif $component.id == "kc4" then "partial"
-      elif $component.id == "kc5" then "materialized"
-      elif $component.id == "kc6" then "materialized"
-      elif $component.id == "kc7" then "partial"
+      if $component.id == "kc1" or $component.id == "kc2" or $component.id == "kc3" or $component.id == "kc4" or $component.id == "kc5" or $component.id == "kc6" or $component.id == "kc7" then "materialized"
       else "open"
       end;
     def component_evidence($component):
       if $component.id == "kc1" then ["structures/core/", "structures/extensions/", "structures/relations/", "structures/adapters/"]
-      elif $component.id == "kc2" then ["schemas/exported/", "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json", "generated/state/export/boundary-family-registry-slice/2026-03-26T23-40-00Z/export-report.json"]
-      elif $component.id == "kc3" then ["generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalized-state.json", "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json", "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json"]
-      elif $component.id == "kc4" then ["policy/kernel/", "policy/admission/", "policy/data/", "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json", "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/decision.json"]
+      elif $component.id == "kc2" then ["schemas/exported/", "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json", "generated/state/export/boundary-family-registry-slice/2026-03-26T23-40-00Z/export-report.json", "generated/state/export/normalization-surface-slice/2026-03-27T00-45-00Z/export-report.json"]
+      elif $component.id == "kc3" then ["generated/registries/normalization-surfaces.index.json", "generated/state/normalization/normalization-surface-slice/2026-03-27T00-45-00Z/normalized-state.json"]
+      elif $component.id == "kc4" then ["policy/kernel/", "policy/admission/", "policy/data/", "generated/registries/policy-scope-surfaces.index.json", "generated/state/admission/policy-scope-surface-slice/2026-03-27T00-10-00Z/decision.json"]
       elif $component.id == "kc5" then ["render/jsonnet/", "generated/docs/reference/", "generated/registries/"]
       elif $component.id == "kc6" then ["manifests/bundles/", "manifests/projections/", "manifests/generators/"]
-      else ["generated/state/integrity/reference-docs-executable-slice/2026-03-26T23-05-00Z/drift-report.json", "generated/state/integrity/core-closeout-status-slice/2026-03-26T23-20-00Z/drift-report.json", "generated/state/integrity/boundary-family-registry-slice/2026-03-26T23-40-00Z/drift-report.json"]
+      else ["generated/registries/drift-integrity-surfaces.index.json", "generated/state/integrity/drift-integrity-surface-slice/2026-03-27T00-30-00Z/drift-report.json"]
       end;
     {
       kind: "kernel.closeout_status_registry.slice_input",

@@ -6,31 +6,29 @@ Current baseline status for the kernel-spec-defined workflow:
 
 ## Why
 
-The core closeout target remains blocked, but the Jsonnet runtime blocker is resolved and one bounded executable slice is now materialized.
+The core closeout target remains blocked, but the repo now has multiple executable slices across documentation, registries, policy, normalization, and integrity surfaces.
 
 ## What is true
 
 - `reference-docs-executable-slice: G1-G6 evidence is committed`
+- `boundary-family-registry-slice: registry render lane is committed`
+- `policy-scope-surface-slice: policy/kernel source and policy-scope registry are committed`
+- `drift-integrity-surface-slice: integrity registry and drift evidence are committed`
+- `normalization-surface-slice: normalization registry and aggregated provenance are committed`
 - `local Jsonnet runtime is available via rsjsonnet`
 
 ## Decision basis
 
-- `all checklist_items marked done`
-- `all kernel_core_components marked done`
-- `completion_criteria satisfied`
-- `evidence matches the full kernel.spec.json authority, state-flow, plane, contract, gate, and artifact model`
-- `required toolchains for json-structure, json-schema, CUE, and Jsonnet are available and policy-controlled`
+- `kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces`
+- `checklist items c9 and c10 remain open, so completion criteria are not yet fully satisfied`
+- `reason code family coverage and closeout obligation closure still need explicit finalization`
+- `required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled`
 - `no renderer, exporter, or compatibility shim is treated as authority`
 
 ## What is blocking status closure
 
-- `structures_core_not_fully_materialized`
-- `schemas_exported_not_fully_materialized`
-- `cue_policy_not_fully_materialized`
-- `normalization_outputs_not_materialized_outside_first_slice`
-- `admission_evidence_not_materialized_outside_first_slice`
-- `render_evidence_not_materialized_outside_first_slice`
-- `drift_integrity_evidence_not_materialized_outside_first_slice`
+- `gate_reason_families_not_fully_materialized`
+- `completion_obligations_not_fully_closed`
 
 ## Status rule
 

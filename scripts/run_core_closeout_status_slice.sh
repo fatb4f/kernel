@@ -180,10 +180,14 @@ jq -n \
     blockers: $manifest[0].operational_status_gate.blockers,
     implemented_slices: [
       "reference-docs-executable-slice: G1-G6 evidence is committed",
+      "boundary-family-registry-slice: registry render lane is committed",
+      "policy-scope-surface-slice: policy/kernel source and policy-scope registry are committed",
+      "drift-integrity-surface-slice: integrity registry and drift evidence are committed",
+      "normalization-surface-slice: normalization registry and aggregated provenance are committed",
       "local Jsonnet runtime is available via rsjsonnet"
     ],
     status_explanation: (
-      "The core closeout target remains blocked, but the Jsonnet runtime blocker is resolved and one bounded executable slice is now materialized."
+      "The core closeout target remains blocked, but the repo now has multiple executable slices across documentation, registries, policy, normalization, and integrity surfaces."
     ),
     render_contract: {
       renderer: "jsonnet",

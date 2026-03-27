@@ -1,0 +1,15 @@
+{
+  "source_module_ref": "structures/core/core-closeout-status-slice.module.json",
+  "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+  "field_sources": {
+    "current_status": [
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/operational_status_gate/current_status"
+    ],
+    "blockers": [
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/operational_status_gate/blockers"
+    ],
+    "decision_basis": [
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/operational_status_gate/decision_basis"
+    ]
+  }
+}

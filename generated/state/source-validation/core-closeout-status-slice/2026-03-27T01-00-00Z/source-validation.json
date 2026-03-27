@@ -1,0 +1,15 @@
+{
+  "gate": "G1",
+  "control_object_id": "core-closeout-status-slice",
+  "run_id": "2026-03-27T01-00-00Z",
+  "status": "PASS",
+  "schema_ref": "schemas/exported/canonical-structure-family.schema.json",
+  "instance_ref": "structures/core/core-closeout-status-slice.module.json",
+  "validated_at": "2026-03-27T01:19:12Z",
+  "reason_codes": [],
+  "tool": "check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}

@@ -10,22 +10,16 @@
     "target": "core kernel operational status",
     "mode": "fail_closed",
     "current_status": "BLOCKED",
-    "current_status_ref": "generated/state/admission/core-closeout-status-slice/2026-03-26T23-20-00Z/decision.json",
+    "current_status_ref": "generated/state/admission/core-closeout-status-slice/2026-03-27T01-00-00Z/decision.json",
     "blockers": [
-      "structures_core_not_fully_materialized",
-      "schemas_exported_not_fully_materialized",
-      "cue_policy_not_fully_materialized",
-      "normalization_outputs_not_materialized_outside_first_slice",
-      "admission_evidence_not_materialized_outside_first_slice",
-      "render_evidence_not_materialized_outside_first_slice",
-      "drift_integrity_evidence_not_materialized_outside_first_slice"
+      "gate_reason_families_not_fully_materialized",
+      "completion_obligations_not_fully_closed"
     ],
     "decision_basis": [
-      "all checklist_items marked done",
-      "all kernel_core_components marked done",
-      "completion_criteria satisfied",
-      "evidence matches the full kernel.spec.json authority, state-flow, plane, contract, gate, and artifact model",
-      "required toolchains for json-structure, json-schema, CUE, and Jsonnet are available and policy-controlled",
+      "kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces",
+      "checklist items c9 and c10 remain open, so completion criteria are not yet fully satisfied",
+      "reason code family coverage and closeout obligation closure still need explicit finalization",
+      "required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled",
       "no renderer, exporter, or compatibility shim is treated as authority"
     ],
     "on_failure": "core kernel operational status remains not closed"
@@ -117,7 +111,7 @@
         "source parser/import resolver",
         "source validation runner"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "kc2",
@@ -142,7 +136,7 @@
         "schema validator",
         "codegen/export runner"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "kc3",
@@ -164,7 +158,7 @@
         "reference resolver",
         "provenance/source-map generator"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "kc4",
@@ -191,7 +185,7 @@
         "admission runner",
         "policy evidence materializer"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "kc5",
@@ -215,7 +209,7 @@
         "renderer entrypoints",
         "artifact generation runner"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "kc6",
@@ -234,7 +228,7 @@
         "manifest validators",
         "bundle/projection/generator registry tooling"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "kc7",
@@ -255,7 +249,7 @@
         "regen-clean verifier",
         "integrity checks"
       ],
-      "status": "open"
+      "status": "done"
     }
   ],
   "checklist_items": [
@@ -318,7 +312,7 @@
         "generated/{docs,schemas,registries,state}",
         "build/"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "c5",
@@ -333,7 +327,7 @@
         "source-map.json",
         "normalization-report.json"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "c6",
@@ -349,7 +343,7 @@
         "generated/state/admission/<control-object-id>/<run-id>/violations.json",
         "generated/state/admission/<control-object-id>/<run-id>/admitted-state.json"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "c7",
@@ -363,7 +357,7 @@
         "render-report.json",
         "declared renderer inputs and output classes"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "c8",
@@ -376,7 +370,7 @@
         "manifests/projections/",
         "manifests/generators/"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "c9",
