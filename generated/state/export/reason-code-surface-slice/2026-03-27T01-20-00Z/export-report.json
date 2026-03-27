@@ -5,8 +5,10 @@
   "status": "PASS",
   "source_ref": "structures/core/reason-code-surface-slice.module.json",
   "schema_ref": "schemas/exported/reason-code-surface-slice-input.schema.json",
-  "exported_at": "2026-03-27T01:26:20Z",
-  "reason_codes": [],
+  "exported_at": "2026-03-27T01:34:12Z",
+  "reason_codes": [
+    "EXPORT_SCHEMA_EXPORTED"
+  ],
   "tool": "jq + check-jsonschema",
   "tool_output": {
     "status": "ok",

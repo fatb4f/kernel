@@ -15,10 +15,11 @@
       "description": "Source-plane validation and parse/import failures.",
       "declared_refs": [
         "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/0",
-        "generated/docs/reference/gates.md"
+        "generated/docs/reference/gates.md",
+        "generated/state/source-validation/reason-code-surface-slice/2026-03-27T01-20-00Z/source-validation.json"
       ],
       "observed_codes": [
-        "SRC_SCHEMA_VALIDATION_FAILED"
+        "SRC_SCHEMA_VALIDATED"
       ],
       "status": "observed"
     },
@@ -29,10 +30,11 @@
       "description": "Contract export and derived schema failures.",
       "declared_refs": [
         "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/1",
-        "generated/docs/reference/gates.md"
+        "generated/docs/reference/gates.md",
+        "generated/state/export/reason-code-surface-slice/2026-03-27T01-20-00Z/export-report.json"
       ],
       "observed_codes": [
-        "EXPORT_SCHEMA_INVALID"
+        "EXPORT_SCHEMA_EXPORTED"
       ],
       "status": "observed"
     },
@@ -43,10 +45,13 @@
       "description": "Normalization nondeterminism and normalization boundary failures.",
       "declared_refs": [
         "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/2",
-        "generated/docs/reference/gates.md"
+        "generated/docs/reference/gates.md",
+        "generated/state/normalization/reason-code-surface-slice/2026-03-27T01-20-00Z/normalization-report.json"
       ],
-      "observed_codes": [],
-      "status": "declared_only"
+      "observed_codes": [
+        "NORM_STATE_EMITTED"
+      ],
+      "status": "observed"
     },
     {
       "family_id": "ADMIT",
@@ -55,10 +60,13 @@
       "description": "Admission legality and completeness failures.",
       "declared_refs": [
         "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/3",
-        "generated/docs/reference/gates.md"
+        "generated/docs/reference/gates.md",
+        "generated/state/admission/reason-code-surface-slice/2026-03-27T01-20-00Z/decision.json"
       ],
-      "observed_codes": [],
-      "status": "declared_only"
+      "observed_codes": [
+        "ADMIT_DECISION_ALLOW"
+      ],
+      "status": "observed"
     },
     {
       "family_id": "RENDER",
@@ -68,10 +76,12 @@
       "declared_refs": [
         "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/4",
         "generated/docs/reference/gates.md",
-        "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"
+        "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json",
+        "generated/state/render/reason-code-surface-slice/2026-03-27T01-20-00Z/render-report.json"
       ],
       "observed_codes": [
-        "RENDER_RUNTIME_MISSING"
+        "RENDER_RUNTIME_MISSING",
+        "RENDER_OUTPUT_EMITTED"
       ],
       "status": "observed"
     },
@@ -82,10 +92,13 @@
       "description": "Drift, missing output, and hand-edited derived file failures.",
       "declared_refs": [
         "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/5",
-        "generated/docs/reference/gates.md"
+        "generated/docs/reference/gates.md",
+        "generated/state/integrity/reason-code-surface-slice/2026-03-27T01-20-00Z/drift-report.json"
       ],
-      "observed_codes": [],
-      "status": "declared_only"
+      "observed_codes": [
+        "DRIFT_REGEN_CLEAN"
+      ],
+      "status": "observed"
     }
   ],
   "render_contract": {

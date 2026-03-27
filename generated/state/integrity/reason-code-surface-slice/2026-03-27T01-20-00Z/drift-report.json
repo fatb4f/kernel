@@ -3,7 +3,10 @@
   "control_object_id": "reason-code-surface-slice",
   "run_id": "2026-03-27T01-20-00Z",
   "status": "PASS",
-  "checked_at": "2026-03-27T01:26:21Z",
+  "checked_at": "2026-03-27T01:34:12Z",
+  "reason_codes": [
+    "DRIFT_REGEN_CLEAN"
+  ],
   "checks": [
     "exported schema is present",
     "rendered reason-code registry regenerates without drift",

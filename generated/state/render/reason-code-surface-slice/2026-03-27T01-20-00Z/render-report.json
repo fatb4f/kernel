@@ -3,6 +3,9 @@
   "control_object_id": "reason-code-surface-slice",
   "run_id": "2026-03-27T01-20-00Z",
   "status": "PASS",
+  "reason_codes": [
+    "RENDER_OUTPUT_EMITTED"
+  ],
   "renderer": "jsonnet",
   "runtime": "rsjsonnet",
   "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
@@ -11,5 +14,5 @@
   "outputs": [
     "generated/registries/reason-code-surfaces.index.json"
   ],
-  "rendered_at": "2026-03-27T01:26:21Z"
+  "rendered_at": "2026-03-27T01:34:12Z"
 }

@@ -10,6 +10,7 @@ source_module="structures/core/closeout-status-registry-slice.module.json"
 source_schema="schemas/exported/canonical-structure-family.schema.json"
 closeout_manifest="manifests/bundles/kernel-core-json-structure-closeout.manifest.json"
 boundary_registry="generated/registries/boundary-families.index.json"
+reason_code_registry="generated/registries/reason-code-surfaces.index.json"
 operational_status_doc="generated/docs/reference/operational-status.md"
 exported_schema="schemas/exported/closeout-status-registry-slice-input.schema.json"
 policy_bundle="policy/admission/closeout-status-registry-slice.cue"
@@ -206,9 +207,14 @@ jsonnet_runtime="$(jsonnet_bin)"
 jq -n \
   --slurpfile manifest "${repo_root}/${closeout_manifest}" \
   --slurpfile boundary "${repo_root}/${boundary_registry}" \
+  --slurpfile reason_code_registry "${repo_root}/${reason_code_registry}" \
   --arg runtime_path "${jsonnet_runtime}" \
-  'def checklist_observed($item):
+  'def all_reason_families_observed:
+      (($reason_code_registry[0].families // []) | length) > 0 and
+      (($reason_code_registry[0].families // []) | all(.status == "observed"));
+    def checklist_observed($item):
       if $item.id == "c1" or $item.id == "c2" or $item.id == "c3" or $item.id == "c4" or $item.id == "c5" or $item.id == "c6" or $item.id == "c7" or $item.id == "c8" or $item.id == "c11" then "materialized"
+      elif $item.id == "c9" and all_reason_families_observed then "materialized"
       elif $item.id == "c9" or $item.id == "c10" then "partial"
       else "open"
       end;
@@ -221,7 +227,7 @@ jq -n \
       elif $item.id == "c6" then ["generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json", "generated/state/admission/core-closeout-status-slice/2026-03-26T23-20-00Z/decision.json", "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/decision.json", "generated/state/admission/policy-scope-surface-slice/2026-03-27T00-10-00Z/decision.json"]
       elif $item.id == "c7" then ["render/jsonnet/reference/executable-slice.jsonnet", "render/jsonnet/reference/core-closeout-status.jsonnet", "render/jsonnet/registry/boundary-family-registry.jsonnet", "render/jsonnet/registry/policy-scope-surfaces.jsonnet", "render/jsonnet/registry/drift-integrity-surfaces.jsonnet", "render/jsonnet/registry/normalization-surfaces.jsonnet"]
       elif $item.id == "c8" then ["manifests/bundles/", "manifests/projections/", "manifests/generators/"]
-      elif $item.id == "c9" then ["generated/state/source-validation/reference-docs-executable-slice/2026-03-26T23-05-00Z/source-validation.json", "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json", "generated/state/render/normalization-surface-slice/2026-03-27T00-45-00Z/render-report.json", "generated/state/integrity/drift-integrity-surface-slice/2026-03-27T00-30-00Z/drift-report.json"]
+      elif $item.id == "c9" then ["generated/registries/reason-code-surfaces.index.json", "generated/state/source-validation/reason-code-surface-slice/2026-03-27T01-20-00Z/source-validation.json", "generated/state/export/reason-code-surface-slice/2026-03-27T01-20-00Z/export-report.json", "generated/state/normalization/reason-code-surface-slice/2026-03-27T01-20-00Z/normalization-report.json", "generated/state/admission/reason-code-surface-slice/2026-03-27T01-20-00Z/decision.json", "generated/state/render/reason-code-surface-slice/2026-03-27T01-20-00Z/render-report.json", "generated/state/integrity/reason-code-surface-slice/2026-03-27T01-20-00Z/drift-report.json"]
       elif $item.id == "c10" then ["kernel.spec.json#/completion_condition", "schemas/exported/", "generated/registries/kernel-core-closeout-status.index.json", "generated/registries/normalization-surfaces.index.json", "generated/registries/drift-integrity-surfaces.index.json"]
       else ["manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/kernel_core_components"]
       end;

@@ -5,8 +5,10 @@
   "status": "PASS",
   "schema_ref": "schemas/exported/canonical-structure-family.schema.json",
   "instance_ref": "structures/core/reason-code-surface-slice.module.json",
-  "validated_at": "2026-03-27T01:26:20Z",
-  "reason_codes": [],
+  "validated_at": "2026-03-27T01:34:11Z",
+  "reason_codes": [
+    "SRC_SCHEMA_VALIDATED"
+  ],
   "tool": "check-jsonschema",
   "tool_output": {
     "status": "ok",

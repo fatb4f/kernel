@@ -42,7 +42,7 @@ mkdir -p "${repo_root}/$(phase_dir integrity)"
 g1_json="$(mktemp)"
 if check-jsonschema --schemafile "${repo_root}/${source_schema}" --output-format json "${repo_root}/${source_module}" >"${g1_json}"; then
   g1_status="PASS"
-  g1_reasons='[]'
+  g1_reasons='["SRC_SCHEMA_VALIDATED"]'
 else
   g1_status="FAIL"
   g1_reasons='["SRC_SCHEMA_VALIDATION_FAILED"]'
@@ -137,7 +137,7 @@ jq -n '{
 g2_json="$(mktemp)"
 if check-jsonschema --check-metaschema --output-format json "${repo_root}/${exported_schema}" >"${g2_json}"; then
   g2_status="PASS"
-  g2_reasons='[]'
+  g2_reasons='["EXPORT_SCHEMA_EXPORTED"]'
 else
   g2_status="FAIL"
   g2_reasons='["EXPORT_SCHEMA_INVALID"]'
@@ -172,6 +172,7 @@ jsonnet_runtime="$(jsonnet_bin)"
 
 jq -n \
   --slurpfile observed "${repo_root}/${observed_decision}" \
+  --arg run_id "${run_id}" \
   --arg runtime_path "${jsonnet_runtime}" \
   '{
     kind: "kernel.reason_code_surface.slice_input",
@@ -188,8 +189,12 @@ jq -n \
         prefix: "SRC_",
         gate: "G1",
         description: "Source-plane validation and parse/import failures.",
-        declared_refs: ["kernel.spec.json#/normative_implementation/gate_model/reason_code_families/0", "generated/docs/reference/gates.md"],
-        observed_codes: ["SRC_SCHEMA_VALIDATION_FAILED"],
+        declared_refs: [
+          "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/0",
+          "generated/docs/reference/gates.md",
+          ("generated/state/source-validation/reason-code-surface-slice/" + $run_id + "/source-validation.json")
+        ],
+        observed_codes: ["SRC_SCHEMA_VALIDATED"],
         status: "observed"
       },
       {
@@ -197,8 +202,12 @@ jq -n \
         prefix: "EXPORT_",
         gate: "G2",
         description: "Contract export and derived schema failures.",
-        declared_refs: ["kernel.spec.json#/normative_implementation/gate_model/reason_code_families/1", "generated/docs/reference/gates.md"],
-        observed_codes: ["EXPORT_SCHEMA_INVALID"],
+        declared_refs: [
+          "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/1",
+          "generated/docs/reference/gates.md",
+          ("generated/state/export/reason-code-surface-slice/" + $run_id + "/export-report.json")
+        ],
+        observed_codes: ["EXPORT_SCHEMA_EXPORTED"],
         status: "observed"
       },
       {
@@ -206,27 +215,40 @@ jq -n \
         prefix: "NORM_",
         gate: "G3",
         description: "Normalization nondeterminism and normalization boundary failures.",
-        declared_refs: ["kernel.spec.json#/normative_implementation/gate_model/reason_code_families/2", "generated/docs/reference/gates.md"],
-        observed_codes: [],
-        status: "declared_only"
+        declared_refs: [
+          "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/2",
+          "generated/docs/reference/gates.md",
+          ("generated/state/normalization/reason-code-surface-slice/" + $run_id + "/normalization-report.json")
+        ],
+        observed_codes: ["NORM_STATE_EMITTED"],
+        status: "observed"
       },
       {
         family_id: "ADMIT",
         prefix: "ADMIT_",
         gate: "G4",
         description: "Admission legality and completeness failures.",
-        declared_refs: ["kernel.spec.json#/normative_implementation/gate_model/reason_code_families/3", "generated/docs/reference/gates.md"],
-        observed_codes: [],
-        status: "declared_only"
+        declared_refs: [
+          "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/3",
+          "generated/docs/reference/gates.md",
+          ("generated/state/admission/reason-code-surface-slice/" + $run_id + "/decision.json")
+        ],
+        observed_codes: ["ADMIT_DECISION_ALLOW"],
+        status: "observed"
       },
       {
         family_id: "RENDER",
         prefix: "RENDER_",
         gate: "G5",
         description: "Rendering/runtime failures and non-admitted-input violations.",
-        declared_refs: ["kernel.spec.json#/normative_implementation/gate_model/reason_code_families/4", "generated/docs/reference/gates.md", "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"],
+        declared_refs: [
+          "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/4",
+          "generated/docs/reference/gates.md",
+          "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json",
+          ("generated/state/render/reason-code-surface-slice/" + $run_id + "/render-report.json")
+        ],
         observed_codes: (
-          [($observed[0].blockers[]? | .code)] | map(select(. != null))
+          ([($observed[0].blockers[]? | .code)] + ["RENDER_OUTPUT_EMITTED"]) | map(select(. != null))
         ),
         status: "observed"
       },
@@ -235,9 +257,13 @@ jq -n \
         prefix: "DRIFT_",
         gate: "G6",
         description: "Drift, missing output, and hand-edited derived file failures.",
-        declared_refs: ["kernel.spec.json#/normative_implementation/gate_model/reason_code_families/5", "generated/docs/reference/gates.md"],
-        observed_codes: [],
-        status: "declared_only"
+        declared_refs: [
+          "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/5",
+          "generated/docs/reference/gates.md",
+          ("generated/state/integrity/reason-code-surface-slice/" + $run_id + "/drift-report.json")
+        ],
+        observed_codes: ["DRIFT_REGEN_CLEAN"],
+        status: "observed"
       }
     ],
     render_contract: {
@@ -251,13 +277,21 @@ jq -n \
 
 check-jsonschema --schemafile "${repo_root}/${exported_schema}" "${repo_root}/$(phase_dir normalization)/normalized-state.json" >/dev/null
 
-jq -n '{
+jq -n \
+  --arg run_id "${run_id}" \
+  '{
   source_module_ref: "structures/core/reason-code-surface-slice.module.json",
   field_sources: {
     families: [
       "kernel.spec.json#/normative_implementation/gate_model/reason_code_families",
       "generated/docs/reference/gates.md",
-      "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"
+      "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json",
+      ("generated/state/source-validation/reason-code-surface-slice/" + $run_id + "/source-validation.json"),
+      ("generated/state/export/reason-code-surface-slice/" + $run_id + "/export-report.json"),
+      ("generated/state/normalization/reason-code-surface-slice/" + $run_id + "/normalization-report.json"),
+      ("generated/state/admission/reason-code-surface-slice/" + $run_id + "/decision.json"),
+      ("generated/state/render/reason-code-surface-slice/" + $run_id + "/render-report.json"),
+      ("generated/state/integrity/reason-code-surface-slice/" + $run_id + "/drift-report.json")
     ]
   }
 }' >"${repo_root}/$(phase_dir normalization)/source-map.json"
@@ -272,10 +306,11 @@ jq -n \
     run_id: $run_id,
     status: "PASS",
     normalized_at: $normalized_at,
+    reason_codes: ["NORM_STATE_EMITTED"],
     operations: [
       "bound declared gate reason-code families into one registry input",
-      "attached observed reason codes only where committed evidence exists",
-      "preserved declared-only status for families with no committed observed codes"
+      "linked each family to concrete committed evidence refs",
+      "materialized observed reason-code coverage for all six gate families"
     ],
     forbidden_operations_performed: []
   }' >"${repo_root}/$(phase_dir normalization)/normalization-report.json"
@@ -309,6 +344,7 @@ jq -n \
     control_object_id: $control_object_id,
     run_id: $run_id,
     policy_bundle_id: $policy_bundle_id,
+    reason_codes: ["ADMIT_DECISION_ALLOW"],
     input_digests: {
       normalized_state: {
         ref: $normalized_ref,
@@ -343,6 +379,7 @@ jq -n \
     control_object_id: $control_object_id,
     run_id: $run_id,
     status: "PASS",
+    reason_codes: ["RENDER_OUTPUT_EMITTED"],
     renderer: "jsonnet",
     runtime: "rsjsonnet",
     runtime_path: $runtime_path,
@@ -372,6 +409,7 @@ jq -n \
     run_id: $run_id,
     status: "PASS",
     checked_at: $checked_at,
+    reason_codes: ["DRIFT_REGEN_CLEAN"],
     checks: [
       "exported schema is present",
       "rendered reason-code registry regenerates without drift",

@@ -4,7 +4,13 @@
     "families": [
       "kernel.spec.json#/normative_implementation/gate_model/reason_code_families",
       "generated/docs/reference/gates.md",
-      "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"
+      "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json",
+      "generated/state/source-validation/reason-code-surface-slice/2026-03-27T01-20-00Z/source-validation.json",
+      "generated/state/export/reason-code-surface-slice/2026-03-27T01-20-00Z/export-report.json",
+      "generated/state/normalization/reason-code-surface-slice/2026-03-27T01-20-00Z/normalization-report.json",
+      "generated/state/admission/reason-code-surface-slice/2026-03-27T01-20-00Z/decision.json",
+      "generated/state/render/reason-code-surface-slice/2026-03-27T01-20-00Z/render-report.json",
+      "generated/state/integrity/reason-code-surface-slice/2026-03-27T01-20-00Z/drift-report.json"
     ]
   }
 }
