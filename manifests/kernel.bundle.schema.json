@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kernel.bundle.schema.json",
+  "title": "Kernel bundle control object",
+  "description": "Baseline schema for kernel bundle-like control objects.",
+  "type": "object",
+  "required": [
+    "kind"
+  ],
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "validation_target": {
+      "type": "string"
+    },
+    "scope": {},
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

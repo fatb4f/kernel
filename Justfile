@@ -75,3 +75,6 @@ normalization-surface-slice RUN_ID='':
 
 reason-code-surface-slice RUN_ID='':
 	bash scripts/run_reason_code_surface_slice.sh {{RUN_ID}}
+
+completion-obligations-surface-slice RUN_ID='':
+	bash scripts/run_completion_obligations_surface_slice.sh {{RUN_ID}}

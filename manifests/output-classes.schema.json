@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "output-classes.schema.json",
+  "title": "Kernel output class declaration",
+  "description": "Schema for declaring output classes used by kernel generators and projections.",
+  "type": "object",
+  "required": [
+    "output_class"
+  ],
+  "properties": {
+    "output_class": {
+      "type": "string",
+      "enum": [
+        "contract-export",
+        "review-view",
+        "runtime-config",
+        "registry",
+        "documentation",
+        "codegen-input",
+        "admitted-state",
+        "admission-decision",
+        "admission-violations"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

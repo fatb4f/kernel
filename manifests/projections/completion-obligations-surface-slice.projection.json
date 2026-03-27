@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "completion-obligations-surface-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/completion-obligations-surface-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/completion-obligations.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/completion-obligations.index.json",
+    "generated/state/render/completion-obligations-surface-slice/<run-id>/render-report.json",
+    "generated/state/integrity/completion-obligations-surface-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The projection emits a completion-obligations registry artifact only.",
+    "The projection remains repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the completion-obligations surface slice."
+}

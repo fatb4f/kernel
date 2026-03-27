@@ -1,0 +1,54 @@
+{
+  "artifact_type": "kernel.toolchain_control_index",
+  "artifact_version": "0.1.0",
+  "controlled_tools": [
+    {
+      "tool": "check-jsonschema",
+      "role": "source and schema validation",
+      "control_refs": [
+        "Justfile",
+        "scripts/"
+      ]
+    },
+    {
+      "tool": "jq",
+      "role": "normalization and JSON derivation",
+      "control_refs": [
+        "Justfile",
+        "scripts/",
+        "policy/data/generated-build-boundary.json"
+      ]
+    },
+    {
+      "tool": "cue",
+      "role": "admission policy evaluation",
+      "control_refs": [
+        "policy/admission/",
+        "scripts/"
+      ]
+    },
+    {
+      "tool": "rsjsonnet",
+      "role": "admitted-state rendering",
+      "control_refs": [
+        "render/jsonnet/",
+        "scripts/",
+        "Justfile"
+      ]
+    },
+    {
+      "tool": "sha256sum",
+      "role": "input digest calculation",
+      "control_refs": [
+        "scripts/"
+      ]
+    },
+    {
+      "tool": "just",
+      "role": "local workflow orchestration",
+      "control_refs": [
+        "Justfile"
+      ]
+    }
+  ]
+}

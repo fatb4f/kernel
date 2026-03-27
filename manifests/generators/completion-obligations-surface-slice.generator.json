@@ -1,0 +1,31 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "completion-obligations-surface-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/completion-obligations-surface-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "kernel.spec.json",
+    "KERNEL_SPEC.md",
+    "manifests/kernel.bundle.schema.json",
+    "manifests/output-classes.schema.json",
+    "policy/contracts/normalization.md",
+    "ci/gate-matrix.md",
+    "policy/data/toolchain-control.index.json",
+    "manifests/bundles/kernel-core-json-structure-closeout.manifest.json"
+  ],
+  "outputs": [
+    "schemas/exported/completion-obligations-surface-slice-input.schema.json",
+    "generated/state/source-validation/completion-obligations-surface-slice/<run-id>/source-validation.json",
+    "generated/state/export/completion-obligations-surface-slice/<run-id>/export-report.json",
+    "generated/state/normalization/completion-obligations-surface-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/completion-obligations-surface-slice/<run-id>/source-map.json",
+    "generated/state/normalization/completion-obligations-surface-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "Completion obligations are derived from the kernel spec, not inferred from prose alone.",
+    "Implementation-order refs must resolve to committed repo surfaces.",
+    "Typed output classes and toolchain controls remain explicit and referenceable."
+  ],
+  "notes": "Generator control object for the completion-obligations surface slice."
+}

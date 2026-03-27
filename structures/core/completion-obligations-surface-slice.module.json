@@ -1,0 +1,78 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "completion-obligations-surface-slice",
+  "fragments": [
+    {
+      "name": "invariants-surface",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/invariants",
+        "policy/data/generated-build-boundary.json"
+      ],
+      "description": "Canonical invariant surface for the kernel core closeout obligations."
+    },
+    {
+      "name": "artifact-class-surface",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/artifact_classes",
+        "manifests/output-classes.schema.json"
+      ],
+      "description": "Typed output-class surface for kernel-generated artifacts."
+    },
+    {
+      "name": "implementation-order-surface",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/implementation_order",
+        "KERNEL_SPEC.md",
+        "manifests/kernel.bundle.schema.json",
+        "manifests/output-classes.schema.json",
+        "policy/contracts/normalization.md",
+        "ci/gate-matrix.md"
+      ],
+      "description": "Required implementation-order surface from the kernel spec."
+    },
+    {
+      "name": "completion-condition-surface",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/completion_condition",
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json"
+      ],
+      "description": "Completion conditions required to close out the kernel core workflow."
+    },
+    {
+      "name": "toolchain-control-surface",
+      "class": "core",
+      "source_refs": [
+        "policy/data/toolchain-control.index.json",
+        "Justfile"
+      ],
+      "description": "Policy-controlled toolchain surface for normalize/admit/render and related gates."
+    }
+  ],
+  "relations": [
+    {
+      "from": "invariants-surface",
+      "to": "artifact-class-surface",
+      "relation": "constrains"
+    },
+    {
+      "from": "artifact-class-surface",
+      "to": "implementation-order-surface",
+      "relation": "sequenced_by"
+    },
+    {
+      "from": "implementation-order-surface",
+      "to": "completion-condition-surface",
+      "relation": "satisfies"
+    },
+    {
+      "from": "toolchain-control-surface",
+      "to": "completion-condition-surface",
+      "relation": "supports"
+    }
+  ],
+  "notes": "Authoritative source module for the completion-obligations surface slice. It binds the remaining C10 surfaces to executable evidence."
+}
