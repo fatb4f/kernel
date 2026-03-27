@@ -1,0 +1,15 @@
+{
+  "gate": "G5",
+  "control_object_id": "drift-integrity-surface-slice",
+  "run_id": "2026-03-27T00-30-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/drift-integrity-surfaces.jsonnet",
+  "admitted_state_ref": "generated/state/admission/drift-integrity-surface-slice/2026-03-27T00-30-00Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/drift-integrity-surfaces.index.json"
+  ],
+  "rendered_at": "2026-03-27T00:53:12Z"
+}

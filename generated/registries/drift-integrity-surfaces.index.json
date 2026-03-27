@@ -1,0 +1,101 @@
+{
+   "artifact_type": "kernel.drift_integrity_surface_registry",
+   "artifact_version": "0.1.0",
+   "boundary_ref": "policy/data/generated-build-boundary.json",
+   "build_classes": [
+      {
+         "authority": "none",
+         "class_id": "ephemeral-local-output",
+         "commit_policy": "do_not_treat_as_authority",
+         "root": "build/"
+      }
+   ],
+   "drift_runs": [
+      {
+         "checks": [
+            "exported schema regenerates without drift",
+            "rendered documentation regenerates without drift",
+            "required generated outputs are present"
+         ],
+         "control_object_id": "reference-docs-executable-slice",
+         "run_id": "2026-03-26T23-05-00Z",
+         "status": "PASS"
+      },
+      {
+         "checks": [
+            "exported schema is present",
+            "rendered operational status page regenerates without drift",
+            "required generated outputs are present"
+         ],
+         "control_object_id": "core-closeout-status-slice",
+         "run_id": "2026-03-26T23-20-00Z",
+         "status": "PASS"
+      },
+      {
+         "checks": [
+            "exported schema is present",
+            "rendered registry regenerates without drift",
+            "required generated outputs are present"
+         ],
+         "control_object_id": "boundary-family-registry-slice",
+         "run_id": "2026-03-26T23-40-00Z",
+         "status": "PASS"
+      },
+      {
+         "checks": [
+            "exported schema is present",
+            "rendered closeout status registry regenerates without drift",
+            "required generated outputs are present"
+         ],
+         "control_object_id": "closeout-status-registry-slice",
+         "run_id": "2026-03-26T23-55-00Z",
+         "status": "PASS"
+      },
+      {
+         "checks": [
+            "exported schema is present",
+            "rendered policy-scope registry regenerates without drift",
+            "required generated outputs are present"
+         ],
+         "control_object_id": "policy-scope-surface-slice",
+         "run_id": "2026-03-27T00-10-00Z",
+         "status": "PASS"
+      }
+   ],
+   "generated_classes": [
+      {
+         "authority": "derived_non_authoritative",
+         "class_id": "documentation",
+         "commit_policy": "may_commit",
+         "root": "generated/docs/"
+      },
+      {
+         "authority": "derived_non_authoritative",
+         "class_id": "contract-export",
+         "commit_policy": "may_commit",
+         "root": "generated/schemas/"
+      },
+      {
+         "authority": "derived_non_authoritative",
+         "class_id": "registry",
+         "commit_policy": "may_commit",
+         "root": "generated/registries/"
+      },
+      {
+         "authority": "derived_non_authoritative",
+         "class_id": "admitted-state",
+         "commit_policy": "may_commit",
+         "root": "generated/state/"
+      }
+   ],
+   "generated_from": {
+      "control_object_id": "drift-integrity-surface-slice",
+      "output_path": "generated/registries/drift-integrity-surfaces.index.json"
+   },
+   "invariants": [
+      "generated artifacts remain derived even when committed",
+      "build residue is always disposable and non-authoritative",
+      "no runtime behavior is introduced by this policy artifact"
+   ],
+   "source_module_ref": "structures/core/drift-integrity-surface-slice.module.json"
+}

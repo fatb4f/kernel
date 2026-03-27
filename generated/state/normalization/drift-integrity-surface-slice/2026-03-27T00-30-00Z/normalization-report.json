@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "drift-integrity-surface-slice",
+  "run_id": "2026-03-27T00-30-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-27T00:53:12Z",
+  "operations": [
+    "bound generated/build authority boundary declarations into one integrity surface input",
+    "collected committed drift reports across executed slices",
+    "preserved drift checks without introducing new integrity claims"
+  ],
+  "forbidden_operations_performed": []
+}

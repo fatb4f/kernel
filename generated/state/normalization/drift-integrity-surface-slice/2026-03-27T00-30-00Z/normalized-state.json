@@ -1,0 +1,109 @@
+{
+  "kind": "kernel.drift_integrity_surface.slice_input",
+  "control_object_id": "drift-integrity-surface-slice",
+  "source_module_id": "drift-integrity-surface-slice",
+  "source_module_ref": "structures/core/drift-integrity-surface-slice.module.json",
+  "boundary_ref": "policy/data/generated-build-boundary.json",
+  "export_schema_ref": "schemas/exported/drift-integrity-surface-slice-input.schema.json",
+  "generator_ref": "manifests/generators/drift-integrity-surface-slice.generator.json",
+  "projection_ref": "manifests/projections/drift-integrity-surface-slice.projection.json",
+  "output_path": "generated/registries/drift-integrity-surfaces.index.json",
+  "generated_classes": [
+    {
+      "class_id": "documentation",
+      "root": "generated/docs/",
+      "commit_policy": "may_commit",
+      "authority": "derived_non_authoritative"
+    },
+    {
+      "class_id": "contract-export",
+      "root": "generated/schemas/",
+      "commit_policy": "may_commit",
+      "authority": "derived_non_authoritative"
+    },
+    {
+      "class_id": "registry",
+      "root": "generated/registries/",
+      "commit_policy": "may_commit",
+      "authority": "derived_non_authoritative"
+    },
+    {
+      "class_id": "admitted-state",
+      "root": "generated/state/",
+      "commit_policy": "may_commit",
+      "authority": "derived_non_authoritative"
+    }
+  ],
+  "build_classes": [
+    {
+      "class_id": "ephemeral-local-output",
+      "root": "build/",
+      "commit_policy": "do_not_treat_as_authority",
+      "authority": "none"
+    }
+  ],
+  "invariants": [
+    "generated artifacts remain derived even when committed",
+    "build residue is always disposable and non-authoritative",
+    "no runtime behavior is introduced by this policy artifact"
+  ],
+  "drift_runs": [
+    {
+      "control_object_id": "reference-docs-executable-slice",
+      "run_id": "2026-03-26T23-05-00Z",
+      "status": "PASS",
+      "checks": [
+        "exported schema regenerates without drift",
+        "rendered documentation regenerates without drift",
+        "required generated outputs are present"
+      ]
+    },
+    {
+      "control_object_id": "core-closeout-status-slice",
+      "run_id": "2026-03-26T23-20-00Z",
+      "status": "PASS",
+      "checks": [
+        "exported schema is present",
+        "rendered operational status page regenerates without drift",
+        "required generated outputs are present"
+      ]
+    },
+    {
+      "control_object_id": "boundary-family-registry-slice",
+      "run_id": "2026-03-26T23-40-00Z",
+      "status": "PASS",
+      "checks": [
+        "exported schema is present",
+        "rendered registry regenerates without drift",
+        "required generated outputs are present"
+      ]
+    },
+    {
+      "control_object_id": "closeout-status-registry-slice",
+      "run_id": "2026-03-26T23-55-00Z",
+      "status": "PASS",
+      "checks": [
+        "exported schema is present",
+        "rendered closeout status registry regenerates without drift",
+        "required generated outputs are present"
+      ]
+    },
+    {
+      "control_object_id": "policy-scope-surface-slice",
+      "run_id": "2026-03-27T00-10-00Z",
+      "status": "PASS",
+      "checks": [
+        "exported schema is present",
+        "rendered policy-scope registry regenerates without drift",
+        "required generated outputs are present"
+      ]
+    }
+  ],
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  }
+}

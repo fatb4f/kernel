@@ -1,0 +1,19 @@
+{
+  "gate": "G1",
+  "control_object_id": "drift-integrity-surface-slice",
+  "run_id": "2026-03-27T00-30-00Z",
+  "status": "PASS",
+  "schema_ref": "schemas/exported/canonical-structure-family.schema.json",
+  "instance_ref": "structures/core/drift-integrity-surface-slice.module.json",
+  "boundary_ref": "policy/data/generated-build-boundary.json",
+  "validated_at": "2026-03-27T00:53:11Z",
+  "reason_codes": [],
+  "tool": "check-jsonschema + jq",
+  "tool_output": {
+    "source_module": {
+      "status": "ok",
+      "errors": []
+    },
+    "boundary_json_valid": true
+  }
+}

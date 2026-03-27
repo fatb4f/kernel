@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "drift-integrity-surface-slice",
+  "run_id": "2026-03-27T00-30-00Z",
+  "policy_bundle_id": "policy/admission/drift-integrity-surface-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "2c3bad48fde15794e38d346f726b8ba64893860fb1049591c36b2cb819afee74"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/drift-integrity-surface-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "629e404388be4987d18a7e7b4a894fb95bae7cdd9c605834604afb4e09b0de8e"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-27T00:53:12Z"
+}

@@ -1,0 +1,19 @@
+{
+  "source_module_ref": "structures/core/drift-integrity-surface-slice.module.json",
+  "boundary_ref": "policy/data/generated-build-boundary.json",
+  "field_sources": {
+    "generated_classes": [
+      "policy/data/generated-build-boundary.json#/generated_classes"
+    ],
+    "build_classes": [
+      "policy/data/generated-build-boundary.json#/build_classes"
+    ],
+    "drift_runs": [
+      "generated/state/integrity/reference-docs-executable-slice/2026-03-26T23-05-00Z/drift-report.json",
+      "generated/state/integrity/core-closeout-status-slice/2026-03-26T23-20-00Z/drift-report.json",
+      "generated/state/integrity/boundary-family-registry-slice/2026-03-26T23-40-00Z/drift-report.json",
+      "generated/state/integrity/closeout-status-registry-slice/2026-03-26T23-55-00Z/drift-report.json",
+      "generated/state/integrity/policy-scope-surface-slice/2026-03-27T00-10-00Z/drift-report.json"
+    ]
+  }
+}
