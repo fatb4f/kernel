@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "closeout-status-registry-slice-input.schema.json",
+  "title": "Closeout status registry slice input",
+  "description": "Derived boundary contract for the kernel core closeout status registry slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "registry_id",
+    "source_module_id",
+    "source_module_ref",
+    "closeout_manifest_ref",
+    "boundary_registry_ref",
+    "operational_status_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "current_gate_status",
+    "blockers",
+    "checklist_statuses",
+    "component_statuses",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.closeout_status_registry.slice_input"
+    },
+    "control_object_id": {
+      "const": "closeout-status-registry-slice"
+    },
+    "registry_id": {
+      "const": "kernel-core-closeout-status"
+    },
+    "source_module_id": {
+      "const": "closeout-status-registry-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/core/closeout-status-registry-slice.module.json"
+    },
+    "closeout_manifest_ref": {
+      "const": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json"
+    },
+    "boundary_registry_ref": {
+      "const": "generated/registries/boundary-families.index.json"
+    },
+    "operational_status_ref": {
+      "const": "generated/docs/reference/operational-status.md"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/closeout-status-registry-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/closeout-status-registry-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/closeout-status-registry-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/kernel-core-closeout-status.index.json"
+    },
+    "current_gate_status": {
+      "type": "string",
+      "enum": [
+        "BLOCKED",
+        "OPEN",
+        "DONE",
+        "INVALID"
+      ]
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checklist_statuses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "manifest_status",
+          "observed_status",
+          "evidence_refs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "manifest_status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "done"
+            ]
+          },
+          "observed_status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "partial",
+              "materialized"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "component_statuses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "plane",
+          "manifest_status",
+          "observed_status",
+          "evidence_refs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "plane": {
+            "type": "string"
+          },
+          "manifest_status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "done"
+            ]
+          },
+          "observed_status": {
+            "type": "string",
+            "enum": [
+              "open",
+              "partial",
+              "materialized"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

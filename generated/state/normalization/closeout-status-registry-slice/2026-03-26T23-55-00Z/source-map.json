@@ -1,0 +1,16 @@
+{
+  "source_module_ref": "structures/core/closeout-status-registry-slice.module.json",
+  "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+  "boundary_registry_ref": "generated/registries/boundary-families.index.json",
+  "operational_status_ref": "generated/docs/reference/operational-status.md",
+  "field_sources": {
+    "checklist_statuses": [
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/checklist_items",
+      "generated/state/* evidence refs across executed slices"
+    ],
+    "component_statuses": [
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/kernel_core_components",
+      "generated/registries/boundary-families.index.json"
+    ]
+  }
+}

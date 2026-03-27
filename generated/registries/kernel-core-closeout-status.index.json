@@ -1,0 +1,237 @@
+{
+   "artifact_type": "kernel.closeout_status_registry",
+   "artifact_version": "0.1.0",
+   "blockers": [
+      "structures_core_not_fully_materialized",
+      "schemas_exported_not_fully_materialized",
+      "cue_policy_not_fully_materialized",
+      "normalization_outputs_not_materialized_outside_first_slice",
+      "admission_evidence_not_materialized_outside_first_slice",
+      "render_evidence_not_materialized_outside_first_slice",
+      "drift_integrity_evidence_not_materialized_outside_first_slice"
+   ],
+   "checklist_statuses": [
+      {
+         "evidence_refs": [
+            "kernel.spec.json",
+            "kernel.spec.md"
+         ],
+         "id": "c1",
+         "label": "Kernel spec remains the normative source for the kernel core JSON structure",
+         "manifest_status": "done",
+         "observed_status": "materialized"
+      },
+      {
+         "evidence_refs": [
+            "kernel.spec.json#/authority_model",
+            "generated/docs/reference/workflow.md"
+         ],
+         "id": "c2",
+         "label": "Authority model is fully represented in the manifest scope",
+         "manifest_status": "done",
+         "observed_status": "materialized"
+      },
+      {
+         "evidence_refs": [
+            "kernel.spec.json#/state_flow",
+            "generated/docs/reference/workflow.md"
+         ],
+         "id": "c3",
+         "label": "State-flow pipeline and boundary rules are fixed",
+         "manifest_status": "done",
+         "observed_status": "materialized"
+      },
+      {
+         "evidence_refs": [
+            "structures/",
+            "schemas/",
+            "policy/",
+            "render/jsonnet/",
+            "manifests/",
+            "generated/",
+            "build/"
+         ],
+         "id": "c4",
+         "label": "Plane definitions and repository semantics are covered end-to-end",
+         "manifest_status": "open",
+         "observed_status": "materialized"
+      },
+      {
+         "evidence_refs": [
+            "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalized-state.json",
+            "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json",
+            "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json"
+         ],
+         "id": "c5",
+         "label": "Normalization contract is materialized with required outputs",
+         "manifest_status": "open",
+         "observed_status": "partial"
+      },
+      {
+         "evidence_refs": [
+            "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json",
+            "generated/state/admission/core-closeout-status-slice/2026-03-26T23-20-00Z/decision.json",
+            "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/decision.json"
+         ],
+         "id": "c6",
+         "label": "Admission contract is materialized with explicit decision artifacts",
+         "manifest_status": "open",
+         "observed_status": "partial"
+      },
+      {
+         "evidence_refs": [
+            "render/jsonnet/reference/executable-slice.jsonnet",
+            "render/jsonnet/reference/core-closeout-status.jsonnet",
+            "render/jsonnet/registry/boundary-family-registry.jsonnet"
+         ],
+         "id": "c7",
+         "label": "Rendering contract is materialized and constrained to admitted state",
+         "manifest_status": "open",
+         "observed_status": "partial"
+      },
+      {
+         "evidence_refs": [
+            "manifests/bundles/",
+            "manifests/projections/",
+            "manifests/generators/"
+         ],
+         "id": "c8",
+         "label": "Manifest control objects exist for bundle, projection, and generator surfaces",
+         "manifest_status": "open",
+         "observed_status": "partial"
+      },
+      {
+         "evidence_refs": [
+            "generated/state/source-validation/reference-docs-executable-slice/2026-03-26T23-05-00Z/source-validation.json",
+            "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json",
+            "generated/state/render/boundary-family-registry-slice/2026-03-26T23-40-00Z/render-report.json",
+            "generated/state/integrity/boundary-family-registry-slice/2026-03-26T23-40-00Z/drift-report.json"
+         ],
+         "id": "c9",
+         "label": "Gate model G1-G6 and reason code families are declared and linked to evidence",
+         "manifest_status": "open",
+         "observed_status": "partial"
+      },
+      {
+         "evidence_refs": [
+            "kernel.spec.json#/completion_condition",
+            "schemas/exported/",
+            "generated/registries/kernel-core-closeout-status.index.json"
+         ],
+         "id": "c10",
+         "label": "Invariants, artifact classes, implementation order, and completion conditions are preserved as closeout obligations",
+         "manifest_status": "open",
+         "observed_status": "partial"
+      },
+      {
+         "evidence_refs": [
+            "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/kernel_core_components"
+         ],
+         "id": "c11",
+         "label": "Kernel core component matrix covers structure, schema, normalization, CUE admission, Jsonnet rendering, manifests, and drift integrity",
+         "manifest_status": "done",
+         "observed_status": "materialized"
+      }
+   ],
+   "component_statuses": [
+      {
+         "evidence_refs": [
+            "structures/core/",
+            "structures/extensions/",
+            "structures/relations/",
+            "structures/adapters/"
+         ],
+         "id": "kc1",
+         "manifest_status": "open",
+         "name": "canonical-structural-model",
+         "observed_status": "materialized",
+         "plane": "structure"
+      },
+      {
+         "evidence_refs": [
+            "schemas/exported/",
+            "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json",
+            "generated/state/export/boundary-family-registry-slice/2026-03-26T23-40-00Z/export-report.json"
+         ],
+         "id": "kc2",
+         "manifest_status": "open",
+         "name": "contract-export-surface",
+         "observed_status": "materialized",
+         "plane": "contract"
+      },
+      {
+         "evidence_refs": [
+            "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalized-state.json",
+            "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json",
+            "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json"
+         ],
+         "id": "kc3",
+         "manifest_status": "open",
+         "name": "normalization-layer",
+         "observed_status": "partial",
+         "plane": "structure-to-policy boundary"
+      },
+      {
+         "evidence_refs": [
+            "policy/kernel/",
+            "policy/admission/",
+            "policy/data/",
+            "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json",
+            "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/decision.json"
+         ],
+         "id": "kc4",
+         "manifest_status": "open",
+         "name": "admission-policy-surface",
+         "observed_status": "partial",
+         "plane": "policy"
+      },
+      {
+         "evidence_refs": [
+            "render/jsonnet/",
+            "generated/docs/reference/",
+            "generated/registries/"
+         ],
+         "id": "kc5",
+         "manifest_status": "open",
+         "name": "rendering-surface",
+         "observed_status": "materialized",
+         "plane": "artifact"
+      },
+      {
+         "evidence_refs": [
+            "manifests/bundles/",
+            "manifests/projections/",
+            "manifests/generators/"
+         ],
+         "id": "kc6",
+         "manifest_status": "open",
+         "name": "manifest-control-surface",
+         "observed_status": "materialized",
+         "plane": "control"
+      },
+      {
+         "evidence_refs": [
+            "generated/state/integrity/reference-docs-executable-slice/2026-03-26T23-05-00Z/drift-report.json",
+            "generated/state/integrity/core-closeout-status-slice/2026-03-26T23-20-00Z/drift-report.json",
+            "generated/state/integrity/boundary-family-registry-slice/2026-03-26T23-40-00Z/drift-report.json"
+         ],
+         "id": "kc7",
+         "manifest_status": "open",
+         "name": "drift-integrity-surface",
+         "observed_status": "partial",
+         "plane": "integrity"
+      }
+   ],
+   "current_gate_status": "BLOCKED",
+   "generated_from": {
+      "control_object_id": "closeout-status-registry-slice",
+      "output_path": "generated/registries/kernel-core-closeout-status.index.json"
+   },
+   "refs": {
+      "boundary_registry_ref": "generated/registries/boundary-families.index.json",
+      "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+      "operational_status_ref": "generated/docs/reference/operational-status.md",
+      "source_module_ref": "structures/core/closeout-status-registry-slice.module.json"
+   },
+   "registry_id": "kernel-core-closeout-status"
+}

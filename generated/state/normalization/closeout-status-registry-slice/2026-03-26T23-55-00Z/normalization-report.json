@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "closeout-status-registry-slice",
+  "run_id": "2026-03-26T23-55-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-27T00:28:28Z",
+  "operations": [
+    "mapped closeout manifest checklist and component declarations into observed status entries",
+    "bound observed status to committed evidence refs across executed slices",
+    "kept the closeout manifest as downstream control metadata rather than authority"
+  ],
+  "forbidden_operations_performed": []
+}
