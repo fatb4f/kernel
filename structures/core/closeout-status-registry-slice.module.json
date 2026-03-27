@@ -1,0 +1,46 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "closeout-status-registry-slice",
+  "fragments": [
+    {
+      "name": "checklist-statuses",
+      "class": "core",
+      "source_refs": [
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/checklist_items",
+        "kernel.spec.json#/normative_implementation/gate_model"
+      ],
+      "description": "Derived status view for kernel core checklist items against committed evidence."
+    },
+    {
+      "name": "component-statuses",
+      "class": "core",
+      "source_refs": [
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/kernel_core_components",
+        "generated/registries/boundary-families.index.json"
+      ],
+      "description": "Derived status view for kernel core component materialization against committed evidence."
+    },
+    {
+      "name": "operational-gate",
+      "class": "core",
+      "source_refs": [
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/operational_status_gate",
+        "generated/docs/reference/operational-status.md"
+      ],
+      "description": "Derived status view for the current core operational gate and remaining blockers."
+    }
+  ],
+  "relations": [
+    {
+      "from": "checklist-statuses",
+      "to": "component-statuses",
+      "relation": "summarizes"
+    },
+    {
+      "from": "component-statuses",
+      "to": "operational-gate",
+      "relation": "constrains"
+    }
+  ],
+  "notes": "Authoritative source module for a derived closeout status registry. The manifest remains control metadata; the registry reports evidence-backed observed status from committed artifacts."
+}

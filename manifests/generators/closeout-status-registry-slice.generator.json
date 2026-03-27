@@ -1,0 +1,26 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "closeout-status-registry-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/closeout-status-registry-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+    "generated/registries/boundary-families.index.json",
+    "generated/docs/reference/operational-status.md"
+  ],
+  "outputs": [
+    "schemas/exported/closeout-status-registry-slice-input.schema.json",
+    "generated/state/source-validation/closeout-status-registry-slice/<run-id>/source-validation.json",
+    "generated/state/export/closeout-status-registry-slice/<run-id>/export-report.json",
+    "generated/state/normalization/closeout-status-registry-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/closeout-status-registry-slice/<run-id>/source-map.json",
+    "generated/state/normalization/closeout-status-registry-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The closeout manifest remains downstream control metadata, not authority.",
+    "Observed status is derived from committed evidence, not inferred from intent.",
+    "The exported registry-input schema is derived output only."
+  ],
+  "notes": "Generator control object for the closeout status registry slice."
+}

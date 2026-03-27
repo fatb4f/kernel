@@ -60,3 +60,6 @@ core-closeout-slice RUN_ID='':
 
 boundary-registry-slice RUN_ID='':
 	bash scripts/run_boundary_family_registry_slice.sh {{RUN_ID}}
+
+closeout-status-registry-slice RUN_ID='':
+	bash scripts/run_closeout_status_registry_slice.sh {{RUN_ID}}

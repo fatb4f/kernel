@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "closeout-status-registry-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/closeout-status-registry-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/closeout-status-registry.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/kernel-core-closeout-status.index.json",
+    "generated/state/render/closeout-status-registry-slice/<run-id>/render-report.json",
+    "generated/state/integrity/closeout-status-registry-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits a registry artifact only.",
+    "Observed status remains a derived view and does not mutate the manifest."
+  ],
+  "notes": "Projection control object for the closeout status registry slice."
+}
