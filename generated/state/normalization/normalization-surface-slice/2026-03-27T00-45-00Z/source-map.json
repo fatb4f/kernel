@@ -1,0 +1,13 @@
+{
+  "source_module_ref": "structures/core/normalization-surface-slice.module.json",
+  "field_sources": {
+    "slices": [
+      "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/*",
+      "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/*",
+      "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/*",
+      "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/*",
+      "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/*",
+      "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/*"
+    ]
+  }
+}

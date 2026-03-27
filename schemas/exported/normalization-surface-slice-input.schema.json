@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "normalization-surface-slice-input.schema.json",
+  "title": "Normalization surface slice input",
+  "description": "Derived boundary contract for the normalization surface slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_module_id",
+    "source_module_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "slices",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.normalization_surface.slice_input"
+    },
+    "control_object_id": {
+      "const": "normalization-surface-slice"
+    },
+    "source_module_id": {
+      "const": "normalization-surface-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/core/normalization-surface-slice.module.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/normalization-surface-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/normalization-surface-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/normalization-surface-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/normalization-surfaces.index.json"
+    },
+    "slices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "control_object_id",
+          "run_id",
+          "normalized_state_ref",
+          "source_map_ref",
+          "report_ref",
+          "report_status",
+          "operations"
+        ],
+        "properties": {
+          "control_object_id": {
+            "type": "string"
+          },
+          "run_id": {
+            "type": "string"
+          },
+          "normalized_state_ref": {
+            "type": "string"
+          },
+          "source_map_ref": {
+            "type": "string"
+          },
+          "report_ref": {
+            "type": "string"
+          },
+          "report_status": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL"
+            ]
+          },
+          "operations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

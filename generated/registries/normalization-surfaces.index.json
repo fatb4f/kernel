@@ -1,0 +1,90 @@
+{
+   "artifact_type": "kernel.normalization_surface_registry",
+   "artifact_version": "0.1.0",
+   "generated_from": {
+      "control_object_id": "normalization-surface-slice",
+      "output_path": "generated/registries/normalization-surfaces.index.json"
+   },
+   "slices": [
+      {
+         "control_object_id": "reference-docs-executable-slice",
+         "normalized_state_ref": "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalized-state.json",
+         "operations": [
+            "mapped structural fragments to renderer input sections",
+            "canonicalized section titles",
+            "bound repo-relative output path",
+            "recorded source-to-normalized provenance"
+         ],
+         "report_ref": "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalization-report.json",
+         "report_status": "PASS",
+         "run_id": "2026-03-26T23-05-00Z",
+         "source_map_ref": "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/source-map.json"
+      },
+      {
+         "control_object_id": "core-closeout-status-slice",
+         "normalized_state_ref": "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json",
+         "operations": [
+            "copied current_status, blockers, and decision_basis from the closeout manifest",
+            "bound the operational status page output path",
+            "recorded implemented executable slices"
+         ],
+         "report_ref": "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalization-report.json",
+         "report_status": "PASS",
+         "run_id": "2026-03-26T23-20-00Z",
+         "source_map_ref": "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/source-map.json"
+      },
+      {
+         "control_object_id": "boundary-family-registry-slice",
+         "normalized_state_ref": "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json",
+         "operations": [
+            "mapped authoritative structural fragments to registry entries",
+            "bound derived contracts to each family entry",
+            "marked policy-scope family as partial because the current scope index remains structural-only placeholder content"
+         ],
+         "report_ref": "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalization-report.json",
+         "report_status": "PASS",
+         "run_id": "2026-03-26T23-40-00Z",
+         "source_map_ref": "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/source-map.json"
+      },
+      {
+         "control_object_id": "closeout-status-registry-slice",
+         "normalized_state_ref": "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/normalized-state.json",
+         "operations": [
+            "mapped closeout manifest checklist and component declarations into observed status entries",
+            "bound observed status to committed evidence refs across executed slices",
+            "kept the closeout manifest as downstream control metadata rather than authority"
+         ],
+         "report_ref": "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/normalization-report.json",
+         "report_status": "PASS",
+         "run_id": "2026-03-26T23-55-00Z",
+         "source_map_ref": "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/source-map.json"
+      },
+      {
+         "control_object_id": "policy-scope-surface-slice",
+         "normalized_state_ref": "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/normalized-state.json",
+         "operations": [
+            "bound kernel, admission, and data structural policy scopes into one normalized registry input",
+            "preserved each scope status without inventing runtime semantics",
+            "recorded repo-relative supporting refs for each scope"
+         ],
+         "report_ref": "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/normalization-report.json",
+         "report_status": "PASS",
+         "run_id": "2026-03-27T00-10-00Z",
+         "source_map_ref": "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/source-map.json"
+      },
+      {
+         "control_object_id": "drift-integrity-surface-slice",
+         "normalized_state_ref": "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/normalized-state.json",
+         "operations": [
+            "bound generated/build authority boundary declarations into one integrity surface input",
+            "collected committed drift reports across executed slices",
+            "preserved drift checks without introducing new integrity claims"
+         ],
+         "report_ref": "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/normalization-report.json",
+         "report_status": "PASS",
+         "run_id": "2026-03-27T00-30-00Z",
+         "source_map_ref": "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/source-map.json"
+      }
+   ],
+   "source_module_ref": "structures/core/normalization-surface-slice.module.json"
+}

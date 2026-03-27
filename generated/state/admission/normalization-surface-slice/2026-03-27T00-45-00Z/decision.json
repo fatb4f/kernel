@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "normalization-surface-slice",
+  "run_id": "2026-03-27T00-45-00Z",
+  "policy_bundle_id": "policy/admission/normalization-surface-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/normalization-surface-slice/2026-03-27T00-45-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "1f290acd1ef6a227597d1957476a4070d997f5eab528a938bc7aedd7d176cf14"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/normalization-surface-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "33ded8694030f24f4236ab427f024ad42056d44863f9f145b84a1259a5dd8b40"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-27T00:58:00Z"
+}
