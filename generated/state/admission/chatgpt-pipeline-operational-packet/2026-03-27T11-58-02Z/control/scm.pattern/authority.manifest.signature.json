@@ -1,0 +1,21 @@
+{
+  "kind": "authority_manifest.signature",
+  "version": "0.2.0",
+  "manifest_ref": "control/scm.pattern/authority.manifest.json",
+  "signer_id": "kernel-root-local",
+  "signer_ref": "control/trust/root.signers.json",
+  "signing_mode": "digest_attestation",
+  "manifest_fingerprint": {
+    "algorithm": "sha256",
+    "value": "814742ce0912ca8e92af1e60f4b1dbb22329a96cc76b97650574b673b027f459"
+  },
+  "validation_fingerprint": {
+    "algorithm": "sha256",
+    "value": "429eea7d8144e1840e01460eb628c51fa7120f0183d0fad3c802e9ad5d02788e"
+  },
+  "signature_envelope": {
+    "algorithm": "sha256",
+    "value": "69c68302b4b6f2e8c5997c7aef1e5484b7a31f95d83cc4f01a7e09218032dbbf"
+  },
+  "status": "VERIFIABLE_BY_LOCAL_RUNTIME"
+}

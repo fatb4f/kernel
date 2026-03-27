@@ -1,0 +1,26 @@
+{
+  "artifact_type": "kernel.admission.decision",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-pipeline-operational-packet",
+  "run_id": "2026-03-27T11-58-02Z",
+  "decision": "ALLOW",
+  "summary": "Bundled ChatGPT operational packet validated successfully in snapshot execution.",
+  "policy_bundle_id": "chatgpt-pipeline-operational-packet.zip",
+  "input_digests": {
+    "source_archive": {
+      "algorithm": "sha256",
+      "value": "90778093c736b53f477da729d1ce36b80d109842829cbe8c078dbef915916c87"
+    }
+  },
+  "tool_versions": {
+    "python": "3.14.3",
+    "validator": "local_runtime/validate_and_admit.py"
+  },
+  "result": {
+    "packet_id": "pkt-operational-chatgpt-pipeline-001",
+    "admission": "PASS",
+    "review_gate": "PASS",
+    "realization_gate": "WAITING_HUMAN_REVIEW",
+    "next_step": "Issue packet.review.decision.json externally to unlock realization."
+  }
+}

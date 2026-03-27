@@ -1,0 +1,43 @@
+{
+  "artifact_type": "gpt_handoff.root.trust.evidence",
+  "artifact_version": "0.2.0",
+  "packet_id": "pkt-operational-chatgpt-pipeline-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "canonical_refs": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json"
+  },
+  "canonical_fingerprints": {
+    "root_signers": {
+      "algorithm": "sha256",
+      "value": "2e2316e32c8f10a80c558534154a9ba793e4ebd25f23be1b74129faf7ae15ed3"
+    },
+    "authority_manifest": {
+      "algorithm": "sha256",
+      "value": "814742ce0912ca8e92af1e60f4b1dbb22329a96cc76b97650574b673b027f459"
+    },
+    "authority_manifest_validation": {
+      "algorithm": "sha256",
+      "value": "429eea7d8144e1840e01460eb628c51fa7120f0183d0fad3c802e9ad5d02788e"
+    },
+    "authority_manifest_signature": {
+      "algorithm": "sha256",
+      "value": "31da5dbbf74ee570e37c7da367ec1e7bf2370d1d95a3c8bfd2362845c5d57027"
+    },
+    "delegation": {
+      "algorithm": "sha256",
+      "value": "7054ae598ab1c142396746af1c4e0103a8f072c067425a8bc84d20165ffb69c7"
+    }
+  },
+  "evidence_requirements": {
+    "all_refs_must_resolve": true,
+    "all_fingerprints_must_match": true,
+    "signature_must_verify": true,
+    "delegation_must_be_in_scope": true
+  },
+  "status": "DECLARED_REQUIRED_EVIDENCE"
+}

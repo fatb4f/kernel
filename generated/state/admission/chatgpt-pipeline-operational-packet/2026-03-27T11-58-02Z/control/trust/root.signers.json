@@ -1,0 +1,20 @@
+{
+  "kind": "kernel.root_signers",
+  "version": "0.2.0",
+  "status": "active",
+  "signers": [
+    {
+      "signer_id": "kernel-root-local",
+      "status": "active",
+      "algorithm": "sha256",
+      "trust_scope": [
+        "control/scm.pattern/**",
+        "control/trust/**",
+        "pipeline/**",
+        "schemas/**"
+      ],
+      "verification_mode": "digest_attestation",
+      "note": "Local bundle trust anchor for operational ChatGPT packet validation."
+    }
+  ]
+}

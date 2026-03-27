@@ -1,0 +1,154 @@
+{
+  "artifact_type": "gpt_handoff.packet.definition",
+  "artifact_version": "0.2.0",
+  "spec_ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+  "packet_id": "pkt-operational-chatgpt-pipeline-001",
+  "title": "Operational ChatGPT pipeline closure packet",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "summary": "Self-contained operational packet that closes the missing authority instance, required packet artifacts, trust evidence, and local admission runner for the collapsed ChatGPT-owned generation process.",
+  "ownership": {
+    "authority_owner": "kernel",
+    "packet_author": "chatgpt_packet_generator",
+    "validation_owner": "local_runtime",
+    "realization_owner": "scm.pattern"
+  },
+  "constraints": [
+    "ChatGPT may author packet artifacts only.",
+    "No hidden secondary plan or implement artifacts are allowed.",
+    "All paths must be repo-relative.",
+    "Human review is authoritative and remains external.",
+    "packet.approval.json is transitional and non-authoritative.",
+    "Formatting-only changes do not stale approval basis."
+  ],
+  "realization": {
+    "local_realization_surface": "scm.pattern",
+    "canonical_packet_root": "generated/packets/pkt-operational-chatgpt-pipeline-001",
+    "repo_relative_paths_only": true,
+    "chatgpt_may_realize": false
+  },
+  "inputs": [
+    {
+      "ref": "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/problem_set.json",
+      "role": "problem_set"
+    },
+    {
+      "ref": "control/scm.pattern/authority.manifest.json",
+      "role": "authority_manifest"
+    },
+    {
+      "ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+      "role": "authority_manifest_schema"
+    },
+    {
+      "ref": "control/trust/root.signers.json",
+      "role": "root_signers"
+    },
+    {
+      "ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "role": "delegation"
+    },
+    {
+      "ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+      "role": "pipeline_manifest"
+    },
+    {
+      "ref": "pipeline/chatgpt.execution.policy.json",
+      "role": "execution_policy"
+    },
+    {
+      "ref": "pipeline/chatgpt.validation.manifest.json",
+      "role": "validation_manifest"
+    },
+    {
+      "ref": "pipeline/chatgpt.gate.policy.json",
+      "role": "gate_policy"
+    }
+  ],
+  "deliverables": {
+    "required_now": [
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.definition.json",
+        "kind": "packet_definition"
+      },
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/scm.pattern.binding.json",
+        "kind": "scm_pattern_binding"
+      },
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.review.request.json",
+        "kind": "packet_review_request"
+      },
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/root.trust.evidence.json",
+        "kind": "root_trust_evidence"
+      },
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/regen.record.json",
+        "kind": "regen_record"
+      },
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/artifact.manifest.json",
+        "kind": "artifact_manifest"
+      },
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.approval.json",
+        "kind": "compatibility_placeholder",
+        "transitional": true,
+        "authoritative": false
+      },
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/human/packet.definition.md",
+        "kind": "derived_human_definition"
+      }
+    ],
+    "conditional": [
+      {
+        "ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.review.decision.json",
+        "kind": "packet_review_decision",
+        "required_when": "human_review_decision_issued == true"
+      }
+    ]
+  },
+  "kernel_trust_requirements": {
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json"
+  },
+  "review_lifecycle": {
+    "review_request_ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.review.request.json",
+    "review_decision_ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.review.decision.json",
+    "current_gate": "AWAITING_HUMAN_REVIEW",
+    "allowed_outcomes": [
+      "APPROVED",
+      "REVISE",
+      "REJECTED"
+    ],
+    "non_authoritative_placeholder_ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.approval.json"
+  },
+  "admissibility_rules": [
+    "All required artifacts must exist.",
+    "All required artifacts must validate against schema.",
+    "All refs must resolve within the bundle.",
+    "Trust evidence fingerprints must match current file content.",
+    "Admission may pass before human review, but realization may not.",
+    "Generated instances never mutate authority."
+  ],
+  "staleness_rules": {
+    "stale_when": [
+      "problem_set fingerprint change",
+      "authority manifest change",
+      "schema change",
+      "required output contract change"
+    ],
+    "formatting_only_changes_do_not_stale": true
+  },
+  "regeneration": {
+    "policy_ref": "pipeline/chatgpt.execution.policy.json",
+    "regen_record_ref": "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/regen.record.json",
+    "skip_when_inputs_unchanged": true
+  }
+}

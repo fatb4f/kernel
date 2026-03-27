@@ -1,0 +1,103 @@
+{
+  "kind": "kernel.problem_set",
+  "problem_set_id": "ps-operationalize-chatgpt-pipeline-001",
+  "version": "0.2.0",
+  "status": "active",
+  "identity": {
+    "name": "operationalize_chatgpt_pipeline",
+    "title": "Operationalize the ChatGPT-owned packet pipeline",
+    "owners": [
+      "kernel",
+      "local_runtime"
+    ]
+  },
+  "objective": "Produce a self-contained packet bundle that closes the authority-manifest, packet-artifact, trust-evidence, and local-admission gaps for the collapsed ChatGPT-owned plan/implement process.",
+  "scope": {
+    "in_scope": [
+      "single problem_set ingress",
+      "self-contained authority surface",
+      "required machine and human packet artifacts",
+      "local validation and admission runner",
+      "fingerprint-based staleness and trust evidence"
+    ],
+    "out_of_scope": [
+      "realization by ChatGPT",
+      "forging human review approval",
+      "mutating kernel authority outside this packet bundle"
+    ]
+  },
+  "constraints": [
+    "ChatGPT authors packet artifacts only.",
+    "Local runtime owns validation, admission, and realization.",
+    "All artifact paths must be repo-relative.",
+    "Human review remains external and authoritative.",
+    "Formatting-only changes must not stale approval basis."
+  ],
+  "assumptions": [
+    "The local runtime may use digest-attested trust records instead of external PKI.",
+    "The packet bundle should be self-contained for review and validation.",
+    "The canonical packet root is generated/packets/<packet_id>/."
+  ],
+  "requested_outputs": [
+    "authority manifest instance and trust material",
+    "packet.definition.json",
+    "scm.pattern.binding.json",
+    "packet.review.request.json",
+    "root.trust.evidence.json",
+    "regen.record.json",
+    "artifact.manifest.json",
+    "packet.approval.json",
+    "packet.definition.md",
+    "local validation and admission script"
+  ],
+  "authority_refs": [
+    "control/scm.pattern/authority.manifest.json",
+    "control/trust/root.signers.json",
+    "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "pipeline/chatgpt.packet.pipeline.manifest.json",
+    "pipeline/chatgpt.execution.policy.json",
+    "pipeline/chatgpt.validation.manifest.json",
+    "pipeline/chatgpt.gate.policy.json",
+    "pipeline/problem_set.schema.json"
+  ],
+  "acceptance_criteria": [
+    "All required artifacts exist and validate.",
+    "All refs resolve within the bundle.",
+    "Authority and trust inputs are instantiated, not missing.",
+    "Artifact fingerprints are materialized, not placeholders.",
+    "A local runner can validate admission and report review gate status."
+  ],
+  "review_criteria": [
+    "Packet constraints match local execution boundary.",
+    "Trust evidence matches authority and delegation material.",
+    "No artifact claims effective human approval."
+  ],
+  "normalization": {
+    "mode": "canonical_json_sorted_keys",
+    "string_trim": true,
+    "newline_mode": "lf"
+  },
+  "change_control": {
+    "normalized_json": true,
+    "stale_when": [
+      "problem_set fingerprint change",
+      "authority manifest change",
+      "schema change",
+      "required output contract change"
+    ],
+    "formatting_only_changes_do_not_stale": true,
+    "material_change_fields": [
+      "objective",
+      "scope",
+      "constraints",
+      "assumptions",
+      "requested_outputs",
+      "authority_refs",
+      "acceptance_criteria"
+    ]
+  },
+  "fingerprint": {
+    "algorithm": "sha256",
+    "value": "6093315418af9e9cfe878ad5351d65524fd61e4dbe837cff902b23ecfa982f41"
+  }
+}

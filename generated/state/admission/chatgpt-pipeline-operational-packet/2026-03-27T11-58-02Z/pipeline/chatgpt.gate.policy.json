@@ -1,0 +1,39 @@
+{
+  "kind": "kernel.chatgpt_gate_policy",
+  "version": "0.2.0",
+  "status": "active",
+  "gates": [
+    {
+      "name": "admission",
+      "requires": [
+        "problem_set validated",
+        "authority manifest valid",
+        "output family complete",
+        "fingerprints consistent"
+      ]
+    },
+    {
+      "name": "review",
+      "requires": [
+        "packet.review.request present",
+        "packet.review.decision absent unless human-issued",
+        "placeholder approval is non-authoritative"
+      ]
+    },
+    {
+      "name": "realization",
+      "requires": [
+        "human-issued review decision present",
+        "scm.pattern binding valid",
+        "approval basis fingerprint matches",
+        "local runtime permitted to realize"
+      ]
+    }
+  ],
+  "promotion_rules": [
+    "No promotion without gate pass.",
+    "Stale approval blocks promotion.",
+    "Authority-bearing changes require human review.",
+    "Direct publish is governed by publication policy, not by generation policy."
+  ]
+}

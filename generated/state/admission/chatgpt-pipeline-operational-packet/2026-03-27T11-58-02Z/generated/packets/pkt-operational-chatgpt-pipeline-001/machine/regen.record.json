@@ -1,0 +1,27 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.2.0",
+  "packet_id": "pkt-operational-chatgpt-pipeline-001",
+  "policy": "Regeneration is blocked unless required inputs change materially.",
+  "required_inputs": {
+    "problem_set_ref": "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/problem_set.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+    "pipeline_manifest_ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "pipeline/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "pipeline/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "pipeline/chatgpt.gate.policy.json"
+  },
+  "output_fingerprints": {
+    "packet.definition.json": "a73084d279daab3fc676dcb8cd6704ef4c3ca761341928f3216a9cbadfc5649e",
+    "scm.pattern.binding.json": "b4e2fdee2132506a6d66817c3b09b8ab43bd048aa3d6d90fdc8ba92271e9a57a",
+    "packet.review.request.json": "4c69ee4fdfdb53a47cb02e06b52e5941e7f0f8841e97893a3cb11e99dc721a02",
+    "root.trust.evidence.json": "81a769fe6d332163248f2dd07d47215f2f1f2b2ce975135c64e9bcf2b99b7e32",
+    "artifact.manifest.json": "afd8a56928fc5eb412134b49529139c00c1102fce40e60e391963e07046ad2b3",
+    "packet.approval.json": "8f777259c22a98e13804784cbce5e2688640d532ee3de9a9b1ce4eb981fcbc51",
+    "packet.definition.md": "14256f22d9b8b48772d86cecf3ef148fea0b93e252119fd7a67958f6a46be039"
+  },
+  "approval_basis_fingerprint": "5049ff0b944f9e21550741592cffb5efad3e9c1e4abb6508e5100b526a654e83",
+  "status": "GENERATED",
+  "notes": "Formatting-only changes do not stale approval basis. Human review decision, if issued later, must target the approval basis fingerprint recorded here."
+}

@@ -1,0 +1,13 @@
+{
+  "artifact_type": "kernel.admitted_state",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-pipeline-operational-packet",
+  "run_id": "2026-03-27T11-58-02Z",
+  "status": "ADMITTED",
+  "packet_id": "pkt-operational-chatgpt-pipeline-001",
+  "admission": "PASS",
+  "review_gate": "PASS",
+  "realization_gate": "WAITING_HUMAN_REVIEW",
+  "next_step": "Issue packet.review.decision.json externally to unlock realization.",
+  "snapshot_root": "generated/state/admission/chatgpt-pipeline-operational-packet/2026-03-27T11-58-02Z"
+}

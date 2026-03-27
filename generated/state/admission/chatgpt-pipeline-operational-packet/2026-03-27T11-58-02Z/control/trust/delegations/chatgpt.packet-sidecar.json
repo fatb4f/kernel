@@ -1,0 +1,31 @@
+{
+  "kind": "kernel.trust_delegation",
+  "version": "0.2.0",
+  "delegation_id": "chatgpt.packet-sidecar",
+  "issuer_signer_id": "kernel-root-local",
+  "delegate_role": "chatgpt_packet_generator",
+  "delegated_capabilities": [
+    "author_packet_artifacts",
+    "emit_review_request",
+    "emit_non_authoritative_approval_placeholder"
+  ],
+  "prohibited_capabilities": [
+    "approve",
+    "realize",
+    "mutate_authority"
+  ],
+  "scope": {
+    "read_paths": [
+      "control/scm.pattern/**",
+      "control/trust/**",
+      "pipeline/**",
+      "schemas/**",
+      "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/**"
+    ],
+    "write_paths": [
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/**",
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/human/**"
+    ]
+  },
+  "status": "active"
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "chatgpt-sidecar-authority-manifest",
+  "spec_version": "0.2.0",
+  "sidecar_status": "operational_shallow_sidecar",
+  "workflow_authority_root": "control/scm.pattern",
+  "validation_surface_root": "schemas/control/scm.pattern",
+  "template_surface_root": "generated/packets",
+  "precedence": [
+    "control/scm.pattern/authority.manifest.json",
+    "control/trust/root.signers.json",
+    "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "pipeline/**",
+    "schemas/**",
+    "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/problem_set.json",
+    "generated/packets/pkt-operational-chatgpt-pipeline-001/**"
+  ],
+  "conflict_resolution": [
+    "Authority manifest defines normative authority ordering.",
+    "Trust material constrains who may author artifacts and what remains forbidden.",
+    "Pipeline policies define execution, validation, and gate behavior.",
+    "Schemas define structural validity only.",
+    "Generated packet artifacts are instances and never become authority.",
+    "Fail closed on unresolved conflict or trust drift."
+  ],
+  "approval_basis_inputs": [
+    "control/scm.pattern/authority.manifest.json",
+    "control/trust/root.signers.json",
+    "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "pipeline/chatgpt.packet.pipeline.manifest.json",
+    "pipeline/chatgpt.execution.policy.json",
+    "pipeline/chatgpt.validation.manifest.json",
+    "pipeline/chatgpt.gate.policy.json",
+    "pipeline/problem_set.schema.json",
+    "schemas/chatgpt-packet/**",
+    "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/problem_set.json"
+  ],
+  "delegated_surfaces": [
+    {
+      "path": "control/scm.pattern/**",
+      "role": "workflow_authority",
+      "status": "normative_for_lifecycle"
+    },
+    {
+      "path": "control/trust/**",
+      "role": "trust_root",
+      "status": "normative_for_admission"
+    },
+    {
+      "path": "pipeline/**",
+      "role": "execution_runtime",
+      "status": "normative_for_packet_authoring"
+    },
+    {
+      "path": "schemas/chatgpt-packet/**",
+      "role": "validation_surface",
+      "status": "normative_for_object_validation"
+    },
+    {
+      "path": "generated/packets/pkt-operational-chatgpt-pipeline-001/**",
+      "role": "generated_instances",
+      "status": "instances_only"
+    }
+  ],
+  "deprecation_note": "This operational sidecar remains intentionally shallow: ChatGPT authors packets, local runtime validates and realizes, and human review remains external."
+}

@@ -1,0 +1,13 @@
+{
+  "kind": "authority_manifest.validation",
+  "version": "0.2.0",
+  "manifest_ref": "control/scm.pattern/authority.manifest.json",
+  "schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json",
+  "manifest_fingerprint": {
+    "algorithm": "sha256",
+    "value": "814742ce0912ca8e92af1e60f4b1dbb22329a96cc76b97650574b673b027f459"
+  },
+  "validation_status": "PASS",
+  "validated_by": "local_runtime/validate_and_admit.py",
+  "validated_at": "2026-03-27T00:00:00Z"
+}

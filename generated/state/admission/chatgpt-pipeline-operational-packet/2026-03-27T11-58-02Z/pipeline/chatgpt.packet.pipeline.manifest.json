@@ -1,0 +1,67 @@
+{
+  "kind": "kernel.chatgpt_packet_pipeline",
+  "version": "0.2.0",
+  "status": "active",
+  "purpose": "Deterministic ChatGPT packet authoring pipeline from a single problem_set input with local realization outside the model boundary.",
+  "entry": {
+    "input_contract_ref": "pipeline/problem_set.schema.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json"
+  },
+  "authority": {
+    "kernel_root": "kernel",
+    "source_priority": [
+      "kernel/meta-manifest.yaml",
+      "kernel/sources/manifest.yaml",
+      "kernel/manifests/contracts.yaml",
+      "kernel/manifests/workflows.yaml",
+      "kernel/manifests/publication.yaml",
+      "kernel/manifests/lineage.yaml",
+      "kernel/manifests/glossary.yaml",
+      "kernel/manifests/decision-register.yaml"
+    ],
+    "conflict_rule": "Higher priority wins; unresolved conflicts must be surfaced."
+  },
+  "generation_order": [
+    "normalize problem_set",
+    "author packet.definition",
+    "bind scm.pattern",
+    "emit review.request",
+    "emit root.trust.evidence",
+    "emit regen.record",
+    "emit artifact.manifest"
+  ],
+  "output_family": {
+    "required_artifacts": [
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.definition.json",
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/scm.pattern.binding.json",
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.review.request.json",
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/root.trust.evidence.json",
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/regen.record.json",
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/artifact.manifest.json",
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/human/packet.definition.md"
+    ],
+    "conditional_artifacts": [
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.review.decision.json"
+    ],
+    "compatibility_artifacts": [
+      "generated/packets/pkt-operational-chatgpt-pipeline-001/machine/packet.approval.json"
+    ]
+  },
+  "execution_model": {
+    "chatgpt_role": "deterministic packet authoring",
+    "local_runtime_role": "validation, admission, and realization",
+    "cross_boundary_rule": "ChatGPT does not realize work."
+  },
+  "state_model": {
+    "states": [
+      "REQUESTED",
+      "DEFINITION_DRAFTED",
+      "DEFINITION_UNDER_REVIEW",
+      "REQUIRES_REAPPROVAL",
+      "DEFINITION_APPROVED",
+      "REALIZED_VIA_SCM_PATTERN",
+      "CLOSED"
+    ]
+  }
+}
