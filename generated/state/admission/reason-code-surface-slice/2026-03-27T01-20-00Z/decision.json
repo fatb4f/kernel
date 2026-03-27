@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "reason-code-surface-slice",
+  "run_id": "2026-03-27T01-20-00Z",
+  "policy_bundle_id": "policy/admission/reason-code-surface-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/reason-code-surface-slice/2026-03-27T01-20-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "af4186e40a686a1f88e485480ad6433ee6b2381bec9be933f3a51413f31a8c2e"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/reason-code-surface-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "8727329f9a1a29ea8c0cfe4bde1534cb16366671131a3d4428ab921f46d002ec"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-27T01:26:21Z"
+}

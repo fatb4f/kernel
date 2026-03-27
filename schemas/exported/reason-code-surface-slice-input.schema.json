@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reason-code-surface-slice-input.schema.json",
+  "title": "Reason-code surface slice input",
+  "description": "Derived boundary contract for the reason-code surface slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_module_id",
+    "source_module_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "families",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.reason_code_surface.slice_input"
+    },
+    "control_object_id": {
+      "const": "reason-code-surface-slice"
+    },
+    "source_module_id": {
+      "const": "reason-code-surface-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/core/reason-code-surface-slice.module.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/reason-code-surface-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/reason-code-surface-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/reason-code-surface-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/reason-code-surfaces.index.json"
+    },
+    "families": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "family_id",
+          "prefix",
+          "gate",
+          "description",
+          "declared_refs",
+          "observed_codes",
+          "status"
+        ],
+        "properties": {
+          "family_id": {
+            "type": "string",
+            "enum": [
+              "SRC",
+              "EXPORT",
+              "NORM",
+              "ADMIT",
+              "RENDER",
+              "DRIFT"
+            ]
+          },
+          "prefix": {
+            "type": "string"
+          },
+          "gate": {
+            "type": "string",
+            "enum": [
+              "G1",
+              "G2",
+              "G3",
+              "G4",
+              "G5",
+              "G6"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "declared_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "observed_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "declared_only",
+              "observed"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

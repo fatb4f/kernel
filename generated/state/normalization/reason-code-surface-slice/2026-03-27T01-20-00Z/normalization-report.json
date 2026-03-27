@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "reason-code-surface-slice",
+  "run_id": "2026-03-27T01-20-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-27T01:26:21Z",
+  "operations": [
+    "bound declared gate reason-code families into one registry input",
+    "attached observed reason codes only where committed evidence exists",
+    "preserved declared-only status for families with no committed observed codes"
+  ],
+  "forbidden_operations_performed": []
+}

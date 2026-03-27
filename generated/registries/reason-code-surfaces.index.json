@@ -1,0 +1,90 @@
+{
+   "artifact_type": "kernel.reason_code_surface_registry",
+   "artifact_version": "0.1.0",
+   "families": [
+      {
+         "declared_refs": [
+            "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/0",
+            "generated/docs/reference/gates.md"
+         ],
+         "description": "Source-plane validation and parse/import failures.",
+         "family_id": "SRC",
+         "gate": "G1",
+         "observed_codes": [
+            "SRC_SCHEMA_VALIDATION_FAILED"
+         ],
+         "prefix": "SRC_",
+         "status": "observed"
+      },
+      {
+         "declared_refs": [
+            "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/1",
+            "generated/docs/reference/gates.md"
+         ],
+         "description": "Contract export and derived schema failures.",
+         "family_id": "EXPORT",
+         "gate": "G2",
+         "observed_codes": [
+            "EXPORT_SCHEMA_INVALID"
+         ],
+         "prefix": "EXPORT_",
+         "status": "observed"
+      },
+      {
+         "declared_refs": [
+            "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/2",
+            "generated/docs/reference/gates.md"
+         ],
+         "description": "Normalization nondeterminism and normalization boundary failures.",
+         "family_id": "NORM",
+         "gate": "G3",
+         "observed_codes": [ ],
+         "prefix": "NORM_",
+         "status": "declared_only"
+      },
+      {
+         "declared_refs": [
+            "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/3",
+            "generated/docs/reference/gates.md"
+         ],
+         "description": "Admission legality and completeness failures.",
+         "family_id": "ADMIT",
+         "gate": "G4",
+         "observed_codes": [ ],
+         "prefix": "ADMIT_",
+         "status": "declared_only"
+      },
+      {
+         "declared_refs": [
+            "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/4",
+            "generated/docs/reference/gates.md",
+            "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"
+         ],
+         "description": "Rendering/runtime failures and non-admitted-input violations.",
+         "family_id": "RENDER",
+         "gate": "G5",
+         "observed_codes": [
+            "RENDER_RUNTIME_MISSING"
+         ],
+         "prefix": "RENDER_",
+         "status": "observed"
+      },
+      {
+         "declared_refs": [
+            "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/5",
+            "generated/docs/reference/gates.md"
+         ],
+         "description": "Drift, missing output, and hand-edited derived file failures.",
+         "family_id": "DRIFT",
+         "gate": "G6",
+         "observed_codes": [ ],
+         "prefix": "DRIFT_",
+         "status": "declared_only"
+      }
+   ],
+   "generated_from": {
+      "control_object_id": "reason-code-surface-slice",
+      "output_path": "generated/registries/reason-code-surfaces.index.json"
+   },
+   "source_module_ref": "structures/core/reason-code-surface-slice.module.json"
+}

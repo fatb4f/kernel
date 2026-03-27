@@ -1,0 +1,15 @@
+{
+  "gate": "G2",
+  "control_object_id": "reason-code-surface-slice",
+  "run_id": "2026-03-27T01-20-00Z",
+  "status": "PASS",
+  "source_ref": "structures/core/reason-code-surface-slice.module.json",
+  "schema_ref": "schemas/exported/reason-code-surface-slice-input.schema.json",
+  "exported_at": "2026-03-27T01:26:20Z",
+  "reason_codes": [],
+  "tool": "jq + check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}

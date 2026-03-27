@@ -1,0 +1,10 @@
+{
+  "source_module_ref": "structures/core/reason-code-surface-slice.module.json",
+  "field_sources": {
+    "families": [
+      "kernel.spec.json#/normative_implementation/gate_model/reason_code_families",
+      "generated/docs/reference/gates.md",
+      "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"
+    ]
+  }
+}
