@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "boundary-family-registry-slice",
+  "run_id": "2026-03-26T23-40-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-27T00:24:01Z",
+  "operations": [
+    "mapped authoritative structural fragments to registry entries",
+    "bound derived contracts to each family entry",
+    "marked policy-scope family as partial because the current scope index remains structural-only placeholder content"
+  ],
+  "forbidden_operations_performed": []
+}

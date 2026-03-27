@@ -1,0 +1,33 @@
+{
+  "source_module_ref": "structures/core/boundary-family-registry-slice.module.json",
+  "policy_scope_ref": "policy/admission/scope.index.json",
+  "field_sources": {
+    "entries": [
+      {
+        "family": "canonical-structure-family",
+        "refs": [
+          "structures/core/boundary-family-registry-slice.module.json#/fragments/0",
+          "schemas/exported/canonical-structure-family.schema.json"
+        ]
+      },
+      {
+        "family": "manifest-control-family",
+        "refs": [
+          "structures/core/boundary-family-registry-slice.module.json#/fragments/1",
+          "schemas/exported/manifest-control-family.schema.json"
+        ]
+      },
+      {
+        "family": "policy-scope-index-family",
+        "refs": [
+          "structures/core/boundary-family-registry-slice.module.json#/fragments/2",
+          "schemas/exported/policy-scope-index-family.schema.json",
+          "policy/admission/scope.index.json"
+        ]
+      }
+    ],
+    "output_path": [
+      "manifests/projections/boundary-family-registry-slice.projection.json"
+    ]
+  }
+}

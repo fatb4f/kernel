@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "boundary-family-registry-slice",
+  "run_id": "2026-03-26T23-40-00Z",
+  "policy_bundle_id": "policy/admission/boundary-family-registry-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "e80e4fa2c5683edd8616bccd25c13bc2298867785e8c531f2daef268684b4dc8"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/boundary-family-registry-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "4fb4be3a23ba4f41cf07b652830b970a47e5a447a702ec5b2a2de1b0bff72303"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-27T00:24:01Z"
+}

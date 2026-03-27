@@ -1,0 +1,73 @@
+{
+  "kind": "kernel.boundary_family_registry.slice_input",
+  "control_object_id": "boundary-family-registry-slice",
+  "registry_id": "kernel-boundary-families",
+  "source_module_id": "boundary-family-registry-slice",
+  "source_module_ref": "structures/core/boundary-family-registry-slice.module.json",
+  "policy_scope_ref": "policy/admission/scope.index.json",
+  "policy_scope_status": "placeholder_only",
+  "export_schema_ref": "schemas/exported/boundary-family-registry-slice-input.schema.json",
+  "generator_ref": "manifests/generators/boundary-family-registry-slice.generator.json",
+  "projection_ref": "manifests/projections/boundary-family-registry-slice.projection.json",
+  "output_path": "generated/registries/boundary-families.index.json",
+  "entries": [
+    {
+      "family": "canonical-structure-family",
+      "plane": "structure",
+      "summary": "Registry entry for the authoritative canonical structural model family and its owned source surfaces.",
+      "source_refs": [
+        "kernel.spec.json#/planes/structure",
+        "kernel.spec.json#/repo_tree/children/structures",
+        "structures/core/boundary-objects.index.json#/families/0"
+      ],
+      "derived_contract_ref": "schemas/exported/canonical-structure-family.schema.json",
+      "evidence_refs": [
+        "structures/core/",
+        "structures/relations/",
+        "structures/extensions/"
+      ],
+      "status": "materialized"
+    },
+    {
+      "family": "manifest-control-family",
+      "plane": "control",
+      "summary": "Registry entry for bundle, projection, and generator control declarations.",
+      "source_refs": [
+        "kernel.spec.json#/repo_semantics/manifests",
+        "kernel.spec.json#/repo_tree/children/manifests",
+        "structures/core/boundary-objects.index.json#/families/1"
+      ],
+      "derived_contract_ref": "schemas/exported/manifest-control-family.schema.json",
+      "evidence_refs": [
+        "manifests/bundles/",
+        "manifests/projections/",
+        "manifests/generators/"
+      ],
+      "status": "materialized"
+    },
+    {
+      "family": "policy-scope-index-family",
+      "plane": "policy",
+      "summary": "Registry entry for the structural policy-scope index surface that remains bounded and non-runtime.",
+      "source_refs": [
+        "kernel.spec.json#/planes/policy",
+        "kernel.spec.json#/repo_tree/children/policy",
+        "structures/core/boundary-objects.index.json#/families/2",
+        "policy/admission/scope.index.json"
+      ],
+      "derived_contract_ref": "schemas/exported/policy-scope-index-family.schema.json",
+      "evidence_refs": [
+        "policy/admission/scope.index.json",
+        "policy/admission/"
+      ],
+      "status": "partial"
+    }
+  ],
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  }
+}

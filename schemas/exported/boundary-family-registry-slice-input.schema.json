@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "boundary-family-registry-slice-input.schema.json",
+  "title": "Boundary family registry slice input",
+  "description": "Derived boundary contract for the boundary-family registry slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "registry_id",
+    "source_module_id",
+    "source_module_ref",
+    "policy_scope_ref",
+    "policy_scope_status",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "entries",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.boundary_family_registry.slice_input"
+    },
+    "control_object_id": {
+      "const": "boundary-family-registry-slice"
+    },
+    "registry_id": {
+      "const": "kernel-boundary-families"
+    },
+    "source_module_id": {
+      "const": "boundary-family-registry-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/core/boundary-family-registry-slice.module.json"
+    },
+    "policy_scope_ref": {
+      "const": "policy/admission/scope.index.json"
+    },
+    "policy_scope_status": {
+      "type": "string",
+      "enum": [
+        "placeholder_only",
+        "structural_only"
+      ]
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/boundary-family-registry-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/boundary-family-registry-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/boundary-family-registry-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/boundary-families.index.json"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "family",
+          "plane",
+          "summary",
+          "source_refs",
+          "derived_contract_ref",
+          "evidence_refs",
+          "status"
+        ],
+        "properties": {
+          "family": {
+            "type": "string"
+          },
+          "plane": {
+            "type": "string",
+            "enum": [
+              "structure",
+              "control",
+              "policy"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "derived_contract_ref": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "materialized",
+              "partial"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

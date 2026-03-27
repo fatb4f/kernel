@@ -1,0 +1,23 @@
+{
+  "gate": "G1",
+  "control_object_id": "boundary-family-registry-slice",
+  "run_id": "2026-03-26T23-40-00Z",
+  "status": "PASS",
+  "source_schema_ref": "schemas/exported/canonical-structure-family.schema.json",
+  "policy_scope_schema_ref": "schemas/exported/policy-scope-index-family.schema.json",
+  "source_ref": "structures/core/boundary-family-registry-slice.module.json",
+  "policy_scope_ref": "policy/admission/scope.index.json",
+  "validated_at": "2026-03-27T00:24:00Z",
+  "reason_codes": [],
+  "tool": "check-jsonschema",
+  "tool_output": {
+    "source_module": {
+      "status": "ok",
+      "errors": []
+    },
+    "policy_scope": {
+      "status": "ok",
+      "errors": []
+    }
+  }
+}

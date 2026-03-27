@@ -1,0 +1,15 @@
+{
+  "gate": "G5",
+  "control_object_id": "boundary-family-registry-slice",
+  "run_id": "2026-03-26T23-40-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/boundary-family-registry.jsonnet",
+  "admitted_state_ref": "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/boundary-families.index.json"
+  ],
+  "rendered_at": "2026-03-27T00:24:01Z"
+}

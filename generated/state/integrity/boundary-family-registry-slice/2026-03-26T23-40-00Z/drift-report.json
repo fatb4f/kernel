@@ -1,0 +1,12 @@
+{
+  "gate": "G6",
+  "control_object_id": "boundary-family-registry-slice",
+  "run_id": "2026-03-26T23-40-00Z",
+  "status": "PASS",
+  "checked_at": "2026-03-27T00:24:01Z",
+  "checks": [
+    "exported schema is present",
+    "rendered registry regenerates without drift",
+    "required generated outputs are present"
+  ]
+}
