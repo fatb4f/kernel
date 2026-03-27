@@ -1,0 +1,47 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "policy-scope-surface-slice",
+  "fragments": [
+    {
+      "name": "kernel-scope",
+      "class": "core",
+      "source_refs": [
+        "policy/kernel/scope.index.json",
+        "kernel.spec.json#/planes/policy",
+        "kernel.spec.json#/normative_implementation/plane_boundaries"
+      ],
+      "description": "Materialized structural policy scope for kernel-owned invariants and authority boundaries."
+    },
+    {
+      "name": "admission-scope",
+      "class": "core",
+      "source_refs": [
+        "policy/admission/scope.index.json",
+        "policy/admission/README.md"
+      ],
+      "description": "Admission policy scope surface for normalized-state legality bundles and bounded policy declarations."
+    },
+    {
+      "name": "data-scope",
+      "class": "core",
+      "source_refs": [
+        "policy/data/scope.index.json",
+        "policy/data/generated-build-boundary.json"
+      ],
+      "description": "Data policy scope surface for static data assumptions and admitted-state class declarations."
+    }
+  ],
+  "relations": [
+    {
+      "from": "kernel-scope",
+      "to": "admission-scope",
+      "relation": "bounds"
+    },
+    {
+      "from": "admission-scope",
+      "to": "data-scope",
+      "relation": "consumes"
+    }
+  ],
+  "notes": "Authoritative source module for the policy-scope surface slice. It materializes the previously missing policy/kernel structural surface and binds all three policy subplanes into one executable slice."
+}

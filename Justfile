@@ -63,3 +63,6 @@ boundary-registry-slice RUN_ID='':
 
 closeout-status-registry-slice RUN_ID='':
 	bash scripts/run_closeout_status_registry_slice.sh {{RUN_ID}}
+
+policy-scope-surface-slice RUN_ID='':
+	bash scripts/run_policy_scope_surface_slice.sh {{RUN_ID}}

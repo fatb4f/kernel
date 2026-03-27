@@ -1,0 +1,26 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "policy-scope-surface-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/policy-scope-surface-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "policy/kernel/scope.index.json",
+    "policy/admission/scope.index.json",
+    "policy/data/scope.index.json"
+  ],
+  "outputs": [
+    "schemas/exported/policy-scope-surface-slice-input.schema.json",
+    "generated/state/source-validation/policy-scope-surface-slice/<run-id>/source-validation.json",
+    "generated/state/export/policy-scope-surface-slice/<run-id>/export-report.json",
+    "generated/state/normalization/policy-scope-surface-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/policy-scope-surface-slice/<run-id>/source-map.json",
+    "generated/state/normalization/policy-scope-surface-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The canonical structural module remains the authority plane for this slice.",
+    "Policy scope inputs are structural declarations only and do not add runtime behavior.",
+    "The exported surface schema is derived output only."
+  ],
+  "notes": "Generator control object for the policy-scope surface slice."
+}

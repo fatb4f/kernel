@@ -1,0 +1,20 @@
+{
+  "scope": "kernel",
+  "status": "structural_only",
+  "allowed_content": [
+    "kernel policy invariants",
+    "authority and boundary declarations",
+    "non-runtime policy surface statements"
+  ],
+  "excluded_content": [
+    "runtime orchestration",
+    "script control flow",
+    "provider workflow semantics",
+    "loop-pipeline execution behavior"
+  ],
+  "derived_from": [
+    "kernel.spec.json#/planes/policy",
+    "kernel.spec.json#/normative_implementation/plane_boundaries"
+  ],
+  "notes": "Kernel policy scope is now explicitly materialized as a structural policy surface. It remains non-runtime and does not own controller behavior."
+}
