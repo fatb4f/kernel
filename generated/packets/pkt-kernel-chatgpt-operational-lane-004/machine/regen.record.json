@@ -1,0 +1,31 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.1.4",
+  "packet_id": "pkt-kernel-chatgpt-operational-lane-004",
+  "policy": "Regeneration is blocked unless required inputs change.",
+  "required_inputs": {
+    "problem_set_schema_ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "pipeline_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+    "packet_family_registry_ref": "generated/registries/chatgpt-packet-family.index.json",
+    "snapshot_executor_ref": "scripts/execute_chatgpt_pipeline_operational_bundle.py",
+    "snapshot_decision_ref": "generated/state/admission/chatgpt-pipeline-operational-packet/2026-03-27T11-58-02Z/decision.json",
+    "snapshot_admitted_state_ref": "generated/state/admission/chatgpt-pipeline-operational-packet/2026-03-27T11-58-02Z/admitted-state.json",
+    "handoff_review_ref": "generated/docs/gpt_handoff/reviews/2026-03-27-chatgpt-pipeline-zip-review.md",
+    "packet_definition_ref": "generated/packets/pkt-kernel-chatgpt-operational-lane-004/machine/packet.definition.json",
+    "scm_pattern_binding_ref": "generated/packets/pkt-kernel-chatgpt-operational-lane-004/machine/scm.pattern.binding.json",
+    "root_trust_evidence_ref": "generated/packets/pkt-kernel-chatgpt-operational-lane-004/machine/root.trust.evidence.json"
+  },
+  "output_fingerprints": {
+    "packet_definition": "f24d5d14d85d4c9f113a08200765bb6bbdc3657823e9aab8117dd8f9fa95eb13",
+    "scm_pattern_binding": "8f7b16b462a159d47cf29b6617234716221cfd5204e850c12d1bfaa0eaf292f9",
+    "packet_approval": "34f0cf3a77d07aaf8adfa9287a6369f6cd086bfe33ea8929493230f58fdb776a",
+    "root_trust_evidence": "d64b28d47aaf53f49017256cd3dff91bef098714e560babfe6848398ab9d07b0",
+    "artifact_manifest": "cfe13cbf0d02a800f45610ba06b0d6f401a673d41b5680c3e71ca84a5b70714b"
+  },
+  "approval_basis_fingerprint": "14faaaa89c159b6a6c6ad5da29f3f551d6bbd757317c41bcfb643a7ac799f48b",
+  "status": "GENERATED",
+  "notes": "If the required input fingerprints remain unchanged, regeneration should be skipped."
+}
