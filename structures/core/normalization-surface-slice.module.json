@@ -1,0 +1,58 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "normalization-surface-slice",
+  "fragments": [
+    {
+      "name": "normalized-state-artifacts",
+      "class": "core",
+      "source_refs": [
+        "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalized-state.json",
+        "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json",
+        "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json",
+        "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/normalized-state.json",
+        "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/normalized-state.json",
+        "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/normalized-state.json"
+      ],
+      "description": "Derived normalization view for normalized-state artifacts across executed slices."
+    },
+    {
+      "name": "source-map-artifacts",
+      "class": "core",
+      "source_refs": [
+        "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/source-map.json",
+        "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/source-map.json",
+        "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/source-map.json",
+        "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/source-map.json",
+        "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/source-map.json",
+        "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/source-map.json"
+      ],
+      "description": "Derived normalization view for provenance and source-map artifacts across executed slices."
+    },
+    {
+      "name": "normalization-reports",
+      "class": "core",
+      "source_refs": [
+        "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalization-report.json",
+        "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalization-report.json",
+        "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalization-report.json",
+        "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/normalization-report.json",
+        "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/normalization-report.json",
+        "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/normalization-report.json"
+      ],
+      "description": "Derived normalization view for deterministic operations and forbidden-operation evidence across executed slices."
+    }
+  ],
+  "relations": [
+    {
+      "from": "normalized-state-artifacts",
+      "to": "source-map-artifacts",
+      "relation": "provenanced_by"
+    },
+    {
+      "from": "normalized-state-artifacts",
+      "to": "normalization-reports",
+      "relation": "reported_by"
+    }
+  ],
+  "notes": "Authoritative source module for the normalization surface slice. It binds normalization artifacts already committed under generated/state/normalization into one derived registry surface."
+}

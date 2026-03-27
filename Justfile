@@ -69,3 +69,6 @@ policy-scope-surface-slice RUN_ID='':
 
 drift-integrity-surface-slice RUN_ID='':
 	bash scripts/run_drift_integrity_surface_slice.sh {{RUN_ID}}
+
+normalization-surface-slice RUN_ID='':
+	bash scripts/run_normalization_surface_slice.sh {{RUN_ID}}

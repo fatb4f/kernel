@@ -1,0 +1,29 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "normalization-surface-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/normalization-surface-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "generated/state/normalization/reference-docs-executable-slice/2026-03-26T23-05-00Z/normalized-state.json",
+    "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json",
+    "generated/state/normalization/boundary-family-registry-slice/2026-03-26T23-40-00Z/normalized-state.json",
+    "generated/state/normalization/closeout-status-registry-slice/2026-03-26T23-55-00Z/normalized-state.json",
+    "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/normalized-state.json",
+    "generated/state/normalization/drift-integrity-surface-slice/2026-03-27T00-30-00Z/normalized-state.json"
+  ],
+  "outputs": [
+    "schemas/exported/normalization-surface-slice-input.schema.json",
+    "generated/state/source-validation/normalization-surface-slice/<run-id>/source-validation.json",
+    "generated/state/export/normalization-surface-slice/<run-id>/export-report.json",
+    "generated/state/normalization/normalization-surface-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/normalization-surface-slice/<run-id>/source-map.json",
+    "generated/state/normalization/normalization-surface-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "Observed normalization coverage is derived from committed normalization artifacts only.",
+    "Source maps remain provenance artifacts and do not establish authority.",
+    "The exported surface schema is derived output only."
+  ],
+  "notes": "Generator control object for the normalization surface slice."
+}

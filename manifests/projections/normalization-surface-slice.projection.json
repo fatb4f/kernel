@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "normalization-surface-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/normalization-surface-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/normalization-surfaces.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/normalization-surfaces.index.json",
+    "generated/state/render/normalization-surface-slice/<run-id>/render-report.json",
+    "generated/state/integrity/normalization-surface-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits a normalization registry artifact only.",
+    "The projection remains repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the normalization surface slice."
+}
