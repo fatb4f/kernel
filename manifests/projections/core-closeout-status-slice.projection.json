@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "core-closeout-status-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/core-closeout-status-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/reference/core-closeout-status.jsonnet"
+  ],
+  "outputs": [
+    "generated/docs/reference/operational-status.md",
+    "generated/state/render/core-closeout-status-slice/<run-id>/render-report.json",
+    "generated/state/integrity/core-closeout-status-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "The projection reflects the closeout manifest through admitted state.",
+    "The projection must not reintroduce authority inversion.",
+    "The rendered status page stays repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the operational status page slice."
+}

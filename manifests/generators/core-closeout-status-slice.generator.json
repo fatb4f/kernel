@@ -1,0 +1,24 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "core-closeout-status-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/core-closeout-status-slice.module.json",
+    "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+    "schemas/exported/canonical-structure-family.schema.json"
+  ],
+  "outputs": [
+    "schemas/exported/core-closeout-status-slice-input.schema.json",
+    "generated/state/source-validation/core-closeout-status-slice/<run-id>/source-validation.json",
+    "generated/state/export/core-closeout-status-slice/<run-id>/export-report.json",
+    "generated/state/normalization/core-closeout-status-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/core-closeout-status-slice/<run-id>/source-map.json",
+    "generated/state/normalization/core-closeout-status-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The closeout manifest remains control metadata, not authority.",
+    "The operational status page is rendered from admitted state only.",
+    "Normalization copies blocker and decision-basis data without deciding legality."
+  ],
+  "notes": "Generator control object for the operational status page slice."
+}

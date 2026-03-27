@@ -1,0 +1,47 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "core-closeout-status-slice",
+  "fragments": [
+    {
+      "name": "current-status",
+      "class": "core",
+      "source_refs": [
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/operational_status_gate/current_status",
+        "kernel.spec.md#/10",
+        "generated/packets/pkt-kernel-json-centric-workflow-003/human/packet.definition.md"
+      ],
+      "description": "Capture the current core closeout status and its governing rule."
+    },
+    {
+      "name": "decision-basis",
+      "class": "core",
+      "source_refs": [
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/operational_status_gate/decision_basis",
+        "kernel.spec.md#/11"
+      ],
+      "description": "Record the checklist basis used to decide whether core status can close."
+    },
+    {
+      "name": "blockers",
+      "class": "core",
+      "source_refs": [
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/operational_status_gate/blockers",
+        "generated/docs/reference/executable-slice.md"
+      ],
+      "description": "List the remaining blockers after the first executable slice."
+    }
+  ],
+  "relations": [
+    {
+      "from": "current-status",
+      "to": "decision-basis",
+      "relation": "justified_by"
+    },
+    {
+      "from": "current-status",
+      "to": "blockers",
+      "relation": "constrained_by"
+    }
+  ],
+  "notes": "Authoritative source module for the operational status page slice. The closeout manifest remains downstream control metadata; the renderer still consumes admitted state only."
+}

@@ -54,3 +54,6 @@ reference-slice-drift RUN_ID='':
 
 reference-slice RUN_ID='':
 	bash scripts/run_reference_docs_executable_slice.sh {{RUN_ID}}
+
+core-closeout-slice RUN_ID='':
+	bash scripts/run_core_closeout_status_slice.sh {{RUN_ID}}
