@@ -1,0 +1,89 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "reason-code-surface-slice",
+  "fragments": [
+    {
+      "name": "source-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/0",
+        "generated/docs/reference/gates.md"
+      ],
+      "description": "Reason-code family for source validation failures and source-plane deny conditions."
+    },
+    {
+      "name": "export-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/1",
+        "generated/docs/reference/gates.md"
+      ],
+      "description": "Reason-code family for contract export failures and derived-schema deny conditions."
+    },
+    {
+      "name": "normalization-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/2",
+        "generated/docs/reference/gates.md"
+      ],
+      "description": "Reason-code family for nondeterminism and normalization boundary failures."
+    },
+    {
+      "name": "admission-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/3",
+        "generated/docs/reference/gates.md"
+      ],
+      "description": "Reason-code family for legality and admission deny conditions."
+    },
+    {
+      "name": "render-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/4",
+        "generated/docs/reference/gates.md",
+        "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"
+      ],
+      "description": "Reason-code family for render/runtime failures and non-admitted-input violations."
+    },
+    {
+      "name": "drift-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/gate_model/reason_code_families/5",
+        "generated/docs/reference/gates.md"
+      ],
+      "description": "Reason-code family for drift, missing-output, and hand-edited-derived deny conditions."
+    }
+  ],
+  "relations": [
+    {
+      "from": "source-family",
+      "to": "export-family",
+      "relation": "precedes"
+    },
+    {
+      "from": "export-family",
+      "to": "normalization-family",
+      "relation": "feeds"
+    },
+    {
+      "from": "normalization-family",
+      "to": "admission-family",
+      "relation": "bounded_by"
+    },
+    {
+      "from": "admission-family",
+      "to": "render-family",
+      "relation": "precedes"
+    },
+    {
+      "from": "render-family",
+      "to": "drift-family",
+      "relation": "checked_by"
+    }
+  ],
+  "notes": "Authoritative source module for the reason-code surface slice. It materializes the named gate reason-code families as first-class registry input."
+}

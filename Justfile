@@ -72,3 +72,6 @@ drift-integrity-surface-slice RUN_ID='':
 
 normalization-surface-slice RUN_ID='':
 	bash scripts/run_normalization_surface_slice.sh {{RUN_ID}}
+
+reason-code-surface-slice RUN_ID='':
+	bash scripts/run_reason_code_surface_slice.sh {{RUN_ID}}

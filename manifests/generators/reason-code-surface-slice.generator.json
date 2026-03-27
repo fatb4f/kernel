@@ -1,0 +1,26 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "reason-code-surface-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/reason-code-surface-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "kernel.spec.json",
+    "generated/docs/reference/gates.md",
+    "generated/state/admission/kernel-workflow-closeout/2026-03-26T21-34-43Z/decision.json"
+  ],
+  "outputs": [
+    "schemas/exported/reason-code-surface-slice-input.schema.json",
+    "generated/state/source-validation/reason-code-surface-slice/<run-id>/source-validation.json",
+    "generated/state/export/reason-code-surface-slice/<run-id>/export-report.json",
+    "generated/state/normalization/reason-code-surface-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/reason-code-surface-slice/<run-id>/source-map.json",
+    "generated/state/normalization/reason-code-surface-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "Reason-code families are derived from the kernel spec and rendered gate docs.",
+    "Observed codes are evidence-backed and must not invent unobserved live codes.",
+    "The exported surface schema is derived output only."
+  ],
+  "notes": "Generator control object for the reason-code surface slice."
+}
