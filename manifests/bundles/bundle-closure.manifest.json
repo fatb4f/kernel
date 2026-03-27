@@ -9,14 +9,14 @@
   "purpose": "Selective closure bundle for the operational ChatGPT packet pipeline and one representative packet instance.",
   "closure_scope": {
     "included_paths": [
-      "pipeline/*.json",
+      "generated/schemas/chatgpt-pipeline/workflow/*.json",
       "control/scm.pattern/authority.manifest.json",
       "control/scm.pattern/authority.manifest.validation.json",
       "control/scm.pattern/authority.manifest.signature.json",
       "control/trust/root.signers.json",
       "control/trust/delegations/chatgpt.packet-sidecar.json",
       "schemas/control/scm.pattern/authority.manifest.schema.json",
-      "schemas/chatgpt-packet/*.json",
+      "generated/schemas/chatgpt-pipeline/packet/*.json",
       "generated/docs/gpt_handoff/spec.v0.1.4.json",
       "generated/docs/gpt_handoff/.changelog/v0.1.4.md",
       "generated/packets/pkt-kernel-chain-of-trust-001/**"

@@ -63,23 +63,23 @@
       "role": "bundle_closure_manifest"
     },
     {
-      "ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
       "role": "execution_pipeline_manifest"
     },
     {
-      "ref": "pipeline/chatgpt.execution.policy.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
       "role": "execution_policy"
     },
     {
-      "ref": "pipeline/chatgpt.validation.manifest.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
       "role": "validation_manifest"
     },
     {
-      "ref": "pipeline/chatgpt.gate.policy.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
       "role": "gate_policy"
     },
     {
-      "ref": "pipeline/problem_set.schema.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
       "role": "ingress_contract"
     }
   ],

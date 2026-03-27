@@ -4,9 +4,9 @@
   "status": "active",
   "purpose": "Deterministic ChatGPT packet authoring pipeline from a single problem_set input with local realization outside the model boundary.",
   "entry": {
-    "input_contract_ref": "pipeline/problem_set.schema.json",
+    "input_contract_ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
     "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
-    "authority_manifest_schema_ref": "schemas/control/scm.pattern/authority.manifest.schema.json"
+    "authority_manifest_schema_ref": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json"
   },
   "authority": {
     "kernel_root": "kernel",

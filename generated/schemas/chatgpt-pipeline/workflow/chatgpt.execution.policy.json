@@ -2,7 +2,7 @@
   "kind": "kernel.chatgpt_execution_policy",
   "version": "0.1.0",
   "status": "active",
-  "entry_contract": "pipeline/problem_set.schema.json",
+  "entry_contract": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
   "rules": [
     "Exactly one problem_set is admissible as ingress.",
     "No hidden secondary planning artifact is allowed.",

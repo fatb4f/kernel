@@ -46,23 +46,23 @@
       "role": "kernel_authority_manifest_schema"
     },
     {
-      "ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
       "role": "execution_pipeline_manifest"
     },
     {
-      "ref": "pipeline/chatgpt.execution.policy.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
       "role": "execution_policy"
     },
     {
-      "ref": "pipeline/chatgpt.validation.manifest.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
       "role": "validation_manifest"
     },
     {
-      "ref": "pipeline/chatgpt.gate.policy.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
       "role": "gate_policy"
     },
     {
-      "ref": "pipeline/problem_set.schema.json",
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
       "role": "ingress_contract"
     }
   ],
@@ -118,10 +118,10 @@
     "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
     "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
     "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
-    "pipeline_manifest_ref": "pipeline/chatgpt.packet.pipeline.manifest.json",
-    "execution_policy_ref": "pipeline/chatgpt.execution.policy.json",
-    "validation_manifest_ref": "pipeline/chatgpt.validation.manifest.json",
-    "gate_policy_ref": "pipeline/chatgpt.gate.policy.json",
+    "pipeline_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
     "packet_local_evidence_ref": "generated/packets/pkt-kernel-chain-of-trust-001/machine/root.trust.evidence.json"
   },
   "review_lifecycle": {

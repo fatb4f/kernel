@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "pipeline/problem_set.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
   "title": "Problem set input",
   "description": "First-class ingress contract for deterministic ChatGPT packet generation.",
   "type": "object",

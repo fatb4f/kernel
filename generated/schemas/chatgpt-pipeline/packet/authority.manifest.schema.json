@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "schemas/chatgpt-packet/authority.manifest.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
   "title": "ChatGPT packet authority manifest",
   "description": "Authority surface for the kernel-owned ChatGPT packet pipeline.",
   "type": "object",

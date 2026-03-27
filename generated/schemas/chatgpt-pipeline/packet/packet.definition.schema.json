@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "schemas/chatgpt-packet/packet.definition.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
   "title": "ChatGPT packet definition",
   "description": "Canonical packet artifact emitted from a single problem_set input.",
   "type": "object",

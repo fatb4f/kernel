@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "schemas/chatgpt-packet/packet.review.request.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
   "title": "ChatGPT packet review request",
   "description": "Pre-decision review submission artifact.",
   "type": "object",

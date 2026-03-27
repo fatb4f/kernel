@@ -33,11 +33,11 @@ Implement the kernel-owned chain of trust for the operational ChatGPT packet pip
 - control/scm.pattern/authority.manifest.validation.json
 - control/scm.pattern/authority.manifest.signature.json
 - control/trust/delegations/chatgpt.packet-sidecar.json
-- pipeline/chatgpt.packet.pipeline.manifest.json
-- pipeline/chatgpt.execution.policy.json
-- pipeline/chatgpt.validation.manifest.json
-- pipeline/chatgpt.gate.policy.json
-- pipeline/problem_set.schema.json
+- generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json
+- generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json
+- generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json
+- generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json
+- generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json
 
 ## Required now
 - generated/packets/pkt-kernel-chain-of-trust-001/machine/packet.definition.json

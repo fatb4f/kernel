@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "schemas/chatgpt-packet/artifact.manifest.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
   "title": "Packet artifact manifest",
   "description": "Manifest of required and conditional packet artifacts.",
   "type": "object",

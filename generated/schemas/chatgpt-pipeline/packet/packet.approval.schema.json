@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "schemas/chatgpt-packet/packet.approval.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
   "title": "ChatGPT packet approval placeholder",
   "description": "Compatibility-only approval placeholder, not effective approval.",
   "type": "object",

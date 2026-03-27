@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "schemas/chatgpt-packet/scm.pattern.binding.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
   "title": "ChatGPT scm.pattern binding",
   "description": "Local realization binding for the adopted scm.pattern route.",
   "type": "object",

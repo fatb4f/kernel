@@ -6,7 +6,7 @@
   "review_state": "DEFINITION_UNDER_REVIEW",
   "surface": "scm.pattern",
   "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
-  "authority_manifest_schema_ref": "schemas/chatgpt-packet/authority.manifest.schema.json",
+  "authority_manifest_schema_ref": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
   "kernel_trust": {
     "root_trust_evidence_ref": "generated/packets/pkt-kernel-json-centric-workflow-003/machine/root.trust.evidence.json",
     "root_signers_ref": "control/trust/root.signers.json",

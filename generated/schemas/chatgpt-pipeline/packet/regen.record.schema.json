@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "schemas/chatgpt-packet/regen.record.schema.json",
+  "$id": "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
   "title": "Packet regeneration record",
   "description": "Regeneration trace for packet artifacts.",
   "type": "object",
