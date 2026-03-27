@@ -1,0 +1,98 @@
+{
+  "kind": "kernel.policy_scope_surface.slice_input",
+  "control_object_id": "policy-scope-surface-slice",
+  "source_module_id": "policy-scope-surface-slice",
+  "source_module_ref": "structures/core/policy-scope-surface-slice.module.json",
+  "export_schema_ref": "schemas/exported/policy-scope-surface-slice-input.schema.json",
+  "generator_ref": "manifests/generators/policy-scope-surface-slice.generator.json",
+  "projection_ref": "manifests/projections/policy-scope-surface-slice.projection.json",
+  "output_path": "generated/registries/policy-scope-surfaces.index.json",
+  "scopes": [
+    {
+      "scope": "kernel",
+      "status": "structural_only",
+      "summary": "Kernel structural policy scope for authority and invariant declarations.",
+      "allowed_content": [
+        "kernel policy invariants",
+        "authority and boundary declarations",
+        "non-runtime policy surface statements"
+      ],
+      "excluded_content": [
+        "runtime orchestration",
+        "script control flow",
+        "provider workflow semantics",
+        "loop-pipeline execution behavior"
+      ],
+      "derived_from": [
+        "kernel.spec.json#/planes/policy",
+        "kernel.spec.json#/normative_implementation/plane_boundaries"
+      ],
+      "supporting_refs": [
+        "policy/kernel/scope.index.json",
+        "kernel.spec.json#/planes/policy"
+      ]
+    },
+    {
+      "scope": "admission",
+      "status": "placeholder_only",
+      "summary": "Admission policy scope for normalized-state legality bundles and bounded policy declarations.",
+      "allowed_content": [
+        "normalized-state admission scope statements",
+        "admission-relevant state families",
+        "deny-style invariant placeholders"
+      ],
+      "excluded_content": [
+        "runtime orchestration",
+        "cargo authority",
+        "just command surfaces",
+        "script control flow",
+        "provider workflow semantics",
+        "loop-pipeline execution semantics"
+      ],
+      "derived_from": [
+        "policy/control_plane.cue",
+        "policy/README.md"
+      ],
+      "supporting_refs": [
+        "policy/admission/scope.index.json",
+        "policy/admission/README.md"
+      ]
+    },
+    {
+      "scope": "data",
+      "status": "placeholder_only",
+      "summary": "Data policy scope for admitted-state assumptions and static data family declarations.",
+      "allowed_content": [
+        "normalized-state class declarations",
+        "named data families",
+        "static data-assumption placeholders"
+      ],
+      "excluded_content": [
+        "runtime materialization logic",
+        "executable normalization",
+        "provider workflow semantics",
+        "controller execution behavior"
+      ],
+      "derived_from": [
+        "policy/control_plane.cue",
+        "policy/README.md"
+      ],
+      "supporting_refs": [
+        "policy/data/scope.index.json",
+        "policy/data/generated-build-boundary.json"
+      ]
+    }
+  ],
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  },
+  "admission": {
+    "decision": "ALLOW",
+    "policy_bundle_id": "policy/admission/policy-scope-surface-slice.cue",
+    "admitted_at": "2026-03-27T00:34:38Z"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "policy-scope-surface-slice",
+  "run_id": "2026-03-27T00-10-00Z",
+  "policy_bundle_id": "policy/admission/policy-scope-surface-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/policy-scope-surface-slice/2026-03-27T00-10-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "627691e3b9978f7b338a029827de8fb790a92288cb607a5387a77fa21b43ff46"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/policy-scope-surface-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "ee5161266e60d2031ff2653bc3dba249f431278e5582bb4721306ecda8171c15"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-27T00:34:38Z"
+}

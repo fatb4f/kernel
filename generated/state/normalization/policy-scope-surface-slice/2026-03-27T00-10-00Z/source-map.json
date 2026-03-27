@@ -1,0 +1,17 @@
+{
+  "source_module_ref": "structures/core/policy-scope-surface-slice.module.json",
+  "field_sources": {
+    "kernel_scope": [
+      "policy/kernel/scope.index.json"
+    ],
+    "admission_scope": [
+      "policy/admission/scope.index.json"
+    ],
+    "data_scope": [
+      "policy/data/scope.index.json"
+    ],
+    "output_path": [
+      "manifests/projections/policy-scope-surface-slice.projection.json"
+    ]
+  }
+}

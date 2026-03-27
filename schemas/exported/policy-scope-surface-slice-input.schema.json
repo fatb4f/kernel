@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "policy-scope-surface-slice-input.schema.json",
+  "title": "Policy scope surface slice input",
+  "description": "Derived boundary contract for the policy-scope surface slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_module_id",
+    "source_module_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "scopes",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.policy_scope_surface.slice_input"
+    },
+    "control_object_id": {
+      "const": "policy-scope-surface-slice"
+    },
+    "source_module_id": {
+      "const": "policy-scope-surface-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/core/policy-scope-surface-slice.module.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/policy-scope-surface-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/policy-scope-surface-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/policy-scope-surface-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/policy-scope-surfaces.index.json"
+    },
+    "scopes": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "scope",
+          "status",
+          "summary",
+          "allowed_content",
+          "excluded_content",
+          "supporting_refs"
+        ],
+        "properties": {
+          "scope": {
+            "type": "string",
+            "enum": [
+              "kernel",
+              "admission",
+              "data"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "placeholder_only",
+              "structural_only"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "allowed_content": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "excluded_content": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "derived_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "supporting_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
