@@ -3,22 +3,20 @@
   "artifact_version": "0.2.0",
   "checklist_id": "kernel-core-json-structure-closeout",
   "checklist_name": "kernel core json structure closeout",
-  "status": "open",
+  "status": "done",
   "purpose": "Checklist control object for validating and closing out materialization of the full kernel core JSON structure defined by kernel.spec.json, including authority, pipeline, plane boundaries, contracts, gates, admission artifacts, and component/tool surfaces.",
   "validation_target": "kernel core JSON structure is fully materialized and consistent with kernel.spec.json",
   "operational_status_gate": {
     "target": "core kernel operational status",
     "mode": "fail_closed",
-    "current_status": "BLOCKED",
-    "current_status_ref": "generated/state/admission/core-closeout-status-slice/2026-03-27T01-45-00Z/decision.json",
-    "blockers": [
-      "completion_obligations_not_fully_closed"
-    ],
+    "current_status": "OPEN",
+    "current_status_ref": "generated/state/admission/core-closeout-status-slice/2026-03-27T02-15-00Z/decision.json",
+    "blockers": [],
     "decision_basis": [
       "kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces",
-      "checklist item c10 remains open, so completion criteria are not yet fully satisfied",
+      "all checklist items c1 through c11 are now materially aligned to committed evidence",
       "reason code family coverage is now materially linked to committed evidence across G1-G6",
-      "closeout obligation closure still needs explicit finalization",
+      "closeout obligations are now materialized as an executable registry surface",
       "required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled",
       "no renderer, exporter, or compatibility shim is treated as authority"
     ],
@@ -414,7 +412,7 @@
         "implementation order references",
         "completion condition references"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "c11",

@@ -1,0 +1,248 @@
+{
+  "kind": "kernel.closeout_status_registry.slice_input",
+  "control_object_id": "closeout-status-registry-slice",
+  "registry_id": "kernel-core-closeout-status",
+  "source_module_id": "closeout-status-registry-slice",
+  "source_module_ref": "structures/core/closeout-status-registry-slice.module.json",
+  "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+  "boundary_registry_ref": "generated/registries/boundary-families.index.json",
+  "operational_status_ref": "generated/docs/reference/operational-status.md",
+  "export_schema_ref": "schemas/exported/closeout-status-registry-slice-input.schema.json",
+  "generator_ref": "manifests/generators/closeout-status-registry-slice.generator.json",
+  "projection_ref": "manifests/projections/closeout-status-registry-slice.projection.json",
+  "output_path": "generated/registries/kernel-core-closeout-status.index.json",
+  "current_gate_status": "OPEN",
+  "blockers": [],
+  "checklist_statuses": [
+    {
+      "id": "c1",
+      "label": "Kernel spec remains the normative source for the kernel core JSON structure",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "kernel.spec.json",
+        "kernel.spec.md"
+      ]
+    },
+    {
+      "id": "c2",
+      "label": "Authority model is fully represented in the manifest scope",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "kernel.spec.json#/authority_model",
+        "generated/docs/reference/workflow.md"
+      ]
+    },
+    {
+      "id": "c3",
+      "label": "State-flow pipeline and boundary rules are fixed",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "kernel.spec.json#/state_flow",
+        "generated/docs/reference/workflow.md"
+      ]
+    },
+    {
+      "id": "c4",
+      "label": "Plane definitions and repository semantics are covered end-to-end",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "structures/",
+        "schemas/",
+        "policy/",
+        "render/jsonnet/",
+        "manifests/",
+        "generated/",
+        "build/"
+      ]
+    },
+    {
+      "id": "c5",
+      "label": "Normalization contract is materialized with required outputs",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "generated/registries/normalization-surfaces.index.json",
+        "generated/state/normalization/normalization-surface-slice/2026-03-27T00-45-00Z/normalized-state.json"
+      ]
+    },
+    {
+      "id": "c6",
+      "label": "Admission contract is materialized with explicit decision artifacts",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json",
+        "generated/state/admission/core-closeout-status-slice/2026-03-26T23-20-00Z/decision.json",
+        "generated/state/admission/boundary-family-registry-slice/2026-03-26T23-40-00Z/decision.json",
+        "generated/state/admission/policy-scope-surface-slice/2026-03-27T00-10-00Z/decision.json"
+      ]
+    },
+    {
+      "id": "c7",
+      "label": "Rendering contract is materialized and constrained to admitted state",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "render/jsonnet/reference/executable-slice.jsonnet",
+        "render/jsonnet/reference/core-closeout-status.jsonnet",
+        "render/jsonnet/registry/boundary-family-registry.jsonnet",
+        "render/jsonnet/registry/policy-scope-surfaces.jsonnet",
+        "render/jsonnet/registry/drift-integrity-surfaces.jsonnet",
+        "render/jsonnet/registry/normalization-surfaces.jsonnet"
+      ]
+    },
+    {
+      "id": "c8",
+      "label": "Manifest control objects exist for bundle, projection, and generator surfaces",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "manifests/bundles/",
+        "manifests/projections/",
+        "manifests/generators/"
+      ]
+    },
+    {
+      "id": "c9",
+      "label": "Gate model G1-G6 and reason code families are declared and linked to evidence",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "generated/registries/reason-code-surfaces.index.json",
+        "generated/state/source-validation/reason-code-surface-slice/2026-03-27T01-20-00Z/source-validation.json",
+        "generated/state/export/reason-code-surface-slice/2026-03-27T01-20-00Z/export-report.json",
+        "generated/state/normalization/reason-code-surface-slice/2026-03-27T01-20-00Z/normalization-report.json",
+        "generated/state/admission/reason-code-surface-slice/2026-03-27T01-20-00Z/decision.json",
+        "generated/state/render/reason-code-surface-slice/2026-03-27T01-20-00Z/render-report.json",
+        "generated/state/integrity/reason-code-surface-slice/2026-03-27T01-20-00Z/drift-report.json"
+      ]
+    },
+    {
+      "id": "c10",
+      "label": "Invariants, artifact classes, implementation order, and completion conditions are preserved as closeout obligations",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "generated/registries/completion-obligations.index.json",
+        "kernel.spec.json#/completion_condition",
+        "manifests/output-classes.schema.json",
+        "policy/contracts/normalization.md",
+        "ci/gate-matrix.md",
+        "policy/data/toolchain-control.index.json"
+      ]
+    },
+    {
+      "id": "c11",
+      "label": "Kernel core component matrix covers structure, schema, normalization, CUE admission, Jsonnet rendering, manifests, and drift integrity",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json#/kernel_core_components"
+      ]
+    }
+  ],
+  "component_statuses": [
+    {
+      "id": "kc1",
+      "name": "canonical-structural-model",
+      "plane": "structure",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "structures/core/",
+        "structures/extensions/",
+        "structures/relations/",
+        "structures/adapters/"
+      ]
+    },
+    {
+      "id": "kc2",
+      "name": "contract-export-surface",
+      "plane": "contract",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "schemas/exported/",
+        "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json",
+        "generated/state/export/boundary-family-registry-slice/2026-03-26T23-40-00Z/export-report.json",
+        "generated/state/export/normalization-surface-slice/2026-03-27T00-45-00Z/export-report.json"
+      ]
+    },
+    {
+      "id": "kc3",
+      "name": "normalization-layer",
+      "plane": "structure-to-policy boundary",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "generated/registries/normalization-surfaces.index.json",
+        "generated/state/normalization/normalization-surface-slice/2026-03-27T00-45-00Z/normalized-state.json"
+      ]
+    },
+    {
+      "id": "kc4",
+      "name": "admission-policy-surface",
+      "plane": "policy",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "policy/kernel/",
+        "policy/admission/",
+        "policy/data/",
+        "generated/registries/policy-scope-surfaces.index.json",
+        "generated/state/admission/policy-scope-surface-slice/2026-03-27T00-10-00Z/decision.json"
+      ]
+    },
+    {
+      "id": "kc5",
+      "name": "rendering-surface",
+      "plane": "artifact",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "render/jsonnet/",
+        "generated/docs/reference/",
+        "generated/registries/"
+      ]
+    },
+    {
+      "id": "kc6",
+      "name": "manifest-control-surface",
+      "plane": "control",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "manifests/bundles/",
+        "manifests/projections/",
+        "manifests/generators/"
+      ]
+    },
+    {
+      "id": "kc7",
+      "name": "drift-integrity-surface",
+      "plane": "integrity",
+      "manifest_status": "done",
+      "observed_status": "materialized",
+      "evidence_refs": [
+        "generated/registries/drift-integrity-surfaces.index.json",
+        "generated/state/integrity/drift-integrity-surface-slice/2026-03-27T00-30-00Z/drift-report.json"
+      ]
+    }
+  ],
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  },
+  "admission": {
+    "decision": "ALLOW",
+    "policy_bundle_id": "policy/admission/closeout-status-registry-slice.cue",
+    "admitted_at": "2026-03-27T01:43:01Z"
+  }
+}

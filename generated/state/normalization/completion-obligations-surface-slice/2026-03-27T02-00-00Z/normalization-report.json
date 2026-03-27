@@ -1,0 +1,16 @@
+{
+  "gate": "G3",
+  "control_object_id": "completion-obligations-surface-slice",
+  "run_id": "2026-03-27T02-00-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-27T01:42:15Z",
+  "reason_codes": [
+    "NORM_STATE_EMITTED"
+  ],
+  "operations": [
+    "bound invariants, artifact classes, implementation order, completion conditions, and toolchain control into one obligation surface",
+    "materialized the required implementation-order files named by the kernel spec",
+    "produced a single admitted-state input for completion-obligation closeout"
+  ],
+  "forbidden_operations_performed": []
+}

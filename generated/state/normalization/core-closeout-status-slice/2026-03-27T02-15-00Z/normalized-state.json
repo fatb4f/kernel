@@ -1,0 +1,38 @@
+{
+  "kind": "kernel.core_closeout_status.slice_input",
+  "control_object_id": "core-closeout-status-slice",
+  "source_module_id": "core-closeout-status-slice",
+  "source_module_ref": "structures/core/core-closeout-status-slice.module.json",
+  "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+  "export_schema_ref": "schemas/exported/core-closeout-status-slice-input.schema.json",
+  "generator_ref": "manifests/generators/core-closeout-status-slice.generator.json",
+  "projection_ref": "manifests/projections/core-closeout-status-slice.projection.json",
+  "output_path": "generated/docs/reference/operational-status.md",
+  "current_status": "OPEN",
+  "decision_basis": [
+    "kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces",
+    "all checklist items c1 through c11 are now materially aligned to committed evidence",
+    "reason code family coverage is now materially linked to committed evidence across G1-G6",
+    "closeout obligations are now materialized as an executable registry surface",
+    "required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled",
+    "no renderer, exporter, or compatibility shim is treated as authority"
+  ],
+  "blockers": [],
+  "implemented_slices": [
+    "reference-docs-executable-slice: G1-G6 evidence is committed",
+    "boundary-family-registry-slice: registry render lane is committed",
+    "policy-scope-surface-slice: policy/kernel source and policy-scope registry are committed",
+    "drift-integrity-surface-slice: integrity registry and drift evidence are committed",
+    "normalization-surface-slice: normalization registry and aggregated provenance are committed",
+    "completion-obligations-surface-slice: invariants, output classes, implementation order, and completion conditions are committed",
+    "local Jsonnet runtime is available via rsjsonnet"
+  ],
+  "status_explanation": "The core closeout target is open. The repo now has executable slices across documentation, registries, policy, normalization, integrity, reason-code, and completion-obligation surfaces.",
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "documentation"
+  }
+}

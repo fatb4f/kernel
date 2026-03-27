@@ -1,0 +1,18 @@
+{
+  "gate": "G5",
+  "control_object_id": "completion-obligations-surface-slice",
+  "run_id": "2026-03-27T02-00-00Z",
+  "status": "PASS",
+  "reason_codes": [
+    "RENDER_OUTPUT_EMITTED"
+  ],
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/completion-obligations.jsonnet",
+  "admitted_state_ref": "generated/state/admission/completion-obligations-surface-slice/2026-03-27T02-00-00Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/completion-obligations.index.json"
+  ],
+  "rendered_at": "2026-03-27T01:42:15Z"
+}

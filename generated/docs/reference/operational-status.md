@@ -2,11 +2,11 @@
 
 Current baseline status for the kernel-spec-defined workflow:
 
-- `BLOCKED`
+- `OPEN`
 
 ## Why
 
-The core closeout target remains blocked, but the repo now has multiple executable slices across documentation, registries, policy, normalization, and integrity surfaces.
+The core closeout target is open. The repo now has executable slices across documentation, registries, policy, normalization, integrity, reason-code, and completion-obligation surfaces.
 
 ## What is true
 
@@ -15,22 +15,23 @@ The core closeout target remains blocked, but the repo now has multiple executab
 - `policy-scope-surface-slice: policy/kernel source and policy-scope registry are committed`
 - `drift-integrity-surface-slice: integrity registry and drift evidence are committed`
 - `normalization-surface-slice: normalization registry and aggregated provenance are committed`
+- `completion-obligations-surface-slice: invariants, output classes, implementation order, and completion conditions are committed`
 - `local Jsonnet runtime is available via rsjsonnet`
 
 ## Decision basis
 
 - `kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces`
-- `checklist item c10 remains open, so completion criteria are not yet fully satisfied`
+- `all checklist items c1 through c11 are now materially aligned to committed evidence`
 - `reason code family coverage is now materially linked to committed evidence across G1-G6`
-- `closeout obligation closure still needs explicit finalization`
+- `closeout obligations are now materialized as an executable registry surface`
 - `required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled`
 - `no renderer, exporter, or compatibility shim is treated as authority`
 
 ## What is blocking status closure
 
-- `completion_obligations_not_fully_closed`
+None.
 
 ## Status rule
 
-The core kernel operational status remains not closed until the closeout manifest criteria are satisfied across the broader kernel surface.
+The core kernel operational status is open because the closeout manifest criteria are satisfied on record.
 

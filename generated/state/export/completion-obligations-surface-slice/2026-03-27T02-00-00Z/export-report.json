@@ -1,0 +1,17 @@
+{
+  "gate": "G2",
+  "control_object_id": "completion-obligations-surface-slice",
+  "run_id": "2026-03-27T02-00-00Z",
+  "status": "PASS",
+  "source_ref": "structures/core/completion-obligations-surface-slice.module.json",
+  "schema_ref": "schemas/exported/completion-obligations-surface-slice-input.schema.json",
+  "exported_at": "2026-03-27T01:42:15Z",
+  "reason_codes": [
+    "EXPORT_SCHEMA_EXPORTED"
+  ],
+  "tool": "jq + check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}

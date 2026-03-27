@@ -1,0 +1,20 @@
+{
+  "source_module_ref": "structures/core/completion-obligations-surface-slice.module.json",
+  "field_sources": {
+    "obligation_groups": [
+      "kernel.spec.json#/invariants",
+      "kernel.spec.json#/artifact_classes",
+      "kernel.spec.json#/implementation_order",
+      "kernel.spec.json#/completion_condition",
+      "KERNEL_SPEC.md",
+      "manifests/kernel.bundle.schema.json",
+      "manifests/output-classes.schema.json",
+      "policy/contracts/normalization.md",
+      "ci/gate-matrix.md",
+      "policy/data/toolchain-control.index.json",
+      "policy/data/generated-build-boundary.json",
+      "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+      "generated/state/source-validation/completion-obligations-surface-slice/2026-03-27T02-00-00Z/source-validation.json"
+    ]
+  }
+}

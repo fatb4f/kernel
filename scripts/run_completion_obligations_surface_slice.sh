@@ -247,12 +247,12 @@ jq -n \
             "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json"
           ],
           items: [
-            entry("phase-1", "KERNEL_SPEC.md", ["kernel.spec.json#/implementation_order/0", "KERNEL_SPEC.md"]),
-            entry("phase-2", "manifests/kernel.bundle.schema.json", ["kernel.spec.json#/implementation_order/1", "manifests/kernel.bundle.schema.json"]),
-            entry("phase-3", "manifests/output-classes.schema.json", ["kernel.spec.json#/implementation_order/2", "manifests/output-classes.schema.json"]),
-            entry("phase-4", "policy/contracts/normalization.md", ["kernel.spec.json#/implementation_order/3", "policy/contracts/normalization.md"]),
-            entry("phase-5", "ci/gate-matrix.md", ["kernel.spec.json#/implementation_order/4", "ci/gate-matrix.md"]),
-            entry("phase-6", "admission artifact materialization", ["kernel.spec.json#/implementation_order/5", "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json"])
+            entry("phase-1"; "KERNEL_SPEC.md"; ["kernel.spec.json#/implementation_order/0", "KERNEL_SPEC.md"]),
+            entry("phase-2"; "manifests/kernel.bundle.schema.json"; ["kernel.spec.json#/implementation_order/1", "manifests/kernel.bundle.schema.json"]),
+            entry("phase-3"; "manifests/output-classes.schema.json"; ["kernel.spec.json#/implementation_order/2", "manifests/output-classes.schema.json"]),
+            entry("phase-4"; "policy/contracts/normalization.md"; ["kernel.spec.json#/implementation_order/3", "policy/contracts/normalization.md"]),
+            entry("phase-5"; "ci/gate-matrix.md"; ["kernel.spec.json#/implementation_order/4", "ci/gate-matrix.md"]),
+            entry("phase-6"; "admission artifact materialization"; ["kernel.spec.json#/implementation_order/5", "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json"])
           ]
         },
         completion_conditions: {
@@ -262,12 +262,12 @@ jq -n \
             "manifests/bundles/kernel-core-json-structure-closeout.manifest.json"
           ],
           items: [
-            entry("condition-1", "prose authority exists", ["kernel.spec.json#/completion_condition/0", "KERNEL_SPEC.md", "kernel.spec.json"]),
-            entry("condition-2", "control objects validate", ["kernel.spec.json#/completion_condition/1", "generated/state/source-validation/completion-obligations-surface-slice/'"${run_id}"'/source-validation.json"]),
-            entry("condition-3", "outputs are typed", ["kernel.spec.json#/completion_condition/2", "manifests/output-classes.schema.json"]),
-            entry("condition-4", "normalization boundary is explicit", ["kernel.spec.json#/completion_condition/3", "policy/contracts/normalization.md", "generated/registries/normalization-surfaces.index.json"]),
-            entry("condition-5", "gate IDs and evidence artifacts are fixed", ["kernel.spec.json#/completion_condition/4", "ci/gate-matrix.md", "generated/registries/reason-code-surfaces.index.json"]),
-            entry("condition-6", "admission artifacts are no longer implicit", ["kernel.spec.json#/completion_condition/5", "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json", "generated/state/admission/core-closeout-status-slice/2026-03-27T01-45-00Z/decision.json"])
+            entry("condition-1"; "prose authority exists"; ["kernel.spec.json#/completion_condition/0", "KERNEL_SPEC.md", "kernel.spec.json"]),
+            entry("condition-2"; "control objects validate"; ["kernel.spec.json#/completion_condition/1", "generated/state/source-validation/completion-obligations-surface-slice/2026-03-27T02-00-00Z/source-validation.json"]),
+            entry("condition-3"; "outputs are typed"; ["kernel.spec.json#/completion_condition/2", "manifests/output-classes.schema.json"]),
+            entry("condition-4"; "normalization boundary is explicit"; ["kernel.spec.json#/completion_condition/3", "policy/contracts/normalization.md", "generated/registries/normalization-surfaces.index.json"]),
+            entry("condition-5"; "gate IDs and evidence artifacts are fixed"; ["kernel.spec.json#/completion_condition/4", "ci/gate-matrix.md", "generated/registries/reason-code-surfaces.index.json"]),
+            entry("condition-6"; "admission artifacts are no longer implicit"; ["kernel.spec.json#/completion_condition/5", "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json", "generated/state/admission/core-closeout-status-slice/2026-03-27T01-45-00Z/decision.json"])
           ]
         },
         toolchain_control: {
@@ -278,9 +278,9 @@ jq -n \
             "policy/data/generated-build-boundary.json"
           ],
           items: [
-            entry("toolchain-1", "toolchain control index exists", ["policy/data/toolchain-control.index.json"]),
-            entry("toolchain-2", "workflow orchestration is declared", ["Justfile"]),
-            entry("toolchain-3", "generated/build boundary is declared", ["policy/data/generated-build-boundary.json"])
+            entry("toolchain-1"; "toolchain control index exists"; ["policy/data/toolchain-control.index.json"]),
+            entry("toolchain-2"; "workflow orchestration is declared"; ["Justfile"]),
+            entry("toolchain-3"; "generated/build boundary is declared"; ["policy/data/generated-build-boundary.json"])
           ]
         }
       },

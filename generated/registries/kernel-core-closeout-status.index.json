@@ -1,9 +1,7 @@
 {
    "artifact_type": "kernel.closeout_status_registry",
    "artifact_version": "0.1.0",
-   "blockers": [
-      "completion_obligations_not_fully_closed"
-   ],
+   "blockers": [ ],
    "checklist_statuses": [
       {
          "evidence_refs": [
@@ -114,16 +112,17 @@
       },
       {
          "evidence_refs": [
+            "generated/registries/completion-obligations.index.json",
             "kernel.spec.json#/completion_condition",
-            "schemas/exported/",
-            "generated/registries/kernel-core-closeout-status.index.json",
-            "generated/registries/normalization-surfaces.index.json",
-            "generated/registries/drift-integrity-surfaces.index.json"
+            "manifests/output-classes.schema.json",
+            "policy/contracts/normalization.md",
+            "ci/gate-matrix.md",
+            "policy/data/toolchain-control.index.json"
          ],
          "id": "c10",
          "label": "Invariants, artifact classes, implementation order, and completion conditions are preserved as closeout obligations",
-         "manifest_status": "open",
-         "observed_status": "partial"
+         "manifest_status": "done",
+         "observed_status": "materialized"
       },
       {
          "evidence_refs": [
@@ -223,7 +222,7 @@
          "plane": "integrity"
       }
    ],
-   "current_gate_status": "BLOCKED",
+   "current_gate_status": "OPEN",
    "generated_from": {
       "control_object_id": "closeout-status-registry-slice",
       "output_path": "generated/registries/kernel-core-closeout-status.index.json"

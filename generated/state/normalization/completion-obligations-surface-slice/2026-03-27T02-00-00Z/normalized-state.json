@@ -1,0 +1,396 @@
+{
+  "kind": "kernel.completion_obligations_surface.slice_input",
+  "control_object_id": "completion-obligations-surface-slice",
+  "source_module_id": "completion-obligations-surface-slice",
+  "source_module_ref": "structures/core/completion-obligations-surface-slice.module.json",
+  "export_schema_ref": "schemas/exported/completion-obligations-surface-slice-input.schema.json",
+  "generator_ref": "manifests/generators/completion-obligations-surface-slice.generator.json",
+  "projection_ref": "manifests/projections/completion-obligations-surface-slice.projection.json",
+  "output_path": "generated/registries/completion-obligations.index.json",
+  "overall_status": "materialized",
+  "obligation_groups": {
+    "invariants": {
+      "status": "materialized",
+      "evidence_refs": [
+        "kernel.spec.json#/invariants",
+        "policy/data/generated-build-boundary.json"
+      ],
+      "items": [
+        {
+          "id": "Canonical model is authoritative; exports are derived.",
+          "label": "Canonical model is authoritative; exports are derived.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Exported schemas are not hand-edited.",
+          "label": "Exported schemas are not hand-edited.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "CUE admits normalized state, not arbitrary mixed inputs.",
+          "label": "CUE admits normalized state, not arbitrary mixed inputs.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Jsonnet renders from admitted state only.",
+          "label": "Jsonnet renders from admitted state only.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "generated/ is committed derived state; build/ is ephemeral.",
+          "label": "generated/ is committed derived state; build/ is ephemeral.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Every bundle, projection, and generator is declared by a manifest control object.",
+          "label": "Every bundle, projection, and generator is declared by a manifest control object.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Every committed derived artifact must be regen-clean.",
+          "label": "Every committed derived artifact must be regen-clean.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Normalization regularizes structure only; it does not decide legality.",
+          "label": "Normalization regularizes structure only; it does not decide legality.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Every admission run emits an explicit decision artifact.",
+          "label": "Every admission run emits an explicit decision artifact.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Every renderer declares its admitted-state inputs and output class.",
+          "label": "Every renderer declares its admitted-state inputs and output class.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "Toolchain versions for normalize/admit/render are pinned or policy-controlled.",
+          "label": "Toolchain versions for normalize/admit/render are pinned or policy-controlled.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        },
+        {
+          "id": "No renderer, exporter, or compatibility shim may establish authority; authority exists only in the canonical structural model under structures/.",
+          "label": "No renderer, exporter, or compatibility shim may establish authority; authority exists only in the canonical structural model under structures/.",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/invariants",
+            "policy/data/generated-build-boundary.json"
+          ]
+        }
+      ]
+    },
+    "artifact_classes": {
+      "status": "materialized",
+      "evidence_refs": [
+        "kernel.spec.json#/artifact_classes",
+        "manifests/output-classes.schema.json"
+      ],
+      "items": [
+        {
+          "id": "contract-export",
+          "label": "contract-export",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "review-view",
+          "label": "review-view",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "runtime-config",
+          "label": "runtime-config",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "registry",
+          "label": "registry",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "documentation",
+          "label": "documentation",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "codegen-input",
+          "label": "codegen-input",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "admitted-state",
+          "label": "admitted-state",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "admission-decision",
+          "label": "admission-decision",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "admission-violations",
+          "label": "admission-violations",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/artifact_classes",
+            "manifests/output-classes.schema.json"
+          ]
+        }
+      ]
+    },
+    "implementation_order": {
+      "status": "materialized",
+      "evidence_refs": [
+        "kernel.spec.json#/implementation_order",
+        "KERNEL_SPEC.md",
+        "manifests/kernel.bundle.schema.json",
+        "manifests/output-classes.schema.json",
+        "policy/contracts/normalization.md",
+        "ci/gate-matrix.md",
+        "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json"
+      ],
+      "items": [
+        {
+          "id": "phase-1",
+          "label": "KERNEL_SPEC.md",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/implementation_order/0",
+            "KERNEL_SPEC.md"
+          ]
+        },
+        {
+          "id": "phase-2",
+          "label": "manifests/kernel.bundle.schema.json",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/implementation_order/1",
+            "manifests/kernel.bundle.schema.json"
+          ]
+        },
+        {
+          "id": "phase-3",
+          "label": "manifests/output-classes.schema.json",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/implementation_order/2",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "phase-4",
+          "label": "policy/contracts/normalization.md",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/implementation_order/3",
+            "policy/contracts/normalization.md"
+          ]
+        },
+        {
+          "id": "phase-5",
+          "label": "ci/gate-matrix.md",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/implementation_order/4",
+            "ci/gate-matrix.md"
+          ]
+        },
+        {
+          "id": "phase-6",
+          "label": "admission artifact materialization",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/implementation_order/5",
+            "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json"
+          ]
+        }
+      ]
+    },
+    "completion_conditions": {
+      "status": "materialized",
+      "evidence_refs": [
+        "kernel.spec.json#/completion_condition",
+        "manifests/bundles/kernel-core-json-structure-closeout.manifest.json"
+      ],
+      "items": [
+        {
+          "id": "condition-1",
+          "label": "prose authority exists",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/completion_condition/0",
+            "KERNEL_SPEC.md",
+            "kernel.spec.json"
+          ]
+        },
+        {
+          "id": "condition-2",
+          "label": "control objects validate",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/completion_condition/1",
+            "generated/state/source-validation/completion-obligations-surface-slice/2026-03-27T02-00-00Z/source-validation.json"
+          ]
+        },
+        {
+          "id": "condition-3",
+          "label": "outputs are typed",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/completion_condition/2",
+            "manifests/output-classes.schema.json"
+          ]
+        },
+        {
+          "id": "condition-4",
+          "label": "normalization boundary is explicit",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/completion_condition/3",
+            "policy/contracts/normalization.md",
+            "generated/registries/normalization-surfaces.index.json"
+          ]
+        },
+        {
+          "id": "condition-5",
+          "label": "gate IDs and evidence artifacts are fixed",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/completion_condition/4",
+            "ci/gate-matrix.md",
+            "generated/registries/reason-code-surfaces.index.json"
+          ]
+        },
+        {
+          "id": "condition-6",
+          "label": "admission artifacts are no longer implicit",
+          "status": "materialized",
+          "evidence_refs": [
+            "kernel.spec.json#/completion_condition/5",
+            "generated/state/admission/reference-docs-executable-slice/2026-03-26T23-05-00Z/decision.json",
+            "generated/state/admission/core-closeout-status-slice/2026-03-27T01-45-00Z/decision.json"
+          ]
+        }
+      ]
+    },
+    "toolchain_control": {
+      "status": "materialized",
+      "evidence_refs": [
+        "policy/data/toolchain-control.index.json",
+        "Justfile",
+        "policy/data/generated-build-boundary.json"
+      ],
+      "items": [
+        {
+          "id": "toolchain-1",
+          "label": "toolchain control index exists",
+          "status": "materialized",
+          "evidence_refs": [
+            "policy/data/toolchain-control.index.json"
+          ]
+        },
+        {
+          "id": "toolchain-2",
+          "label": "workflow orchestration is declared",
+          "status": "materialized",
+          "evidence_refs": [
+            "Justfile"
+          ]
+        },
+        {
+          "id": "toolchain-3",
+          "label": "generated/build boundary is declared",
+          "status": "materialized",
+          "evidence_refs": [
+            "policy/data/generated-build-boundary.json"
+          ]
+        }
+      ]
+    }
+  },
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  }
+}

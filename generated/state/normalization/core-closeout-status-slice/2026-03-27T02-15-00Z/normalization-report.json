@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "core-closeout-status-slice",
+  "run_id": "2026-03-27T02-15-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-27T01:43:51Z",
+  "operations": [
+    "copied current_status, blockers, and decision_basis from the closeout manifest",
+    "bound the operational status page output path",
+    "recorded implemented executable slices"
+  ],
+  "forbidden_operations_performed": []
+}

@@ -184,10 +184,14 @@ jq -n \
       "policy-scope-surface-slice: policy/kernel source and policy-scope registry are committed",
       "drift-integrity-surface-slice: integrity registry and drift evidence are committed",
       "normalization-surface-slice: normalization registry and aggregated provenance are committed",
+      "completion-obligations-surface-slice: invariants, output classes, implementation order, and completion conditions are committed",
       "local Jsonnet runtime is available via rsjsonnet"
     ],
     status_explanation: (
-      "The core closeout target remains blocked, but the repo now has multiple executable slices across documentation, registries, policy, normalization, and integrity surfaces."
+      if $manifest[0].operational_status_gate.current_status == "OPEN"
+      then "The core closeout target is open. The repo now has executable slices across documentation, registries, policy, normalization, integrity, reason-code, and completion-obligation surfaces."
+      else "The core closeout target remains blocked, but the repo now has multiple executable slices across documentation, registries, policy, normalization, and integrity surfaces."
+      end
     ),
     render_contract: {
       renderer: "jsonnet",
