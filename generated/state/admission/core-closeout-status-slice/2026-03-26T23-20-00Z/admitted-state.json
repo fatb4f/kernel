@@ -1,0 +1,46 @@
+{
+  "kind": "kernel.core_closeout_status.slice_input",
+  "control_object_id": "core-closeout-status-slice",
+  "source_module_id": "core-closeout-status-slice",
+  "source_module_ref": "structures/core/core-closeout-status-slice.module.json",
+  "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+  "export_schema_ref": "schemas/exported/core-closeout-status-slice-input.schema.json",
+  "generator_ref": "manifests/generators/core-closeout-status-slice.generator.json",
+  "projection_ref": "manifests/projections/core-closeout-status-slice.projection.json",
+  "output_path": "generated/docs/reference/operational-status.md",
+  "current_status": "BLOCKED",
+  "decision_basis": [
+    "all checklist_items marked done",
+    "all kernel_core_components marked done",
+    "completion_criteria satisfied",
+    "evidence matches the full kernel.spec.json authority, state-flow, plane, contract, gate, and artifact model",
+    "required toolchains for json-structure, json-schema, CUE, and Jsonnet are available and policy-controlled",
+    "no renderer, exporter, or compatibility shim is treated as authority"
+  ],
+  "blockers": [
+    "structures_core_not_fully_materialized",
+    "schemas_exported_not_fully_materialized",
+    "cue_policy_not_fully_materialized",
+    "normalization_outputs_not_materialized_outside_first_slice",
+    "admission_evidence_not_materialized_outside_first_slice",
+    "render_evidence_not_materialized_outside_first_slice",
+    "drift_integrity_evidence_not_materialized_outside_first_slice"
+  ],
+  "implemented_slices": [
+    "reference-docs-executable-slice: G1-G6 evidence is committed",
+    "local Jsonnet runtime is available via rsjsonnet"
+  ],
+  "status_explanation": "The core closeout target remains blocked, but the Jsonnet runtime blocker is resolved and one bounded executable slice is now materialized.",
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "documentation"
+  },
+  "admission": {
+    "decision": "ALLOW",
+    "policy_bundle_id": "policy/admission/core-closeout-status-slice.cue",
+    "admitted_at": "2026-03-27T00:08:44Z"
+  }
+}

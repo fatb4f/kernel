@@ -16,6 +16,7 @@ package admission
 	decision_basis:      [...string]
 	blockers:            [...string]
 	implemented_slices:  [...string]
+	status_explanation:  string
 	render_contract: {
 		renderer:     "jsonnet"
 		input_class:  "admitted_state"

@@ -6,16 +6,21 @@ Current baseline status for the kernel-spec-defined workflow:
 
 ## Why
 
-The core closeout target remains blocked, but the specific Jsonnet runtime blocker is resolved. The repository now has one executable end-to-end slice for `reference-docs-executable-slice`, including source validation, schema export, normalization, CUE admission, Jsonnet rendering, and drift checks.
+The core closeout target remains blocked, but the Jsonnet runtime blocker is resolved and one bounded executable slice is now materialized.
 
 ## What is true
 
-- The kernel spec is normative.
-- The canonical structural model is authoritative.
-- The workflow reference docs exist and mirror the spec-defined pipeline.
-- The operational closeout checklist is present and acts as the core status gate.
-- A local Jsonnet runtime is available via `rsjsonnet`.
-- The first executable slice emits G1-G6 evidence under `generated/state/*/reference-docs-executable-slice/2026-03-26T23-05-00Z/`.
+- `reference-docs-executable-slice: G1-G6 evidence is committed`
+- `local Jsonnet runtime is available via rsjsonnet`
+
+## Decision basis
+
+- `all checklist_items marked done`
+- `all kernel_core_components marked done`
+- `completion_criteria satisfied`
+- `evidence matches the full kernel.spec.json authority, state-flow, plane, contract, gate, and artifact model`
+- `required toolchains for json-structure, json-schema, CUE, and Jsonnet are available and policy-controlled`
+- `no renderer, exporter, or compatibility shim is treated as authority`
 
 ## What is blocking status closure
 
@@ -29,4 +34,5 @@ The core closeout target remains blocked, but the specific Jsonnet runtime block
 
 ## Status rule
 
-The core kernel operational status remains not closed until the executable workflow extends beyond the first bounded slice and the closeout manifest criteria are satisfied across the broader kernel surface.
+The core kernel operational status remains not closed until the closeout manifest criteria are satisfied across the broader kernel surface.
+

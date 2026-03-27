@@ -1,0 +1,15 @@
+{
+  "gate": "G2",
+  "control_object_id": "core-closeout-status-slice",
+  "run_id": "2026-03-26T23-20-00Z",
+  "status": "PASS",
+  "source_ref": "structures/core/core-closeout-status-slice.module.json",
+  "schema_ref": "schemas/exported/core-closeout-status-slice-input.schema.json",
+  "exported_at": "2026-03-27T00:08:44Z",
+  "reason_codes": [],
+  "tool": "jq + check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}

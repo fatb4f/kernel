@@ -10,20 +10,15 @@
     "target": "core kernel operational status",
     "mode": "fail_closed",
     "current_status": "BLOCKED",
-    "current_status_ref": "generated/state/admission/kernel-core-json-structure-closeout/2026-03-26T00-00-00Z/decision.json",
+    "current_status_ref": "generated/state/admission/core-closeout-status-slice/2026-03-26T23-20-00Z/decision.json",
     "blockers": [
-      "structures_core_not_materialized",
-      "json_structure_toolchain_not_declared",
-      "schemas_exported_not_materialized",
-      "json_schema_toolchain_not_declared",
-      "cue_policy_not_materialized",
-      "cue_toolchain_not_declared",
-      "jsonnet_rendering_not_materialized",
-      "jsonnet_runtime_unavailable",
-      "normalization_outputs_not_materialized",
-      "admission_evidence_not_materialized",
-      "render_evidence_not_materialized",
-      "drift_integrity_evidence_not_materialized"
+      "structures_core_not_fully_materialized",
+      "schemas_exported_not_fully_materialized",
+      "cue_policy_not_fully_materialized",
+      "normalization_outputs_not_materialized_outside_first_slice",
+      "admission_evidence_not_materialized_outside_first_slice",
+      "render_evidence_not_materialized_outside_first_slice",
+      "drift_integrity_evidence_not_materialized_outside_first_slice"
     ],
     "decision_basis": [
       "all checklist_items marked done",

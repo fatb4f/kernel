@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "core-closeout-status-slice",
+  "run_id": "2026-03-26T23-20-00Z",
+  "policy_bundle_id": "policy/admission/core-closeout-status-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/core-closeout-status-slice/2026-03-26T23-20-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "94fa40c04a98b43db44079911a8c26d23b6bda877682c1548445954cd9c513cb"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/core-closeout-status-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "0d392717bd9a5bf7e622999cdbdbf89d100b7676fa0449012b3c199ed9236d16"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-27T00:08:44Z"
+}

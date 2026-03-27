@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "core-closeout-status-slice-input.schema.json",
+  "title": "Core closeout status slice input",
+  "description": "Derived boundary contract for the operational status page slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_module_id",
+    "source_module_ref",
+    "closeout_manifest_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "current_status",
+    "decision_basis",
+    "blockers",
+    "implemented_slices",
+    "status_explanation",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.core_closeout_status.slice_input"
+    },
+    "control_object_id": {
+      "const": "core-closeout-status-slice"
+    },
+    "source_module_id": {
+      "const": "core-closeout-status-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/core/core-closeout-status-slice.module.json"
+    },
+    "closeout_manifest_ref": {
+      "const": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/core-closeout-status-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/core-closeout-status-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/core-closeout-status-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/docs/reference/operational-status.md"
+    },
+    "current_status": {
+      "type": "string",
+      "enum": [
+        "BLOCKED",
+        "OPEN",
+        "DONE",
+        "INVALID"
+      ]
+    },
+    "decision_basis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implemented_slices": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status_explanation": {
+      "type": "string"
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "documentation"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
