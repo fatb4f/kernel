@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "chatgpt-packet-family-slice",
+  "run_id": "2026-03-27T18-55-26Z",
+  "policy_bundle_id": "policy/admission/chatgpt-packet-family-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/chatgpt-packet-family-slice/2026-03-27T18-55-26Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "63efcc2edb872b41bc883eae21c8aa71dbf9828c623d5963969ec88f7c911f8d"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/chatgpt-packet-family-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "0ec7275c0a554872ed6e35faa01ea63e5fe0f89ab527625b3bb9ff1106d59518"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-27T18:55:30Z"
+}

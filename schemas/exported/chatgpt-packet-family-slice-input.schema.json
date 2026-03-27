@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "chatgpt-packet-family-slice-input.schema.json",
+  "title": "ChatGPT packet family slice input",
+  "description": "Derived boundary contract for the approved ChatGPT packet schema family slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "registry_id",
+    "family_root",
+    "source_module_id",
+    "source_module_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "approval_state",
+    "entries",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.chatgpt_packet_family.slice_input"
+    },
+    "control_object_id": {
+      "const": "chatgpt-packet-family-slice"
+    },
+    "registry_id": {
+      "const": "kernel-chatgpt-packet-family"
+    },
+    "family_root": {
+      "const": "generated/schemas/chatgpt-pipeline/packet"
+    },
+    "source_module_id": {
+      "const": "chatgpt-packet-family-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/core/chatgpt-packet-family-slice.module.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/chatgpt-packet-family-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/chatgpt-packet-family-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/chatgpt-packet-family-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/chatgpt-packet-family.index.json"
+    },
+    "approval_state": {
+      "const": "APPROVED"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "schema_id",
+          "schema_role",
+          "schema_ref",
+          "workflow_binding_refs",
+          "source_refs",
+          "summary",
+          "status"
+        ],
+        "properties": {
+          "schema_id": {
+            "type": "string"
+          },
+          "schema_role": {
+            "type": "string"
+          },
+          "schema_ref": {
+            "type": "string"
+          },
+          "workflow_binding_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "summary": {
+            "type": "string"
+          },
+          "status": {
+            "const": "materialized"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

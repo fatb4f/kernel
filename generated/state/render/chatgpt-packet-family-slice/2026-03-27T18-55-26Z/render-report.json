@@ -1,0 +1,15 @@
+{
+  "gate": "G5",
+  "control_object_id": "chatgpt-packet-family-slice",
+  "run_id": "2026-03-27T18-55-26Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/chatgpt-packet-family.jsonnet",
+  "admitted_state_ref": "generated/state/admission/chatgpt-packet-family-slice/2026-03-27T18-55-26Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/chatgpt-packet-family.index.json"
+  ],
+  "rendered_at": "2026-03-27T18:55:30Z"
+}

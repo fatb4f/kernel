@@ -1,0 +1,12 @@
+{
+  "gate": "G6",
+  "control_object_id": "chatgpt-packet-family-slice",
+  "run_id": "2026-03-27T18-55-26Z",
+  "status": "PASS",
+  "checked_at": "2026-03-27T18:55:30Z",
+  "checks": [
+    "exported schema is present",
+    "rendered registry regenerates without drift",
+    "required generated outputs are present"
+  ]
+}

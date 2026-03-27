@@ -1,0 +1,27 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "chatgpt-packet-family-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/chatgpt-packet-family-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "generated/schemas/chatgpt-pipeline/packet/*.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+  ],
+  "outputs": [
+    "schemas/exported/chatgpt-packet-family-slice-input.schema.json",
+    "generated/state/source-validation/chatgpt-packet-family-slice/<run-id>/source-validation.json",
+    "generated/state/export/chatgpt-packet-family-slice/<run-id>/export-report.json",
+    "generated/state/normalization/chatgpt-packet-family-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/chatgpt-packet-family-slice/<run-id>/source-map.json",
+    "generated/state/normalization/chatgpt-packet-family-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The approved packet schema family is derived only from generated handoff contracts already present in the repo.",
+    "All registry entries must resolve to repo-local packet schema refs.",
+    "The exported slice-input schema is derived output only."
+  ],
+  "notes": "Generator control object for materializing the approved ChatGPT packet schema family."
+}

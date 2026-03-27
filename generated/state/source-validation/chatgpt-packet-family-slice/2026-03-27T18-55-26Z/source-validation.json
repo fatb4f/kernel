@@ -1,0 +1,91 @@
+{
+  "gate": "G1",
+  "control_object_id": "chatgpt-packet-family-slice",
+  "run_id": "2026-03-27T18-55-26Z",
+  "status": "PASS",
+  "source_schema_ref": "schemas/exported/canonical-structure-family.schema.json",
+  "source_ref": "structures/core/chatgpt-packet-family-slice.module.json",
+  "validated_at": "2026-03-27T18:55:29Z",
+  "reason_codes": [],
+  "tool": "check-jsonschema",
+  "tool_output": {
+    "source_module": {
+      "status": "ok",
+      "errors": []
+    },
+    "packet_schemas": [
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      },
+      {
+        "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+        "status": "PASS",
+        "tool_output": {
+          "status": "ok",
+          "errors": []
+        }
+      }
+    ]
+  }
+}

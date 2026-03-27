@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "chatgpt-packet-family-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/chatgpt-packet-family-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/chatgpt-packet-family.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/chatgpt-packet-family.index.json",
+    "generated/state/render/chatgpt-packet-family-slice/<run-id>/render-report.json",
+    "generated/state/integrity/chatgpt-packet-family-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits a packet-family registry artifact only.",
+    "The projection remains repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the ChatGPT packet family slice."
+}

@@ -1,0 +1,115 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "chatgpt-packet-family-slice",
+  "fragments": [
+    {
+      "name": "authority-manifest-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/0"
+      ],
+      "description": "Authority manifest schema for the ChatGPT packet handoff family."
+    },
+    {
+      "name": "packet-definition-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/1"
+      ],
+      "description": "Canonical packet definition schema for ChatGPT-authored packet instances."
+    },
+    {
+      "name": "scm-pattern-binding-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/2"
+      ],
+      "description": "Local realization-boundary schema for scm.pattern binding artifacts."
+    },
+    {
+      "name": "packet-review-request-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/3"
+      ],
+      "description": "Schema for the human review request emitted by the ChatGPT packet lane."
+    },
+    {
+      "name": "packet-review-decision-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/conditional_outputs/0"
+      ],
+      "description": "Conditional authoritative human review decision schema."
+    },
+    {
+      "name": "root-trust-evidence-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+        "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json"
+      ],
+      "description": "Packet-local trust evidence schema that pins authority and delegation inputs."
+    },
+    {
+      "name": "regen-record-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json"
+      ],
+      "description": "Schema for regeneration and staleness evidence."
+    },
+    {
+      "name": "artifact-manifest-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json"
+      ],
+      "description": "Schema for required and conditional packet artifact enumeration."
+    },
+    {
+      "name": "packet-approval-schema",
+      "class": "core",
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+      ],
+      "description": "Transitional compatibility schema for non-authoritative packet approval placeholders."
+    }
+  ],
+  "relations": [
+    {
+      "from": "authority-manifest-schema",
+      "to": "packet-definition-schema",
+      "relation": "constrains"
+    },
+    {
+      "from": "packet-definition-schema",
+      "to": "artifact-manifest-schema",
+      "relation": "declares"
+    },
+    {
+      "from": "packet-review-request-schema",
+      "to": "packet-review-decision-schema",
+      "relation": "awaits"
+    },
+    {
+      "from": "root-trust-evidence-schema",
+      "to": "scm-pattern-binding-schema",
+      "relation": "authorizes"
+    },
+    {
+      "from": "regen-record-schema",
+      "to": "packet-approval-schema",
+      "relation": "bounds"
+    }
+  ],
+  "notes": "Authoritative source module for materializing the approved ChatGPT packet schema family as a first-class derived registry surface."
+}

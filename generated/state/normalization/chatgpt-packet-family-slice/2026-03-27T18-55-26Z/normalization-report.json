@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "chatgpt-packet-family-slice",
+  "run_id": "2026-03-27T18-55-26Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-27T18:55:30Z",
+  "operations": [
+    "bound approved packet schema artifacts into a materialized registry input",
+    "mapped workflow bindings and schema refs for each packet family entry",
+    "declared the packet family approval state as APPROVED"
+  ],
+  "forbidden_operations_performed": []
+}

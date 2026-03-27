@@ -1,0 +1,18 @@
+{
+  "source_module_ref": "structures/core/chatgpt-packet-family-slice.module.json",
+  "family_root": "generated/schemas/chatgpt-pipeline/packet",
+  "field_sources": {
+    "entries": [
+      {
+        "family": "approved_chatgpt_packet_family",
+        "refs": [
+          "structures/core/chatgpt-packet-family-slice.module.json",
+          "generated/schemas/chatgpt-pipeline/packet/"
+        ]
+      }
+    ],
+    "output_path": [
+      "manifests/projections/chatgpt-packet-family-slice.projection.json"
+    ]
+  }
+}

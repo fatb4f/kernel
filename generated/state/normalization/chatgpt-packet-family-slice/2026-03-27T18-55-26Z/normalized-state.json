@@ -1,0 +1,148 @@
+{
+  "kind": "kernel.chatgpt_packet_family.slice_input",
+  "control_object_id": "chatgpt-packet-family-slice",
+  "registry_id": "kernel-chatgpt-packet-family",
+  "family_root": "generated/schemas/chatgpt-pipeline/packet",
+  "source_module_id": "chatgpt-packet-family-slice",
+  "source_module_ref": "structures/core/chatgpt-packet-family-slice.module.json",
+  "export_schema_ref": "schemas/exported/chatgpt-packet-family-slice-input.schema.json",
+  "generator_ref": "manifests/generators/chatgpt-packet-family-slice.generator.json",
+  "projection_ref": "manifests/projections/chatgpt-packet-family-slice.projection.json",
+  "output_path": "generated/registries/chatgpt-packet-family.index.json",
+  "approval_state": "APPROVED",
+  "entries": [
+    {
+      "schema_id": "authority-manifest-schema",
+      "schema_role": "authority_manifest",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/0"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/0"
+      ],
+      "summary": "Authority manifest schema for the ChatGPT packet handoff family.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "packet-definition-schema",
+      "schema_role": "packet_definition",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/1"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/1"
+      ],
+      "summary": "Canonical packet definition schema for ChatGPT-authored packet instances.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "scm-pattern-binding-schema",
+      "schema_role": "scm_pattern_binding",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/2"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/2"
+      ],
+      "summary": "Local realization-boundary schema for scm.pattern binding artifacts.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "packet-review-request-schema",
+      "schema_role": "packet_review_request",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/3"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/required_outputs/packet_schemas/3"
+      ],
+      "summary": "Schema for the human review request emitted by the ChatGPT packet lane.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "packet-review-decision-schema",
+      "schema_role": "packet_review_decision",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/conditional_outputs/0"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json#/conditional_outputs/0"
+      ],
+      "summary": "Conditional authoritative human review decision schema.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "root-trust-evidence-schema",
+      "schema_role": "root_trust_evidence",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+      "workflow_binding_refs": [
+        "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+        "generated/packets/pkt-kernel-trust-spec-001/machine/root.trust.evidence.json"
+      ],
+      "summary": "Packet-local trust evidence schema that pins authority and delegation inputs.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "regen-record-schema",
+      "schema_role": "regen_record",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json"
+      ],
+      "summary": "Schema for regeneration and staleness evidence.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "artifact-manifest-schema",
+      "schema_role": "artifact_manifest",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json"
+      ],
+      "summary": "Schema for required and conditional packet artifact enumeration.",
+      "status": "materialized"
+    },
+    {
+      "schema_id": "packet-approval-schema",
+      "schema_role": "packet_approval",
+      "schema_ref": "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+      "workflow_binding_refs": [
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+      ],
+      "source_refs": [
+        "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+        "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+      ],
+      "summary": "Transitional compatibility schema for non-authoritative packet approval placeholders.",
+      "status": "materialized"
+    }
+  ],
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  }
+}
