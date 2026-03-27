@@ -1,0 +1,39 @@
+{
+  "kind": "kernel.core_closeout_status.slice_input",
+  "control_object_id": "core-closeout-status-slice",
+  "source_module_id": "core-closeout-status-slice",
+  "source_module_ref": "structures/core/core-closeout-status-slice.module.json",
+  "closeout_manifest_ref": "manifests/bundles/kernel-core-json-structure-closeout.manifest.json",
+  "export_schema_ref": "schemas/exported/core-closeout-status-slice-input.schema.json",
+  "generator_ref": "manifests/generators/core-closeout-status-slice.generator.json",
+  "projection_ref": "manifests/projections/core-closeout-status-slice.projection.json",
+  "output_path": "generated/docs/reference/operational-status.md",
+  "current_status": "BLOCKED",
+  "decision_basis": [
+    "kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces",
+    "checklist item c10 remains open, so completion criteria are not yet fully satisfied",
+    "reason code family coverage is now materially linked to committed evidence across G1-G6",
+    "closeout obligation closure still needs explicit finalization",
+    "required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled",
+    "no renderer, exporter, or compatibility shim is treated as authority"
+  ],
+  "blockers": [
+    "completion_obligations_not_fully_closed"
+  ],
+  "implemented_slices": [
+    "reference-docs-executable-slice: G1-G6 evidence is committed",
+    "boundary-family-registry-slice: registry render lane is committed",
+    "policy-scope-surface-slice: policy/kernel source and policy-scope registry are committed",
+    "drift-integrity-surface-slice: integrity registry and drift evidence are committed",
+    "normalization-surface-slice: normalization registry and aggregated provenance are committed",
+    "local Jsonnet runtime is available via rsjsonnet"
+  ],
+  "status_explanation": "The core closeout target remains blocked, but the repo now has multiple executable slices across documentation, registries, policy, normalization, and integrity surfaces.",
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "documentation"
+  }
+}

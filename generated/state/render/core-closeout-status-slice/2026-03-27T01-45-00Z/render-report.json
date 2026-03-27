@@ -1,0 +1,15 @@
+{
+  "gate": "G5",
+  "control_object_id": "core-closeout-status-slice",
+  "run_id": "2026-03-27T01-45-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/reference/core-closeout-status.jsonnet",
+  "admitted_state_ref": "generated/state/admission/core-closeout-status-slice/2026-03-27T01-45-00Z/admitted-state.json",
+  "outputs": [
+    "generated/docs/reference/operational-status.md"
+  ],
+  "rendered_at": "2026-03-27T01:35:27Z"
+}

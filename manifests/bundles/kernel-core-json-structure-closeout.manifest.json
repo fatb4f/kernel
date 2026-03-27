@@ -10,15 +10,15 @@
     "target": "core kernel operational status",
     "mode": "fail_closed",
     "current_status": "BLOCKED",
-    "current_status_ref": "generated/state/admission/core-closeout-status-slice/2026-03-27T01-00-00Z/decision.json",
+    "current_status_ref": "generated/state/admission/core-closeout-status-slice/2026-03-27T01-45-00Z/decision.json",
     "blockers": [
-      "gate_reason_families_not_fully_materialized",
       "completion_obligations_not_fully_closed"
     ],
     "decision_basis": [
       "kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces",
-      "checklist items c9 and c10 remain open, so completion criteria are not yet fully satisfied",
-      "reason code family coverage and closeout obligation closure still need explicit finalization",
+      "checklist item c10 remains open, so completion criteria are not yet fully satisfied",
+      "reason code family coverage is now materially linked to committed evidence across G1-G6",
+      "closeout obligation closure still needs explicit finalization",
       "required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled",
       "no renderer, exporter, or compatibility shim is treated as authority"
     ],
@@ -397,7 +397,7 @@
         "RENDER_*",
         "DRIFT_*"
       ],
-      "status": "open"
+      "status": "done"
     },
     {
       "id": "c10",

@@ -20,14 +20,14 @@ The core closeout target remains blocked, but the repo now has multiple executab
 ## Decision basis
 
 - `kernel core components are materially aligned across structure, contract, normalization, policy, rendering, control, and integrity surfaces`
-- `checklist items c9 and c10 remain open, so completion criteria are not yet fully satisfied`
-- `reason code family coverage and closeout obligation closure still need explicit finalization`
+- `checklist item c10 remains open, so completion criteria are not yet fully satisfied`
+- `reason code family coverage is now materially linked to committed evidence across G1-G6`
+- `closeout obligation closure still needs explicit finalization`
 - `required local toolchains for JSON validation, CUE, and Jsonnet-backed rendering are available and policy-controlled`
 - `no renderer, exporter, or compatibility shim is treated as authority`
 
 ## What is blocking status closure
 
-- `gate_reason_families_not_fully_materialized`
 - `completion_obligations_not_fully_closed`
 
 ## Status rule

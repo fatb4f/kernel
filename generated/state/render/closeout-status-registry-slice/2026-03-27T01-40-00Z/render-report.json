@@ -1,0 +1,15 @@
+{
+  "gate": "G5",
+  "control_object_id": "closeout-status-registry-slice",
+  "run_id": "2026-03-27T01-40-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/closeout-status-registry.jsonnet",
+  "admitted_state_ref": "generated/state/admission/closeout-status-registry-slice/2026-03-27T01-40-00Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/kernel-core-closeout-status.index.json"
+  ],
+  "rendered_at": "2026-03-27T01:35:27Z"
+}

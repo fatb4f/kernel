@@ -1,0 +1,12 @@
+{
+  "gate": "G6",
+  "control_object_id": "core-closeout-status-slice",
+  "run_id": "2026-03-27T01-45-00Z",
+  "status": "PASS",
+  "checked_at": "2026-03-27T01:35:27Z",
+  "checks": [
+    "exported schema is present",
+    "rendered operational status page regenerates without drift",
+    "required generated outputs are present"
+  ]
+}

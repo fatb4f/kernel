@@ -1,0 +1,15 @@
+{
+  "gate": "G2",
+  "control_object_id": "closeout-status-registry-slice",
+  "run_id": "2026-03-27T01-40-00Z",
+  "status": "PASS",
+  "source_ref": "structures/core/closeout-status-registry-slice.module.json",
+  "schema_ref": "schemas/exported/closeout-status-registry-slice-input.schema.json",
+  "exported_at": "2026-03-27T01:35:26Z",
+  "reason_codes": [],
+  "tool": "jq + check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}

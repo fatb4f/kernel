@@ -2,7 +2,6 @@
    "artifact_type": "kernel.closeout_status_registry",
    "artifact_version": "0.1.0",
    "blockers": [
-      "gate_reason_families_not_fully_materialized",
       "completion_obligations_not_fully_closed"
    ],
    "checklist_statuses": [
@@ -100,15 +99,18 @@
       },
       {
          "evidence_refs": [
-            "generated/state/source-validation/reference-docs-executable-slice/2026-03-26T23-05-00Z/source-validation.json",
-            "generated/state/export/reference-docs-executable-slice/2026-03-26T23-05-00Z/export-report.json",
-            "generated/state/render/normalization-surface-slice/2026-03-27T00-45-00Z/render-report.json",
-            "generated/state/integrity/drift-integrity-surface-slice/2026-03-27T00-30-00Z/drift-report.json"
+            "generated/registries/reason-code-surfaces.index.json",
+            "generated/state/source-validation/reason-code-surface-slice/2026-03-27T01-20-00Z/source-validation.json",
+            "generated/state/export/reason-code-surface-slice/2026-03-27T01-20-00Z/export-report.json",
+            "generated/state/normalization/reason-code-surface-slice/2026-03-27T01-20-00Z/normalization-report.json",
+            "generated/state/admission/reason-code-surface-slice/2026-03-27T01-20-00Z/decision.json",
+            "generated/state/render/reason-code-surface-slice/2026-03-27T01-20-00Z/render-report.json",
+            "generated/state/integrity/reason-code-surface-slice/2026-03-27T01-20-00Z/drift-report.json"
          ],
          "id": "c9",
          "label": "Gate model G1-G6 and reason code families are declared and linked to evidence",
-         "manifest_status": "open",
-         "observed_status": "partial"
+         "manifest_status": "done",
+         "observed_status": "materialized"
       },
       {
          "evidence_refs": [
