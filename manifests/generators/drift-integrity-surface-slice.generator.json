@@ -1,0 +1,29 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "drift-integrity-surface-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/drift-integrity-surface-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "policy/data/generated-build-boundary.json",
+    "generated/state/integrity/reference-docs-executable-slice/2026-03-26T23-05-00Z/drift-report.json",
+    "generated/state/integrity/core-closeout-status-slice/2026-03-26T23-20-00Z/drift-report.json",
+    "generated/state/integrity/boundary-family-registry-slice/2026-03-26T23-40-00Z/drift-report.json",
+    "generated/state/integrity/closeout-status-registry-slice/2026-03-26T23-55-00Z/drift-report.json",
+    "generated/state/integrity/policy-scope-surface-slice/2026-03-27T00-10-00Z/drift-report.json"
+  ],
+  "outputs": [
+    "schemas/exported/drift-integrity-surface-slice-input.schema.json",
+    "generated/state/source-validation/drift-integrity-surface-slice/<run-id>/source-validation.json",
+    "generated/state/export/drift-integrity-surface-slice/<run-id>/export-report.json",
+    "generated/state/normalization/drift-integrity-surface-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/drift-integrity-surface-slice/<run-id>/source-map.json",
+    "generated/state/normalization/drift-integrity-surface-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "Generated classes remain derived and non-authoritative even when committed.",
+    "Build classes remain ephemeral and non-authoritative.",
+    "Observed integrity status is derived from committed drift evidence only."
+  ],
+  "notes": "Generator control object for the drift-integrity surface slice."
+}

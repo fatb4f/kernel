@@ -66,3 +66,6 @@ closeout-status-registry-slice RUN_ID='':
 
 policy-scope-surface-slice RUN_ID='':
 	bash scripts/run_policy_scope_surface_slice.sh {{RUN_ID}}
+
+drift-integrity-surface-slice RUN_ID='':
+	bash scripts/run_drift_integrity_surface_slice.sh {{RUN_ID}}

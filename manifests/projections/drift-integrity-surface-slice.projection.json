@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "drift-integrity-surface-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/drift-integrity-surface-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/drift-integrity-surfaces.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/drift-integrity-surfaces.index.json",
+    "generated/state/render/drift-integrity-surface-slice/<run-id>/render-report.json",
+    "generated/state/integrity/drift-integrity-surface-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits an integrity registry artifact only.",
+    "The projection remains repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the drift-integrity surface slice."
+}

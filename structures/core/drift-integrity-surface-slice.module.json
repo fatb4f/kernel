@@ -1,0 +1,49 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "drift-integrity-surface-slice",
+  "fragments": [
+    {
+      "name": "generated-boundary",
+      "class": "core",
+      "source_refs": [
+        "policy/data/generated-build-boundary.json",
+        "kernel.spec.json#/normative_implementation/derived_artifact_policy"
+      ],
+      "description": "Derived integrity view for committed generated classes and their non-authoritative boundary."
+    },
+    {
+      "name": "build-boundary",
+      "class": "core",
+      "source_refs": [
+        "policy/data/generated-build-boundary.json#/build_classes",
+        "kernel.spec.json#/repo_semantics/build"
+      ],
+      "description": "Derived integrity view for ephemeral build outputs and their non-authority rule."
+    },
+    {
+      "name": "drift-evidence",
+      "class": "core",
+      "source_refs": [
+        "generated/state/integrity/reference-docs-executable-slice/2026-03-26T23-05-00Z/drift-report.json",
+        "generated/state/integrity/core-closeout-status-slice/2026-03-26T23-20-00Z/drift-report.json",
+        "generated/state/integrity/boundary-family-registry-slice/2026-03-26T23-40-00Z/drift-report.json",
+        "generated/state/integrity/closeout-status-registry-slice/2026-03-26T23-55-00Z/drift-report.json",
+        "generated/state/integrity/policy-scope-surface-slice/2026-03-27T00-10-00Z/drift-report.json"
+      ],
+      "description": "Derived integrity view for committed drift reports across executed slices."
+    }
+  ],
+  "relations": [
+    {
+      "from": "generated-boundary",
+      "to": "build-boundary",
+      "relation": "distinguishes"
+    },
+    {
+      "from": "generated-boundary",
+      "to": "drift-evidence",
+      "relation": "validated_by"
+    }
+  ],
+  "notes": "Authoritative source module for the drift-integrity surface slice. It consumes committed drift evidence and generated/build boundary declarations to render a derived integrity registry."
+}
