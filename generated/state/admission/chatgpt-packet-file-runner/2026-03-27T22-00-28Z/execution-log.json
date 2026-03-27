@@ -1,0 +1,264 @@
+{
+  "artifact_type": "kernel.chatgpt_packet_file_runner_log",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-packet-file-runner",
+  "run_id": "2026-03-27T22-00-28Z",
+  "mode": "DRY_RUN",
+  "packet_root": "generated/packets/pkt-operationalize-chatgpt-pipeline-001",
+  "packet_id": "pkt-operationalize-chatgpt-pipeline-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "steps": [
+    {
+      "name": "load packet root",
+      "status": "PASS",
+      "detail": "generated/packets/pkt-operationalize-chatgpt-pipeline-001"
+    },
+    {
+      "name": "validate packet schemas",
+      "status": "PASS",
+      "artifacts": {
+        "packet.definition.json": {
+          "path": "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.definition.json",
+          "schema": "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+          "status": "PASS"
+        },
+        "scm.pattern.binding.json": {
+          "path": "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/scm.pattern.binding.json",
+          "schema": "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+          "status": "PASS"
+        },
+        "packet.review.request.json": {
+          "path": "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.review.request.json",
+          "schema": "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+          "status": "PASS"
+        },
+        "root.trust.evidence.json": {
+          "path": "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/root.trust.evidence.json",
+          "schema": "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+          "status": "PASS"
+        },
+        "regen.record.json": {
+          "path": "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/regen.record.json",
+          "schema": "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+          "status": "PASS"
+        },
+        "artifact.manifest.json": {
+          "path": "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/artifact.manifest.json",
+          "schema": "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+          "status": "PASS"
+        },
+        "packet.approval.json": {
+          "path": "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.approval.json",
+          "schema": "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+          "status": "PASS"
+        }
+      }
+    },
+    {
+      "name": "resolve packet refs",
+      "status": "PASS",
+      "ref_groups": {
+        "packet_inputs": {
+          "required": [
+            "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/problem_set.json",
+            "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+            "control/scm.pattern/authority.manifest.json",
+            "control/trust/root.signers.json",
+            "control/trust/delegations/chatgpt.packet-sidecar.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json"
+          ]
+        },
+        "deliverables_now": {
+          "required": [
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.definition.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/scm.pattern.binding.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.review.request.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/root.trust.evidence.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/regen.record.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/artifact.manifest.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.approval.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/human/packet.definition.md"
+          ]
+        },
+        "deliverables_conditional": {
+          "conditional": [
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.review.decision.json"
+          ]
+        },
+        "review_basis_refs": {
+          "required": [
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.definition.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/scm.pattern.binding.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/root.trust.evidence.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/artifact.manifest.json",
+            "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/problem_set.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+          ]
+        },
+        "binding_reads": {
+          "required": [
+            "generated/problem_sets/ps-operationalize-chatgpt-pipeline-001/problem_set.json",
+            "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+            "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+            "control/scm.pattern/authority.manifest.json",
+            "control/trust/root.signers.json",
+            "control/trust/delegations/chatgpt.packet-sidecar.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+            "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json",
+            "control/scm.pattern/authority.manifest.validation.json",
+            "control/scm.pattern/authority.manifest.signature.json"
+          ]
+        },
+        "binding_writes": {
+          "required": [
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.definition.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/scm.pattern.binding.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.review.request.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/root.trust.evidence.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/regen.record.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/artifact.manifest.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.approval.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/human/packet.definition.md"
+          ]
+        },
+        "binding_conditional_writes": {
+          "conditional": [
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.review.decision.json"
+          ]
+        },
+        "manifest_required": {
+          "required": [
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.definition.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/scm.pattern.binding.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.review.request.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/root.trust.evidence.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/regen.record.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/artifact.manifest.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.approval.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/human/packet.definition.md"
+          ]
+        },
+        "manifest_conditional": {
+          "conditional": [
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/packet.review.decision.json"
+          ]
+        },
+        "trust_requirements": {
+          "required": [
+            "control/trust/root.signers.json",
+            "control/scm.pattern/authority.manifest.json",
+            "control/scm.pattern/authority.manifest.validation.json",
+            "control/scm.pattern/authority.manifest.signature.json",
+            "control/trust/delegations/chatgpt.packet-sidecar.json",
+            "generated/packets/pkt-operationalize-chatgpt-pipeline-001/machine/root.trust.evidence.json"
+          ]
+        }
+      }
+    },
+    {
+      "name": "verify root trust fingerprints",
+      "status": "PASS",
+      "fingerprints": {
+        "root_signers": {
+          "ref": "control/trust/root.signers.json",
+          "algorithm": "sha256",
+          "value": "c99fd80640700529449b2f9d53e5bedc10eba31f8cc53a75a78d6d3dd059c42c"
+        },
+        "root_delegation": {
+          "ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+          "algorithm": "sha256",
+          "value": "49ac0354bfad32895734ac4a9751a814b433f53cb988642414572bab6d224d2f"
+        },
+        "authority_manifest": {
+          "ref": "control/scm.pattern/authority.manifest.json",
+          "algorithm": "sha256",
+          "value": "9d0a4ae449227ef79ecae2fb53786f8a7f6ee0efca0d04c2ac855321955e420f"
+        },
+        "authority_manifest_validation": {
+          "ref": "control/scm.pattern/authority.manifest.validation.json",
+          "algorithm": "sha256",
+          "value": "455fc544368bc9b0f2a1c094882470bbe741a597fa82b2ea741c88980948ffb9"
+        },
+        "authority_manifest_signature": {
+          "ref": "control/scm.pattern/authority.manifest.signature.json",
+          "algorithm": "sha256",
+          "value": "c5f232961254abbd686dcd5def44eb725ea9480a9cefdfbc92bf32c8da6071b8"
+        },
+        "pipeline_manifest": {
+          "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+          "algorithm": "sha256",
+          "value": "93c8ae861408854437f7de823e56aa6725efa89570795081ab8420ba061fe198"
+        },
+        "execution_policy": {
+          "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+          "algorithm": "sha256",
+          "value": "85808f6f6243cec9c32001b701def5b649239c560bc3a0b4d5548dafd18df871"
+        },
+        "validation_manifest": {
+          "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+          "algorithm": "sha256",
+          "value": "0a99b430e688919afdafd6ed5c6c16502cb10ee6332d421fc42fa52134beb65c"
+        },
+        "gate_policy": {
+          "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+          "algorithm": "sha256",
+          "value": "5a36e57d16de769f2b363ab8ab5bf938374c80a23c3f7b8698355384b4f99c89"
+        },
+        "problem_set_schema": {
+          "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+          "algorithm": "sha256",
+          "value": "ae23b7dcc461437ac4db1ccfd09a1c8d06c76cddb7fe20df06744eb2d92130de"
+        }
+      }
+    },
+    {
+      "name": "verify regen record",
+      "status": "PASS",
+      "verified_outputs": {
+        "packet.definition.json": "fb627bcf2fb2619c390014ca3a2a8bbdde6bd99599c2952b6bb867197cc74d68",
+        "scm.pattern.binding.json": "d6533dcd6bd5b068a11534d94dbbaabb63aba305eb3bc3de329db0d098807706",
+        "packet.review.request.json": "5ad38c3cf1302179cc70e659e2bd8f305fb7dd1c125b8d757c7fae82c2b3a52c",
+        "root.trust.evidence.json": "808fc0c813e8c673919d10d326226a010da6452858c49bf28aa188679064682f",
+        "artifact.manifest.json": "1739d14bbbcc20189ac4aec444959e50d844044723260ef0aab39acabef0bb9b",
+        "packet.approval.json": "a4473158778039972150dec5ddfc181ac1cc78860cb8d6f8d2b916ece20c5667",
+        "packet.definition.md": "42f518e854d46baaf5fd930b64866b1c143f648ead64964ccee7ac69ae9b3d4e"
+      }
+    },
+    {
+      "name": "check review boundary",
+      "status": "PASS",
+      "review_gate": "PASS",
+      "realization_gate": "WAITING_HUMAN_REVIEW",
+      "next_step": "Issue authoritative packet.review.decision.json before realization."
+    }
+  ],
+  "planned_actions": [
+    "No realization during dry-run.",
+    "No writes outside generated/state admission logs.",
+    "Canonical packet artifacts treated as execution contract inputs."
+  ]
+}

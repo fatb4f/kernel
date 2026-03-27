@@ -1,0 +1,88 @@
+{
+  "kind": "kernel.problem_set",
+  "problem_set_id": "ps-operationalize-chatgpt-pipeline-001",
+  "version": "0.2.0",
+  "status": "active",
+  "identity": {
+    "name": "operationalize_chatgpt_pipeline",
+    "title": "Operationalize the ChatGPT-owned packet pipeline",
+    "owners": [
+      "kernel",
+      "local_runtime"
+    ]
+  },
+  "objective": "Produce a native repo lane where a single problem_set ingress deterministically emits the canonical packet artifact family, validates it locally, and blocks realization until an authoritative human review decision exists.",
+  "scope": {
+    "in_scope": [
+      "single problem_set ingress",
+      "canonical packet generation under generated/packets",
+      "local validation and admission runner reuse",
+      "fingerprint-based staleness and trust evidence",
+      "review-gated realization stop"
+    ],
+    "out_of_scope": [
+      "realization by ChatGPT",
+      "forging human review approval",
+      "mutating kernel authority outside the generated packet root"
+    ]
+  },
+  "constraints": [
+    "ChatGPT authors packet artifacts only.",
+    "Local runtime owns validation, admission, and realization.",
+    "All artifact paths must be repo-relative.",
+    "Human review remains external and authoritative.",
+    "Formatting-only changes must not stale approval basis."
+  ],
+  "assumptions": [
+    "The canonical packet root is generated/packets/<packet_id>/.",
+    "The packet-file dry-run runner is the admission stage for generated packets.",
+    "Trust records may be referenced by digest-attested local files."
+  ],
+  "requested_outputs": [
+    "packet.definition.json",
+    "scm.pattern.binding.json",
+    "packet.review.request.json",
+    "root.trust.evidence.json",
+    "regen.record.json",
+    "artifact.manifest.json",
+    "packet.approval.json",
+    "packet.definition.md",
+    "local dry-run admission evidence"
+  ],
+  "authority_refs": [
+    "control/scm.pattern/authority.manifest.json",
+    "control/trust/root.signers.json",
+    "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json"
+  ],
+  "acceptance_criteria": [
+    "The problem_set validates against the ingress schema.",
+    "A canonical packet root is emitted under generated/packets.",
+    "All required packet artifacts exist and validate.",
+    "Local admission emits standard decision, violations, admitted-state, and execution-log artifacts.",
+    "Realization remains blocked until packet.review.decision.json exists and is authoritative."
+  ],
+  "review_criteria": [
+    "Packet constraints match the local execution boundary.",
+    "Trust evidence matches current authority and trust inputs.",
+    "No artifact claims effective human approval."
+  ],
+  "change_control": {
+    "normalized_json": true,
+    "stale_when": [
+      "problem_set fingerprint change",
+      "authority manifest change",
+      "schema change",
+      "required output contract change"
+    ]
+  },
+  "fingerprint": {
+    "algorithm": "sha256",
+    "value": "a3c8d63459b52ad42ce9dafb2b26f9b33104afc5a86e87fb473ff2f99cc761c2"
+  }
+}
