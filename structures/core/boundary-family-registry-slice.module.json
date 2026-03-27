@@ -1,0 +1,55 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "boundary-family-registry-slice",
+  "fragments": [
+    {
+      "name": "canonical-structure-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/planes/structure",
+        "kernel.spec.json#/repo_tree/children/structures",
+        "structures/core/boundary-objects.index.json#/families/0"
+      ],
+      "description": "Registry entry for the authoritative canonical structural model family and its owned source surfaces."
+    },
+    {
+      "name": "manifest-control-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/repo_semantics/manifests",
+        "kernel.spec.json#/repo_tree/children/manifests",
+        "structures/core/boundary-objects.index.json#/families/1"
+      ],
+      "description": "Registry entry for bundle, projection, and generator control declarations."
+    },
+    {
+      "name": "policy-scope-index-family",
+      "class": "core",
+      "source_refs": [
+        "kernel.spec.json#/planes/policy",
+        "kernel.spec.json#/repo_tree/children/policy",
+        "structures/core/boundary-objects.index.json#/families/2",
+        "policy/admission/scope.index.json"
+      ],
+      "description": "Registry entry for the structural policy-scope index surface that remains bounded and non-runtime."
+    }
+  ],
+  "relations": [
+    {
+      "from": "canonical-structure-family",
+      "to": "manifest-control-family",
+      "relation": "declares"
+    },
+    {
+      "from": "canonical-structure-family",
+      "to": "policy-scope-index-family",
+      "relation": "bounds"
+    },
+    {
+      "from": "manifest-control-family",
+      "to": "policy-scope-index-family",
+      "relation": "coordinates"
+    }
+  ],
+  "notes": "Authoritative source module for the boundary-family registry slice. Legacy boundary-objects index refs are provenance only; the authoritative input remains this canonical structural module."
+}

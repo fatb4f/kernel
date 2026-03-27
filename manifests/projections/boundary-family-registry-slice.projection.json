@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "boundary-family-registry-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/boundary-family-registry-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/boundary-family-registry.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/boundary-families.index.json",
+    "generated/state/render/boundary-family-registry-slice/<run-id>/render-report.json",
+    "generated/state/integrity/boundary-family-registry-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits a registry artifact only.",
+    "The projection must remain repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the boundary-family registry slice."
+}

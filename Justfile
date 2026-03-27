@@ -57,3 +57,6 @@ reference-slice RUN_ID='':
 
 core-closeout-slice RUN_ID='':
 	bash scripts/run_core_closeout_status_slice.sh {{RUN_ID}}
+
+boundary-registry-slice RUN_ID='':
+	bash scripts/run_boundary_family_registry_slice.sh {{RUN_ID}}

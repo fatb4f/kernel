@@ -1,0 +1,25 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "boundary-family-registry-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/core/boundary-family-registry-slice.module.json",
+    "schemas/exported/canonical-structure-family.schema.json",
+    "schemas/exported/policy-scope-index-family.schema.json",
+    "policy/admission/scope.index.json"
+  ],
+  "outputs": [
+    "schemas/exported/boundary-family-registry-slice-input.schema.json",
+    "generated/state/source-validation/boundary-family-registry-slice/<run-id>/source-validation.json",
+    "generated/state/export/boundary-family-registry-slice/<run-id>/export-report.json",
+    "generated/state/normalization/boundary-family-registry-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/boundary-family-registry-slice/<run-id>/source-map.json",
+    "generated/state/normalization/boundary-family-registry-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The canonical structural module is the authority plane for this slice.",
+    "The exported registry-input schema is derived output only.",
+    "Normalization maps structural fragments to registry entries without deciding legality."
+  ],
+  "notes": "Generator control object for the boundary-family registry slice."
+}
