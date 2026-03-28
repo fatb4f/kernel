@@ -1,0 +1,26 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.decision",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-kernel-json-family-amendment-001",
+  "issued_by": {
+    "role": "human_reviewer",
+    "reviewer_id": "fatb4f",
+    "source_issue": "https://github.com/fatb4f/kernel/issues/5"
+  },
+  "verdict": "APPROVED",
+  "approval_authority": true,
+  "review_basis_fingerprint": {
+    "algorithm": "sha256",
+    "value": "029492bcaf82f1f02c3e852586af46fc0267904927c1d363f610acf6ca8ceec3"
+  },
+  "stale_on": [
+    "approval_basis_fingerprint mismatch",
+    "problem_set fingerprint change",
+    "authority or trust ref content change",
+    "chatgpt-pipeline workflow or packet schema content change",
+    "issue #5 superseded by later active handoff boundary"
+  ],
+  "formatting_only_changes_do_not_stale": true,
+  "issued_at": "2026-03-28T11:58:11Z",
+  "notes": "Human approval stamped for issue #5. Packet approved for local realization eligibility check through scm.pattern."
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.2.0",
+  "packet_id": "ps-kernel-json-family-amendment-001",
+  "policy": "generated from issue #5 against the locked 2026-03-28 bundle baseline while resolving authority and trust refs against the live repo surface",
+  "required_inputs": {
+    "problem_set_ref": "generated/problem_sets/ps-kernel-json-family-amendment-001/problem_set.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
+    "pipeline_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+  },
+  "output_fingerprints": {
+    "packet.definition.json": "d8b5a3e654739c247768c74620248ff1da92e99d2690009138f259f9ec9a65d4",
+    "scm.pattern.binding.json": "28ebd7e3e463ebad41910272df8cd23b198ac3ce6abc3045ad999de7d2366e2a",
+    "packet.review.request.json": "eff688a036147ef72932f7def5abd7d17cccd6c7b970eee145b83e36b54f9efa",
+    "root.trust.evidence.json": "9e7e9c4a2b1cebafd7cbb1092ddecdbad901889c29f1ac1f728b7b5f7e3142e9",
+    "artifact.manifest.json": "e888f15705a78d5236eadba84e0724f2c1fec02b62047e5a836bf55bec1db643",
+    "packet.approval.json": "308a3862f5c79af296ee14763a5ddee22bec449f75d20db51b64d13328cd2e11",
+    "packet.definition.md": "7ced55f9a72cd9814443e548e9bebb9abcf1f95f74d84c3a80a825989cbda7b8"
+  },
+  "approval_basis_fingerprint": "029492bcaf82f1f02c3e852586af46fc0267904927c1d363f610acf6ca8ceec3",
+  "status": "GENERATED",
+  "notes": "Issue #5 is the only active handoff boundary. Issue #4 is superseded history only. Dry-run ends with review_gate PASS and realization_gate WAITING_HUMAN_REVIEW."
+}

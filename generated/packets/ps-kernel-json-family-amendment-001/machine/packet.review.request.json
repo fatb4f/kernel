@@ -1,0 +1,37 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.request",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-kernel-json-family-amendment-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "submitted_by": {
+    "role": "ChatGPT"
+  },
+  "review_scope": "Review the packet handoff artifact family for issue #5 against the live packet contract, trust evidence, and repo-relative realization boundary.",
+  "requested_outcomes": [
+    "APPROVED",
+    "REVISE",
+    "REJECTED"
+  ],
+  "review_basis_refs": [
+    "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.definition.json",
+    "generated/packets/ps-kernel-json-family-amendment-001/machine/scm.pattern.binding.json",
+    "generated/packets/ps-kernel-json-family-amendment-001/machine/root.trust.evidence.json",
+    "generated/packets/ps-kernel-json-family-amendment-001/machine/artifact.manifest.json",
+    "generated/problem_sets/ps-kernel-json-family-amendment-001/problem_set.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+  ],
+  "kernel_trust": {
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "root_trust_evidence_ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/root.trust.evidence.json"
+  },
+  "human_action_required": true,
+  "approval_authority": false,
+  "artifact_status": "REVIEW_REQUEST_SUBMITTED"
+}

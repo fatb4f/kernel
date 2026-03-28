@@ -1,0 +1,17 @@
+{
+  "artifact_type": "gpt_handoff.packet.approval",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-kernel-json-family-amendment-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "verdict": "PENDING_HUMAN_DECISION",
+  "approval_authority": false,
+  "human_action_required": true,
+  "artifact_status": "TRANSITIONAL_COMPATIBILITY_PLACEHOLDER",
+  "issued_by": {
+    "role": "ChatGPT"
+  },
+  "canonical_review_artifact_ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.review.request.json",
+  "authoritative_review_state": false,
+  "does_not_satisfy_realization_gate": true
+}

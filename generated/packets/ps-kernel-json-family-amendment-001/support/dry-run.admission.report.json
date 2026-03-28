@@ -1,0 +1,79 @@
+{
+  "kind": "gpt_handoff.dry_run.admission.report",
+  "packet_id": "ps-kernel-json-family-amendment-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "status": "CONDITIONAL_PASS_PENDING_LOCAL_RUNTIME",
+  "checks": [
+    {
+      "name": "validate problem_set schema",
+      "result": "PASS"
+    },
+    {
+      "name": "validate packet.definition schema",
+      "result": "PASS"
+    },
+    {
+      "name": "validate scm.pattern.binding schema",
+      "result": "PASS"
+    },
+    {
+      "name": "validate packet.review.request schema",
+      "result": "PASS"
+    },
+    {
+      "name": "validate root.trust.evidence schema",
+      "result": "PASS"
+    },
+    {
+      "name": "validate regen.record schema",
+      "result": "PASS"
+    },
+    {
+      "name": "validate artifact.manifest schema",
+      "result": "PASS"
+    },
+    {
+      "name": "validate packet.approval schema",
+      "result": "PASS"
+    },
+    {
+      "name": "repo-relative output paths only",
+      "result": "PASS"
+    },
+    {
+      "name": "required artifact family present",
+      "result": "PASS"
+    },
+    {
+      "name": "human markdown consistent with packet.definition",
+      "result": "PASS"
+    },
+    {
+      "name": "live repo authority/trust refs resolved",
+      "result": "PASS"
+    },
+    {
+      "name": "human-issued review decision present",
+      "result": "NOT_APPLICABLE_PENDING_REVIEW"
+    }
+  ],
+  "warnings": [
+    "No human-issued review decision is present; realization gate remains unsatisfied."
+  ],
+  "failures": [],
+  "expected_gate_state": {
+    "review_gate": "PASS",
+    "realization_gate": "WAITING_HUMAN_REVIEW"
+  },
+  "validator_run": {
+    "run_id": "2026-03-28T10-59-24Z",
+    "mode": "DRY_RUN",
+    "packet_root": "generated/packets/ps-kernel-json-family-amendment-001",
+    "log_root": "generated/state/admission/chatgpt-packet-file-runner/2026-03-28T10-59-24Z",
+    "packet_id": "ps-kernel-json-family-amendment-001",
+    "review_gate": "PASS",
+    "realization_gate": "WAITING_HUMAN_REVIEW",
+    "next_step": "Issue authoritative packet.review.decision.json before realization."
+  }
+}

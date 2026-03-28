@@ -1,0 +1,19 @@
+{
+  "active_issue_ref": "https://github.com/fatb4f/kernel/issues/5",
+  "superseded_issue_refs": [
+    "https://github.com/fatb4f/kernel/issues/4"
+  ],
+  "bundle_ref": "generated/bundles/chatgpt-pipeline/chatgpt-pipeline-2026-03-28.tar.gz",
+  "bundle_integrity_ref": "generated/bundles/chatgpt-pipeline/chatgpt-pipeline-2026-03-28.tar.gz.sha256",
+  "bundle_sha256": "cc1607204422e72ab9640853009c8f635d6fa05bfc7abf7853209f9b73865d76",
+  "authority_refs": [
+    "control/scm.pattern/authority.manifest.json",
+    "control/scm.pattern/authority.manifest.validation.json",
+    "control/scm.pattern/authority.manifest.signature.json",
+    "control/trust/root.signers.json",
+    "control/trust/delegations/chatgpt.packet-sidecar.json"
+  ],
+  "execution_surface_root": "generated/schemas/chatgpt-pipeline",
+  "contract_lock_commit": "24a2de7",
+  "bundle_publish_commit": "13fd277"
+}

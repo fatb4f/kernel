@@ -1,0 +1,10 @@
+{
+  "run_id": "2026-03-28T10-59-24Z",
+  "mode": "DRY_RUN",
+  "packet_root": "generated/packets/ps-kernel-json-family-amendment-001",
+  "log_root": "generated/state/admission/chatgpt-packet-file-runner/2026-03-28T10-59-24Z",
+  "packet_id": "ps-kernel-json-family-amendment-001",
+  "review_gate": "PASS",
+  "realization_gate": "WAITING_HUMAN_REVIEW",
+  "next_step": "Issue authoritative packet.review.decision.json before realization."
+}

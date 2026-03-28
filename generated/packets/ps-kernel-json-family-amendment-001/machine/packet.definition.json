@@ -1,0 +1,182 @@
+{
+  "artifact_type": "gpt_handoff.packet.definition",
+  "artifact_version": "0.2.0",
+  "spec_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+  "packet_id": "ps-kernel-json-family-amendment-001",
+  "title": "Packet handoff: ps-kernel-json-family-amendment-001 regeneration against locked chatgpt-pipeline contract",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "summary": "This packet derives from the problem_set `ps-kernel-json-family-amendment-001` and encodes the kernel-only JSON-family amendment without changing authority routing. It is submitted for human review, and no realization may occur until a human-issued review decision exists.",
+  "ownership": {
+    "authority_owner": "kernel",
+    "packet_author": "ChatGPT",
+    "validation_owner": "local_runtime",
+    "realization_owner": "scm.pattern"
+  },
+  "constraints": [
+    "The canonical structural model remains the sole authority.",
+    "Bridge outputs remain derived-only unless explicit promotion policy is added.",
+    "All packet refs must remain repo-relative.",
+    "ChatGPT may author packet artifacts only and may not realize them."
+  ],
+  "realization": {
+    "local_realization_surface": "scm.pattern",
+    "canonical_packet_root": "generated/packets/ps-kernel-json-family-amendment-001",
+    "repo_relative_paths_only": true,
+    "chatgpt_may_realize": false
+  },
+  "inputs": [
+    {
+      "ref": "generated/problem_sets/ps-kernel-json-family-amendment-001/problem_set.json",
+      "role": "problem_set"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+      "role": "ingress_contract"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+      "role": "pipeline_manifest"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+      "role": "execution_policy"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+      "role": "validation_manifest"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+      "role": "gate_policy"
+    },
+    {
+      "ref": "control/scm.pattern/authority.manifest.json",
+      "role": "authority_manifest"
+    },
+    {
+      "ref": "control/trust/root.signers.json",
+      "role": "root_signers"
+    },
+    {
+      "ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "role": "delegation"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json",
+      "role": "packet_schema"
+    }
+  ],
+  "deliverables": {
+    "required_now": [
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.definition.json",
+        "kind": "packet_definition"
+      },
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/scm.pattern.binding.json",
+        "kind": "scm_pattern_binding"
+      },
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.review.request.json",
+        "kind": "packet_review_request"
+      },
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/root.trust.evidence.json",
+        "kind": "root_trust_evidence"
+      },
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/regen.record.json",
+        "kind": "regen_record"
+      },
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/artifact.manifest.json",
+        "kind": "artifact_manifest"
+      },
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.approval.json",
+        "kind": "compatibility_placeholder",
+        "transitional": true,
+        "authoritative": false
+      },
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/human/packet.definition.md",
+        "kind": "derived_human_definition"
+      }
+    ],
+    "conditional": [
+      {
+        "ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.review.decision.json",
+        "kind": "packet_review_decision",
+        "required_when": "human_review_decision_issued == true"
+      }
+    ]
+  },
+  "kernel_trust_requirements": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "packet_local_evidence_ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/root.trust.evidence.json"
+  },
+  "review_lifecycle": {
+    "review_request_ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.review.request.json",
+    "review_decision_ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.review.decision.json",
+    "current_gate": "AWAITING_HUMAN_REVIEW",
+    "allowed_outcomes": [
+      "APPROVED",
+      "REVISE",
+      "REJECTED"
+    ],
+    "non_authoritative_placeholder_ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/packet.approval.json"
+  },
+  "admissibility_rules": [
+    "All required packet artifacts must validate against the live current packet schemas.",
+    "All refs must resolve as repo-relative paths before admission may pass.",
+    "Trust evidence fingerprints must match current file content for all required live authority and execution-surface refs.",
+    "Realization remains blocked until a human-issued review decision exists."
+  ],
+  "staleness_rules": {
+    "stale_when": [
+      "problem_set fingerprint changes",
+      "authority or trust ref content changes",
+      "chatgpt-pipeline workflow or packet schema content changes",
+      "issue #5 is superseded by a later active handoff boundary"
+    ],
+    "formatting_only_changes_do_not_stale": true
+  },
+  "regeneration": {
+    "policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "regen_record_ref": "generated/packets/ps-kernel-json-family-amendment-001/machine/regen.record.json",
+    "skip_when_inputs_unchanged": true
+  }
+}
