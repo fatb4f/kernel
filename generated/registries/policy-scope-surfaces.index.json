@@ -34,11 +34,13 @@
          "allowed_content": [
             "normalized-state admission scope statements",
             "admission-relevant state families",
-            "deny-style invariant placeholders"
+            "deny-style invariant declarations",
+            "bounded CUE admission bundles"
          ],
          "derived_from": [
-            "policy/control_plane.cue",
-            "policy/README.md"
+            "policy/admission/README.md",
+            "policy/admission/problem-set-surface.cue",
+            "policy/admission/json-family-bridge-runtime-slice.cue"
          ],
          "excluded_content": [
             "runtime orchestration",
@@ -49,7 +51,7 @@
             "loop-pipeline execution semantics"
          ],
          "scope": "admission",
-         "status": "placeholder_only",
+         "status": "structural_only",
          "summary": "Admission policy scope for normalized-state legality bundles and bounded policy declarations.",
          "supporting_refs": [
             "policy/admission/scope.index.json",

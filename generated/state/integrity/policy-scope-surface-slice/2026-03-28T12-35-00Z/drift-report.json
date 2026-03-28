@@ -1,0 +1,12 @@
+{
+  "gate": "G6",
+  "control_object_id": "policy-scope-surface-slice",
+  "run_id": "2026-03-28T12-35-00Z",
+  "status": "PASS",
+  "checked_at": "2026-03-28T12:25:59Z",
+  "checks": [
+    "exported schema is present",
+    "rendered policy-scope registry regenerates without drift",
+    "required generated outputs are present"
+  ]
+}

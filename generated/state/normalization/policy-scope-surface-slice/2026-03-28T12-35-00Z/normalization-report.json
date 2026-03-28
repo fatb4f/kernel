@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "policy-scope-surface-slice",
+  "run_id": "2026-03-28T12-35-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-28T12:25:59Z",
+  "operations": [
+    "bound kernel, admission, and data structural policy scopes into one normalized registry input",
+    "preserved each scope status without inventing runtime semantics",
+    "recorded repo-relative supporting refs for each scope"
+  ],
+  "forbidden_operations_performed": []
+}

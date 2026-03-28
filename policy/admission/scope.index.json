@@ -1,10 +1,11 @@
 {
   "scope": "admission",
-  "status": "placeholder_only",
+  "status": "structural_only",
   "allowed_content": [
     "normalized-state admission scope statements",
     "admission-relevant state families",
-    "deny-style invariant placeholders"
+    "deny-style invariant declarations",
+    "bounded CUE admission bundles"
   ],
   "excluded_content": [
     "runtime orchestration",
@@ -15,8 +16,9 @@
     "loop-pipeline execution semantics"
   ],
   "derived_from": [
-    "policy/control_plane.cue",
-    "policy/README.md"
+    "policy/admission/README.md",
+    "policy/admission/problem-set-surface.cue",
+    "policy/admission/json-family-bridge-runtime-slice.cue"
   ],
-  "notes": "No runnable CUE packages are created in pkt-r06-05."
+  "notes": "Admission policy scope is materialized as a structural policy surface. It may contain bounded CUE admission bundles and legality declarations, but it does not own runtime orchestration."
 }

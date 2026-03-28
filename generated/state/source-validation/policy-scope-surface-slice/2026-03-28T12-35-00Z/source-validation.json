@@ -1,0 +1,21 @@
+{
+  "gate": "G1",
+  "control_object_id": "policy-scope-surface-slice",
+  "run_id": "2026-03-28T12-35-00Z",
+  "status": "PASS",
+  "schema_ref": "schemas/exported/canonical-structure-family.schema.json",
+  "instance_ref": "structures/core/policy-scope-surface-slice.module.json",
+  "validated_at": "2026-03-28T12:25:58Z",
+  "reason_codes": [],
+  "tool": "check-jsonschema",
+  "tool_output": {
+    "source_module": {
+      "status": "ok",
+      "errors": []
+    },
+    "policy_scopes": {
+      "status": "ok",
+      "errors": []
+    }
+  }
+}
