@@ -1,0 +1,134 @@
+{
+  "policy_id": "json-family-bridge-runtime",
+  "status": "structural_only",
+  "authority_format": "canonical_structural_model",
+  "summary": "Structural kernel policy for JSON-family bridge classes and derived runtime actor classes.",
+  "authoritative_surfaces": [
+    "contracts",
+    "legality",
+    "projection rules",
+    "promotion policy",
+    "actor and bridge declarations"
+  ],
+  "bridge_classes": [
+    {
+      "class_id": "interop-bridge",
+      "native_examples": [
+        "structurize",
+        "avrotize"
+      ],
+      "authority_status": "derived",
+      "consumes": [
+        "normalized state",
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "interop artifacts",
+        "message contracts",
+        "record contracts"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true
+    },
+    {
+      "class_id": "codegen-bridge",
+      "native_examples": [
+        "structurize",
+        "avrotize"
+      ],
+      "authority_status": "derived",
+      "consumes": [
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "codegen artifacts"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true
+    }
+  ],
+  "runtime_actor_classes": [
+    {
+      "class_id": "adapter",
+      "authority_status": "derived",
+      "consumes": [
+        "admitted state",
+        "exported contracts"
+      ],
+      "emitter_side_effect_class": "declared_required",
+      "lineage_sink_required": true
+    },
+    {
+      "class_id": "python-runtime-controller",
+      "authority_status": "derived",
+      "consumes": [
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "derived exec state",
+        "evidence streams"
+      ],
+      "emitter_side_effect_class": "declared_required",
+      "lineage_sink_required": true
+    },
+    {
+      "class_id": "generator",
+      "authority_status": "derived",
+      "consumes": [
+        "admitted state"
+      ],
+      "produces": [
+        "derived artifacts"
+      ],
+      "emitter_side_effect_class": "declared_required",
+      "lineage_sink_required": true
+    },
+    {
+      "class_id": "validator",
+      "authority_status": "derived",
+      "consumes": [
+        "normalized state",
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "validation evidence"
+      ],
+      "emitter_side_effect_class": "declared_required",
+      "lineage_sink_required": true
+    },
+    {
+      "class_id": "emitter",
+      "authority_status": "derived",
+      "consumes": [
+        "admitted state",
+        "rendered artifacts"
+      ],
+      "produces": [
+        "interface envelopes",
+        "published outputs"
+      ],
+      "emitter_side_effect_class": "declared_required",
+      "lineage_sink_required": true
+    }
+  ],
+  "promotion_defaults": {
+    "authority_promotion_of_bridge_output": "forbidden_by_default",
+    "authority_promotion_of_runtime_output": "forbidden_by_default",
+    "explicit_promotion_policy_required": true
+  },
+  "excluded_content": [
+    "runtime orchestration",
+    "execution transport",
+    "provider workflow semantics",
+    "AGENTS-only authority routing"
+  ],
+  "derived_from": [
+    "kernel.spec.json#/authority_model",
+    "kernel.spec.json#/normative_implementation/bridge_runtime_boundary"
+  ],
+  "notes": "This policy surface declares class boundaries only. It does not define controller behavior or execution flow."
+}

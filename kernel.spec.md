@@ -17,6 +17,7 @@ JSON Schema                = exported boundary contract
 CUE                        = admission over normalized state
 Jsonnet                    = rendering over admitted state
 Structurize/Avrotize       = derived interop/codegen bridge
+runtime actor boundary     = declared in kernel policy/structure; derived consumer only
 ```
 
 ### Authority interpretation
@@ -27,6 +28,8 @@ Structurize/Avrotize       = derived interop/codegen bridge
 - CUE evaluates legality over normalized state.
 - Jsonnet renders artifacts from admitted state only.
 - Structurize/Avrotize is a derived interop and codegen bridge.
+- Adapters, runtime controllers, generators, validators, and emitters are declared by kernel policy but remain derived operational actors.
+- No bridge or runtime actor output becomes authority without explicit promotion policy.
 - No renderer, exporter, or compatibility shim may establish authority; authority exists only in the canonical structural model under `structures/`.
 
 ---
@@ -36,6 +39,13 @@ Structurize/Avrotize       = derived interop/codegen bridge
 ```text
 raw sources -> normalized state -> admitted state -> rendered artifacts
 ```
+
+Derived operational outputs may follow admitted state:
+
+- derived exec state
+- interface envelopes
+- evidence streams
+- codegen artifacts
 
 ### Core invariant
 
@@ -51,6 +61,8 @@ Rendering consumes admitted state only.
 - Admission determines legality, completeness, and allowed composition.
 - Rendering consumes admitted state only.
 - Jsonnet must never read raw authoring sources directly.
+- Operational consumers may derive exec state only from admitted or exported kernel state.
+- Derived exec state and bridge/codegen outputs remain non-authoritative unless explicit promotion policy allows elevation.
 
 ---
 
@@ -300,11 +312,46 @@ Rendering MUST consume admitted state only. Jsonnet MUST render from admitted st
 
 Exports and rendered artifacts MUST be treated as derived outputs. Exported schemas MUST NOT be hand-edited. Every committed derived artifact MUST be regen-clean. Toolchain versions for normalize/admit/render MUST be pinned or otherwise policy-controlled.
 
-### 10.8 Manifest obligations
+Bridge outputs MUST remain derived and promotion-blocked by default. Runtime actor outputs MUST declare lineage sinks and side-effect classes before emission.
+
+### 10.8 Bridge and runtime boundary
+
+Kernel authority owns:
+
+- contracts
+- legality
+- projection rules
+- promotion policy
+- actor and bridge declarations
+
+Declared bridge classes:
+
+- `interop-bridge`
+- `codegen-bridge`
+- `message-contract`
+- `record-contract`
+
+Declared runtime actor classes:
+
+- `adapter`
+- `python-runtime-controller`
+- `generator`
+- `validator`
+- `emitter`
+
+Required defaults:
+
+- all bridge classes are derived by default
+- all runtime actor classes are derived by default
+- promotion is blocked by default
+- lineage sinks are required for emitted outputs
+- execution transport does not establish authority
+
+### 10.9 Manifest obligations
 
 Every bundle, projection, and generator MUST be declared by a manifest control object. No bundle, projection, or generator MAY exist as an undeclared side-effect of ad hoc tooling.
 
-### 10.9 Gate model
+### 10.10 Gate model
 
 The implementation MUST enforce the following gates and evidence artifacts:
 
@@ -326,7 +373,7 @@ Reason codes SHOULD remain partitioned by family:
 - `RENDER_*`
 - `DRIFT_*`
 
-### 10.10 Admission artifact convention
+### 10.11 Admission artifact convention
 
 Admission evidence MUST be materialized at:
 
@@ -346,7 +393,7 @@ Minimum semantics are mandatory:
 - `violations.json` MUST contain a machine-readable list and MUST be empty on allow.
 - `admitted-state.json` MUST be the exact renderer-visible admitted dataset.
 
-### 10.11 Completion criteria
+### 10.12 Completion criteria
 
 The implementation MUST NOT be considered complete until all of the following are true:
 
@@ -357,7 +404,7 @@ The implementation MUST NOT be considered complete until all of the following ar
 - gate IDs and evidence artifacts are fixed
 - admission artifacts are no longer implicit
 
-### 10.12 Required implementation order
+### 10.13 Required implementation order
 
 The first implementation slice SHOULD proceed in this order:
 
@@ -383,6 +430,8 @@ The first implementation slice SHOULD proceed in this order:
 9. Every admission run emits an explicit decision artifact.
 10. Every renderer declares its admitted-state inputs and output class.
 11. Toolchain versions for normalize/admit/render are pinned or policy-controlled.
+12. No bridge or runtime actor output may establish authority without explicit promotion policy.
+13. Runtime controllers, adapters, generators, validators, and emitters consume admitted state and remain outside the authority plane.
 
 ---
 
@@ -396,6 +445,11 @@ Minimum output classes:
 - `registry`
 - `documentation`
 - `codegen-input`
+- `extension-registry`
+- `bridge-registry`
+- `runtime-actor-registry`
+- `lineage-evidence`
+- `derived-exec-state`
 - `admitted-state`
 - `admission-decision`
 - `admission-violations`

@@ -1,0 +1,63 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "json-family-bridge-runtime-slice",
+  "fragments": [
+    {
+      "name": "json-structure-authoring-surface",
+      "class": "extension",
+      "source_refs": [
+        "kernel.spec.json#/authority_model/json_structure",
+        "kernel.spec.json#/state_flow/pipeline"
+      ],
+      "description": "Declares JSON Structure as the first human authoring surface for structural inputs while preserving the canonical structural model as authority."
+    },
+    {
+      "name": "derived-bridge-classes",
+      "class": "extension",
+      "source_refs": [
+        "kernel.spec.json#/authority_model/structurize_avrotize",
+        "kernel.spec.json#/normative_implementation/bridge_runtime_boundary/bridge_classes",
+        "policy/kernel/json-family-bridge-runtime.index.json#/bridge_classes"
+      ],
+      "description": "Declares bridge classes as derived interop and codegen surfaces that consume authoritative kernel state without becoming authority."
+    },
+    {
+      "name": "runtime-actor-classes",
+      "class": "extension",
+      "source_refs": [
+        "kernel.spec.json#/authority_model/runtime_actor_boundary",
+        "kernel.spec.json#/normative_implementation/bridge_runtime_boundary/runtime_actor_classes",
+        "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+      ],
+      "description": "Declares adapters, runtime controllers, generators, validators, and emitters as derived operational actor classes."
+    },
+    {
+      "name": "promotion-and-lineage-guardrails",
+      "class": "extension",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/bridge_runtime_boundary/required_defaults",
+        "kernel.spec.json#/normative_implementation/derived_artifact_policy",
+        "policy/kernel/json-family-bridge-runtime.index.json#/promotion_defaults"
+      ],
+      "description": "Declares the promotion, lineage, and side-effect guardrails that keep bridge and runtime outputs on the derived side of the boundary."
+    }
+  ],
+  "relations": [
+    {
+      "from": "json-structure-authoring-surface",
+      "to": "derived-bridge-classes",
+      "relation": "feeds"
+    },
+    {
+      "from": "derived-bridge-classes",
+      "to": "runtime-actor-classes",
+      "relation": "consumed_by"
+    },
+    {
+      "from": "runtime-actor-classes",
+      "to": "promotion-and-lineage-guardrails",
+      "relation": "bounded_by"
+    }
+  ],
+  "notes": "Authoritative extension module for JSON-family bridge semantics and runtime actor declarations. It declares operational classes without moving execution behavior into the authority plane."
+}

@@ -12,13 +12,16 @@
     "cue": "admission over normalized state",
     "jsonnet": "rendering over admitted state",
     "structurize_avrotize": "derived interop/codegen bridge",
+    "runtime_actor_boundary": "declared in kernel policy and structure; operates only as a derived consumer of admitted state",
     "interpretation": [
       "The canonical structural model is authoritative.",
       "JSON Structure is an authoring syntax for that model, not the authority itself.",
       "JSON Schema is derived for exported boundary contracts and interoperability.",
       "CUE evaluates legality over normalized state.",
       "Jsonnet renders artifacts from admitted state only.",
-      "Structurize/Avrotize is a derived interop and codegen bridge."
+      "Structurize/Avrotize is a derived interop and codegen bridge.",
+      "Adapters, runtime controllers, generators, validators, and emitters are declared by kernel policy but remain derived operational actors.",
+      "No bridge or runtime actor output becomes authority without explicit promotion policy."
     ]
   },
   "state_flow": {
@@ -29,6 +32,12 @@
       "rendered artifacts"
     ],
     "pipeline_string": "raw sources -> normalized state -> admitted state -> rendered artifacts",
+    "operational_derivation": [
+      "derived exec state",
+      "interface envelopes",
+      "evidence streams",
+      "codegen artifacts"
+    ],
     "core_invariant": [
       "Normalization regularizes form only.",
       "Admission decides legality.",
@@ -38,7 +47,9 @@
       "Normalization may regularize, resolve, and canonicalize.",
       "Admission determines legality, completeness, and allowed composition.",
       "Rendering consumes admitted state only.",
-      "Jsonnet must never read raw authoring sources directly."
+      "Jsonnet must never read raw authoring sources directly.",
+      "Operational consumers may derive exec state only from admitted or exported kernel state.",
+      "Derived exec state and bridge/codegen outputs remain non-authoritative unless explicit promotion policy allows elevation."
     ]
   },
   "planes": {
@@ -282,7 +293,38 @@
       "exports_and_rendered_artifacts": "must be treated as derived outputs",
       "exported_schemas": "must not be hand-edited",
       "committed_derived_artifacts": "must be regen-clean",
-      "toolchain_versions": "must be pinned or otherwise policy-controlled"
+      "toolchain_versions": "must be pinned or otherwise policy-controlled",
+      "bridge_outputs": "must remain derived and promotion-blocked by default",
+      "runtime_actor_outputs": "must declare lineage sinks and side-effect classes before emission"
+    },
+    "bridge_runtime_boundary": {
+      "authoritative_surfaces": [
+        "contracts",
+        "legality",
+        "projection rules",
+        "promotion policy",
+        "actor and bridge declarations"
+      ],
+      "bridge_classes": [
+        "interop-bridge",
+        "codegen-bridge",
+        "message-contract",
+        "record-contract"
+      ],
+      "runtime_actor_classes": [
+        "adapter",
+        "python-runtime-controller",
+        "generator",
+        "validator",
+        "emitter"
+      ],
+      "required_defaults": [
+        "all bridge classes are derived by default",
+        "all runtime actor classes are derived by default",
+        "promotion is blocked by default",
+        "lineage sinks are required for emitted outputs",
+        "execution transport does not establish authority"
+      ]
     },
     "manifest_obligations": {
       "requirement": "Every bundle, projection, and generator must be declared by a manifest control object.",
@@ -399,7 +441,9 @@
     "Every admission run emits an explicit decision artifact.",
     "Every renderer declares its admitted-state inputs and output class.",
     "Toolchain versions for normalize/admit/render are pinned or policy-controlled.",
-    "No renderer, exporter, or compatibility shim may establish authority; authority exists only in the canonical structural model under structures/."
+    "No renderer, exporter, or compatibility shim may establish authority; authority exists only in the canonical structural model under structures/.",
+    "No bridge or runtime actor output may establish authority without an explicit promotion policy.",
+    "Runtime controllers, adapters, generators, validators, and emitters consume admitted state and remain outside the authority plane."
   ],
   "artifact_classes": [
     "contract-export",
@@ -408,6 +452,11 @@
     "registry",
     "documentation",
     "codegen-input",
+    "extension-registry",
+    "bridge-registry",
+    "runtime-actor-registry",
+    "lineage-evidence",
+    "derived-exec-state",
     "admitted-state",
     "admission-decision",
     "admission-violations"
