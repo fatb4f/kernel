@@ -99,3 +99,6 @@ prose-contract-workflow-slice RUN_ID='':
 
 reviewed-structural-draft-surface RUN_ID='':
 	bash -lc 'set -euo pipefail; draft="${DRAFT:-examples/valid/reviewed-structural-draft.example.json}"; if [[ -n "${RUN_ID:-}" ]]; then python scripts/run_reviewed_structural_draft_surface.py "$draft" --run-id "${RUN_ID}"; else python scripts/run_reviewed_structural_draft_surface.py "$draft"; fi'
+
+reviewed-structural-export-slice RUN_ID='':
+	bash -lc 'set -euo pipefail; admitted_state="${ADMITTED_STATE:-}"; cmd=(python scripts/run_reviewed_structural_export_slice.py); if [[ -n "$admitted_state" ]]; then cmd+=("$admitted_state"); fi; if [[ -n "${RUN_ID:-}" ]]; then cmd+=(--run-id "${RUN_ID}"); fi; "${cmd[@]}"'

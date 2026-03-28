@@ -1,0 +1,37 @@
+{
+  "gate": "G6",
+  "control_object_id": "reviewed-structural-export-slice",
+  "run_id": "2026-03-28T15-40-00Z",
+  "status": "PASS",
+  "checked_at": "2026-03-28T14:43:12Z",
+  "checks": [
+    "exported schema and sidecars are present",
+    "rendered registry regenerates without drift",
+    "export slice input validates against its exported schema"
+  ],
+  "digests": {
+    "schema_base": {
+      "ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/schema.base.json",
+      "algorithm": "sha256",
+      "value": "f949103a6e575a7c7c4cc6f7701348c838be6c8e97738729f69e4c64cfdecbd8"
+    },
+    "constraints_manifest": {
+      "ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/constraints.manifest.json",
+      "algorithm": "sha256",
+      "value": "c75bd7cf290c3c573c0a6c02a66ae96e1c52012f83d6915a3265a0cde7a8165e"
+    },
+    "constraint_preservation_report": {
+      "ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/constraint-preservation.report.json",
+      "algorithm": "sha256",
+      "value": "e526256645ae9e7c0d42513e722450d5e974e33e97858ebd302b1c22e7d5a9ab"
+    },
+    "rendered_registry": {
+      "ref": "generated/registries/reviewed-structural-export.index.json",
+      "algorithm": "sha256",
+      "value": "71229e2d998210719f4e44d90d46d5d238302c10a6a3a6c17bfc5f86caffe8fc"
+    }
+  },
+  "tool_versions": {
+    "python_jsonschema": "4.26.0"
+  }
+}

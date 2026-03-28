@@ -1,0 +1,21 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "reviewed-structural-export-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/reviewed-structural-draft-surface/<source-run-id>/admitted-state.json",
+    "generated/state/export/reviewed-structural-export-slice/<run-id>/export-slice-input.json",
+    "render/jsonnet/registry/reviewed-structural-export.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/reviewed-structural-export.index.json",
+    "generated/state/render/reviewed-structural-export-slice/<run-id>/render-report.json",
+    "generated/state/integrity/reviewed-structural-export-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only and renders a derived registry summary.",
+    "Rendered registry content must stay repo-relative and deterministic.",
+    "Projection must not promote exported artifacts into authority."
+  ],
+  "notes": "Projection control object for the reviewed structural export slice."
+}

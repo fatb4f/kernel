@@ -1,0 +1,20 @@
+{
+  "artifact_type": "kernel.constraint_manifest",
+  "artifact_version": "0.1.0",
+  "source_admitted_state_ref": "generated/state/admission/reviewed-structural-draft-surface/2026-03-28T15-05-00Z/admitted-state.json",
+  "constraints": [
+    {
+      "id": "c.customer_phone_required_if_sms",
+      "subject": "customer_phone",
+      "constraint_class": "conditional_presence",
+      "predicate": "notification_channel == 'sms'",
+      "loss_policy": "must_not_silently_drop",
+      "notes": "Cannot be preserved safely in plain structural JSON Schema without a higher-order conditional export.",
+      "preservation_mode": "externalized",
+      "structural_schema_status": "not_embedded"
+    }
+  ],
+  "notes": [
+    "constraints.manifest.json preserves admitted constraint semantics not embedded in schema.base.json"
+  ]
+}

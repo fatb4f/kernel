@@ -1,0 +1,25 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "reviewed-structural-export-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "generated/state/admission/reviewed-structural-draft-surface/<source-run-id>/admitted-state.json",
+    "policy/kernel/prose-contract-workflow.index.json",
+    "policy/contracts/prose-contract-workflow.md"
+  ],
+  "outputs": [
+    "schemas/exported/reviewed-structural-export-slice-input.schema.json",
+    "generated/state/source-validation/reviewed-structural-export-slice/<run-id>/source-validation.json",
+    "generated/state/export/reviewed-structural-export-slice/<run-id>/export-slice-input.json",
+    "generated/state/export/reviewed-structural-export-slice/<run-id>/schema.base.json",
+    "generated/state/export/reviewed-structural-export-slice/<run-id>/constraints.manifest.json",
+    "generated/state/export/reviewed-structural-export-slice/<run-id>/constraint-preservation.report.json",
+    "generated/state/export/reviewed-structural-export-slice/<run-id>/export-report.json"
+  ],
+  "invariants": [
+    "Derived exports are generated from admitted reviewed-structural-draft state only.",
+    "No admitted constraint may be silently weakened or dropped.",
+    "Constraint semantics not preserved in schema.base.json must remain explicit in sidecar artifacts."
+  ],
+  "notes": "Generator control object for the first real derived export bundle keyed from admitted reviewed structural drafts."
+}

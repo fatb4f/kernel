@@ -1,0 +1,18 @@
+{
+  "gate": "G2",
+  "control_object_id": "reviewed-structural-export-slice",
+  "run_id": "2026-03-28T15-40-00Z",
+  "status": "PASS",
+  "source_admitted_state_ref": "generated/state/admission/reviewed-structural-draft-surface/2026-03-28T15-05-00Z/admitted-state.json",
+  "outputs": [
+    "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/export-slice-input.json",
+    "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/schema.base.json",
+    "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/constraints.manifest.json",
+    "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/constraint-preservation.report.json"
+  ],
+  "notes": [
+    "schema.base.json is a derived structural export only",
+    "constraints.manifest.json preserves constraint semantics not embedded in schema.base.json",
+    "constraint-preservation.report.json records that no admitted constraint was silently dropped"
+  ]
+}

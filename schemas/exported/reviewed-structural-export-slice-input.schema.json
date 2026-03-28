@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/exported/reviewed-structural-export-slice-input.schema.json",
+  "title": "Reviewed structural export slice input",
+  "description": "Derived bundle contract for schema.base and constraint sidecars emitted from admitted reviewed structural drafts.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_surface_control_id",
+    "source_admitted_state_ref",
+    "source_policy_ref",
+    "output_bundle",
+    "structures",
+    "constraints",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.reviewed_structural_export.slice_input"
+    },
+    "control_object_id": {
+      "const": "reviewed-structural-export-slice"
+    },
+    "source_surface_control_id": {
+      "const": "reviewed-structural-draft-surface"
+    },
+    "source_admitted_state_ref": {
+      "type": "string"
+    },
+    "source_policy_ref": {
+      "const": "policy/kernel/prose-contract-workflow.index.json"
+    },
+    "output_bundle": {
+      "type": "object",
+      "required": [
+        "schema_base_ref",
+        "constraints_manifest_ref",
+        "constraint_preservation_report_ref"
+      ],
+      "properties": {
+        "schema_base_ref": {
+          "type": "string"
+        },
+        "constraints_manifest_ref": {
+          "type": "string"
+        },
+        "constraint_preservation_report_ref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "structures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "kind",
+          "field_count",
+          "is_root"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "const": "object"
+          },
+          "field_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "is_root": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "constraint_class",
+          "preservation_mode",
+          "structural_schema_status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "constraint_class": {
+            "type": "string"
+          },
+          "preservation_mode": {
+            "type": "string",
+            "enum": [
+              "externalized",
+              "embedded"
+            ]
+          },
+          "structural_schema_status": {
+            "type": "string",
+            "enum": [
+              "not_embedded",
+              "embedded"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "const": "rsjsonnet"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

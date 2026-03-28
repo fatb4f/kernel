@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/schema.base.json",
+  "title": "Delivery Order",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "description": "Primary order identifier."
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "notification_channel": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "order_id",
+    "notification_channel",
+    "items"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Order": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "description": "Primary order identifier."
+        },
+        "customer_phone": {
+          "type": "string"
+        },
+        "notification_channel": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "order_id",
+        "notification_channel",
+        "items"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "x-derived-from": {
+    "artifact_type": "kernel.reviewed_structural_draft",
+    "draft_id": "delivery-order-v1",
+    "source_policy_ref": "policy/kernel/prose-contract-workflow.index.json"
+  }
+}
