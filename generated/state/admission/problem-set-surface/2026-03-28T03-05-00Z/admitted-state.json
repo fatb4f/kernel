@@ -1,0 +1,125 @@
+{
+  "kind": "kernel.problem_set",
+  "problem_set_id": "ps-kernel-json-family-amendment-001",
+  "version": "0.3.0",
+  "status": "draft",
+  "identity": {
+    "name": "kernel_json_family_amendment",
+    "title": "Amend kernel JSON-family and bridge actor declarations",
+    "owners": [
+      "kernel",
+      "local_runtime"
+    ]
+  },
+  "objective": "Encode JSON Structure, bridge semantics, and derived runtime actor declarations in kernel control surfaces without redefining the existing authority routing.",
+  "scope": {
+    "in_scope": [
+      "kernel-only amendment",
+      "JSON-family decomposition",
+      "bridge loss and promotion defaults",
+      "runtime actor declarations",
+      "lineage and evidence obligations"
+    ],
+    "out_of_scope": [
+      "gpt-registry changes",
+      "retrieval-pack updates",
+      "AGENTS-only resolution",
+      "promotion of bridge outputs into authority"
+    ]
+  },
+  "constraints": [
+    "The canonical structural model remains the sole authority.",
+    "JSON Structure remains authoring syntax only.",
+    "JSON Schema remains a derived exported boundary contract.",
+    "CUE remains admission over normalized state.",
+    "Jsonnet remains rendering over admitted state only.",
+    "Bridge outputs remain derived-only unless explicit promotion policy is added."
+  ],
+  "assumptions": [
+    "Kernel authority may declare actor classes without becoming the execution plane.",
+    "Runtime controllers, adapters, generators, validators, and emitters consume admitted kernel state.",
+    "The handoff issue is the review boundary for the generated packet."
+  ],
+  "requested_outputs": [
+    "amendment packet",
+    "affected refs",
+    "dry-run admission report",
+    "review request",
+    "trust evidence bindings"
+  ],
+  "authority_refs": [
+    "kernel.spec.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+  ],
+  "acceptance_criteria": [
+    "The problem_set normalizes into a valid generated problem_set.json.",
+    "Kernel-only scope controls are explicit in the normalized contract.",
+    "The handoff issue body is renderable from the normalized contract.",
+    "No gpt-registry refs are required for the amendment packet."
+  ],
+  "review_criteria": [
+    "Authority routing remains unchanged.",
+    "Bridge outputs remain derived by default.",
+    "Runtime actor declarations do not become authority objects."
+  ],
+  "scope_controls": {
+    "target_repos": [
+      "kernel"
+    ],
+    "forbidden_repos": [
+      "gpt-registry"
+    ],
+    "target_surfaces": [
+      "structures/extensions",
+      "policy/kernel",
+      "policy/admission",
+      "generated/registries",
+      "generated/state"
+    ],
+    "forbidden_surfaces": [
+      "AGENTS.md",
+      "gpt-registry/**"
+    ],
+    "target_artifact_classes": [
+      "extension_registry",
+      "bridge_registry",
+      "runtime_actor_registry",
+      "admission_policy",
+      "lineage_evidence"
+    ],
+    "forbidden_artifact_classes": [
+      "authority_promotion_of_bridge_output"
+    ]
+  },
+  "handoff": {
+    "issue_title_prefix": "Packet handoff",
+    "labels": [
+      "packet-handoff",
+      "problem-set",
+      "kernel"
+    ]
+  },
+  "change_control": {
+    "normalized_json": true,
+    "stale_when": [
+      "problem_set fingerprint change",
+      "authority ref change",
+      "acceptance criteria change"
+    ]
+  },
+  "fingerprint": {
+    "algorithm": "sha256",
+    "value": "165b021ac35645140defba72dfb54de95889f91a7c8f6fb4689923c984ad9b98"
+  },
+  "normalization": {
+    "normalized_at": "2026-03-28T03:10:45Z",
+    "source_ref": "generated/problem_sets/ps-kernel-json-family-amendment-001/problem_set.json",
+    "policy": "problem_set is already the normalized ingress object"
+  },
+  "admission": {
+    "decision": "ALLOW",
+    "policy_bundle_id": "policy/admission/problem-set-surface.cue",
+    "admitted_at": "2026-03-28T03:10:45Z"
+  }
+}

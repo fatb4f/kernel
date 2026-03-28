@@ -1,0 +1,30 @@
+{
+  "gate": "G6",
+  "control_object_id": "problem-set-surface",
+  "run_id": "2026-03-28T03-05-00Z",
+  "status": "PASS",
+  "tracked_inputs": [
+    {
+      "ref": "generated/state/normalization/problem-set-surface/2026-03-28T03-05-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "aec1ee1b176de9d36ec09be3dede68fb7d0fb7526bcf49109050cf55901f7b13"
+    },
+    {
+      "ref": "generated/state/admission/problem-set-surface/2026-03-28T03-05-00Z/admitted-state.json",
+      "algorithm": "sha256",
+      "value": "e7e664d1dd71f1578049ba24117d1bccae257df8d9d822805eb6f2facd9bfea8"
+    }
+  ],
+  "tracked_outputs": [
+    {
+      "ref": "generated/docs/problem-sets/ps-kernel-json-family-amendment-001.md",
+      "algorithm": "sha256",
+      "value": "a3261d13f076ebbbe25a4350c16e954a03937a89b22d9b5099fd622e63c6124e"
+    },
+    {
+      "ref": "generated/state/render/problem-set-surface/2026-03-28T03-05-00Z/problem-set.summary.json",
+      "algorithm": "sha256",
+      "value": "1669b3a4a5712a92b093d211392728a548e27f0a0acb8ae16be190b625204551"
+    }
+  ]
+}

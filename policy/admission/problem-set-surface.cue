@@ -57,7 +57,7 @@ import "list"
 		source_ref:    string & != ""
 		policy:        string & != ""
 	}
-	if problem_set_id == "ps-kernel-json-family-amendment-001" {
+	if list.Contains(scope.in_scope, "kernel-only amendment") {
 		_kernel_in_scope:              true & list.Contains(scope.in_scope, "kernel-only amendment")
 		_targets_kernel:               true & list.Contains(scope_controls.target_repos, "kernel")
 		_forbids_gpt_registry_repo:    true & list.Contains(scope_controls.forbidden_repos, "gpt-registry")

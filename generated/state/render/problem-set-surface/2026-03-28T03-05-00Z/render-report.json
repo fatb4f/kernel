@@ -1,0 +1,19 @@
+{
+  "gate": "G5",
+  "control_object_id": "problem-set-surface",
+  "run_id": "2026-03-28T03-05-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "templates": [
+    "render/jsonnet/reference/problem-set-review.md.jsonnet",
+    "render/jsonnet/reference/problem-set-summary.jsonnet"
+  ],
+  "admitted_state_ref": "generated/state/admission/problem-set-surface/2026-03-28T03-05-00Z/admitted-state.json",
+  "outputs": [
+    "generated/docs/problem-sets/ps-kernel-json-family-amendment-001.md",
+    "generated/state/render/problem-set-surface/2026-03-28T03-05-00Z/problem-set.summary.json"
+  ],
+  "rendered_at": "2026-03-28T03:10:45Z"
+}

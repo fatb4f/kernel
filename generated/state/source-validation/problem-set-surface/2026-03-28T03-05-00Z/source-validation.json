@@ -1,0 +1,11 @@
+{
+  "gate": "G1",
+  "control_object_id": "problem-set-surface",
+  "run_id": "2026-03-28T03-05-00Z",
+  "status": "PASS",
+  "source_ref": "generated/problem_sets/ps-kernel-json-family-amendment-001/problem_set.json",
+  "schema_ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+  "validated_at": "2026-03-28T03:10:45Z",
+  "tool": "python-jsonschema",
+  "reason_codes": []
+}
