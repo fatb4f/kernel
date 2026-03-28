@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/exported/json-structure-contract.schema.json",
+  "title": "JSON Structure contract",
+  "description": "First authored contract surface for the canonical structural model.",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "contract_id",
+    "title",
+    "serialization_surface",
+    "source_policy_ref",
+    "structures",
+    "constraints"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "kernel.json_structure_contract"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "contract_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "serialization_surface": {
+      "const": "json_structure"
+    },
+    "source_policy_ref": {
+      "const": "policy/kernel/prose-contract-workflow.index.json"
+    },
+    "source_reviewed_draft_ref": {
+      "type": "string"
+    },
+    "authority_binding": {
+      "type": "object",
+      "required": [
+        "canonical_model_role",
+        "serialization_role"
+      ],
+      "properties": {
+        "canonical_model_role": {
+          "const": "normative_contract"
+        },
+        "serialization_role": {
+          "const": "first_authored_surface"
+        }
+      },
+      "additionalProperties": false
+    },
+    "structures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "kind",
+          "fields"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "const": "object"
+          },
+          "fields": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "type",
+                "required"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "string",
+                    "integer",
+                    "number",
+                    "boolean",
+                    "array"
+                  ]
+                },
+                "items_type": {
+                  "type": "string",
+                  "enum": [
+                    "string",
+                    "integer",
+                    "number",
+                    "boolean"
+                  ]
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "array"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "items_type"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "subject",
+          "constraint_class",
+          "loss_policy"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "constraint_class": {
+            "type": "string",
+            "enum": [
+              "conditional_presence",
+              "enum_membership",
+              "range",
+              "format"
+            ]
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "loss_policy": {
+            "type": "string",
+            "enum": [
+              "must_not_silently_drop",
+              "report_if_externalized"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

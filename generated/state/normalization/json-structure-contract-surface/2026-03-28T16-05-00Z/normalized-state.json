@@ -1,0 +1,62 @@
+{
+  "artifact_type": "kernel.json_structure_contract",
+  "artifact_version": "0.1.0",
+  "contract_id": "delivery-order-v1",
+  "title": "Delivery Order",
+  "serialization_surface": "json_structure",
+  "source_policy_ref": "policy/kernel/prose-contract-workflow.index.json",
+  "source_reviewed_draft_ref": "examples/valid/reviewed-structural-draft.example.json",
+  "authority_binding": {
+    "canonical_model_role": "normative_contract",
+    "serialization_role": "first_authored_surface"
+  },
+  "structures": [
+    {
+      "name": "Order",
+      "kind": "object",
+      "fields": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "required": true,
+          "description": "Primary order identifier."
+        },
+        {
+          "name": "customer_phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "notification_channel",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "items_type": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "c.customer_phone_required_if_sms",
+      "subject": "customer_phone",
+      "constraint_class": "conditional_presence",
+      "predicate": "notification_channel == 'sms'",
+      "loss_policy": "must_not_silently_drop",
+      "notes": "Cannot be preserved safely in plain structural JSON Schema without a higher-order conditional export."
+    }
+  ],
+  "normalization": {
+    "normalized_at": "2026-03-28T14:48:47Z",
+    "source_ref": "examples/valid/json-structure-contract.example.json",
+    "policy_ref": "policy/kernel/prose-contract-workflow.index.json",
+    "classification": {
+      "contract_surface": "json_structure_contract",
+      "next_surface": "normalized_state"
+    }
+  }
+}

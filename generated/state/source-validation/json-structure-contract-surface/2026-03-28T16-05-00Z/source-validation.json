@@ -1,0 +1,11 @@
+{
+  "gate": "G1",
+  "control_object_id": "json-structure-contract-surface",
+  "run_id": "2026-03-28T16-05-00Z",
+  "status": "PASS",
+  "source_ref": "examples/valid/json-structure-contract.example.json",
+  "schema_ref": "schemas/exported/json-structure-contract.schema.json",
+  "validated_at": "2026-03-28T14:48:47Z",
+  "tool": "python-jsonschema",
+  "reason_codes": []
+}

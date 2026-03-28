@@ -1,0 +1,9 @@
+{
+  "source_ref": "examples/valid/json-structure-contract.example.json",
+  "normalized_state_ref": "generated/state/normalization/json-structure-contract-surface/2026-03-28T16-05-00Z/normalized-state.json",
+  "mapping": "identity_with_contract_classification",
+  "lineage": {
+    "promoted_from": "examples/valid/reviewed-structural-draft.example.json",
+    "contract_surface": "json_structure_contract"
+  }
+}

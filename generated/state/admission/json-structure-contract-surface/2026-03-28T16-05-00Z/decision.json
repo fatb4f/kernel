@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "json-structure-contract-surface",
+  "run_id": "2026-03-28T16-05-00Z",
+  "policy_bundle_id": "policy/admission/json-structure-contract.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/json-structure-contract-surface/2026-03-28T16-05-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "e7ac2da7353cc3810c409a14d52b6a695cb3f7a7332a3b0f2db316cfd6cae68d"
+    },
+    "json_structure_contract_schema": {
+      "ref": "schemas/exported/json-structure-contract.schema.json",
+      "algorithm": "sha256",
+      "value": "aba28060691339d9a871870e0735dc7113c08ed3c36e493ff2938ea4ce158462"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "python_jsonschema": "4.26.0"
+  },
+  "issued_at": "2026-03-28T14:48:47Z"
+}
