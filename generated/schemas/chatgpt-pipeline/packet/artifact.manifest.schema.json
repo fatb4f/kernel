@@ -32,15 +32,43 @@
     "required_artifacts": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "required": [
+          "ref",
+          "kind"
+        ],
+        "properties": {
+          "ref": { "type": "string" },
+          "kind": { "type": "string" },
+          "transitional": { "type": "boolean" },
+          "authoritative": { "type": "boolean" }
+        },
+        "additionalProperties": false
       }
     },
     "conditional_artifacts": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "required": [
+          "ref",
+          "kind",
+          "required_when"
+        ],
+        "properties": {
+          "ref": { "type": "string" },
+          "kind": { "type": "string" },
+          "required_when": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "supporting_inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

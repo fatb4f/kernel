@@ -32,17 +32,94 @@
       "type": "string"
     },
     "canonical_refs": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "root_signers_ref",
+        "root_delegation_ref",
+        "authority_manifest_ref",
+        "authority_manifest_validation_ref",
+        "authority_manifest_signature_ref",
+        "pipeline_manifest_ref",
+        "execution_policy_ref",
+        "validation_manifest_ref",
+        "gate_policy_ref",
+        "problem_set_schema_ref"
+      ],
+      "properties": {
+        "root_signers_ref": { "type": "string" },
+        "root_delegation_ref": { "type": "string" },
+        "authority_manifest_ref": { "type": "string" },
+        "authority_manifest_validation_ref": { "type": "string" },
+        "authority_manifest_signature_ref": { "type": "string" },
+        "pipeline_manifest_ref": { "type": "string" },
+        "execution_policy_ref": { "type": "string" },
+        "validation_manifest_ref": { "type": "string" },
+        "gate_policy_ref": { "type": "string" },
+        "problem_set_schema_ref": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "canonical_fingerprints": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "root_signers",
+        "root_delegation",
+        "authority_manifest",
+        "authority_manifest_validation",
+        "authority_manifest_signature",
+        "pipeline_manifest",
+        "execution_policy",
+        "validation_manifest",
+        "gate_policy",
+        "problem_set_schema"
+      ],
+      "properties": {
+        "root_signers": { "$ref": "#/$defs/fingerprint" },
+        "root_delegation": { "$ref": "#/$defs/fingerprint" },
+        "authority_manifest": { "$ref": "#/$defs/fingerprint" },
+        "authority_manifest_validation": { "$ref": "#/$defs/fingerprint" },
+        "authority_manifest_signature": { "$ref": "#/$defs/fingerprint" },
+        "pipeline_manifest": { "$ref": "#/$defs/fingerprint" },
+        "execution_policy": { "$ref": "#/$defs/fingerprint" },
+        "validation_manifest": { "$ref": "#/$defs/fingerprint" },
+        "gate_policy": { "$ref": "#/$defs/fingerprint" },
+        "problem_set_schema": { "$ref": "#/$defs/fingerprint" }
+      },
+      "additionalProperties": false
     },
     "evidence_requirements": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "all_refs_must_resolve",
+        "all_fingerprints_must_match",
+        "signature_must_verify",
+        "delegation_must_be_in_scope"
+      ],
+      "properties": {
+        "all_refs_must_resolve": { "type": "boolean" },
+        "all_fingerprints_must_match": { "type": "boolean" },
+        "signature_must_verify": { "type": "boolean" },
+        "delegation_must_be_in_scope": { "type": "boolean" }
+      },
+      "additionalProperties": false
     },
     "status": {
       "type": "string"
     }
   },
-  "additionalProperties": true
+  "$defs": {
+    "fingerprint": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "algorithm": { "const": "sha256" },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
 }

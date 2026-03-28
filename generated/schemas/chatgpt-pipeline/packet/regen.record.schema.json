@@ -29,10 +29,48 @@
       "type": "string"
     },
     "required_inputs": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "problem_set_ref",
+        "authority_manifest_ref",
+        "authority_manifest_schema_ref",
+        "pipeline_manifest_ref",
+        "execution_policy_ref",
+        "validation_manifest_ref",
+        "gate_policy_ref"
+      ],
+      "properties": {
+        "problem_set_ref": { "type": "string" },
+        "authority_manifest_ref": { "type": "string" },
+        "authority_manifest_schema_ref": { "type": "string" },
+        "pipeline_manifest_ref": { "type": "string" },
+        "execution_policy_ref": { "type": "string" },
+        "validation_manifest_ref": { "type": "string" },
+        "gate_policy_ref": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "output_fingerprints": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "packet.definition.json",
+        "scm.pattern.binding.json",
+        "packet.review.request.json",
+        "root.trust.evidence.json",
+        "artifact.manifest.json",
+        "packet.approval.json",
+        "packet.definition.md"
+      ],
+      "properties": {
+        "packet.definition.json": { "type": "string" },
+        "scm.pattern.binding.json": { "type": "string" },
+        "packet.review.request.json": { "type": "string" },
+        "root.trust.evidence.json": { "type": "string" },
+        "artifact.manifest.json": { "type": "string" },
+        "packet.approval.json": { "type": "string" },
+        "packet.definition.md": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "approval_basis_fingerprint": {
       "type": "string"
@@ -44,5 +82,5 @@
       "type": "string"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

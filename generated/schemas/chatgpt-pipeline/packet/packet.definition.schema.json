@@ -50,7 +50,20 @@
       "type": "string"
     },
     "ownership": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "authority_owner",
+        "packet_author",
+        "validation_owner",
+        "realization_owner"
+      ],
+      "properties": {
+        "authority_owner": { "type": "string" },
+        "packet_author": { "type": "string" },
+        "validation_owner": { "type": "string" },
+        "realization_owner": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "constraints": {
       "type": "array",
@@ -59,22 +72,107 @@
       }
     },
     "realization": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "local_realization_surface",
+        "canonical_packet_root",
+        "repo_relative_paths_only",
+        "chatgpt_may_realize"
+      ],
+      "properties": {
+        "local_realization_surface": { "type": "string" },
+        "canonical_packet_root": { "type": "string" },
+        "repo_relative_paths_only": { "type": "boolean" },
+        "chatgpt_may_realize": { "type": "boolean" }
+      },
+      "additionalProperties": false
     },
     "inputs": {
       "type": "array",
       "items": {
-        "type": "object"
+        "type": "object",
+        "required": ["ref", "role"],
+        "properties": {
+          "ref": { "type": "string" },
+          "role": { "type": "string" }
+        },
+        "additionalProperties": false
       }
     },
     "deliverables": {
-      "type": "object"
+      "type": "object",
+      "required": ["required_now", "conditional"],
+      "properties": {
+        "required_now": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ref", "kind"],
+            "properties": {
+              "ref": { "type": "string" },
+              "kind": { "type": "string" },
+              "transitional": { "type": "boolean" },
+              "authoritative": { "type": "boolean" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "conditional": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ref", "kind", "required_when"],
+            "properties": {
+              "ref": { "type": "string" },
+              "kind": { "type": "string" },
+              "required_when": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
     },
     "kernel_trust_requirements": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "root_signers_ref",
+        "authority_manifest_ref",
+        "authority_manifest_validation_ref",
+        "authority_manifest_signature_ref",
+        "delegation_ref",
+        "packet_local_evidence_ref"
+      ],
+      "properties": {
+        "root_signers_ref": { "type": "string" },
+        "authority_manifest_ref": { "type": "string" },
+        "authority_manifest_validation_ref": { "type": "string" },
+        "authority_manifest_signature_ref": { "type": "string" },
+        "delegation_ref": { "type": "string" },
+        "packet_local_evidence_ref": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "review_lifecycle": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "review_request_ref",
+        "review_decision_ref",
+        "current_gate",
+        "allowed_outcomes",
+        "non_authoritative_placeholder_ref"
+      ],
+      "properties": {
+        "review_request_ref": { "type": "string" },
+        "review_decision_ref": { "type": "string" },
+        "current_gate": { "type": "string" },
+        "allowed_outcomes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "non_authoritative_placeholder_ref": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "admissibility_rules": {
       "type": "array",
@@ -83,11 +181,34 @@
       }
     },
     "staleness_rules": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "stale_when",
+        "formatting_only_changes_do_not_stale"
+      ],
+      "properties": {
+        "stale_when": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "formatting_only_changes_do_not_stale": { "type": "boolean" }
+      },
+      "additionalProperties": false
     },
     "regeneration": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "policy_ref",
+        "regen_record_ref",
+        "skip_when_inputs_unchanged"
+      ],
+      "properties": {
+        "policy_ref": { "type": "string" },
+        "regen_record_ref": { "type": "string" },
+        "skip_when_inputs_unchanged": { "type": "boolean" }
+      },
+      "additionalProperties": false
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

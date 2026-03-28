@@ -48,7 +48,12 @@
       "type": "string"
     },
     "issued_by": {
-      "type": "object"
+      "type": "object",
+      "required": ["role"],
+      "properties": {
+        "role": { "type": "string" }
+      },
+      "additionalProperties": false
     },
     "canonical_review_artifact_ref": {
       "type": "string"
@@ -60,5 +65,5 @@
       "type": "boolean"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

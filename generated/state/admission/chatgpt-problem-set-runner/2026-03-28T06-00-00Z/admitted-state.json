@@ -1,0 +1,15 @@
+{
+  "artifact_type": "kernel.admitted_state",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-problem-set-runner",
+  "run_id": "2026-03-28T06-00-00Z",
+  "mode": "DRY_RUN",
+  "problem_set_id": "ps-operationalize-chatgpt-pipeline-001",
+  "packet_id": "pkt-operationalize-chatgpt-pipeline-001",
+  "packet_root": "generated/packets/pkt-operationalize-chatgpt-pipeline-001",
+  "admission": "PASS",
+  "review_gate": "PASS",
+  "realization_gate": "WAITING_HUMAN_REVIEW",
+  "next_step": "Issue authoritative packet.review.decision.json before realization.",
+  "packet_runner_log_root": "generated/state/admission/chatgpt-packet-file-runner/2026-03-28T06-00-00Z"
+}

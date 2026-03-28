@@ -16,12 +16,12 @@
     "packet.definition.json": "fb627bcf2fb2619c390014ca3a2a8bbdde6bd99599c2952b6bb867197cc74d68",
     "scm.pattern.binding.json": "d6533dcd6bd5b068a11534d94dbbaabb63aba305eb3bc3de329db0d098807706",
     "packet.review.request.json": "5ad38c3cf1302179cc70e659e2bd8f305fb7dd1c125b8d757c7fae82c2b3a52c",
-    "root.trust.evidence.json": "808fc0c813e8c673919d10d326226a010da6452858c49bf28aa188679064682f",
+    "root.trust.evidence.json": "d5dde3c22b4a2266927746535c95a60239a17ded2e968083c8fa0c9b89f1b7b0",
     "artifact.manifest.json": "1739d14bbbcc20189ac4aec444959e50d844044723260ef0aab39acabef0bb9b",
     "packet.approval.json": "a4473158778039972150dec5ddfc181ac1cc78860cb8d6f8d2b916ece20c5667",
     "packet.definition.md": "42f518e854d46baaf5fd930b64866b1c143f648ead64964ccee7ac69ae9b3d4e"
   },
-  "approval_basis_fingerprint": "30982ba8298cfcdcfe6ec9530a8bb0f494ac7d5e734ea69e623e2e647790039c",
+  "approval_basis_fingerprint": "05b51204c68846ebbfa4e2f975e79822465b3c5abfc58524f6284b5127357e2a",
   "status": "GENERATED",
   "notes": "Formatting-only changes do not stale approval basis. Human review decision, if issued later, must target the approval basis fingerprint recorded here."
 }
