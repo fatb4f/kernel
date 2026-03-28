@@ -7,7 +7,7 @@ local preservationRef = std.extVar('constraint_preservation_report_ref');
 {
   artifact_type: 'kernel.reviewed_structural_export_registry',
   artifact_version: '0.1.0',
-  draft_id: admitted.draft_id,
+  contract_id: admitted.contract_id,
   title: admitted.title,
   source_admitted_state_ref: exportInput.source_admitted_state_ref,
   output_bundle: {

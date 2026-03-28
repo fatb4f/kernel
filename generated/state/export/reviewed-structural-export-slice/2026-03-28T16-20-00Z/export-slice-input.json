@@ -1,0 +1,34 @@
+{
+  "kind": "kernel.reviewed_structural_export.slice_input",
+  "control_object_id": "reviewed-structural-export-slice",
+  "source_surface_control_id": "json-structure-contract-surface",
+  "source_admitted_state_ref": "generated/state/admission/json-structure-contract-surface/2026-03-28T16-05-00Z/admitted-state.json",
+  "source_policy_ref": "policy/kernel/prose-contract-workflow.index.json",
+  "output_bundle": {
+    "schema_base_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/schema.base.json",
+    "constraints_manifest_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/constraints.manifest.json",
+    "constraint_preservation_report_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/constraint-preservation.report.json"
+  },
+  "structures": [
+    {
+      "name": "Order",
+      "kind": "object",
+      "field_count": 4,
+      "is_root": true
+    }
+  ],
+  "constraints": [
+    {
+      "id": "c.customer_phone_required_if_sms",
+      "constraint_class": "conditional_presence",
+      "preservation_mode": "externalized",
+      "structural_schema_status": "not_embedded"
+    }
+  ],
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  }
+}

@@ -3,7 +3,7 @@
   "name": "reviewed-structural-export-slice",
   "manifest_class": "projection",
   "inputs": [
-    "generated/state/admission/reviewed-structural-draft-surface/<source-run-id>/admitted-state.json",
+    "generated/state/admission/json-structure-contract-surface/<source-run-id>/admitted-state.json",
     "generated/state/export/reviewed-structural-export-slice/<run-id>/export-slice-input.json",
     "render/jsonnet/registry/reviewed-structural-export.jsonnet"
   ],

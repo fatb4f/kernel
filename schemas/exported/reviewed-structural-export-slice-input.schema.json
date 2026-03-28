@@ -23,7 +23,7 @@
       "const": "reviewed-structural-export-slice"
     },
     "source_surface_control_id": {
-      "const": "reviewed-structural-draft-surface"
+      "const": "json-structure-contract-surface"
     },
     "source_admitted_state_ref": {
       "type": "string"

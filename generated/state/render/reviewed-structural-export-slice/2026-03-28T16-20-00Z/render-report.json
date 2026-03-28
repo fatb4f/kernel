@@ -1,0 +1,16 @@
+{
+  "gate": "G5",
+  "control_object_id": "reviewed-structural-export-slice",
+  "run_id": "2026-03-28T16-20-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/reviewed-structural-export.jsonnet",
+  "admitted_state_ref": "generated/state/admission/json-structure-contract-surface/2026-03-28T16-05-00Z/admitted-state.json",
+  "export_slice_input_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/export-slice-input.json",
+  "outputs": [
+    "generated/registries/reviewed-structural-export.index.json"
+  ],
+  "rendered_at": "2026-03-28T14:50:09Z"
+}

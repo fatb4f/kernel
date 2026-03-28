@@ -8,17 +8,17 @@
          "preservation_mode": "externalized"
       }
    ],
-   "draft_id": "delivery-order-v1",
+   "contract_id": "delivery-order-v1",
    "generated_from": {
       "control_object_id": "reviewed-structural-export-slice",
       "output_path": "generated/registries/reviewed-structural-export.index.json"
    },
    "output_bundle": {
-      "constraint_preservation_report_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/constraint-preservation.report.json",
-      "constraints_manifest_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/constraints.manifest.json",
-      "schema_base_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T15-40-00Z/schema.base.json"
+      "constraint_preservation_report_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/constraint-preservation.report.json",
+      "constraints_manifest_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/constraints.manifest.json",
+      "schema_base_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/schema.base.json"
    },
-   "source_admitted_state_ref": "generated/state/admission/reviewed-structural-draft-surface/2026-03-28T15-05-00Z/admitted-state.json",
+   "source_admitted_state_ref": "generated/state/admission/json-structure-contract-surface/2026-03-28T16-05-00Z/admitted-state.json",
    "structures": [
       {
          "field_count": 4,

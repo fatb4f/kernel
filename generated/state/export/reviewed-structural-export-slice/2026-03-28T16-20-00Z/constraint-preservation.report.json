@@ -1,0 +1,24 @@
+{
+  "artifact_type": "kernel.constraint_preservation_report",
+  "artifact_version": "0.1.0",
+  "source_admitted_state_ref": "generated/state/admission/json-structure-contract-surface/2026-03-28T16-05-00Z/admitted-state.json",
+  "summary": {
+    "total_constraints": 1,
+    "embedded_in_schema_base": 0,
+    "externalized_to_manifest": 1,
+    "dropped": 0
+  },
+  "entries": [
+    {
+      "constraint_id": "c.customer_phone_required_if_sms",
+      "preservation_mode": "externalized",
+      "structural_schema_status": "not_embedded",
+      "reason": "requires_constraint_sidecar_to_preserve_semantics",
+      "constraint_manifest_ref": "generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/constraints.manifest.json"
+    }
+  ],
+  "notes": [
+    "No admitted constraint may be silently weakened or dropped.",
+    "Preservation details are recorded in generated/state/export/reviewed-structural-export-slice/2026-03-28T16-20-00Z/constraint-preservation.report.json."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "gate": "G1",
+  "control_object_id": "reviewed-structural-export-slice",
+  "source_control_object_id": "json-structure-contract-surface",
+  "run_id": "2026-03-28T16-20-00Z",
+  "status": "PASS",
+  "validated_at": "2026-03-28T14:50:09Z",
+  "source_admitted_state_ref": "generated/state/admission/json-structure-contract-surface/2026-03-28T16-05-00Z/admitted-state.json",
+  "slice_schema_ref": "schemas/exported/reviewed-structural-export-slice-input.schema.json",
+  "reason_codes": [],
+  "tool": "python-jsonschema"
+}

@@ -14,7 +14,7 @@ from jsonschema import Draft202012Validator
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONTROL_ID = "reviewed-structural-export-slice"
-SOURCE_CONTROL_ID = "reviewed-structural-draft-surface"
+SOURCE_CONTROL_ID = "json-structure-contract-surface"
 SOURCE_ROOT = REPO_ROOT / "generated" / "state" / "admission" / SOURCE_CONTROL_ID
 SLICE_SCHEMA_PATH = REPO_ROOT / "schemas" / "exported" / "reviewed-structural-export-slice-input.schema.json"
 WORKFLOW_POLICY_PATH = REPO_ROOT / "policy" / "kernel" / "prose-contract-workflow.index.json"
@@ -58,7 +58,7 @@ def latest_admitted_state() -> Path:
         if path.is_dir() and (path / "admitted-state.json").exists()
     )
     if not candidates:
-        raise FileNotFoundError("no admitted reviewed-structural-draft state found")
+        raise FileNotFoundError("no admitted json_structure_contract state found")
     return candidates[-1]
 
 
@@ -81,8 +81,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def validate_source(instance: dict) -> None:
-    if instance.get("artifact_type") != "kernel.reviewed_structural_draft":
-        raise ValueError("admitted state is not a reviewed structural draft")
+    if instance.get("artifact_type") != "kernel.json_structure_contract":
+        raise ValueError("admitted state is not a json_structure_contract")
     if instance.get("admission", {}).get("decision") != "ALLOW":
         raise ValueError("admitted state is not ALLOW")
     if not instance.get("structures"):
@@ -137,7 +137,7 @@ def build_schema_base(admitted_state: dict, schema_ref: str) -> dict:
         "$defs": defs,
         "x-derived-from": {
             "artifact_type": admitted_state["artifact_type"],
-            "draft_id": admitted_state["draft_id"],
+            "contract_id": admitted_state["contract_id"],
             "source_policy_ref": admitted_state.get("source_policy_ref", rel(WORKFLOW_POLICY_PATH)),
         },
     }
