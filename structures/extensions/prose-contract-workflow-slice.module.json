@@ -1,0 +1,73 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "prose-contract-workflow-slice",
+  "fragments": [
+    {
+      "name": "reviewed-structural-draft-surface",
+      "class": "extension",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/reviewed_structural_draft",
+        "policy/contracts/prose-contract-workflow.md#/reviewed-structural-draft"
+      ],
+      "description": "Declares the reviewed structural draft as the pre-contract review artifact immediately before promotion into the JSON Structure contract."
+    },
+    {
+      "name": "json-structure-contract-surface",
+      "class": "extension",
+      "source_refs": [
+        "kernel.spec.json#/authority_model/json_structure",
+        "policy/kernel/prose-contract-workflow.index.json#/authority_sentence"
+      ],
+      "description": "Declares JSON Structure as the first authored serialization surface of the canonical structural model."
+    },
+    {
+      "name": "auxiliary-graph-boundary",
+      "class": "extension",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/auxiliary_workflow_graph",
+        "policy/contracts/prose-contract-workflow.md#/graph-boundary"
+      ],
+      "description": "Declares graph-like workflow aids as optional, non-authoritative, and disposable after draft promotion."
+    },
+    {
+      "name": "derived-export-family",
+      "class": "extension",
+      "source_refs": [
+        "policy/contracts/prose-contract-workflow.md#/derived-artifact-family",
+        "policy/kernel/prose-contract-workflow.index.json#/preferred_export_bundle"
+      ],
+      "description": "Declares the preferred derived export family for schema, constraints, and preservation reporting."
+    },
+    {
+      "name": "minimum-lineage-expectations",
+      "class": "extension",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "description": "Declares the minimum lineage expectations for draft, contract, normalized, admitted, and derived export artifacts."
+    }
+  ],
+  "relations": [
+    {
+      "from": "reviewed-structural-draft-surface",
+      "to": "json-structure-contract-surface",
+      "relation": "promoted_to"
+    },
+    {
+      "from": "auxiliary-graph-boundary",
+      "to": "reviewed-structural-draft-surface",
+      "relation": "may_assist"
+    },
+    {
+      "from": "json-structure-contract-surface",
+      "to": "derived-export-family",
+      "relation": "feeds"
+    },
+    {
+      "from": "derived-export-family",
+      "to": "minimum-lineage-expectations",
+      "relation": "tracked_by"
+    }
+  ],
+  "notes": "Authoritative extension module for the revised prose-to-contract workflow boundary. It binds the first contract surface, graph non-authority rule, derived export family, and minimum lineage semantics without introducing runtime orchestration."
+}

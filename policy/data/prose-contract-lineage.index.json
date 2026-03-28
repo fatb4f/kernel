@@ -1,0 +1,52 @@
+{
+  "lineage_id": "prose-contract-workflow",
+  "status": "structural_only",
+  "edges": [
+    {
+      "artifact": "reviewed_structural_draft",
+      "relation": "generated_from",
+      "target": "extraction_artifacts"
+    },
+    {
+      "artifact": "json_structure_contract",
+      "relation": "generated_from",
+      "target": "reviewed_structural_draft"
+    },
+    {
+      "artifact": "normalized_state",
+      "relation": "generated_from",
+      "target": "json_structure_contract"
+    },
+    {
+      "artifact": "admitted_state",
+      "relation": "generated_from",
+      "target": "normalized_state"
+    },
+    {
+      "artifact": "admitted_state",
+      "relation": "validated_against",
+      "target": "admission_rules"
+    },
+    {
+      "artifact": "decision.json",
+      "relation": "generated_from",
+      "target": "admitted_state"
+    },
+    {
+      "artifact": "violations.json",
+      "relation": "generated_from",
+      "target": "admitted_state"
+    },
+    {
+      "artifact": "schema.base.json",
+      "relation": "generated_from",
+      "target": "admitted_state"
+    },
+    {
+      "artifact": "constraints.manifest.json",
+      "relation": "generated_from",
+      "target": "admitted_state"
+    }
+  ],
+  "notes": "Minimum lineage expectations for the revised prose-to-contract workflow. These edges bind draft, contract, admission, and derived export families without making auxiliary workflow aids authoritative."
+}

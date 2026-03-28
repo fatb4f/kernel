@@ -1,0 +1,38 @@
+{
+  "policy_id": "prose-contract-workflow",
+  "status": "structural_only",
+  "summary": "Structural kernel policy for the revised prose-to-contract workflow.",
+  "authority_sentence": "The canonical structural model is the normative contract; JSON Structure is its first authored serialization surface.",
+  "term_bindings": {
+    "reviewed_structural_draft": "A pre-contract review artifact derived from prose or extraction outputs and used to refine structure before promotion into the first authored contract surface.",
+    "normalized_state": "A deterministic regularized representation of the authored contract prepared for admission. It may resolve references, defaults, and ordering, but it does not decide legality.",
+    "admitted_state": "The normalized contract state after admission checks have passed. This is the approved input to downstream derived exports and renderings.",
+    "constraint_manifest": "A derived artifact that records validated constraints not fully or safely carried by the structural export alone. It is not an authority surface.",
+    "derived_export": "A non-authoritative artifact emitted from admitted state for external use, review, interoperability, or rendering.",
+    "auxiliary_workflow_graph": "An optional non-authoritative workflow aid that may support extraction, review, diagnostics, or draft refinement. It is not a required generation input and may be discarded after draft promotion."
+  },
+  "workflow_rules": [
+    "Extraction artifacts are candidates only.",
+    "Graph-like workflow aids are optional, non-authoritative, and not required generation inputs.",
+    "Generation proceeds from the reviewed structural draft and then the JSON Structure contract.",
+    "Normalization regularizes form only and does not decide legality.",
+    "CUE admits normalized state and may derive export-facing artifacts.",
+    "Jsonnet renders from admitted state only.",
+    "No admitted constraint may be silently weakened or dropped."
+  ],
+  "preferred_export_bundle": {
+    "members": [
+      "schema.base.json",
+      "constraints.manifest.json",
+      "constraint-preservation.report.json"
+    ],
+    "merged_convenience_export": "optional_derived_only"
+  },
+  "excluded_content": [
+    "graph authority claims",
+    "runtime orchestration",
+    "execution transport",
+    "mandatory bridge/codegen stages"
+  ],
+  "notes": "This policy surface binds vocabulary and boundary rules only. It does not implement prose ingestion or runtime workflow behavior."
+}
