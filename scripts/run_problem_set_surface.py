@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import copy
 import hashlib
+import importlib.metadata
 import json
 import os
 import shutil
@@ -55,6 +56,12 @@ def validate_problem_set(problem_set_path: Path) -> dict:
     instance = load_json(problem_set_path)
     Draft202012Validator(schema).validate(instance)
     return instance
+
+
+def validate_admitted_state(admitted_state_path: Path) -> None:
+    schema = load_json(WORKFLOW_ROOT / "problem_set.admitted.schema.json")
+    instance = load_json(admitted_state_path)
+    Draft202012Validator(schema).validate(instance)
 
 
 def phase_dir(phase: str, run_id: str) -> Path:
@@ -193,6 +200,7 @@ def main() -> int:
     }
     admitted_state_path = admission_dir / "admitted-state.json"
     dump_json(admitted_state_path, admitted_state)
+    validate_admitted_state(admitted_state_path)
     dump_json(admission_dir / "violations.json", [])
     dump_json(
         admission_dir / "decision.json",
@@ -212,9 +220,15 @@ def main() -> int:
                     "algorithm": "sha256",
                     "value": sha256_path(WORKFLOW_ROOT / "problem_set.schema.json"),
                 },
+                "admitted_state_schema": {
+                    "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.admitted.schema.json",
+                    "algorithm": "sha256",
+                    "value": sha256_path(WORKFLOW_ROOT / "problem_set.admitted.schema.json"),
+                },
             },
             "tool_versions": {
                 "cue": cue_version(),
+                "python_jsonschema": importlib.metadata.version("jsonschema"),
             },
             "issued_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         },

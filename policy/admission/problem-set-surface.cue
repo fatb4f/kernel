@@ -1,5 +1,7 @@
 package admission
 
+import "list"
+
 #StringList: [...string] & [string, ...string]
 
 #ScopeControls: {
@@ -54,5 +56,20 @@ package admission
 		normalized_at: string & != ""
 		source_ref:    string & != ""
 		policy:        string & != ""
+	}
+	if problem_set_id == "ps-kernel-json-family-amendment-001" {
+		_kernel_in_scope:              true & list.Contains(scope.in_scope, "kernel-only amendment")
+		_targets_kernel:               true & list.Contains(scope_controls.target_repos, "kernel")
+		_forbids_gpt_registry_repo:    true & list.Contains(scope_controls.forbidden_repos, "gpt-registry")
+		_forbids_gpt_registry_surface: true & list.Contains(scope_controls.forbidden_surfaces, "gpt-registry/**")
+		_forbids_authority_promotion:  true & list.Contains(scope_controls.forbidden_artifact_classes, "authority_promotion_of_bridge_output")
+	}
+}
+
+#Admitted: #Normalized & {
+	admission: {
+		decision:         "ALLOW"
+		policy_bundle_id: "policy/admission/problem-set-surface.cue"
+		admitted_at:      string & != ""
 	}
 }

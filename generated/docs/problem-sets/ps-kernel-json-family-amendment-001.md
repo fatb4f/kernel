@@ -68,7 +68,7 @@ Encode JSON Structure, bridge semantics, and derived runtime actor declarations 
 ## Admission
 - `decision`: `ALLOW`
 - `policy_bundle_id`: `policy/admission/problem-set-surface.cue`
-- `admitted_at`: `2026-03-28T01:22:38Z`
+- `admitted_at`: `2026-03-28T02:55:38Z`
 
 ## Notes
 - Rendered from admitted `problem_set` state only.

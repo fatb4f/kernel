@@ -1,0 +1,28 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "problem-set-surface",
+  "run_id": "2026-03-28T02-45-00Z",
+  "policy_bundle_id": "policy/admission/problem-set-surface.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/problem-set-surface/2026-03-28T02-45-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "1061bc09419584f741832febd3e76e3a305d3481dc74fc297497a7533869012a"
+    },
+    "problem_set_schema": {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+      "algorithm": "sha256",
+      "value": "7c2e1a937d2dab0b10a856e3d17024986ea64c7ce551109e4a2175387de99495"
+    },
+    "admitted_state_schema": {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.admitted.schema.json",
+      "algorithm": "sha256",
+      "value": "ee98bd6292e21fa50bf84d862a75f41d7acd66175862da18fc82cae8edce8b14"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "python_jsonschema": "4.26.0"
+  },
+  "issued_at": "2026-03-28T02:55:38Z"
+}

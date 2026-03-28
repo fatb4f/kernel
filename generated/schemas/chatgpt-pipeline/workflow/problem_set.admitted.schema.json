@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "generated/schemas/chatgpt-pipeline/workflow/problem_set.admitted.schema.json",
+  "title": "Admitted problem set state",
+  "description": "Post-admission state contract for the problem_set review surface.",
+  "type": "object",
+  "required": [
+    "kind",
+    "problem_set_id",
+    "version",
+    "status",
+    "identity",
+    "objective",
+    "scope",
+    "constraints",
+    "assumptions",
+    "requested_outputs",
+    "authority_refs",
+    "acceptance_criteria",
+    "change_control",
+    "fingerprint",
+    "normalization",
+    "admission"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.problem_set"
+    },
+    "problem_set_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated",
+        "archived"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "name",
+        "title"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "owners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "objective": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "in_scope",
+        "out_of_scope"
+      ],
+      "properties": {
+        "in_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requested_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scope_controls": {
+      "type": "object",
+      "properties": {
+        "target_repos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_repos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "target_surfaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_surfaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "target_artifact_classes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_artifact_classes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "handoff": {
+      "type": "object",
+      "properties": {
+        "issue_title_prefix": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "assignees": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "change_control": {
+      "type": "object",
+      "properties": {
+        "normalized_json": {
+          "const": true
+        },
+        "stale_when": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "fingerprint": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "normalization": {
+      "type": "object",
+      "required": [
+        "normalized_at",
+        "source_ref",
+        "policy"
+      ],
+      "properties": {
+        "normalized_at": {
+          "type": "string"
+        },
+        "source_ref": {
+          "type": "string"
+        },
+        "policy": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "admission": {
+      "type": "object",
+      "required": [
+        "decision",
+        "policy_bundle_id",
+        "admitted_at"
+      ],
+      "properties": {
+        "decision": {
+          "const": "ALLOW"
+        },
+        "policy_bundle_id": {
+          "const": "policy/admission/problem-set-surface.cue"
+        },
+        "admitted_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

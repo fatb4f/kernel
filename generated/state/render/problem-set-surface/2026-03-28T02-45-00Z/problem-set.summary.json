@@ -1,0 +1,50 @@
+{
+   "acceptance_criteria": [
+      "The problem_set normalizes into a valid generated problem_set.json.",
+      "Kernel-only scope controls are explicit in the normalized contract.",
+      "The handoff issue body is renderable from the normalized contract.",
+      "No gpt-registry refs are required for the amendment packet."
+   ],
+   "admission": {
+      "admitted_at": "2026-03-28T02:55:38Z",
+      "decision": "ALLOW",
+      "policy_bundle_id": "policy/admission/problem-set-surface.cue"
+   },
+   "artifact_type": "kernel.problem_set.summary",
+   "artifact_version": "0.1.0",
+   "authority_refs": [
+      "kernel.spec.json",
+      "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+      "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+   ],
+   "fingerprint": {
+      "algorithm": "sha256",
+      "value": "165b021ac35645140defba72dfb54de95889f91a7c8f6fb4689923c984ad9b98"
+   },
+   "objective": "Encode JSON Structure, bridge semantics, and derived runtime actor declarations in kernel control surfaces without redefining the existing authority routing.",
+   "problem_set_id": "ps-kernel-json-family-amendment-001",
+   "requested_outputs": [
+      "amendment packet",
+      "affected refs",
+      "dry-run admission report",
+      "review request",
+      "trust evidence bindings"
+   ],
+   "scope": {
+      "in_scope": [
+         "kernel-only amendment",
+         "JSON-family decomposition",
+         "bridge loss and promotion defaults",
+         "runtime actor declarations",
+         "lineage and evidence obligations"
+      ],
+      "out_of_scope": [
+         "gpt-registry changes",
+         "retrieval-pack updates",
+         "AGENTS-only resolution",
+         "promotion of bridge outputs into authority"
+      ]
+   },
+   "status": "draft",
+   "title": "Amend kernel JSON-family and bridge actor declarations"
+}
