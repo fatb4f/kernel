@@ -1,0 +1,22 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "problem-set-surface-generator",
+  "manifest_class": "generator",
+  "inputs": [
+    "generated/problem_sets/<problem-set-id>/problem_set.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "policy/admission/problem-set-surface.cue"
+  ],
+  "outputs": [
+    "generated/state/source-validation/problem-set-surface/<run-id>/source-validation.json",
+    "generated/state/normalization/problem-set-surface/<run-id>/normalized-state.json",
+    "generated/state/admission/problem-set-surface/<run-id>/admitted-state.json",
+    "generated/docs/problem-sets/<problem-set-id>.md"
+  ],
+  "invariants": [
+    "problem_set.json remains the normalized ingress object.",
+    "CUE admits normalized state before any rendering occurs.",
+    "Rendered outputs remain derived and non-authoritative."
+  ],
+  "notes": "Generator control object for problem_set admission and rendering."
+}

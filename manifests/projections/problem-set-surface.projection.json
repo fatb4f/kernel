@@ -1,0 +1,22 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "problem-set-surface",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/problem-set-surface/<run-id>/admitted-state.json",
+    "render/jsonnet/reference/problem-set-review.md.jsonnet",
+    "render/jsonnet/reference/problem-set-summary.jsonnet"
+  ],
+  "outputs": [
+    "generated/docs/problem-sets/<problem-set-id>.md",
+    "generated/state/render/problem-set-surface/<run-id>/problem-set.summary.json",
+    "generated/state/render/problem-set-surface/<run-id>/render-report.json",
+    "generated/state/integrity/problem-set-surface/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted problem_set state only.",
+    "The projection emits derived review outputs only.",
+    "No renderer reads authoring input directly."
+  ],
+  "notes": "Projection control object for normalized problem_set admission and review rendering."
+}

@@ -87,3 +87,6 @@ problem-set-issue-body PROBLEM_SET REPO:
 
 problem-set-issue-sync PROBLEM_SET REPO:
 	python scripts/sync_problem_set_issue.py {{PROBLEM_SET}} --repo {{REPO}}
+
+problem-set-surface:
+	bash -lc 'set -euo pipefail; problem_set="${PROBLEM_SET:-generated/problem_sets/ps-kernel-json-family-amendment-001/problem_set.json}"; cmd=(python scripts/run_problem_set_surface.py "$problem_set"); if [[ -n "${RUN_ID:-}" ]]; then cmd+=(--run-id "${RUN_ID}"); fi; "${cmd[@]}"'
