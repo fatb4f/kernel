@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - "generated/problem_sets/**/problem_set.json"
+      - "scripts/author_problem_set.py"
+      - "scripts/sync_problem_set_issue.py"
+      - ".github/ISSUE_TEMPLATE/new-packet-handoff.md"
+      - ".github/workflows/problem-set-handoff.yml"
   workflow_dispatch:
     inputs:
       problem_set_path:
@@ -37,19 +41,28 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          resync_all=false
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             path="${{ inputs.problem_set_path }}"
             if [[ -n "$path" ]]; then
               printf '%s\n' "$path" > changed_problem_sets.txt
             else
-              : > changed_problem_sets.txt
+              git ls-files ':(glob)generated/problem_sets/**/problem_set.json' > changed_problem_sets.txt
             fi
           else
             before="${{ github.event.before }}"
             if [[ "$before" == "0000000000000000000000000000000000000000" ]]; then
               git ls-files ':(glob)generated/problem_sets/**/problem_set.json' > changed_problem_sets.txt
             else
-              git diff --name-only "$before" "${{ github.sha }}" -- ':(glob)generated/problem_sets/**/problem_set.json' > changed_problem_sets.txt
+              changed_files="$(git diff --name-only "$before" "${{ github.sha }}")"
+              if grep -Eq '^(scripts/author_problem_set.py|scripts/sync_problem_set_issue.py|\.github/ISSUE_TEMPLATE/new-packet-handoff.md|\.github/workflows/problem-set-handoff.yml)$' <<< "$changed_files"; then
+                resync_all=true
+              fi
+              if [[ "$resync_all" == true ]]; then
+                git ls-files ':(glob)generated/problem_sets/**/problem_set.json' > changed_problem_sets.txt
+              else
+                git diff --name-only "$before" "${{ github.sha }}" -- ':(glob)generated/problem_sets/**/problem_set.json' > changed_problem_sets.txt
+              fi
             fi
           fi
           sed -i '/^$/d' changed_problem_sets.txt

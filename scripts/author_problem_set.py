@@ -98,8 +98,12 @@ def build_issue_title(problem_set: dict) -> str:
     return f"{prefix}: {problem_set['problem_set_id']} - {problem_set['identity']['title']}"
 
 
+def build_issue_marker(problem_set_id: str) -> str:
+    return f"<!-- kernel-problem-set:{problem_set_id} -->"
+
+
 def build_issue_body(problem_set: dict, repo: str) -> str:
-    marker = f"<!-- kernel-problem-set:{problem_set['problem_set_id']} -->"
+    marker = build_issue_marker(problem_set["problem_set_id"])
     scope_controls = problem_set.get("scope_controls", {})
     lines = [
         marker,
