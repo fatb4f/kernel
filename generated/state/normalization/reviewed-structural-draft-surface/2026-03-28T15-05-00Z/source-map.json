@@ -1,0 +1,5 @@
+{
+  "source_ref": "examples/valid/reviewed-structural-draft.example.json",
+  "normalized_state_ref": "generated/state/normalization/reviewed-structural-draft-surface/2026-03-28T15-05-00Z/normalized-state.json",
+  "mapping": "identity_with_classification"
+}

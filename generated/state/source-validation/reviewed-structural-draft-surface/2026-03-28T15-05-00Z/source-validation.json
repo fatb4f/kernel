@@ -1,0 +1,11 @@
+{
+  "gate": "G1",
+  "control_object_id": "reviewed-structural-draft-surface",
+  "run_id": "2026-03-28T15-05-00Z",
+  "status": "PASS",
+  "source_ref": "examples/valid/reviewed-structural-draft.example.json",
+  "schema_ref": "schemas/exported/reviewed-structural-draft.schema.json",
+  "validated_at": "2026-03-28T14:36:46Z",
+  "tool": "python-jsonschema",
+  "reason_codes": []
+}

@@ -1,0 +1,11 @@
+{
+  "gate": "G3",
+  "control_object_id": "reviewed-structural-draft-surface",
+  "run_id": "2026-03-28T15-05-00Z",
+  "status": "PASS",
+  "normalized_state_ref": "generated/state/normalization/reviewed-structural-draft-surface/2026-03-28T15-05-00Z/normalized-state.json",
+  "notes": [
+    "reviewed structural draft remains pre-contract and non-authoritative",
+    "normalization classifies the next promotion surface as json_structure_contract"
+  ]
+}

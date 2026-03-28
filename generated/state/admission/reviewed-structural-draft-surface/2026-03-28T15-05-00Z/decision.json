@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "reviewed-structural-draft-surface",
+  "run_id": "2026-03-28T15-05-00Z",
+  "policy_bundle_id": "policy/admission/reviewed-structural-draft.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/reviewed-structural-draft-surface/2026-03-28T15-05-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "ae8c23949e9261f26f8bfc9360170484626a4b6e86dac93fbaf0f119dbe3ae13"
+    },
+    "reviewed_structural_draft_schema": {
+      "ref": "schemas/exported/reviewed-structural-draft.schema.json",
+      "algorithm": "sha256",
+      "value": "3059804957827c14d5ac112e8fca216390adcf8c124b1a7fbf8cd1cf8436acc6"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "python_jsonschema": "4.26.0"
+  },
+  "issued_at": "2026-03-28T14:36:46Z"
+}

@@ -1,0 +1,48 @@
+{
+  "artifact_type": "kernel.reviewed_structural_draft",
+  "artifact_version": "0.1.0",
+  "draft_id": "delivery-order-v1",
+  "title": "Delivery Order",
+  "contract_format": "json_structure",
+  "source_policy_ref": "policy/kernel/prose-contract-workflow.index.json",
+  "structures": [
+    {
+      "name": "Order",
+      "kind": "object",
+      "fields": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "required": true,
+          "description": "Primary order identifier."
+        },
+        {
+          "name": "customer_phone",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "notification_channel",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "items_type": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "c.customer_phone_required_if_sms",
+      "subject": "customer_phone",
+      "constraint_class": "conditional_presence",
+      "predicate": "notification_channel == 'sms'",
+      "loss_policy": "must_not_silently_drop",
+      "notes": "Cannot be preserved safely in plain structural JSON Schema without a higher-order conditional export."
+    }
+  ]
+}

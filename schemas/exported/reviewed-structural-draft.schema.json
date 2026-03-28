@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/exported/reviewed-structural-draft.schema.json",
+  "title": "Reviewed structural draft",
+  "description": "Pre-contract reviewed structural draft used as the last review artifact before promotion to a JSON Structure contract.",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "draft_id",
+    "title",
+    "structures"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "kernel.reviewed_structural_draft"
+    },
+    "artifact_version": {
+      "type": "string"
+    },
+    "draft_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "contract_format": {
+      "type": "string",
+      "enum": [
+        "json_structure"
+      ]
+    },
+    "source_policy_ref": {
+      "type": "string"
+    },
+    "structures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "kind",
+          "fields"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "object"
+            ]
+          },
+          "fields": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "type"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "string",
+                    "integer",
+                    "number",
+                    "boolean",
+                    "object",
+                    "array"
+                  ]
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "items_type": {
+                  "type": "string",
+                  "enum": [
+                    "string",
+                    "integer",
+                    "number",
+                    "boolean",
+                    "object"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "array"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "items_type"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "subject",
+          "constraint_class",
+          "loss_policy"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "constraint_class": {
+            "type": "string"
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "loss_policy": {
+            "type": "string",
+            "enum": [
+              "must_not_silently_drop",
+              "annotation_only",
+              "best_effort"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -96,3 +96,6 @@ json-family-bridge-runtime-slice RUN_ID='':
 
 prose-contract-workflow-slice RUN_ID='':
 	bash -lc 'set -euo pipefail; if [[ -n "{{RUN_ID}}" ]]; then bash scripts/run_prose_contract_workflow_slice.sh "{{RUN_ID}}"; else bash scripts/run_prose_contract_workflow_slice.sh; fi'
+
+reviewed-structural-draft-surface RUN_ID='':
+	bash -lc 'set -euo pipefail; draft="${DRAFT:-examples/valid/reviewed-structural-draft.example.json}"; if [[ -n "${RUN_ID:-}" ]]; then python scripts/run_reviewed_structural_draft_surface.py "$draft" --run-id "${RUN_ID}"; else python scripts/run_reviewed_structural_draft_surface.py "$draft"; fi'
