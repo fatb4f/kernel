@@ -78,3 +78,12 @@ reason-code-surface-slice RUN_ID='':
 
 completion-obligations-surface-slice RUN_ID='':
 	bash scripts/run_completion_obligations_surface_slice.sh {{RUN_ID}}
+
+problem-set-author SOURCE OUTPUT_ROOT='generated/problem_sets':
+	python scripts/author_problem_set.py normalize {{SOURCE}} --output-root {{OUTPUT_ROOT}}
+
+problem-set-issue-body PROBLEM_SET REPO:
+	python scripts/author_problem_set.py issue-body {{PROBLEM_SET}} --repo {{REPO}}
+
+problem-set-issue-sync PROBLEM_SET REPO:
+	python scripts/sync_problem_set_issue.py {{PROBLEM_SET}} --repo {{REPO}}

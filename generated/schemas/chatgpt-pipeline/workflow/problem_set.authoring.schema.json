@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
-  "title": "Problem set input",
-  "description": "First-class ingress contract for deterministic ChatGPT packet generation.",
+  "$id": "generated/schemas/chatgpt-pipeline/workflow/problem_set.authoring.schema.json",
+  "title": "Problem set authoring input",
+  "description": "JSON-authored structural input for normalized problem_set generation.",
   "type": "object",
   "required": [
     "kind",
@@ -20,7 +20,7 @@
   ],
   "properties": {
     "kind": {
-      "const": "kernel.problem_set"
+      "const": "kernel.problem_set.authoring"
     },
     "problem_set_id": {
       "type": "string"
@@ -84,42 +84,6 @@
       },
       "additionalProperties": true
     },
-    "constraints": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "assumptions": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "requested_outputs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "authority_refs": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "acceptance_criteria": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "review_criteria": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
     "scope_controls": {
       "type": "object",
       "properties": {
@@ -162,6 +126,57 @@
       },
       "additionalProperties": false
     },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requested_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "change_control": {
+      "type": "object",
+      "properties": {
+        "normalized_json": {
+          "type": "boolean"
+        },
+        "stale_when": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
     "handoff": {
       "type": "object",
       "properties": {
@@ -182,41 +197,7 @@
         }
       },
       "additionalProperties": false
-    },
-    "fingerprint": {
-      "type": "object",
-      "required": [
-        "algorithm",
-        "value"
-      ],
-      "properties": {
-        "algorithm": {
-          "type": "string",
-          "enum": [
-            "sha256"
-          ]
-        },
-        "value": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "change_control": {
-      "type": "object",
-      "properties": {
-        "normalized_json": {
-          "type": "boolean"
-        },
-        "stale_when": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "additionalProperties": true
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

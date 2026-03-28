@@ -1,0 +1,82 @@
+name: Problem Set Handoff
+
+on:
+  push:
+    paths:
+      - "generated/problem_sets/**/problem_set.json"
+  workflow_dispatch:
+    inputs:
+      problem_set_path:
+        description: "Repo-relative path to generated/problem_set.json"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync-handoff-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: python -m pip install --disable-pip-version-check jsonschema
+
+      - name: Resolve changed problem sets
+        id: changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            path="${{ inputs.problem_set_path }}"
+            if [[ -n "$path" ]]; then
+              printf '%s\n' "$path" > changed_problem_sets.txt
+            else
+              : > changed_problem_sets.txt
+            fi
+          else
+            before="${{ github.event.before }}"
+            if [[ "$before" == "0000000000000000000000000000000000000000" ]]; then
+              git ls-files ':(glob)generated/problem_sets/**/problem_set.json' > changed_problem_sets.txt
+            else
+              git diff --name-only "$before" "${{ github.sha }}" -- ':(glob)generated/problem_sets/**/problem_set.json' > changed_problem_sets.txt
+            fi
+          fi
+          sed -i '/^$/d' changed_problem_sets.txt
+          cat changed_problem_sets.txt
+          count="$(wc -l < changed_problem_sets.txt | tr -d ' ')"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure handoff labels exist
+        if: ${{ steps.changes.outputs.count != '0' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh label create packet-handoff --repo "$REPO" --color 1d76db --description "ChatGPT packet handoff issue" --force
+          gh label create problem-set --repo "$REPO" --color 5319e7 --description "Normalized problem_set contract" --force
+          gh label create kernel --repo "$REPO" --color 0052cc --description "Kernel-scoped work" --force
+
+      - name: Sync handoff issues
+        if: ${{ steps.changes.outputs.count != '0' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r path; do
+            python scripts/sync_problem_set_issue.py "$path" --repo "$REPO"
+          done < changed_problem_sets.txt
