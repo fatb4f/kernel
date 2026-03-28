@@ -1,0 +1,15 @@
+{
+  "gate": "G5",
+  "control_object_id": "prose-contract-workflow-slice",
+  "run_id": "2026-03-28T14-10-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/prose-contract-workflow.jsonnet",
+  "admitted_state_ref": "generated/state/admission/prose-contract-workflow-slice/2026-03-28T14-10-00Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/prose-contract-workflow.index.json"
+  ],
+  "rendered_at": "2026-03-28T13:41:11Z"
+}

@@ -1,0 +1,20 @@
+{
+  "source_module_ref": "structures/extensions/prose-contract-workflow-slice.module.json",
+  "field_sources": {
+    "term_bindings": [
+      "policy/kernel/prose-contract-workflow.index.json#/term_bindings"
+    ],
+    "workflow_rules": [
+      "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+    ],
+    "contract_note": [
+      "policy/contracts/prose-contract-workflow.md"
+    ],
+    "lineage_edges": [
+      "policy/data/prose-contract-lineage.index.json#/edges"
+    ],
+    "output_path": [
+      "manifests/projections/prose-contract-workflow-slice.projection.json"
+    ]
+  }
+}

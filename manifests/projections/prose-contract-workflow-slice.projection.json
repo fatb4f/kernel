@@ -1,0 +1,20 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "prose-contract-workflow-slice",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/prose-contract-workflow-slice/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/prose-contract-workflow.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/prose-contract-workflow.index.json",
+    "generated/state/render/prose-contract-workflow-slice/<run-id>/render-report.json",
+    "generated/state/integrity/prose-contract-workflow-slice/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits a workflow registry artifact only.",
+    "The projection remains repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the revised prose contract workflow slice."
+}

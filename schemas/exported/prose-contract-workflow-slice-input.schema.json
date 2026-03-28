@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prose-contract-workflow-slice-input.schema.json",
+  "title": "Prose contract workflow slice input",
+  "description": "Derived boundary contract for the revised prose contract workflow slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_module_id",
+    "source_module_ref",
+    "kernel_policy_ref",
+    "contract_note_ref",
+    "lineage_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "entries",
+    "preferred_export_bundle",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.prose_contract_workflow.slice_input"
+    },
+    "control_object_id": {
+      "const": "prose-contract-workflow-slice"
+    },
+    "source_module_id": {
+      "const": "prose-contract-workflow-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/extensions/prose-contract-workflow-slice.module.json"
+    },
+    "kernel_policy_ref": {
+      "const": "policy/kernel/prose-contract-workflow.index.json"
+    },
+    "contract_note_ref": {
+      "const": "policy/contracts/prose-contract-workflow.md"
+    },
+    "lineage_ref": {
+      "const": "policy/data/prose-contract-lineage.index.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/prose-contract-workflow-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/prose-contract-workflow-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/prose-contract-workflow-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/prose-contract-workflow.index.json"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": [
+          "entry_id",
+          "entry_class",
+          "summary",
+          "source_refs",
+          "authority_role"
+        ],
+        "properties": {
+          "entry_id": {
+            "type": "string"
+          },
+          "entry_class": {
+            "type": "string",
+            "enum": [
+              "term_binding",
+              "workflow_rule",
+              "export_family",
+              "lineage_expectation"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "authority_role": {
+            "type": "string",
+            "enum": [
+              "pre_contract",
+              "contract_surface",
+              "derived",
+              "non_authoritative"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "preferred_export_bundle": {
+      "type": "object",
+      "required": [
+        "members",
+        "merged_convenience_export"
+      ],
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 3
+        },
+        "merged_convenience_export": {
+          "const": "optional_derived_only"
+        }
+      },
+      "additionalProperties": false
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

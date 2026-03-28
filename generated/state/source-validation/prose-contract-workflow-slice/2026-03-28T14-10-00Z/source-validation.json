@@ -1,0 +1,23 @@
+{
+  "gate": "G1",
+  "control_object_id": "prose-contract-workflow-slice",
+  "run_id": "2026-03-28T14-10-00Z",
+  "status": "PASS",
+  "validated_at": "2026-03-28T13:41:10Z",
+  "reason_codes": [],
+  "tool": "check-jsonschema + rg",
+  "tool_output": {
+    "source_module": {
+      "status": "ok",
+      "errors": []
+    },
+    "kernel_policy": {
+      "status": "ok",
+      "errors": []
+    },
+    "lineage_index": {
+      "status": "ok",
+      "errors": []
+    }
+  }
+}

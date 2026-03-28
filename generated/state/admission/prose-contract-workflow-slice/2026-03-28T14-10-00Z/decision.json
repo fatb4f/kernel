@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "prose-contract-workflow-slice",
+  "run_id": "2026-03-28T14-10-00Z",
+  "policy_bundle_id": "policy/admission/prose-contract-workflow-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/prose-contract-workflow-slice/2026-03-28T14-10-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "447c13bce9a2e3ed56a55eb8d342ab0d2341f83c5fc664dc27f1d3a90eb45210"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/prose-contract-workflow-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "885d08fc2b8f1ecca559d1f085862f50021ce33d604979e1520ecaa3ca70746f"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-28T13:41:11Z"
+}

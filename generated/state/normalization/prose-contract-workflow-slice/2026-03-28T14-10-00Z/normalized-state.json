@@ -1,0 +1,240 @@
+{
+  "kind": "kernel.prose_contract_workflow.slice_input",
+  "control_object_id": "prose-contract-workflow-slice",
+  "source_module_id": "prose-contract-workflow-slice",
+  "source_module_ref": "structures/extensions/prose-contract-workflow-slice.module.json",
+  "kernel_policy_ref": "policy/kernel/prose-contract-workflow.index.json",
+  "contract_note_ref": "policy/contracts/prose-contract-workflow.md",
+  "lineage_ref": "policy/data/prose-contract-lineage.index.json",
+  "export_schema_ref": "schemas/exported/prose-contract-workflow-slice-input.schema.json",
+  "generator_ref": "manifests/generators/prose-contract-workflow-slice.generator.json",
+  "projection_ref": "manifests/projections/prose-contract-workflow-slice.projection.json",
+  "output_path": "generated/registries/prose-contract-workflow.index.json",
+  "entries": [
+    {
+      "entry_id": "reviewed_structural_draft",
+      "entry_class": "term_binding",
+      "summary": "A pre-contract review artifact derived from prose or extraction outputs and used to refine structure before promotion into the first authored contract surface.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/reviewed_structural_draft",
+        "policy/contracts/prose-contract-workflow.md#/reviewed-structural-draft"
+      ],
+      "authority_role": "pre_contract"
+    },
+    {
+      "entry_id": "normalized_state",
+      "entry_class": "term_binding",
+      "summary": "A deterministic regularized representation of the authored contract prepared for admission. It may resolve references, defaults, and ordering, but it does not decide legality.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/normalized_state"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "admitted_state",
+      "entry_class": "term_binding",
+      "summary": "The normalized contract state after admission checks have passed. This is the approved input to downstream derived exports and renderings.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/admitted_state"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "constraint_manifest",
+      "entry_class": "term_binding",
+      "summary": "A derived artifact that records validated constraints not fully or safely carried by the structural export alone. It is not an authority surface.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/constraint_manifest"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "derived_export",
+      "entry_class": "term_binding",
+      "summary": "A non-authoritative artifact emitted from admitted state for external use, review, interoperability, or rendering.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/derived_export"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "auxiliary_workflow_graph",
+      "entry_class": "term_binding",
+      "summary": "An optional non-authoritative workflow aid that may support extraction, review, diagnostics, or draft refinement. It is not a required generation input and may be discarded after draft promotion.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/term_bindings/auxiliary_workflow_graph",
+        "policy/contracts/prose-contract-workflow.md#/graph-boundary"
+      ],
+      "authority_role": "non_authoritative"
+    },
+    {
+      "entry_id": "workflow_rule_0",
+      "entry_class": "workflow_rule",
+      "summary": "Extraction artifacts are candidates only.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "workflow_rule_1",
+      "entry_class": "workflow_rule",
+      "summary": "Graph-like workflow aids are optional, non-authoritative, and not required generation inputs.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "workflow_rule_2",
+      "entry_class": "workflow_rule",
+      "summary": "Generation proceeds from the reviewed structural draft and then the JSON Structure contract.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+      ],
+      "authority_role": "contract_surface"
+    },
+    {
+      "entry_id": "workflow_rule_3",
+      "entry_class": "workflow_rule",
+      "summary": "Normalization regularizes form only and does not decide legality.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "workflow_rule_4",
+      "entry_class": "workflow_rule",
+      "summary": "CUE admits normalized state and may derive export-facing artifacts.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "workflow_rule_5",
+      "entry_class": "workflow_rule",
+      "summary": "Jsonnet renders from admitted state only.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "workflow_rule_6",
+      "entry_class": "workflow_rule",
+      "summary": "No admitted constraint may be silently weakened or dropped.",
+      "source_refs": [
+        "policy/kernel/prose-contract-workflow.index.json#/workflow_rules"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "preferred_export_bundle",
+      "entry_class": "export_family",
+      "summary": "Preferred derived export bundle for structural schema, constraints, and preservation reporting.",
+      "source_refs": [
+        "policy/contracts/prose-contract-workflow.md#/consumer-export-policy",
+        "policy/kernel/prose-contract-workflow.index.json#/preferred_export_bundle"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "reviewed_structural_draft__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "reviewed_structural_draft generated_from extraction_artifacts",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "json_structure_contract__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "json_structure_contract generated_from reviewed_structural_draft",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "normalized_state__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "normalized_state generated_from json_structure_contract",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "admitted_state__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "admitted_state generated_from normalized_state",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "admitted_state__validated_against",
+      "entry_class": "lineage_expectation",
+      "summary": "admitted_state validated_against admission_rules",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "decision.json__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "decision.json generated_from admitted_state",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "violations.json__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "violations.json generated_from admitted_state",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "schema.base.json__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "schema.base.json generated_from admitted_state",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    },
+    {
+      "entry_id": "constraints.manifest.json__generated_from",
+      "entry_class": "lineage_expectation",
+      "summary": "constraints.manifest.json generated_from admitted_state",
+      "source_refs": [
+        "policy/data/prose-contract-lineage.index.json#/edges"
+      ],
+      "authority_role": "derived"
+    }
+  ],
+  "preferred_export_bundle": {
+    "members": [
+      "schema.base.json",
+      "constraints.manifest.json",
+      "constraint-preservation.report.json"
+    ],
+    "merged_convenience_export": "optional_derived_only"
+  },
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "prose-contract-workflow-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/extensions/prose-contract-workflow-slice.module.json",
+    "policy/kernel/prose-contract-workflow.index.json",
+    "policy/contracts/prose-contract-workflow.md",
+    "policy/data/prose-contract-lineage.index.json",
+    "policy/admission/prose-contract-workflow-slice.cue"
+  ],
+  "outputs": [
+    "schemas/exported/prose-contract-workflow-slice-input.schema.json",
+    "generated/state/source-validation/prose-contract-workflow-slice/<run-id>/source-validation.json",
+    "generated/state/export/prose-contract-workflow-slice/<run-id>/export-report.json",
+    "generated/state/normalization/prose-contract-workflow-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/prose-contract-workflow-slice/<run-id>/source-map.json",
+    "generated/state/normalization/prose-contract-workflow-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The extension module remains the source of truth for workflow boundary declarations.",
+    "Kernel policy and contract notes bind terms and export family rules without introducing runtime behavior.",
+    "The exported slice-input schema remains derived output only."
+  ],
+  "notes": "Generator control object for the revised prose contract workflow slice."
+}

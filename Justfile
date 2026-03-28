@@ -93,3 +93,6 @@ problem-set-surface:
 
 json-family-bridge-runtime-slice RUN_ID='':
 	bash -lc 'set -euo pipefail; if [[ -n "{{RUN_ID}}" ]]; then bash scripts/run_json_family_bridge_runtime_slice.sh "{{RUN_ID}}"; else bash scripts/run_json_family_bridge_runtime_slice.sh; fi'
+
+prose-contract-workflow-slice RUN_ID='':
+	bash -lc 'set -euo pipefail; if [[ -n "{{RUN_ID}}" ]]; then bash scripts/run_prose_contract_workflow_slice.sh "{{RUN_ID}}"; else bash scripts/run_prose_contract_workflow_slice.sh; fi'

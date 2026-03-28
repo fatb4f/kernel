@@ -23,6 +23,10 @@ package admission
 	projection_ref:    "manifests/projections/prose-contract-workflow-slice.projection.json"
 	output_path:       "generated/registries/prose-contract-workflow.index.json"
 	entries: [...#Entry] & [#Entry, ...#Entry]
+	preferred_export_bundle: {
+		members: [...string] & [string, ...string]
+		merged_convenience_export: "optional_derived_only"
+	}
 	render_contract: {
 		renderer:     "jsonnet"
 		input_class:  "admitted_state"
