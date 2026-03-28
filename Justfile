@@ -90,3 +90,6 @@ problem-set-issue-sync PROBLEM_SET REPO:
 
 problem-set-surface:
 	bash -lc 'set -euo pipefail; problem_set="${PROBLEM_SET:-generated/problem_sets/ps-kernel-json-family-amendment-001/problem_set.json}"; cmd=(python scripts/run_problem_set_surface.py "$problem_set"); if [[ -n "${RUN_ID:-}" ]]; then cmd+=(--run-id "${RUN_ID}"); fi; "${cmd[@]}"'
+
+json-family-bridge-runtime-slice RUN_ID='':
+	bash -lc 'set -euo pipefail; if [[ -n "{{RUN_ID}}" ]]; then bash scripts/run_json_family_bridge_runtime_slice.sh "{{RUN_ID}}"; else bash scripts/run_json_family_bridge_runtime_slice.sh; fi'

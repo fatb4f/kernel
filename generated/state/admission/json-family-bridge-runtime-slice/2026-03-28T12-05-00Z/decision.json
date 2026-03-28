@@ -1,0 +1,23 @@
+{
+  "decision": "ALLOW",
+  "control_object_id": "json-family-bridge-runtime-slice",
+  "run_id": "2026-03-28T12-05-00Z",
+  "policy_bundle_id": "policy/admission/json-family-bridge-runtime-slice.cue",
+  "input_digests": {
+    "normalized_state": {
+      "ref": "generated/state/normalization/json-family-bridge-runtime-slice/2026-03-28T12-05-00Z/normalized-state.json",
+      "algorithm": "sha256",
+      "value": "d627285fc8cc9342b11e9160b946a9b92c7bed770ef6f5d505b1cd7fe9c5edaf"
+    },
+    "exported_schema": {
+      "ref": "schemas/exported/json-family-bridge-runtime-slice-input.schema.json",
+      "algorithm": "sha256",
+      "value": "c480e6a5a5e44d35380146fbfb2b261267ed50aa6c8e6ec227f5e230c2a637eb"
+    }
+  },
+  "tool_versions": {
+    "cue": "cue version (devel)",
+    "jq": "jq-1.8.1"
+  },
+  "issued_at": "2026-03-28T12:24:20Z"
+}

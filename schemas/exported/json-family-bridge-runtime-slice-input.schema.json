@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "json-family-bridge-runtime-slice-input.schema.json",
+  "title": "JSON-family bridge/runtime slice input",
+  "description": "Derived boundary contract for the JSON-family bridge/runtime registry slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_module_id",
+    "source_module_ref",
+    "kernel_policy_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "entries",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.bridge_runtime_registry.slice_input"
+    },
+    "control_object_id": {
+      "const": "json-family-bridge-runtime-slice"
+    },
+    "source_module_id": {
+      "const": "json-family-bridge-runtime-slice"
+    },
+    "source_module_ref": {
+      "const": "structures/extensions/json-family-bridge-runtime-slice.module.json"
+    },
+    "kernel_policy_ref": {
+      "const": "policy/kernel/json-family-bridge-runtime.index.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/json-family-bridge-runtime-slice-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/json-family-bridge-runtime-slice.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/json-family-bridge-runtime-slice.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/json-family-bridge-runtime.index.json"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "entry_id",
+          "entry_class",
+          "summary",
+          "authority_status",
+          "source_refs",
+          "promotion_default",
+          "lineage_sink_required"
+        ],
+        "properties": {
+          "entry_id": {
+            "type": "string"
+          },
+          "entry_class": {
+            "type": "string",
+            "enum": [
+              "authoring_surface",
+              "bridge_class",
+              "runtime_actor_class",
+              "guardrail"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "authority_status": {
+            "type": "string",
+            "enum": [
+              "authoritative",
+              "derived"
+            ]
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "consumes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "produces": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "promotion_default": {
+            "type": "string",
+            "enum": [
+              "blocked",
+              "not_applicable"
+            ]
+          },
+          "lineage_sink_required": {
+            "type": "boolean"
+          },
+          "emitter_side_effect_class": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

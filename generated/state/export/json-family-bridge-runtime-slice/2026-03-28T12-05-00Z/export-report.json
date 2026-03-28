@@ -1,0 +1,14 @@
+{
+  "gate": "G2",
+  "control_object_id": "json-family-bridge-runtime-slice",
+  "run_id": "2026-03-28T12-05-00Z",
+  "status": "PASS",
+  "schema_ref": "schemas/exported/json-family-bridge-runtime-slice-input.schema.json",
+  "exported_at": "2026-03-28T12:24:19Z",
+  "reason_codes": [],
+  "tool": "jq + check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}

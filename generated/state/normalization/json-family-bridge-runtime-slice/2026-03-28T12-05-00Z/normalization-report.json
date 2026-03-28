@@ -1,0 +1,13 @@
+{
+  "gate": "G3",
+  "control_object_id": "json-family-bridge-runtime-slice",
+  "run_id": "2026-03-28T12-05-00Z",
+  "status": "PASS",
+  "normalized_at": "2026-03-28T12:24:20Z",
+  "operations": [
+    "bound extension-module fragments and kernel policy declarations into one normalized registry input",
+    "preserved bridge and runtime classes as derived declarations",
+    "recorded promotion-default and lineage requirements without inventing controller behavior"
+  ],
+  "forbidden_operations_performed": []
+}

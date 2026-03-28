@@ -1,0 +1,183 @@
+{
+   "artifact_type": "kernel.bridge_runtime_registry",
+   "artifact_version": "0.1.0",
+   "entries": [
+      {
+         "authority_status": "authoritative",
+         "entry_class": "authoring_surface",
+         "entry_id": "json-structure-authoring-surface",
+         "lineage_sink_required": false,
+         "produces": [
+            "normalized structural drafts"
+         ],
+         "promotion_default": "not_applicable",
+         "source_refs": [
+            "kernel.spec.json#/authority_model/json_structure",
+            "kernel.spec.json#/state_flow/pipeline"
+         ],
+         "summary": "Declares JSON Structure as the first human authoring surface for structural inputs while preserving the canonical structural model as authority."
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "normalized state",
+            "admitted state",
+            "exported contracts"
+         ],
+         "entry_class": "bridge_class",
+         "entry_id": "interop-bridge",
+         "lineage_sink_required": true,
+         "produces": [
+            "interop artifacts",
+            "message contracts",
+            "record contracts"
+         ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "policy/kernel/json-family-bridge-runtime.index.json#/bridge_classes"
+         ],
+         "summary": "Derived bridge class for structurize, avrotize"
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "admitted state",
+            "exported contracts"
+         ],
+         "entry_class": "bridge_class",
+         "entry_id": "codegen-bridge",
+         "lineage_sink_required": true,
+         "produces": [
+            "codegen artifacts"
+         ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "policy/kernel/json-family-bridge-runtime.index.json#/bridge_classes"
+         ],
+         "summary": "Derived bridge class for structurize, avrotize"
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "admitted state",
+            "exported contracts"
+         ],
+         "emitter_side_effect_class": "declared_required",
+         "entry_class": "runtime_actor_class",
+         "entry_id": "adapter",
+         "lineage_sink_required": true,
+         "produces": [ ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+         ],
+         "summary": "Derived runtime actor class"
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "admitted state",
+            "exported contracts"
+         ],
+         "emitter_side_effect_class": "declared_required",
+         "entry_class": "runtime_actor_class",
+         "entry_id": "python-runtime-controller",
+         "lineage_sink_required": true,
+         "produces": [
+            "derived exec state",
+            "evidence streams"
+         ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+         ],
+         "summary": "Derived runtime actor class"
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "admitted state"
+         ],
+         "emitter_side_effect_class": "declared_required",
+         "entry_class": "runtime_actor_class",
+         "entry_id": "generator",
+         "lineage_sink_required": true,
+         "produces": [
+            "derived artifacts"
+         ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+         ],
+         "summary": "Derived runtime actor class"
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "normalized state",
+            "admitted state",
+            "exported contracts"
+         ],
+         "emitter_side_effect_class": "declared_required",
+         "entry_class": "runtime_actor_class",
+         "entry_id": "validator",
+         "lineage_sink_required": true,
+         "produces": [
+            "validation evidence"
+         ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+         ],
+         "summary": "Derived runtime actor class"
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "admitted state",
+            "rendered artifacts"
+         ],
+         "emitter_side_effect_class": "declared_required",
+         "entry_class": "runtime_actor_class",
+         "entry_id": "emitter",
+         "lineage_sink_required": true,
+         "produces": [
+            "interface envelopes",
+            "published outputs"
+         ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+         ],
+         "summary": "Derived runtime actor class"
+      },
+      {
+         "authority_status": "derived",
+         "consumes": [
+            "admitted state",
+            "rendered artifacts"
+         ],
+         "emitter_side_effect_class": "declared_required",
+         "entry_class": "guardrail",
+         "entry_id": "promotion-and-lineage-guardrails",
+         "lineage_sink_required": true,
+         "produces": [
+            "lineage evidence",
+            "promotion decisions"
+         ],
+         "promotion_default": "blocked",
+         "source_refs": [
+            "kernel.spec.json#/normative_implementation/bridge_runtime_boundary/required_defaults",
+            "kernel.spec.json#/normative_implementation/derived_artifact_policy",
+            "policy/kernel/json-family-bridge-runtime.index.json#/promotion_defaults"
+         ],
+         "summary": "Declares the promotion, lineage, and side-effect guardrails that keep bridge and runtime outputs on the derived side of the boundary."
+      }
+   ],
+   "generated_from": {
+      "control_object_id": "json-family-bridge-runtime-slice",
+      "output_path": "generated/registries/json-family-bridge-runtime.index.json"
+   },
+   "kernel_policy_ref": "policy/kernel/json-family-bridge-runtime.index.json",
+   "source_module_ref": "structures/extensions/json-family-bridge-runtime-slice.module.json"
+}

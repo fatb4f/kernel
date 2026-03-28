@@ -1,0 +1,191 @@
+{
+  "kind": "kernel.bridge_runtime_registry.slice_input",
+  "control_object_id": "json-family-bridge-runtime-slice",
+  "source_module_id": "json-family-bridge-runtime-slice",
+  "source_module_ref": "structures/extensions/json-family-bridge-runtime-slice.module.json",
+  "kernel_policy_ref": "policy/kernel/json-family-bridge-runtime.index.json",
+  "export_schema_ref": "schemas/exported/json-family-bridge-runtime-slice-input.schema.json",
+  "generator_ref": "manifests/generators/json-family-bridge-runtime-slice.generator.json",
+  "projection_ref": "manifests/projections/json-family-bridge-runtime-slice.projection.json",
+  "output_path": "generated/registries/json-family-bridge-runtime.index.json",
+  "entries": [
+    {
+      "entry_id": "json-structure-authoring-surface",
+      "entry_class": "authoring_surface",
+      "summary": "Declares JSON Structure as the first human authoring surface for structural inputs while preserving the canonical structural model as authority.",
+      "authority_status": "authoritative",
+      "source_refs": [
+        "kernel.spec.json#/authority_model/json_structure",
+        "kernel.spec.json#/state_flow/pipeline"
+      ],
+      "produces": [
+        "normalized structural drafts"
+      ],
+      "promotion_default": "not_applicable",
+      "lineage_sink_required": false
+    },
+    {
+      "entry_id": "interop-bridge",
+      "entry_class": "bridge_class",
+      "summary": "Derived bridge class for structurize, avrotize",
+      "authority_status": "derived",
+      "source_refs": [
+        "policy/kernel/json-family-bridge-runtime.index.json#/bridge_classes"
+      ],
+      "consumes": [
+        "normalized state",
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "interop artifacts",
+        "message contracts",
+        "record contracts"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true
+    },
+    {
+      "entry_id": "codegen-bridge",
+      "entry_class": "bridge_class",
+      "summary": "Derived bridge class for structurize, avrotize",
+      "authority_status": "derived",
+      "source_refs": [
+        "policy/kernel/json-family-bridge-runtime.index.json#/bridge_classes"
+      ],
+      "consumes": [
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "codegen artifacts"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true
+    },
+    {
+      "entry_id": "adapter",
+      "entry_class": "runtime_actor_class",
+      "summary": "Derived runtime actor class",
+      "authority_status": "derived",
+      "source_refs": [
+        "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+      ],
+      "consumes": [
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true,
+      "emitter_side_effect_class": "declared_required"
+    },
+    {
+      "entry_id": "python-runtime-controller",
+      "entry_class": "runtime_actor_class",
+      "summary": "Derived runtime actor class",
+      "authority_status": "derived",
+      "source_refs": [
+        "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+      ],
+      "consumes": [
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "derived exec state",
+        "evidence streams"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true,
+      "emitter_side_effect_class": "declared_required"
+    },
+    {
+      "entry_id": "generator",
+      "entry_class": "runtime_actor_class",
+      "summary": "Derived runtime actor class",
+      "authority_status": "derived",
+      "source_refs": [
+        "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+      ],
+      "consumes": [
+        "admitted state"
+      ],
+      "produces": [
+        "derived artifacts"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true,
+      "emitter_side_effect_class": "declared_required"
+    },
+    {
+      "entry_id": "validator",
+      "entry_class": "runtime_actor_class",
+      "summary": "Derived runtime actor class",
+      "authority_status": "derived",
+      "source_refs": [
+        "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+      ],
+      "consumes": [
+        "normalized state",
+        "admitted state",
+        "exported contracts"
+      ],
+      "produces": [
+        "validation evidence"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true,
+      "emitter_side_effect_class": "declared_required"
+    },
+    {
+      "entry_id": "emitter",
+      "entry_class": "runtime_actor_class",
+      "summary": "Derived runtime actor class",
+      "authority_status": "derived",
+      "source_refs": [
+        "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+      ],
+      "consumes": [
+        "admitted state",
+        "rendered artifacts"
+      ],
+      "produces": [
+        "interface envelopes",
+        "published outputs"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true,
+      "emitter_side_effect_class": "declared_required"
+    },
+    {
+      "entry_id": "promotion-and-lineage-guardrails",
+      "entry_class": "guardrail",
+      "summary": "Declares the promotion, lineage, and side-effect guardrails that keep bridge and runtime outputs on the derived side of the boundary.",
+      "authority_status": "derived",
+      "source_refs": [
+        "kernel.spec.json#/normative_implementation/bridge_runtime_boundary/required_defaults",
+        "kernel.spec.json#/normative_implementation/derived_artifact_policy",
+        "policy/kernel/json-family-bridge-runtime.index.json#/promotion_defaults"
+      ],
+      "consumes": [
+        "admitted state",
+        "rendered artifacts"
+      ],
+      "produces": [
+        "lineage evidence",
+        "promotion decisions"
+      ],
+      "promotion_default": "blocked",
+      "lineage_sink_required": true,
+      "emitter_side_effect_class": "declared_required"
+    }
+  ],
+  "render_contract": {
+    "renderer": "jsonnet",
+    "runtime": "rsjsonnet",
+    "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+    "input_class": "admitted_state",
+    "output_class": "registry"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "json-family-bridge-runtime-slice",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/extensions/json-family-bridge-runtime-slice.module.json",
+    "policy/kernel/json-family-bridge-runtime.index.json",
+    "policy/admission/json-family-bridge-runtime-slice.cue"
+  ],
+  "outputs": [
+    "schemas/exported/json-family-bridge-runtime-slice-input.schema.json",
+    "generated/state/source-validation/json-family-bridge-runtime-slice/<run-id>/source-validation.json",
+    "generated/state/export/json-family-bridge-runtime-slice/<run-id>/export-report.json",
+    "generated/state/normalization/json-family-bridge-runtime-slice/<run-id>/normalized-state.json",
+    "generated/state/normalization/json-family-bridge-runtime-slice/<run-id>/source-map.json",
+    "generated/state/normalization/json-family-bridge-runtime-slice/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The extension module remains the authority plane for bridge and runtime actor declarations.",
+    "Kernel policy declares class boundaries without introducing runtime behavior.",
+    "The exported slice-input schema remains derived output only."
+  ],
+  "notes": "Generator control object for JSON-family bridge and runtime actor registry materialization."
+}

@@ -1,0 +1,20 @@
+{
+  "source_module_ref": "structures/extensions/json-family-bridge-runtime-slice.module.json",
+  "field_sources": {
+    "authoring_surface": [
+      "structures/extensions/json-family-bridge-runtime-slice.module.json#/fragments/0"
+    ],
+    "bridge_classes": [
+      "policy/kernel/json-family-bridge-runtime.index.json#/bridge_classes"
+    ],
+    "runtime_actor_classes": [
+      "policy/kernel/json-family-bridge-runtime.index.json#/runtime_actor_classes"
+    ],
+    "promotion_guardrails": [
+      "structures/extensions/json-family-bridge-runtime-slice.module.json#/fragments/3"
+    ],
+    "output_path": [
+      "manifests/projections/json-family-bridge-runtime-slice.projection.json"
+    ]
+  }
+}

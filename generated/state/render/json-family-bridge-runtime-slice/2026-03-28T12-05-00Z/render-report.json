@@ -1,0 +1,15 @@
+{
+  "gate": "G5",
+  "control_object_id": "json-family-bridge-runtime-slice",
+  "run_id": "2026-03-28T12-05-00Z",
+  "status": "PASS",
+  "renderer": "jsonnet",
+  "runtime": "rsjsonnet",
+  "runtime_path": "/home/_404/.local/share/cargo/bin/rsjsonnet",
+  "template_ref": "render/jsonnet/registry/json-family-bridge-runtime.jsonnet",
+  "admitted_state_ref": "generated/state/admission/json-family-bridge-runtime-slice/2026-03-28T12-05-00Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/json-family-bridge-runtime.index.json"
+  ],
+  "rendered_at": "2026-03-28T12:24:20Z"
+}
