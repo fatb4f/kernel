@@ -58,9 +58,8 @@
           "type": "array",
           "items": {
             "type": "string"
-  },
-  "additionalProperties": false
-}
+          }
+        }
       },
       "additionalProperties": true
     },
@@ -260,5 +259,5 @@
       "additionalProperties": false
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }
