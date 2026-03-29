@@ -1,0 +1,68 @@
+{
+  "artifact_type": "gpt_handoff.root.trust.evidence",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-metadata-first-prose-struct-schema-model-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "canonical_refs": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "root_delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "pipeline_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+    "problem_set_schema_ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json"
+  },
+  "canonical_fingerprints": {
+    "root_signers": {
+      "algorithm": "sha256",
+      "value": "c99fd80640700529449b2f9d53e5bedc10eba31f8cc53a75a78d6d3dd059c42c"
+    },
+    "root_delegation": {
+      "algorithm": "sha256",
+      "value": "49ac0354bfad32895734ac4a9751a814b433f53cb988642414572bab6d224d2f"
+    },
+    "authority_manifest": {
+      "algorithm": "sha256",
+      "value": "9d0a4ae449227ef79ecae2fb53786f8a7f6ee0efca0d04c2ac855321955e420f"
+    },
+    "authority_manifest_validation": {
+      "algorithm": "sha256",
+      "value": "455fc544368bc9b0f2a1c094882470bbe741a597fa82b2ea741c88980948ffb9"
+    },
+    "authority_manifest_signature": {
+      "algorithm": "sha256",
+      "value": "c5f232961254abbd686dcd5def44eb725ea9480a9cefdfbc92bf32c8da6071b8"
+    },
+    "pipeline_manifest": {
+      "algorithm": "sha256",
+      "value": "93c8ae861408854437f7de823e56aa6725efa89570795081ab8420ba061fe198"
+    },
+    "execution_policy": {
+      "algorithm": "sha256",
+      "value": "85808f6f6243cec9c32001b701def5b649239c560bc3a0b4d5548dafd18df871"
+    },
+    "validation_manifest": {
+      "algorithm": "sha256",
+      "value": "0a99b430e688919afdafd6ed5c6c16502cb10ee6332d421fc42fa52134beb65c"
+    },
+    "gate_policy": {
+      "algorithm": "sha256",
+      "value": "5a36e57d16de769f2b363ab8ab5bf938374c80a23c3f7b8698355384b4f99c89"
+    },
+    "problem_set_schema": {
+      "algorithm": "sha256",
+      "value": "7c2e1a937d2dab0b10a856e3d17024986ea64c7ce551109e4a2175387de99495"
+    }
+  },
+  "evidence_requirements": {
+    "all_refs_must_resolve": true,
+    "all_fingerprints_must_match": true,
+    "signature_must_verify": true,
+    "delegation_must_be_in_scope": true
+  },
+  "status": "DECLARED_REQUIRED_EVIDENCE"
+}

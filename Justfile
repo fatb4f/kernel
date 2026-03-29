@@ -105,3 +105,6 @@ reviewed-structural-export-slice RUN_ID='':
 
 json-structure-contract-surface RUN_ID='':
 	bash -lc 'set -euo pipefail; contract="${CONTRACT:-examples/valid/json-structure-contract.example.json}"; if [[ -n "${RUN_ID:-}" ]]; then python scripts/run_json_structure_contract_surface.py "$contract" --run-id "${RUN_ID}"; else python scripts/run_json_structure_contract_surface.py "$contract"; fi'
+
+metadata-metaschema-lane RUN_ID='':
+	bash -lc 'set -euo pipefail; if [[ -n "{{RUN_ID}}" ]]; then bash scripts/run_metadata_metaschema_lane.sh "{{RUN_ID}}"; else bash scripts/run_metadata_metaschema_lane.sh; fi'

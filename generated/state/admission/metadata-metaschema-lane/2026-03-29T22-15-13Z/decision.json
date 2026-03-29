@@ -1,0 +1,8 @@
+{
+  "control_object_id": "metadata-metaschema-lane",
+  "policy_bundle_id": "policy/admission/metadata-metaschema-lane.cue",
+  "status": "PASS",
+  "notes": [
+    "admitted state satisfies the metadata metaschema lane contract"
+  ]
+}

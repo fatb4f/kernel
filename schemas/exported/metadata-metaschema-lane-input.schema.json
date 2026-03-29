@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "metadata-metaschema-lane-input.schema.json",
+  "title": "Metadata metaschema lane slice input",
+  "description": "Derived boundary contract for the metadata metaschema lane slice.",
+  "type": "object",
+  "required": [
+    "kind",
+    "control_object_id",
+    "source_module_id",
+    "source_module_ref",
+    "kernel_policy_ref",
+    "contract_note_ref",
+    "lane_dependency_ref",
+    "export_schema_ref",
+    "generator_ref",
+    "projection_ref",
+    "output_path",
+    "authoritative_middle",
+    "entries",
+    "lane_order",
+    "render_contract"
+  ],
+  "properties": {
+    "kind": {
+      "const": "kernel.metadata_metaschema_lane.slice_input"
+    },
+    "control_object_id": {
+      "const": "metadata-metaschema-lane"
+    },
+    "source_module_id": {
+      "const": "metadata-metaschema-lane"
+    },
+    "source_module_ref": {
+      "const": "structures/extensions/metadata-metaschema-lane.module.json"
+    },
+    "kernel_policy_ref": {
+      "const": "policy/kernel/metadata-metaschema-lane.index.json"
+    },
+    "contract_note_ref": {
+      "const": "policy/contracts/metadata-metaschema-lane.md"
+    },
+    "lane_dependency_ref": {
+      "const": "policy/data/metadata-lane-dependency.index.json"
+    },
+    "export_schema_ref": {
+      "const": "schemas/exported/metadata-metaschema-lane-input.schema.json"
+    },
+    "generator_ref": {
+      "const": "manifests/generators/metadata-metaschema-lane.generator.json"
+    },
+    "projection_ref": {
+      "const": "manifests/projections/metadata-metaschema-lane.projection.json"
+    },
+    "output_path": {
+      "const": "generated/registries/metadata-metaschema-lane.index.json"
+    },
+    "authoritative_middle": {
+      "const": "canonical_semantic_model"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "entry_id",
+          "entry_class",
+          "summary",
+          "source_refs",
+          "authority_role"
+        ],
+        "properties": {
+          "entry_id": {
+            "type": "string"
+          },
+          "entry_class": {
+            "type": "string",
+            "enum": [
+              "schema_surface",
+              "workflow_rule",
+              "dependency_rule"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "authority_role": {
+            "type": "string",
+            "enum": [
+              "contract_surface",
+              "derived",
+              "non_authoritative"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "lane_order": {
+      "type": "object",
+      "required": [
+        "semantic_authority_lane",
+        "allowed_edges",
+        "forbidden_edges"
+      ],
+      "properties": {
+        "semantic_authority_lane": {
+          "const": "metaschema_model"
+        },
+        "allowed_edges": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/edge"
+          }
+        },
+        "forbidden_edges": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/edge"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "render_contract": {
+      "type": "object",
+      "required": [
+        "renderer",
+        "runtime",
+        "runtime_path",
+        "input_class",
+        "output_class"
+      ],
+      "properties": {
+        "renderer": {
+          "const": "jsonnet"
+        },
+        "runtime": {
+          "type": "string"
+        },
+        "runtime_path": {
+          "type": "string"
+        },
+        "input_class": {
+          "const": "admitted_state"
+        },
+        "output_class": {
+          "const": "registry"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "edge": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "relation"
+      ],
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "relation": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,57 @@
+{
+  "dependency_id": "metadata-lane-dependency",
+  "status": "structural_only",
+  "semantic_authority_lane": "metaschema_model",
+  "lanes": [
+    {
+      "lane_id": "metaschema_model",
+      "role": "semantic_authority",
+      "summary": "Defines rooted refs, structural units, canonical semantic objects, and downstream projection contracts."
+    },
+    {
+      "lane_id": "workflow_docs",
+      "role": "explanatory_projection",
+      "summary": "Explains the model and lifecycle without introducing new semantics."
+    },
+    {
+      "lane_id": "scm_pattern_workflow",
+      "role": "operational_carrier",
+      "summary": "Carries packet-file creation, trust evidence, binding, and review gating for the current workflow lane."
+    }
+  ],
+  "allowed_edges": [
+    {
+      "from": "metaschema_model",
+      "to": "workflow_docs",
+      "relation": "projects_to"
+    },
+    {
+      "from": "metaschema_model",
+      "to": "scm_pattern_workflow",
+      "relation": "constrains"
+    },
+    {
+      "from": "workflow_docs",
+      "to": "scm_pattern_workflow",
+      "relation": "guides"
+    }
+  ],
+  "forbidden_edges": [
+    {
+      "from": "workflow_docs",
+      "to": "metaschema_model",
+      "relation": "defines"
+    },
+    {
+      "from": "scm_pattern_workflow",
+      "to": "metaschema_model",
+      "relation": "defines"
+    },
+    {
+      "from": "scm_pattern_workflow",
+      "to": "workflow_docs",
+      "relation": "defines"
+    }
+  ],
+  "notes": "This dependency surface breaks the current loop by making the metaschema lane the only upstream semantic authority."
+}

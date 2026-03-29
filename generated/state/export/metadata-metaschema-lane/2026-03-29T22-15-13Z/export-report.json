@@ -1,0 +1,14 @@
+{
+  "gate": "G2",
+  "control_object_id": "metadata-metaschema-lane",
+  "run_id": "2026-03-29T22-15-13Z",
+  "status": "PASS",
+  "schema_ref": "schemas/exported/metadata-metaschema-lane-input.schema.json",
+  "exported_at": "2026-03-29T22:15:14Z",
+  "reason_codes": [],
+  "tool": "check-jsonschema",
+  "tool_output": {
+    "status": "ok",
+    "errors": []
+  }
+}

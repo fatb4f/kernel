@@ -1,0 +1,9 @@
+{
+  "control_object_id": "metadata-metaschema-lane",
+  "run_id": "2026-03-29T22-11-13Z",
+  "template_ref": "render/jsonnet/registry/metadata-metaschema-lane.jsonnet",
+  "admitted_state_ref": "generated/state/admission/metadata-metaschema-lane/2026-03-29T22-11-13Z/admitted-state.json",
+  "outputs": [
+    "generated/registries/metadata-metaschema-lane.index.json"
+  ]
+}

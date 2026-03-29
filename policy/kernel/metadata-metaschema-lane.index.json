@@ -1,0 +1,37 @@
+{
+  "policy_id": "metadata-metaschema-lane",
+  "status": "structural_only",
+  "summary": "Structural kernel policy for the metadata-first prose->struct->schema metaschema lane.",
+  "authority_sentence": "The canonical semantic model is the authoritative middle of the metadata-first transform chain; document projections and operational packet carriers remain downstream.",
+  "schema_surfaces": {
+    "source_registry": "Rooted source registry for ingress identity, location, and provenance under a single repo-rooted ref system.",
+    "structural_units": "Intermediate extraction layer carrying unit identity, source provenance, candidate section mapping, and term candidates.",
+    "canonical_semantic_model": "Projection-neutral semantic authority surface for normalized objects, relations, open questions, and projection targets.",
+    "canonical_document": "Derived document-shaped projection model for toc, sections, glossary, open questions, and source maps.",
+    "projection_artifact_manifest": "Derived projection binding contract from semantic targets to emitted artifacts.",
+    "anchor_catalog": "Authoritative catalog for anchor:* refs used in normalized term identity.",
+    "compatibility_policy": "Machine-readable compatibility classification across refs, kinds, anchors, and projection bindings.",
+    "lane_dependency_contract": "Explicit dependency ordering that keeps the metaschema lane upstream of workflow docs and scm.pattern."
+  },
+  "workflow_rules": [
+    "No docgen-only metadata lane may be introduced.",
+    "Rooted source resolution precedes structural extraction.",
+    "Structural extraction precedes canonical semantic normalization.",
+    "Document shaping and other projections occur only downstream of the canonical semantic model.",
+    "Workflow docs are explanatory projections and must not back-author model semantics.",
+    "The scm.pattern workflow is a downstream operational carrier and must not define semantic authority."
+  ],
+  "projection_policy": {
+    "authoritative_middle": "canonical_semantic_model",
+    "derived_surfaces": [
+      "canonical_document",
+      "projection_artifact_manifest"
+    ],
+    "excluded_content": [
+      "runtime orchestration",
+      "packet-lane semantic authority",
+      "docgen-owned metadata semantics"
+    ]
+  },
+  "notes": "This policy surface binds the upstream metaschema lane only. It does not implement admission, runtime execution, or packet transport behavior."
+}

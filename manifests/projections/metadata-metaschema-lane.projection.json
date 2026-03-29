@@ -1,0 +1,22 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "metadata-metaschema-lane",
+  "manifest_class": "projection",
+  "inputs": [
+    "generated/state/admission/metadata-metaschema-lane/<run-id>/admitted-state.json",
+    "render/jsonnet/registry/metadata-metaschema-lane.jsonnet",
+    "render/jsonnet/registry/metadata-lane-dependency.jsonnet"
+  ],
+  "outputs": [
+    "generated/registries/metadata-metaschema-lane.index.json",
+    "generated/registries/metadata-lane-dependency.index.json",
+    "generated/state/render/metadata-metaschema-lane/<run-id>/render-report.json",
+    "generated/state/integrity/metadata-metaschema-lane/<run-id>/drift-report.json"
+  ],
+  "invariants": [
+    "Jsonnet consumes admitted state only.",
+    "The renderer emits a registry artifact only.",
+    "The projection remains repo-relative and deterministic."
+  ],
+  "notes": "Projection control object for the metadata metaschema lane slice."
+}

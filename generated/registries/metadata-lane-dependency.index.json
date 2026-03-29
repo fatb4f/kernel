@@ -1,0 +1,46 @@
+{
+   "allowed_edges": [
+      {
+         "from": "metaschema_model",
+         "relation": "projects_to",
+         "to": "workflow_docs"
+      },
+      {
+         "from": "metaschema_model",
+         "relation": "constrains",
+         "to": "scm_pattern_workflow"
+      },
+      {
+         "from": "workflow_docs",
+         "relation": "guides",
+         "to": "scm_pattern_workflow"
+      }
+   ],
+   "artifact_type": "kernel.metadata_lane_dependency_registry",
+   "artifact_version": "0.1.0",
+   "forbidden_edges": [
+      {
+         "from": "workflow_docs",
+         "relation": "defines",
+         "to": "metaschema_model"
+      },
+      {
+         "from": "scm_pattern_workflow",
+         "relation": "defines",
+         "to": "metaschema_model"
+      },
+      {
+         "from": "scm_pattern_workflow",
+         "relation": "defines",
+         "to": "workflow_docs"
+      }
+   ],
+   "generated_from": {
+      "control_object_id": "metadata-metaschema-lane",
+      "output_path": "generated/registries/metadata-lane-dependency.index.json"
+   },
+   "kernel_policy_ref": "policy/kernel/metadata-metaschema-lane.index.json",
+   "lane_dependency_ref": "policy/data/metadata-lane-dependency.index.json",
+   "semantic_authority_lane": "metaschema_model",
+   "source_module_ref": "structures/extensions/metadata-metaschema-lane.module.json"
+}

@@ -1,0 +1,69 @@
+{
+  "artifact_type": "gpt_handoff.artifact.manifest",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-metadata-first-prose-struct-schema-model-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "required_artifacts": [
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/packet.definition.json",
+      "kind": "packet_definition"
+    },
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/scm.pattern.binding.json",
+      "kind": "scm_pattern_binding"
+    },
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/packet.review.request.json",
+      "kind": "packet_review_request"
+    },
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/root.trust.evidence.json",
+      "kind": "root_trust_evidence"
+    },
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/regen.record.json",
+      "kind": "regen_record"
+    },
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/artifact.manifest.json",
+      "kind": "artifact_manifest"
+    },
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/packet.approval.json",
+      "kind": "compatibility_placeholder",
+      "transitional": true,
+      "authoritative": false
+    },
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/human/packet.definition.md",
+      "kind": "derived_human_definition"
+    }
+  ],
+  "conditional_artifacts": [
+    {
+      "ref": "generated/packets/ps-metadata-first-prose-struct-schema-model-001/machine/packet.review.decision.json",
+      "kind": "packet_review_decision",
+      "required_when": "human_review_decision_issued == true"
+    }
+  ],
+  "supporting_inputs": [
+    "generated/problem_sets/ps-metadata-first-prose-struct-schema-model-001/problem_set.json",
+    "generated/bundles/metadata-first-prose-struct-schema-model.bundle.tar.gz",
+    "generated/registries/chatgpt-packet-family.index.json",
+    "structures/extensions/metadata-metaschema-lane.module.json",
+    "policy/kernel/metadata-metaschema-lane.index.json",
+    "policy/data/metadata-lane-dependency.index.json",
+    "policy/admission/metadata-metaschema-lane.cue",
+    "schemas/exported/metadata-metaschema-lane-input.schema.json",
+    "manifests/generators/metadata-metaschema-lane.generator.json",
+    "manifests/projections/metadata-metaschema-lane.projection.json",
+    "generated/registries/metadata-metaschema-lane.index.json",
+    "generated/registries/metadata-lane-dependency.index.json",
+    "generated/state/admission/metadata-metaschema-lane/2026-03-29T22-16-18Z/decision.json",
+    "generated/state/render/metadata-metaschema-lane/2026-03-29T22-16-18Z/render-report.json",
+    "generated/state/integrity/metadata-metaschema-lane/2026-03-29T22-16-18Z/drift-report.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json"
+  ]
+}

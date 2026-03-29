@@ -1,0 +1,9 @@
+{
+  "control_object_id": "metadata-metaschema-lane",
+  "run_id": "2026-03-29T22-15-13Z",
+  "normalized_contract": "kernel.metadata_metaschema_lane.slice_input",
+  "notes": [
+    "normalized the authoritative middle and lane-order rules into one admitted-state input",
+    "kept workflow docs explanatory and scm.pattern downstream by contract"
+  ]
+}

@@ -202,7 +202,7 @@ def verify_regen_record(regen: dict, packet_root: Path) -> dict[str, str]:
     return verified
 
 
-def determine_gate_state(packet_root: Path, packet_approval: dict) -> dict:
+def determine_gate_state(packet_root: Path, packet_approval: dict, regen_record: dict) -> dict:
     decision_path = packet_root / "machine" / "packet.review.decision.json"
     if packet_approval.get("approval_authority"):
         raise ValueError("packet.approval.json must remain non-authoritative")
@@ -210,17 +210,42 @@ def determine_gate_state(packet_root: Path, packet_approval: dict) -> dict:
         decision = load_json(decision_path)
         if not decision.get("approval_authority", False):
             raise ValueError("packet.review.decision.json exists but is non-authoritative")
+        current_basis = regen_record["approval_basis_fingerprint"]
+        decision_basis = decision.get("review_basis_fingerprint", {})
+        decision_basis_value = decision_basis.get("value")
+        if decision_basis.get("algorithm") != "sha256" or not decision_basis_value:
+            raise ValueError("packet.review.decision.json missing usable review_basis_fingerprint")
+        if decision.get("verdict") in {"STALE", "SUPERSEDED"}:
+            return {
+                "review_gate": "PASS",
+                "realization_gate": "WAITING_HUMAN_REVIEW",
+                "next_step": "Reissue authoritative packet.review.decision.json for the current approval basis before realization.",
+                "decision_present": True,
+                "decision_stale": True,
+                "stale_reason": f"review decision verdict is {decision['verdict']}",
+            }
+        if decision_basis_value != current_basis:
+            return {
+                "review_gate": "PASS",
+                "realization_gate": "WAITING_HUMAN_REVIEW",
+                "next_step": "Reissue authoritative packet.review.decision.json for the current approval basis before realization.",
+                "decision_present": True,
+                "decision_stale": True,
+                "stale_reason": "approval_basis_fingerprint mismatch",
+            }
         return {
             "review_gate": "PASS",
             "realization_gate": "READY_FOR_REALIZATION",
             "next_step": "Local runtime may realize through scm.pattern.",
             "decision_present": True,
+            "decision_stale": False,
         }
     return {
         "review_gate": "PASS",
         "realization_gate": "WAITING_HUMAN_REVIEW",
         "next_step": "Issue authoritative packet.review.decision.json before realization.",
         "decision_present": False,
+        "decision_stale": False,
     }
 
 
@@ -351,7 +376,7 @@ def main() -> int:
     verify_human_markdown(packet_definition, artifacts["human/packet.definition.md"])
     trust_verification = verify_root_trust(trust_evidence)
     regen_verification = verify_regen_record(regen_record, packet_root)
-    gate_state = determine_gate_state(packet_root, packet_approval)
+    gate_state = determine_gate_state(packet_root, packet_approval, regen_record)
 
     log_root = write_log_artifacts(
         packet_root=packet_root,

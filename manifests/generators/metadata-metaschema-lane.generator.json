@@ -1,0 +1,26 @@
+{
+  "kind": "kernel-manifest-control",
+  "name": "metadata-metaschema-lane",
+  "manifest_class": "generator",
+  "inputs": [
+    "structures/extensions/metadata-metaschema-lane.module.json",
+    "policy/kernel/metadata-metaschema-lane.index.json",
+    "policy/contracts/metadata-metaschema-lane.md",
+    "policy/data/metadata-lane-dependency.index.json",
+    "policy/admission/metadata-metaschema-lane.cue"
+  ],
+  "outputs": [
+    "schemas/exported/metadata-metaschema-lane-input.schema.json",
+    "generated/state/source-validation/metadata-metaschema-lane/<run-id>/source-validation.json",
+    "generated/state/export/metadata-metaschema-lane/<run-id>/export-report.json",
+    "generated/state/normalization/metadata-metaschema-lane/<run-id>/normalized-state.json",
+    "generated/state/normalization/metadata-metaschema-lane/<run-id>/source-map.json",
+    "generated/state/normalization/metadata-metaschema-lane/<run-id>/normalization-report.json"
+  ],
+  "invariants": [
+    "The extension module remains the source of truth for the metaschema lane declarations.",
+    "Kernel policy and contract notes bind semantics and dependency order without introducing runtime behavior.",
+    "The exported slice-input schema remains derived output only."
+  ],
+  "notes": "Generator control object for the metadata metaschema lane slice."
+}

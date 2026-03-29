@@ -1,0 +1,79 @@
+{
+  "kind": "kernel-structure-module",
+  "id": "metadata-metaschema-lane",
+  "fragments": [
+    {
+      "name": "rooted-source-registry-surface",
+      "class": "extension",
+      "source_refs": [
+        "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/source_registry",
+        "policy/contracts/metadata-metaschema-lane.md#/rooted-source-registry"
+      ],
+      "description": "Declares the rooted source registry as the ingress identity surface for the metadata-first prose-to-structure lane."
+    },
+    {
+      "name": "structural-units-surface",
+      "class": "extension",
+      "source_refs": [
+        "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/structural_units",
+        "policy/contracts/metadata-metaschema-lane.md#/structural-units"
+      ],
+      "description": "Declares structural units as the first-class intermediate extraction layer between rooted sources and the semantic model."
+    },
+    {
+      "name": "canonical-semantic-model-surface",
+      "class": "extension",
+      "source_refs": [
+        "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/canonical_semantic_model",
+        "policy/contracts/metadata-metaschema-lane.md#/canonical-semantic-model"
+      ],
+      "description": "Declares the canonical semantic model as the authoritative middle for the metadata-first transform chain."
+    },
+    {
+      "name": "projection-binding-surface",
+      "class": "extension",
+      "source_refs": [
+        "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/projection_artifact_manifest",
+        "policy/contracts/metadata-metaschema-lane.md#/projection-binding"
+      ],
+      "description": "Declares projection bindings as downstream contracts from the canonical semantic model to projected artifacts."
+    },
+    {
+      "name": "lane-dependency-order-surface",
+      "class": "extension",
+      "source_refs": [
+        "policy/data/metadata-lane-dependency.index.json#/semantic_authority_lane",
+        "policy/contracts/metadata-metaschema-lane.md#/lane-order"
+      ],
+      "description": "Declares the dependency order that keeps the metaschema model upstream of workflow docs and the scm.pattern operational carrier."
+    }
+  ],
+  "relations": [
+    {
+      "from": "rooted-source-registry-surface",
+      "to": "structural-units-surface",
+      "relation": "feeds"
+    },
+    {
+      "from": "structural-units-surface",
+      "to": "canonical-semantic-model-surface",
+      "relation": "feeds"
+    },
+    {
+      "from": "canonical-semantic-model-surface",
+      "to": "projection-binding-surface",
+      "relation": "feeds"
+    },
+    {
+      "from": "lane-dependency-order-surface",
+      "to": "canonical-semantic-model-surface",
+      "relation": "governs"
+    },
+    {
+      "from": "lane-dependency-order-surface",
+      "to": "projection-binding-surface",
+      "relation": "constrains"
+    }
+  ],
+  "notes": "Authoritative extension module for the metadata-first metaschema lane. It binds rooted ingress, intermediate extraction, canonical semantics, downstream projection bindings, and lane ordering without introducing admission or runtime orchestration."
+}

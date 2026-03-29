@@ -1,0 +1,12 @@
+{
+  "source_module_ref": "structures/extensions/metadata-metaschema-lane.module.json",
+  "policy_refs": [
+    "policy/kernel/metadata-metaschema-lane.index.json",
+    "policy/contracts/metadata-metaschema-lane.md",
+    "policy/data/metadata-lane-dependency.index.json"
+  ],
+  "derived_outputs": [
+    "schemas/exported/metadata-metaschema-lane-input.schema.json",
+    "generated/registries/metadata-metaschema-lane.index.json"
+  ]
+}

@@ -1,0 +1,200 @@
+{
+   "artifact_type": "kernel.metadata_metaschema_lane_registry",
+   "artifact_version": "0.1.0",
+   "authoritative_middle": "canonical_semantic_model",
+   "contract_note_ref": "policy/contracts/metadata-metaschema-lane.md",
+   "entries": [
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "schema_surface",
+         "entry_id": "source_registry",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/source_registry",
+            "policy/contracts/metadata-metaschema-lane.md#/rooted-source-registry"
+         ],
+         "summary": "Rooted source registry for ingress identity, location, and provenance under a single repo-rooted ref system."
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "schema_surface",
+         "entry_id": "structural_units",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/structural_units",
+            "policy/contracts/metadata-metaschema-lane.md#/structural-units"
+         ],
+         "summary": "Intermediate extraction layer carrying unit identity, source provenance, candidate section mapping, and term candidates."
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "schema_surface",
+         "entry_id": "canonical_semantic_model",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/canonical_semantic_model",
+            "policy/contracts/metadata-metaschema-lane.md#/canonical-semantic-model"
+         ],
+         "summary": "Projection-neutral semantic authority surface for normalized objects, relations, open questions, and projection targets."
+      },
+      {
+         "authority_role": "derived",
+         "entry_class": "schema_surface",
+         "entry_id": "projection_artifact_manifest",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/schema_surfaces/projection_artifact_manifest",
+            "policy/contracts/metadata-metaschema-lane.md#/projection-binding"
+         ],
+         "summary": "Derived projection binding contract from semantic targets to emitted artifacts."
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "workflow_rule",
+         "entry_id": "rule_no_docgen_only_metadata_lane",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/workflow_rules/0"
+         ],
+         "summary": "No docgen-only metadata lane may be introduced."
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "workflow_rule",
+         "entry_id": "rule_rooted_source_before_structural_extraction",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/workflow_rules/1"
+         ],
+         "summary": "Rooted source resolution precedes structural extraction."
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "workflow_rule",
+         "entry_id": "rule_structural_extraction_before_semantic_normalization",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/workflow_rules/2"
+         ],
+         "summary": "Structural extraction precedes canonical semantic normalization."
+      },
+      {
+         "authority_role": "derived",
+         "entry_class": "workflow_rule",
+         "entry_id": "rule_document_projection_downstream_only",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/workflow_rules/3"
+         ],
+         "summary": "Document shaping and other projections occur only downstream of the canonical semantic model."
+      },
+      {
+         "authority_role": "derived",
+         "entry_class": "workflow_rule",
+         "entry_id": "rule_workflow_docs_explanatory_only",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/workflow_rules/4"
+         ],
+         "summary": "Workflow docs are explanatory projections and must not back-author model semantics."
+      },
+      {
+         "authority_role": "derived",
+         "entry_class": "workflow_rule",
+         "entry_id": "rule_scm_pattern_downstream_only",
+         "source_refs": [
+            "policy/kernel/metadata-metaschema-lane.index.json#/workflow_rules/5"
+         ],
+         "summary": "The scm.pattern workflow is a downstream operational carrier and must not define semantic authority."
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "dependency_rule",
+         "entry_id": "allow_metaschema_projects_to_workflow_docs",
+         "source_refs": [
+            "policy/data/metadata-lane-dependency.index.json#/allowed_edges/0"
+         ],
+         "summary": "metaschema_model projects_to workflow_docs"
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "dependency_rule",
+         "entry_id": "allow_metaschema_constrains_scm_pattern",
+         "source_refs": [
+            "policy/data/metadata-lane-dependency.index.json#/allowed_edges/1"
+         ],
+         "summary": "metaschema_model constrains scm_pattern_workflow"
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "dependency_rule",
+         "entry_id": "allow_workflow_docs_guides_scm_pattern",
+         "source_refs": [
+            "policy/data/metadata-lane-dependency.index.json#/allowed_edges/2"
+         ],
+         "summary": "workflow_docs guides scm_pattern_workflow"
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "dependency_rule",
+         "entry_id": "forbid_workflow_docs_defines_metaschema",
+         "source_refs": [
+            "policy/data/metadata-lane-dependency.index.json#/forbidden_edges/0"
+         ],
+         "summary": "workflow_docs must not define metaschema_model"
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "dependency_rule",
+         "entry_id": "forbid_scm_pattern_defines_metaschema",
+         "source_refs": [
+            "policy/data/metadata-lane-dependency.index.json#/forbidden_edges/1"
+         ],
+         "summary": "scm_pattern_workflow must not define metaschema_model"
+      },
+      {
+         "authority_role": "contract_surface",
+         "entry_class": "dependency_rule",
+         "entry_id": "forbid_scm_pattern_defines_workflow_docs",
+         "source_refs": [
+            "policy/data/metadata-lane-dependency.index.json#/forbidden_edges/2"
+         ],
+         "summary": "scm_pattern_workflow must not define workflow_docs"
+      }
+   ],
+   "generated_from": {
+      "control_object_id": "metadata-metaschema-lane",
+      "output_path": "generated/registries/metadata-metaschema-lane.index.json"
+   },
+   "kernel_policy_ref": "policy/kernel/metadata-metaschema-lane.index.json",
+   "lane_dependency_ref": "policy/data/metadata-lane-dependency.index.json",
+   "lane_order": {
+      "allowed_edges": [
+         {
+            "from": "metaschema_model",
+            "relation": "projects_to",
+            "to": "workflow_docs"
+         },
+         {
+            "from": "metaschema_model",
+            "relation": "constrains",
+            "to": "scm_pattern_workflow"
+         },
+         {
+            "from": "workflow_docs",
+            "relation": "guides",
+            "to": "scm_pattern_workflow"
+         }
+      ],
+      "forbidden_edges": [
+         {
+            "from": "workflow_docs",
+            "relation": "defines",
+            "to": "metaschema_model"
+         },
+         {
+            "from": "scm_pattern_workflow",
+            "relation": "defines",
+            "to": "metaschema_model"
+         },
+         {
+            "from": "scm_pattern_workflow",
+            "relation": "defines",
+            "to": "workflow_docs"
+         }
+      ],
+      "semantic_authority_lane": "metaschema_model"
+   },
+   "source_module_ref": "structures/extensions/metadata-metaschema-lane.module.json"
+}

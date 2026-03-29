@@ -1,0 +1,126 @@
+{
+  "kind": "kernel.problem_set",
+  "problem_set_id": "ps-metadata-first-prose-struct-schema-model-001",
+  "version": "0.1.0",
+  "status": "draft",
+  "identity": {
+    "name": "metadata_first_prose_struct_schema_model",
+    "title": "Amend kernel with metadata-first prose->struct->schema model",
+    "owners": [
+      "kernel",
+      "local_runtime"
+    ]
+  },
+  "objective": "Adopt the validated metadata-first schema stack for rooted source resolution, structural extraction, canonical semantic assembly, document projection, and projection binding as a kernel review packet.",
+  "scope": {
+    "in_scope": [
+      "kernel amendment proposal packet",
+      "metadata-first schema stack",
+      "anchor binding contract",
+      "compatibility policy",
+      "validated bundle transport"
+    ],
+    "out_of_scope": [
+      "runtime implementation",
+      "renderer-specific behavior",
+      "JSON-LD interoperability layer",
+      "direct realization without human review"
+    ]
+  },
+  "constraints": [
+    "The validated bundle payload must remain byte-identical during packet generation.",
+    "The canonical semantic model remains the authoritative middle of the metadata stack.",
+    "Workflow docs remain explanatory and must not back-author model semantics.",
+    "The scm.pattern packet lane remains a downstream operational carrier and must not define semantic authority.",
+    "Document projection remains downstream of the semantic middle.",
+    "No docgen-only metadata lane may be introduced.",
+    "All packet refs must remain repo-relative."
+  ],
+  "assumptions": [
+    "The validated bundle is the ingress basis for the amendment packet.",
+    "Local runtime validates the packet structurally before any human decision.",
+    "Human review remains authoritative before any kernel adoption beyond the packet lane."
+  ],
+  "requested_outputs": [
+    "amendment packet",
+    "review request",
+    "trust evidence",
+    "artifact manifest",
+    "regen record"
+  ],
+  "authority_refs": [
+    "kernel.spec.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+    "generated/registries/chatgpt-packet-family.index.json",
+    "structures/extensions/metadata-metaschema-lane.module.json",
+    "policy/kernel/metadata-metaschema-lane.index.json",
+    "policy/data/metadata-lane-dependency.index.json",
+    "policy/admission/metadata-metaschema-lane.cue",
+    "schemas/exported/metadata-metaschema-lane-input.schema.json",
+    "manifests/generators/metadata-metaschema-lane.generator.json",
+    "manifests/projections/metadata-metaschema-lane.projection.json",
+    "generated/registries/metadata-metaschema-lane.index.json",
+    "generated/registries/metadata-lane-dependency.index.json"
+  ],
+  "acceptance_criteria": [
+    "The validated metadata schema and example stack is included unchanged in the transport bundle.",
+    "The packet emits the canonical machine and human artifact family.",
+    "Packet input and deliverable roles are traceable to the approved ChatGPT packet family registry.",
+    "The metadata metaschema lane is declared in kernel source and policy surfaces before amendment closeout.",
+    "The metadata metaschema lane admits and materializes both the metadata family registry and the lane dependency registry.",
+    "The lane dependency order is explicit: metaschema_model is upstream, workflow_docs are explanatory only, and scm_pattern_workflow remains downstream.",
+    "The packet validates against the live packet schemas and trust boundary.",
+    "The packet remains review-only until an authoritative human decision exists."
+  ],
+  "review_criteria": [
+    "The semantic middle remains authoritative.",
+    "Workflow docs remain derived from the metaschema model.",
+    "The scm.pattern workflow remains constrained by the metaschema model rather than defining it.",
+    "Anchor binding and compatibility policy remain explicit.",
+    "The bundle payload remains unchanged from the validated source bundle."
+  ],
+  "scope_controls": {
+    "target_repos": [
+      "kernel"
+    ],
+    "forbidden_repos": [
+      "gpt-registry"
+    ],
+    "target_surfaces": [
+      "generated/problem_sets",
+      "generated/packets",
+      "generated/bundles"
+    ],
+    "forbidden_surfaces": [
+      "gpt-registry/**",
+      "AGENTS.md"
+    ],
+    "target_artifact_classes": [
+      "problem_set",
+      "packet_definition",
+      "packet_review_request",
+      "root_trust_evidence",
+      "artifact_manifest",
+      "regen_record"
+    ],
+    "forbidden_artifact_classes": [
+      "direct_realization",
+      "authority_promotion_without_review"
+    ]
+  },
+  "change_control": {
+    "normalized_json": true,
+    "stale_when": [
+      "bundle digest change",
+      "schema stack change",
+      "trust boundary change",
+      "acceptance criteria change",
+      "landed metadata metaschema lane basis change"
+    ]
+  },
+  "fingerprint": {
+    "algorithm": "sha256",
+    "value": "7ea7efbb954a1be84f0f5efe2fcec375174429ee19639ea5628330e575a4e999"
+  }
+}

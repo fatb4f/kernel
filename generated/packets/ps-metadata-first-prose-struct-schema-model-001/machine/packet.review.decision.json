@@ -1,0 +1,26 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.decision",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-metadata-first-prose-struct-schema-model-001",
+  "issued_by": {
+    "role": "human_reviewer",
+    "reviewer_id": "_404",
+    "source": "interactive approval"
+  },
+  "verdict": "APPROVED",
+  "approval_authority": true,
+  "review_basis_fingerprint": {
+    "algorithm": "sha256",
+    "value": "1591b1dac0417884bf71aac778527361c1c62e49063af6a466bf474f7d697c05"
+  },
+  "stale_on": [
+    "approval_basis_fingerprint mismatch",
+    "bundle digest change",
+    "metadata schema stack change",
+    "trust boundary content change",
+    "packet schema content change"
+  ],
+  "formatting_only_changes_do_not_stale": true,
+  "issued_at": "2026-03-29T22:29:30Z",
+  "notes": "Human approval reissued after wiring the landed metadata metaschema lane outputs into the packet review basis and after validator enforcement of approval-basis drift."
+}
