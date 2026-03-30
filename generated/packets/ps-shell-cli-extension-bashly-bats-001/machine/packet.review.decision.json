@@ -1,0 +1,27 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.decision",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-shell-cli-extension-bashly-bats-001",
+  "issued_by": {
+    "role": "human_reviewer",
+    "reviewer_id": "_404",
+    "source": "interactive approval"
+  },
+  "verdict": "APPROVED",
+  "approval_authority": true,
+  "review_basis_fingerprint": {
+    "algorithm": "sha256",
+    "value": "6c975f274d9b9cdc40a3fe9b0e697ed3023855806930e3d3fea1438f030471fe"
+  },
+  "stale_on": [
+    "approval_basis_fingerprint mismatch",
+    "bundle digest change",
+    "shell_cli slice bundle change",
+    "metadata metaschema lane basis change",
+    "trust boundary content change",
+    "packet schema content change"
+  ],
+  "formatting_only_changes_do_not_stale": true,
+  "issued_at": "2026-03-30T02:05:00Z",
+  "notes": "Human approval issued for the first amendment-facing shell/CLI slice limited to Bashly implementation projection and Bats verification projection."
+}
