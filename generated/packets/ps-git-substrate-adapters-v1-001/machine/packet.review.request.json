@@ -1,0 +1,47 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.request",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-git-substrate-adapters-v1-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "submitted_by": {
+    "role": "ChatGPT"
+  },
+  "review_scope": "Review the Git-substrate adapter realization slice packet against the transport bundle, git_substrate_role semantic example, compatibility-with-migration assessment, realization payload/workflow contract, split gix and sem transform surfaces, upstream metadata metaschema lane outputs, trust evidence, and repo-relative packet contract.",
+  "requested_outcomes": [
+    "APPROVED",
+    "REVISE",
+    "REJECTED"
+  ],
+  "review_basis_refs": [
+    "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.definition.json",
+    "generated/packets/ps-git-substrate-adapters-v1-001/machine/scm.pattern.binding.json",
+    "generated/packets/ps-git-substrate-adapters-v1-001/machine/root.trust.evidence.json",
+    "generated/packets/ps-git-substrate-adapters-v1-001/machine/artifact.manifest.json",
+    "generated/problem_sets/ps-git-substrate-adapters-v1-001/problem_set.json",
+    "generated/bundles/git-substrate-adapters-v1.bundle.tar.gz",
+    "structures/extensions/metadata-metaschema-lane.module.json",
+    "policy/kernel/metadata-metaschema-lane.index.json",
+    "policy/data/metadata-lane-dependency.index.json",
+    "generated/registries/metadata-metaschema-lane.index.json",
+    "generated/registries/metadata-lane-dependency.index.json",
+    "generated/state/admission/metadata-metaschema-lane/2026-03-29T22-16-18Z/decision.json",
+    "generated/state/render/metadata-metaschema-lane/2026-03-29T22-16-18Z/render-report.json",
+    "generated/state/integrity/metadata-metaschema-lane/2026-03-29T22-16-18Z/drift-report.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+  ],
+  "kernel_trust": {
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "root_trust_evidence_ref": "generated/packets/ps-git-substrate-adapters-v1-001/machine/root.trust.evidence.json"
+  },
+  "human_action_required": true,
+  "approval_authority": false,
+  "artifact_status": "REVIEW_REQUEST_SUBMITTED"
+}

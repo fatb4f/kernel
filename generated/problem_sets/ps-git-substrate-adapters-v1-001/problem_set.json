@@ -1,0 +1,128 @@
+{
+  "kind": "kernel.problem_set",
+  "problem_set_id": "ps-git-substrate-adapters-v1-001",
+  "version": "0.1.0",
+  "status": "draft",
+  "identity": {
+    "name": "git_substrate_adapters_v1",
+    "title": "Amend kernel with first Git-substrate adapter realization slice",
+    "owners": [
+      "kernel",
+      "codex_home",
+      "local_runtime"
+    ]
+  },
+  "objective": "Adopt the first Git-substrate adapter realization slice as a kernel review packet, carrying deterministic Git fact and semantic diff projection contracts plus the first normalized realization runner basis.",
+  "scope": {
+    "in_scope": [
+      "kernel amendment proposal packet",
+      "git_substrate_role extension profile v1",
+      "git semantic example and projection manifest",
+      "compatibility-with-migration assessment",
+      "git realization payload and workflow contract",
+      "split gix and sem transform surfaces",
+      "validated transport bundle"
+    ],
+    "out_of_scope": [
+      "direct realization without human review",
+      "hydration notebook rollout",
+      "pyo3 or maturin-based implementation work",
+      "broadening beyond the first codex_home git example"
+    ]
+  },
+  "constraints": [
+    "The transport bundle payload must remain byte-identical during packet generation.",
+    "The canonical metadata model remains the authority baseline.",
+    "Git adapter outputs remain projection-only and do not become semantic authority.",
+    "Deterministic Git fact capture must precede semantic diff enrichment.",
+    "The normalized manifest/report pattern from cli_extension_v2 remains part of the realization basis.",
+    "Packet input and deliverable kinds must remain aligned with the approved ChatGPT packet family registry.",
+    "All packet refs must remain repo-relative.",
+    "ChatGPT may author packet artifacts only and may not realize them."
+  ],
+  "assumptions": [
+    "The codex_home Git-substrate proposal slice is transported into kernel as a validated bundle basis.",
+    "The landed metadata metaschema lane remains the upstream semantic authority for this extension profile.",
+    "Human review remains authoritative before any kernel adoption beyond the packet lane."
+  ],
+  "requested_outputs": [
+    "amendment packet",
+    "review request",
+    "trust evidence",
+    "artifact manifest",
+    "regen record"
+  ],
+  "authority_refs": [
+    "kernel.spec.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+    "generated/registries/chatgpt-packet-family.index.json",
+    "structures/extensions/metadata-metaschema-lane.module.json",
+    "policy/kernel/metadata-metaschema-lane.index.json",
+    "policy/data/metadata-lane-dependency.index.json",
+    "generated/registries/metadata-metaschema-lane.index.json",
+    "generated/registries/metadata-lane-dependency.index.json",
+    "generated/state/admission/metadata-metaschema-lane/2026-03-29T22-16-18Z/decision.json",
+    "generated/state/render/metadata-metaschema-lane/2026-03-29T22-16-18Z/render-report.json",
+    "generated/state/integrity/metadata-metaschema-lane/2026-03-29T22-16-18Z/drift-report.json"
+  ],
+  "acceptance_criteria": [
+    "The Git-substrate adapter v1 bundle is included unchanged in the transport bundle.",
+    "The packet emits the canonical machine and human artifact family.",
+    "Packet input and deliverable roles are traceable to the approved ChatGPT packet family registry.",
+    "The packet validates against the live packet schemas and trust boundary.",
+    "The packet remains review-only until an authoritative human decision exists.",
+    "The bundle includes the split gix and sem transform surfaces plus the unified Git realization runner."
+  ],
+  "review_criteria": [
+    "The canonical metadata model remains authoritative.",
+    "Git adapter outputs remain derived projection artifacts.",
+    "git_substrate_role remains compatibility-scoped and migration-aware.",
+    "gix remains deterministic Git fact surface and sem remains enrichment-side.",
+    "The normalized manifest/report contract remains reusable across CLI and Git slices.",
+    "The bundle payload remains unchanged from the codex_home Git-substrate proposal basis."
+  ],
+  "scope_controls": {
+    "target_repos": [
+      "kernel"
+    ],
+    "forbidden_repos": [
+      "gpt-registry"
+    ],
+    "target_surfaces": [
+      "generated/problem_sets",
+      "generated/packets",
+      "generated/bundles"
+    ],
+    "forbidden_surfaces": [
+      "gpt-registry/**",
+      "AGENTS.md"
+    ],
+    "target_artifact_classes": [
+      "problem_set",
+      "packet_definition",
+      "packet_review_request",
+      "root_trust_evidence",
+      "artifact_manifest",
+      "regen_record"
+    ],
+    "forbidden_artifact_classes": [
+      "direct_realization",
+      "authority_promotion_without_review"
+    ]
+  },
+  "change_control": {
+    "normalized_json": true,
+    "stale_when": [
+      "bundle digest change",
+      "git_substrate proposal slice change",
+      "trust boundary change",
+      "packet schema content change",
+      "metadata metaschema lane basis change"
+    ]
+  },
+  "fingerprint": {
+    "algorithm": "sha256",
+    "value": "6d61c3410487d1ea2791e1a339489fe0464ac76e32e4e35c59a005ad6e204c7a"
+  }
+}
