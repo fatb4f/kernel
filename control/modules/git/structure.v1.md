@@ -15,22 +15,22 @@ It does not attempt a full repo-wide module migration.
 ## Canonical Surface Names
 
 Interface envelopes:
-- `packet.admit`
-- `packet.realize`
-- `packet.closeout`
-- `packet.contract`
+- `packet.git.admit`
+- `packet.git.realize`
+- `packet.git.closeout`
+- `packet.git.contract`
 
 Derived exec state:
-- `state.admission`
-- `state.realization`
-- `state.closeout`
+- `state.git.admission`
+- `state.git.realization`
+- `state.git.closeout`
 
 Evidence streams:
-- `evidence.authority.manifest`
+- `evidence.git.authority.manifest`
 
 State interfaces:
-- `state/interface.gix`
-- `state/interface.sem`
+- `state.git.interface.gix`
+- `state.git.interface.sem`
 
 ## Draft Structure
 
@@ -42,26 +42,26 @@ Authored control surfaces:
 - `control/modules/git/structure.v1.md`
 
 Current operator entrypoints mapped into the module root:
-- `scripts/run_chatgpt_packet_file.py` -> `packet.admit`
-- `scripts/realize_git_substrate_packet.py` -> `packet.realize`
-- `scripts/close_git_substrate_packet.py` -> `packet.closeout`
+- `scripts/run_chatgpt_packet_file.py` -> `packet.git.admit`
+- `scripts/realize_git_substrate_packet.py` -> `packet.git.realize`
+- `scripts/close_git_substrate_packet.py` -> `packet.git.closeout`
 
 External adapter basis mapped into the module root:
-- `codex_home/.../emit_gix_runtime.py` -> `state/interface.gix`
-- `codex_home/.../emit_sem_runtime.py` -> `state/interface.sem`
+- `codex_home/.../emit_gix_runtime.py` -> `state.git.interface.gix`
+- `codex_home/.../emit_sem_runtime.py` -> `state.git.interface.sem`
 - `codex_home/.../control_realize_git_substrate_adapters_v1.py` -> `generator.interface.runtime`
 
 Generated runtime state mapped into the module root, but not authored:
-- `generated/state/admission/...` -> `state.admission`
-- `generated/state/realization/...` -> `state.realization`
-- `generated/state/closeout/...` -> `state.closeout`
+- `generated/state/admission/...` -> `state.git.admission`
+- `generated/state/realization/...` -> `state.git.realization`
+- `generated/state/closeout/...` -> `state.git.closeout`
 
 ## Naming Rule
 
 - module path provides the domain root: `control/modules/git`
-- internal names use kernel-class-aligned surfaces
-- `state/interface.*` is used where Git is an interface over state space, not the ontology itself
-- packet/state/evidence names are not prefixed with `git` because the module root already carries that domain context
+- internal names use class-first qualified surfaces
+- qualified ids use `<class>.<domain>...`
+- `state.git.interface.*` is used where Git is an interface over state space, not the ontology itself
 - present-state facts, target-state requirements, and migration intent are separate artifacts
 - classification is closed and explicit: `semantic`, `projection`, `template`
 

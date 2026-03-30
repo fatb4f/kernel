@@ -5,6 +5,7 @@
   "domain_id": "git",
   "module_version": "v1",
   "module_root": "control/modules/git",
+  "namespace_grammar": "class_first_qualified_v1",
   "owned_paths": [
     "control/modules/git/module.root.v1.json",
     "control/modules/git/inventory.v1.json",
@@ -24,36 +25,36 @@
     "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
   ],
   "surfaces": [
-    "packet.admit",
-    "packet.realize",
-    "packet.closeout",
-    "packet.contract",
-    "state.admission",
-    "state.realization",
-    "state.closeout",
-    "evidence.authority.manifest",
-    "state/interface.gix",
-    "state/interface.sem"
+    "packet.git.admit",
+    "packet.git.realize",
+    "packet.git.closeout",
+    "packet.git.contract",
+    "state.git.admission",
+    "state.git.realization",
+    "state.git.closeout",
+    "evidence.git.authority.manifest",
+    "state.git.interface.gix",
+    "state.git.interface.sem"
   ],
   "generator": {
     "semantic": [
-      "generator.semantic.module.inventory"
+      "generator.semantic.git.module.inventory"
     ],
     "projection": [
-      "generator.projection.state.interface.gix",
-      "generator.projection.state.interface.sem"
+      "generator.projection.git.state.interface.gix",
+      "generator.projection.git.state.interface.sem"
     ],
     "template": [
-      "generator.template.packet.envelope",
-      "generator.template.evidence.summary"
+      "generator.template.git.packet.envelope",
+      "generator.template.git.evidence.summary"
     ]
   },
   "state_refs": [
-    "state.admission",
-    "state.realization",
-    "state.closeout",
-    "state/interface.gix",
-    "state/interface.sem"
+    "state.git.admission",
+    "state.git.realization",
+    "state.git.closeout",
+    "state.git.interface.gix",
+    "state.git.interface.sem"
   ],
   "notes": [
     "Module root is the identity and composition record for the git domain under control/modules.",

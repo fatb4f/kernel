@@ -7,6 +7,7 @@ Rules:
 - operator entrypoints remain thin wrappers over namespaced modules
 - generated state stays under `generated/` and is not part of authored module namespaces
 - packet artifacts remain workflow inputs/outputs, not module implementations
+- namespace grammar is class-first and qualified: `<class>.<domain>...`
 
 Current first domain root:
 - `git`

@@ -9,6 +9,7 @@
     "artifact_version",
     "module_id",
     "module_root",
+    "namespace_grammar",
     "document_mode",
     "scope",
     "surfaces"
@@ -27,6 +28,9 @@
     "module_root": {
       "type": "string",
       "pattern": "^control/modules/[a-z][a-z0-9_]*$"
+    },
+    "namespace_grammar": {
+      "const": "class_first_qualified_v1"
     },
     "document_mode": {
       "const": "present_state"
@@ -79,7 +83,7 @@
     },
     "surface_id": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9_]*(?:[./][a-z][a-z0-9_]*)*$"
+      "pattern": "^(packet|state|evidence|generator|controller|validator|template)\\.[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$"
     },
     "inventory_surface": {
       "type": "object",

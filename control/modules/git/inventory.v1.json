@@ -3,11 +3,12 @@
   "artifact_version": "v1",
   "module_id": "git",
   "module_root": "control/modules/git",
+  "namespace_grammar": "class_first_qualified_v1",
   "document_mode": "present_state",
   "scope": "Observed current-state inventory for kernel git-domain module surfaces without migration intent.",
   "surfaces": [
     {
-      "surface_id": "packet.admit",
+      "surface_id": "packet.git.admit",
       "path": "scripts/run_chatgpt_packet_file.py",
       "exists": true,
       "kind": "interface_envelope",
@@ -25,7 +26,7 @@
       ]
     },
     {
-      "surface_id": "packet.realize",
+      "surface_id": "packet.git.realize",
       "path": "scripts/realize_git_substrate_packet.py",
       "exists": true,
       "kind": "interface_envelope",
@@ -43,7 +44,7 @@
       ]
     },
     {
-      "surface_id": "packet.closeout",
+      "surface_id": "packet.git.closeout",
       "path": "scripts/close_git_substrate_packet.py",
       "exists": true,
       "kind": "interface_envelope",
@@ -61,7 +62,7 @@
       ]
     },
     {
-      "surface_id": "packet.contract",
+      "surface_id": "packet.git.contract",
       "path": "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.definition.json",
       "exists": true,
       "kind": "machine_contract_input",
@@ -79,7 +80,7 @@
       ]
     },
     {
-      "surface_id": "state.admission",
+      "surface_id": "state.git.admission",
       "path": "generated/state/admission/chatgpt-packet-file-runner/*",
       "exists": true,
       "kind": "derived_exec_state",
@@ -93,7 +94,7 @@
       "consumer": "runtime state inspection"
     },
     {
-      "surface_id": "state.realization",
+      "surface_id": "state.git.realization",
       "path": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/*",
       "exists": true,
       "kind": "derived_exec_state",
@@ -107,7 +108,7 @@
       "consumer": "runtime state inspection"
     },
     {
-      "surface_id": "state.closeout",
+      "surface_id": "state.git.closeout",
       "path": "generated/state/closeout/scm.pattern/ps-git-substrate-adapters-v1-001/*",
       "exists": true,
       "kind": "derived_exec_state",
@@ -121,7 +122,7 @@
       "consumer": "runtime state inspection"
     },
     {
-      "surface_id": "evidence.authority.manifest",
+      "surface_id": "evidence.git.authority.manifest",
       "path": "control/scm.pattern/authority.manifest.json",
       "exists": true,
       "kind": "evidence_stream",
@@ -135,7 +136,7 @@
       "consumer": "authority and trust evaluation"
     },
     {
-      "surface_id": "state/interface.gix",
+      "surface_id": "state.git.interface.gix",
       "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
       "exists": true,
       "kind": "projection_backend",
@@ -152,7 +153,7 @@
       ]
     },
     {
-      "surface_id": "state/interface.sem",
+      "surface_id": "state.git.interface.sem",
       "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
       "exists": true,
       "kind": "projection_backend",

@@ -3,6 +3,7 @@
   "artifact_version": "v1",
   "module_id": "git",
   "module_root": "control/modules/git",
+  "namespace_grammar": "class_first_qualified_v1",
   "document_mode": "target_state",
   "purpose": "Target-state contract for git-domain module surfaces with explicit semantic, projection, and template classification.",
   "contract_inputs": {
@@ -31,21 +32,21 @@
   },
   "generator": {
     "semantic": [
-      "generator.semantic.module.inventory",
-      "generator.semantic.state.record"
+      "generator.semantic.git.module.inventory",
+      "generator.semantic.git.state.record"
     ],
     "projection": [
-      "generator.projection.state.interface.gix",
-      "generator.projection.state.interface.sem"
+      "generator.projection.git.state.interface.gix",
+      "generator.projection.git.state.interface.sem"
     ],
     "template": [
-      "generator.template.packet.envelope",
-      "generator.template.evidence.summary"
+      "generator.template.git.packet.envelope",
+      "generator.template.git.evidence.summary"
     ]
   },
   "surface_contracts": [
     {
-      "surface_id": "packet.admit",
+      "surface_id": "packet.git.admit",
       "kind": "interface_envelope",
       "responsibility": "Admission and gate-state evaluation entrypoint for packet files.",
       "bridge_class": "message-contract",
@@ -57,13 +58,13 @@
       "external_basis_refs": [],
       "classification": "template",
       "required": true,
-      "generator_ref": "generator.template.packet.envelope",
+      "generator_ref": "generator.template.git.packet.envelope",
       "notes": [
         "Target surface remains an interface envelope even if implementation later moves out of scripts/."
       ]
     },
     {
-      "surface_id": "packet.realize",
+      "surface_id": "packet.git.realize",
       "kind": "interface_envelope",
       "responsibility": "Local scm.pattern realization entrypoint for the git-substrate packet.",
       "bridge_class": "interop-bridge",
@@ -77,10 +78,10 @@
       ],
       "classification": "template",
       "required": true,
-      "generator_ref": "generator.template.packet.envelope"
+      "generator_ref": "generator.template.git.packet.envelope"
     },
     {
-      "surface_id": "packet.closeout",
+      "surface_id": "packet.git.closeout",
       "kind": "interface_envelope",
       "responsibility": "Local scm.pattern closeout entrypoint for the git-substrate packet.",
       "bridge_class": "record-contract",
@@ -92,10 +93,10 @@
       "external_basis_refs": [],
       "classification": "template",
       "required": true,
-      "generator_ref": "generator.template.packet.envelope"
+      "generator_ref": "generator.template.git.packet.envelope"
     },
     {
-      "surface_id": "packet.contract",
+      "surface_id": "packet.git.contract",
       "kind": "machine_contract_input",
       "responsibility": "Packet contract inputs and review boundary artifacts consumed by the git module runtime.",
       "bridge_class": "message-contract",
@@ -107,10 +108,10 @@
       "external_basis_refs": [],
       "classification": "semantic",
       "required": true,
-      "generator_ref": "generator.semantic.state.record"
+      "generator_ref": "generator.semantic.git.state.record"
     },
     {
-      "surface_id": "state.admission",
+      "surface_id": "state.git.admission",
       "kind": "derived_exec_state",
       "responsibility": "Derived admission execution record stream.",
       "bridge_class": "record-contract",
@@ -122,10 +123,10 @@
       "external_basis_refs": [],
       "classification": "semantic",
       "required": true,
-      "generator_ref": "generator.semantic.state.record"
+      "generator_ref": "generator.semantic.git.state.record"
     },
     {
-      "surface_id": "state.realization",
+      "surface_id": "state.git.realization",
       "kind": "derived_exec_state",
       "responsibility": "Derived realization execution record stream.",
       "bridge_class": "record-contract",
@@ -137,10 +138,10 @@
       "external_basis_refs": [],
       "classification": "semantic",
       "required": true,
-      "generator_ref": "generator.semantic.state.record"
+      "generator_ref": "generator.semantic.git.state.record"
     },
     {
-      "surface_id": "state.closeout",
+      "surface_id": "state.git.closeout",
       "kind": "derived_exec_state",
       "responsibility": "Derived closeout execution record stream.",
       "bridge_class": "record-contract",
@@ -152,10 +153,10 @@
       "external_basis_refs": [],
       "classification": "semantic",
       "required": true,
-      "generator_ref": "generator.semantic.state.record"
+      "generator_ref": "generator.semantic.git.state.record"
     },
     {
-      "surface_id": "evidence.authority.manifest",
+      "surface_id": "evidence.git.authority.manifest",
       "kind": "evidence_stream",
       "responsibility": "Authority manifest and trust-bound control input stream relevant to git realization.",
       "bridge_class": "record-contract",
@@ -167,10 +168,10 @@
       "external_basis_refs": [],
       "classification": "semantic",
       "required": true,
-      "generator_ref": "generator.template.evidence.summary"
+      "generator_ref": "generator.template.git.evidence.summary"
     },
     {
-      "surface_id": "state/interface.gix",
+      "surface_id": "state.git.interface.gix",
       "kind": "projection_backend",
       "responsibility": "gix-backed interface over state-space observations for repository and diff capture.",
       "bridge_class": "codegen-bridge",
@@ -182,10 +183,10 @@
       ],
       "classification": "projection",
       "required": true,
-      "generator_ref": "generator.projection.state.interface.gix"
+      "generator_ref": "generator.projection.git.state.interface.gix"
     },
     {
-      "surface_id": "state/interface.sem",
+      "surface_id": "state.git.interface.sem",
       "kind": "projection_backend",
       "responsibility": "sem-backed interface over state-space enrichment for semantic diff capture.",
       "bridge_class": "codegen-bridge",
@@ -197,7 +198,7 @@
       ],
       "classification": "projection",
       "required": true,
-      "generator_ref": "generator.projection.state.interface.sem"
+      "generator_ref": "generator.projection.git.state.interface.sem"
     }
   ],
   "notes": [

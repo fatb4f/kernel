@@ -11,6 +11,7 @@
     "domain_id",
     "module_version",
     "module_root",
+    "namespace_grammar",
     "owned_paths",
     "derived_paths",
     "external_basis_refs",
@@ -40,6 +41,9 @@
     "module_root": {
       "type": "string",
       "pattern": "^control/modules/[a-z][a-z0-9_]*$"
+    },
+    "namespace_grammar": {
+      "const": "class_first_qualified_v1"
     },
     "owned_paths": {
       "type": "array",
@@ -90,7 +94,7 @@
   "$defs": {
     "surface_ref": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9_]*(?:[./][a-z][a-z0-9_]*)*$"
+      "pattern": "^(packet|state|evidence|generator|controller|validator|template)\\.[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$"
     },
     "generator_ref": {
       "type": "string",
