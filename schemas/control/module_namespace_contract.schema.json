@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kernel/schemas/control/module_namespace_contract.schema.json",
+  "title": "control/modules module_namespace_contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "module_id",
+    "module_root",
+    "document_mode",
+    "purpose",
+    "contract_inputs",
+    "generator",
+    "surface_contracts"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "module_namespace_contract"
+    },
+    "artifact_version": {
+      "const": "v1"
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "module_root": {
+      "type": "string",
+      "pattern": "^control/modules/[a-z][a-z0-9_]*$"
+    },
+    "document_mode": {
+      "const": "target_state"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owned_paths",
+        "derived_paths",
+        "external_basis_refs"
+      ],
+      "properties": {
+        "owned_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?!\\.\\.)[^\\\\]*$"
+          },
+          "uniqueItems": true
+        },
+        "derived_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "external_basis_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "generator": {
+      "$ref": "#/$defs/generator_groups"
+    },
+    "surface_contracts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/surface_contract"
+      },
+      "minItems": 1
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "classification": {
+      "type": "string",
+      "enum": [
+        "semantic",
+        "projection",
+        "template"
+      ]
+    },
+    "bridge_class": {
+      "type": "string",
+      "enum": [
+        "interop-bridge",
+        "codegen-bridge",
+        "message-contract",
+        "record-contract"
+      ]
+    },
+    "runtime_actor_class": {
+      "type": "string",
+      "enum": [
+        "adapter",
+        "python-runtime-controller",
+        "generator",
+        "validator",
+        "emitter"
+      ]
+    },
+    "surface_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:[./][a-z][a-z0-9_]*)*$"
+    },
+    "generator_ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$"
+    },
+    "generator_groups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic",
+        "projection",
+        "template"
+      ],
+      "properties": {
+        "semantic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/generator_ref"
+          },
+          "uniqueItems": true
+        },
+        "projection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/generator_ref"
+          },
+          "uniqueItems": true
+        },
+        "template": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/generator_ref"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "surface_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface_id",
+        "kind",
+        "responsibility",
+        "bridge_class",
+        "runtime_actor_class",
+        "owned_paths",
+        "derived_paths",
+        "external_basis_refs",
+        "classification",
+        "required"
+      ],
+      "properties": {
+        "surface_id": {
+          "$ref": "#/$defs/surface_id"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "responsibility": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bridge_class": {
+          "$ref": "#/$defs/bridge_class"
+        },
+        "runtime_actor_class": {
+          "$ref": "#/$defs/runtime_actor_class"
+        },
+        "owned_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?!\\.\\.)[^\\\\]*$"
+          },
+          "uniqueItems": true
+        },
+        "derived_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "external_basis_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "generator_ref": {
+          "$ref": "#/$defs/generator_ref"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

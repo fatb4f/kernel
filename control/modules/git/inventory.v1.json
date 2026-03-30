@@ -1,103 +1,176 @@
 {
   "artifact_type": "module_inventory",
   "artifact_version": "v1",
+  "module_id": "git",
   "module_root": "control/modules/git",
-  "domain_id": "git",
-  "status": "done",
-  "scope": "Inventory current kernel-authored Git-substrate assets and classify them using kernel-aligned surface names.",
-  "inventory": {
-    "current_authored_assets": [
-      {
-        "path": "scripts/run_chatgpt_packet_file.py",
-        "current_role": "packet_admission_runner",
-        "target_surface": "packet.admit",
-        "bridge_class": "message-contract",
-        "runtime_actor_class": "python-runtime-controller"
-      },
-      {
-        "path": "scripts/realize_git_substrate_packet.py",
-        "current_role": "packet_realization_wrapper",
-        "target_surface": "packet.realize",
-        "bridge_class": "interop-bridge",
-        "runtime_actor_class": "python-runtime-controller"
-      },
-      {
-        "path": "scripts/close_git_substrate_packet.py",
-        "current_role": "packet_closeout_wrapper",
-        "target_surface": "packet.closeout",
-        "bridge_class": "record-contract",
-        "runtime_actor_class": "python-runtime-controller"
-      },
-      {
-        "path": "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.definition.json",
-        "current_role": "packet_authority_input",
-        "target_surface": "packet.contract",
-        "bridge_class": "message-contract",
-        "runtime_actor_class": "validator"
-      },
-      {
-        "path": "generated/state/admission/chatgpt-packet-file-runner/*",
-        "current_role": "runtime_admission_state",
-        "target_surface": "state.admission",
-        "bridge_class": "record-contract",
-        "runtime_actor_class": "emitter"
-      },
-      {
-        "path": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/*",
-        "current_role": "runtime_realization_state",
-        "target_surface": "state.realization",
-        "bridge_class": "record-contract",
-        "runtime_actor_class": "emitter"
-      },
-      {
-        "path": "generated/state/closeout/scm.pattern/ps-git-substrate-adapters-v1-001/*",
-        "current_role": "runtime_closeout_state",
-        "target_surface": "state.closeout",
-        "bridge_class": "record-contract",
-        "runtime_actor_class": "emitter"
-      },
-      {
-        "path": "control/scm.pattern/authority.manifest.json",
-        "current_role": "authority_manifest",
-        "target_surface": "evidence.authority.manifest",
-        "bridge_class": "record-contract",
-        "runtime_actor_class": "validator"
-      }
-    ],
-    "external_basis_assets": [
-      {
-        "path": "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
-        "current_role": "git_substrate_projection_runner",
-        "target_surface": "generator.interface.runtime",
-        "bridge_class": "interop-bridge",
-        "runtime_actor_class": "generator",
-        "notes": "External proposal-basis asset consumed by kernel runtime wrappers."
-      },
-      {
-        "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
-        "current_role": "gix_runtime_emitter",
-        "target_surface": "state/interface.gix",
-        "bridge_class": "codegen-bridge",
-        "runtime_actor_class": "adapter"
-      },
-      {
-        "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
-        "current_role": "sem_runtime_emitter",
-        "target_surface": "state/interface.sem",
-        "bridge_class": "codegen-bridge",
-        "runtime_actor_class": "adapter"
-      }
-    ]
-  },
-  "findings": [
-    "Git substrate behavior is currently split across packet controllers, generated runtime state, and external adapter emitters.",
-    "The repo already has a stable control root at control/, but the module surface needed naming normalization before expansion.",
-    "The git lane is the cleanest first consolidation target because gix and sem runtime contracts are already real."
+  "document_mode": "present_state",
+  "scope": "Observed current-state inventory for kernel git-domain module surfaces without migration intent.",
+  "surfaces": [
+    {
+      "surface_id": "packet.admit",
+      "path": "scripts/run_chatgpt_packet_file.py",
+      "exists": true,
+      "kind": "interface_envelope",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "python-runtime-controller",
+      "classification": "template",
+      "evidence_refs": [
+        "control/modules/git/module.root.v1.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "packet admission runtime",
+      "notes": [
+        "Current operator entrypoint.",
+        "Present-state path is still under scripts/."
+      ]
+    },
+    {
+      "surface_id": "packet.realize",
+      "path": "scripts/realize_git_substrate_packet.py",
+      "exists": true,
+      "kind": "interface_envelope",
+      "bridge_class": "interop-bridge",
+      "runtime_actor_class": "python-runtime-controller",
+      "classification": "template",
+      "evidence_refs": [
+        "control/modules/git/module.root.v1.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "packet realization runtime",
+      "notes": [
+        "Current operator entrypoint.",
+        "Present-state path is still under scripts/."
+      ]
+    },
+    {
+      "surface_id": "packet.closeout",
+      "path": "scripts/close_git_substrate_packet.py",
+      "exists": true,
+      "kind": "interface_envelope",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "python-runtime-controller",
+      "classification": "template",
+      "evidence_refs": [
+        "control/modules/git/module.root.v1.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "packet closeout runtime",
+      "notes": [
+        "Current operator entrypoint.",
+        "Present-state path is still under scripts/."
+      ]
+    },
+    {
+      "surface_id": "packet.contract",
+      "path": "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.definition.json",
+      "exists": true,
+      "kind": "machine_contract_input",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "validator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "generated/packets/ps-git-substrate-adapters-v1-001/machine/scm.pattern.binding.json",
+        "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.review.decision.json"
+      ],
+      "source_scope": "derived",
+      "consumer": "packet realization and validation",
+      "notes": [
+        "Generated packet material is a contract input, not an owned module implementation."
+      ]
+    },
+    {
+      "surface_id": "state.admission",
+      "path": "generated/state/admission/chatgpt-packet-file-runner/*",
+      "exists": true,
+      "kind": "derived_exec_state",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "emitter",
+      "classification": "semantic",
+      "evidence_refs": [
+        "generated/state/admission/chatgpt-packet-file-runner/2026-03-30T06-12-27Z/admitted-state.json"
+      ],
+      "source_scope": "derived",
+      "consumer": "runtime state inspection"
+    },
+    {
+      "surface_id": "state.realization",
+      "path": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/*",
+      "exists": true,
+      "kind": "derived_exec_state",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "emitter",
+      "classification": "semantic",
+      "evidence_refs": [
+        "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/realized-state.json"
+      ],
+      "source_scope": "derived",
+      "consumer": "runtime state inspection"
+    },
+    {
+      "surface_id": "state.closeout",
+      "path": "generated/state/closeout/scm.pattern/ps-git-substrate-adapters-v1-001/*",
+      "exists": true,
+      "kind": "derived_exec_state",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "emitter",
+      "classification": "semantic",
+      "evidence_refs": [
+        "generated/state/closeout/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-30-57Z/closed-state.json"
+      ],
+      "source_scope": "derived",
+      "consumer": "runtime state inspection"
+    },
+    {
+      "surface_id": "evidence.authority.manifest",
+      "path": "control/scm.pattern/authority.manifest.json",
+      "exists": true,
+      "kind": "evidence_stream",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "validator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "schemas/control/scm.pattern/authority.manifest.schema.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "authority and trust evaluation"
+    },
+    {
+      "surface_id": "state/interface.gix",
+      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "exists": true,
+      "kind": "projection_backend",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "classification": "projection",
+      "evidence_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json"
+      ],
+      "source_scope": "external_basis",
+      "consumer": "git state interface realization",
+      "notes": [
+        "External proposal-basis dependency, not an owned kernel path."
+      ]
+    },
+    {
+      "surface_id": "state/interface.sem",
+      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+      "exists": true,
+      "kind": "projection_backend",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "classification": "projection",
+      "evidence_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+      ],
+      "source_scope": "external_basis",
+      "consumer": "semantic state interface realization",
+      "notes": [
+        "External proposal-basis dependency, not an owned kernel path."
+      ]
+    }
   ],
-  "completion_criteria": [
-    "module root is explicit",
-    "current kernel-authored assets are classified with canonical surface names",
-    "external proposal-basis assets are classified separately",
-    "generated state is treated as derived exec state rather than authored implementation"
+  "notes": [
+    "Inventory is present-state only.",
+    "Migration intent is split into migration.plan.v1.md."
   ]
 }

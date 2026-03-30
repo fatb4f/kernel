@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kernel/schemas/control/module_inventory.schema.json",
+  "title": "control/modules module_inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "module_id",
+    "module_root",
+    "document_mode",
+    "scope",
+    "surfaces"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "module_inventory"
+    },
+    "artifact_version": {
+      "const": "v1"
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "module_root": {
+      "type": "string",
+      "pattern": "^control/modules/[a-z][a-z0-9_]*$"
+    },
+    "document_mode": {
+      "const": "present_state"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/inventory_surface"
+      },
+      "minItems": 1
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "classification": {
+      "type": "string",
+      "enum": [
+        "semantic",
+        "projection",
+        "template"
+      ]
+    },
+    "bridge_class": {
+      "type": "string",
+      "enum": [
+        "interop-bridge",
+        "codegen-bridge",
+        "message-contract",
+        "record-contract"
+      ]
+    },
+    "runtime_actor_class": {
+      "type": "string",
+      "enum": [
+        "adapter",
+        "python-runtime-controller",
+        "generator",
+        "validator",
+        "emitter"
+      ]
+    },
+    "surface_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:[./][a-z][a-z0-9_]*)*$"
+    },
+    "inventory_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface_id",
+        "path",
+        "exists",
+        "kind",
+        "bridge_class",
+        "runtime_actor_class",
+        "classification",
+        "evidence_refs"
+      ],
+      "properties": {
+        "surface_id": {
+          "$ref": "#/$defs/surface_id"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exists": {
+          "type": "boolean"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bridge_class": {
+          "$ref": "#/$defs/bridge_class"
+        },
+        "runtime_actor_class": {
+          "$ref": "#/$defs/runtime_actor_class"
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "source_scope": {
+          "type": "string",
+          "enum": [
+            "owned",
+            "derived",
+            "external_basis"
+          ]
+        },
+        "consumer": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -35,8 +35,10 @@ State interfaces:
 ## Draft Structure
 
 Authored control surfaces:
+- `control/modules/git/module.root.v1.json`
 - `control/modules/git/inventory.v1.json`
 - `control/modules/git/namespace.contract.v1.json`
+- `control/modules/git/migration.plan.v1.md`
 - `control/modules/git/structure.v1.md`
 
 Current operator entrypoints mapped into the module root:
@@ -60,11 +62,13 @@ Generated runtime state mapped into the module root, but not authored:
 - internal names use kernel-class-aligned surfaces
 - `state/interface.*` is used where Git is an interface over state space, not the ontology itself
 - packet/state/evidence names are not prefixed with `git` because the module root already carries that domain context
+- present-state facts, target-state requirements, and migration intent are separate artifacts
+- classification is closed and explicit: `semantic`, `projection`, `template`
 
 ## Done Condition
 
-The namespace work for this tranche is considered done when:
-- the current kernel Git-substrate architecture is inventoried
-- one canonical module root is explicit: `control/modules/git`
-- the authored/operator/adapter/runtime surfaces are classified under canonical names
-- future Git-substrate work can be attached to these canonical surfaces instead of discovering loose scripts
+The schema-discipline tranche for this module is considered done when:
+- the module schema family exists under `schemas/control/`
+- `control/modules/git` has a schema-valid root, present-state inventory, and target-state contract
+- migration intent is isolated in `migration.plan.v1.md`
+- the authored/operator/adapter/runtime surfaces are classified under canonical names using `semantic`, `projection`, and `template`

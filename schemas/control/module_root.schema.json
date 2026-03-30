@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kernel/schemas/control/module_root.schema.json",
+  "title": "control/modules module_root",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "module_id",
+    "domain_id",
+    "module_version",
+    "module_root",
+    "owned_paths",
+    "derived_paths",
+    "external_basis_refs",
+    "surfaces",
+    "generator",
+    "state_refs"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "module_root"
+    },
+    "artifact_version": {
+      "const": "v1"
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "domain_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "module_version": {
+      "type": "string",
+      "pattern": "^v[0-9]+$"
+    },
+    "module_root": {
+      "type": "string",
+      "pattern": "^control/modules/[a-z][a-z0-9_]*$"
+    },
+    "owned_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?!\\.\\.)[^\\\\]*$"
+      },
+      "uniqueItems": true
+    },
+    "derived_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "external_basis_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/surface_ref"
+      },
+      "uniqueItems": true
+    },
+    "generator": {
+      "$ref": "#/$defs/generator_groups"
+    },
+    "state_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "surface_ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:[./][a-z][a-z0-9_]*)*$"
+    },
+    "generator_ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$"
+    },
+    "generator_groups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic",
+        "projection",
+        "template"
+      ],
+      "properties": {
+        "semantic": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/generator_ref"
+          },
+          "uniqueItems": true
+        },
+        "projection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/generator_ref"
+          },
+          "uniqueItems": true
+        },
+        "template": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/generator_ref"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}
