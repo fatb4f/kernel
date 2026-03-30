@@ -1,0 +1,89 @@
+{
+  "artifact_type": "module_namespace_contract",
+  "artifact_version": "v1",
+  "namespace_id": "__kernel.git__",
+  "status": "done",
+  "purpose": "Define the first stable kernel module namespace around the Git substrate adapter lane.",
+  "authority_boundary": {
+    "authoritative_inputs": [
+      "control/scm.pattern/authority.manifest.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.definition.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/scm.pattern.binding.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.review.request.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.review.decision.json"
+    ],
+    "non_authoritative_outputs": [
+      "generated/state/admission/chatgpt-packet-file-runner/*",
+      "generated/state/realization/scm.pattern/*",
+      "generated/state/closeout/scm.pattern/*"
+    ],
+    "adapter_outputs_are_projection_only": true
+  },
+  "module_surfaces": [
+    {
+      "surface_id": "__kernel.git__.authority",
+      "kind": "control_surface",
+      "owned_paths": [
+        "control/scm.pattern/*"
+      ],
+      "responsibility": "Authority manifests and trust-bound control inputs relevant to Git-substrate realization."
+    },
+    {
+      "surface_id": "__kernel.git__.packet",
+      "kind": "workflow_surface",
+      "owned_paths": [
+        "generated/packets/ps-git-substrate-adapters-v1-001/*"
+      ],
+      "responsibility": "Packet contract inputs and review boundary artifacts for the Git-substrate slice."
+    },
+    {
+      "surface_id": "__kernel.git__.adapter",
+      "kind": "projection_surface",
+      "owned_paths": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
+      ],
+      "responsibility": "gix and sem adapter-backed realization logic."
+    },
+    {
+      "surface_id": "__kernel.git__.packet.admit",
+      "kind": "operator_surface",
+      "owned_paths": [
+        "scripts/run_chatgpt_packet_file.py"
+      ],
+      "responsibility": "Admission and gate-state evaluation for packet files."
+    },
+    {
+      "surface_id": "__kernel.git__.packet.realize",
+      "kind": "operator_surface",
+      "owned_paths": [
+        "scripts/realize_git_substrate_packet.py"
+      ],
+      "responsibility": "Local scm.pattern realization wrapper for the Git-substrate packet."
+    },
+    {
+      "surface_id": "__kernel.git__.packet.closeout",
+      "kind": "operator_surface",
+      "owned_paths": [
+        "scripts/close_git_substrate_packet.py"
+      ],
+      "responsibility": "Local scm.pattern closeout wrapper for the Git-substrate packet."
+    },
+    {
+      "surface_id": "__kernel.git__.state",
+      "kind": "runtime_state_surface",
+      "owned_paths": [
+        "generated/state/admission/chatgpt-packet-file-runner/*",
+        "generated/state/realization/scm.pattern/*",
+        "generated/state/closeout/scm.pattern/*"
+      ],
+      "responsibility": "Recorded runtime state only; not authored module implementation."
+    }
+  ],
+  "token_burn_mitigation": {
+    "problem": "Git-substrate behavior is currently discovered by following script names, packet paths, and generated state separately.",
+    "mitigation": "A single __kernel.git__ namespace gives one stable lookup surface for authority, packet, adapter, operator, and runtime-state roles.",
+    "success_signal": "Future ports and wrappers can bind to __kernel.git__ surfaces instead of rediscovering ad hoc script/path relationships."
+  }
+}
