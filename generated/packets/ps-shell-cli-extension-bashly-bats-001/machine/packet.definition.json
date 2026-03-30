@@ -1,0 +1,237 @@
+{
+  "artifact_type": "gpt_handoff.packet.definition",
+  "artifact_version": "0.2.0",
+  "spec_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+  "packet_id": "ps-shell-cli-extension-bashly-bats-001",
+  "title": "Packet handoff: shell/CLI extension first amendment slice (Bashly + Bats)",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "summary": "Packet derived from the codex_home shell/CLI extension first amendment slice bundle. It preserves the bundle bytes unchanged, carries the landed metadata metaschema lane as upstream authority basis, emits the canonical packet artifact family, and remains blocked on human review before any realization.",
+  "ownership": {
+    "authority_owner": "kernel",
+    "packet_author": "ChatGPT",
+    "validation_owner": "local_runtime",
+    "realization_owner": "scm.pattern"
+  },
+  "constraints": [
+    "The transport bundle payload must remain byte-identical during packet generation.",
+    "The canonical metadata model remains the authority baseline for this extension slice.",
+    "Shell assets remain projection-only and may not become semantic authority through this packet.",
+    "The first amendment slice is limited to Bashly implementation projection and Bats verification projection.",
+    "The scm.pattern packet lane remains a downstream operational carrier and must not define shell semantics.",
+    "Packet input and deliverable kinds must remain aligned with the approved ChatGPT packet family registry.",
+    "The landed metadata metaschema lane remains part of the packet review basis.",
+    "All packet refs must remain repo-relative.",
+    "ChatGPT may author packet artifacts only and may not realize them.",
+    "A packet basis change after approval stales the existing review decision until reissued."
+  ],
+  "realization": {
+    "local_realization_surface": "scm.pattern",
+    "canonical_packet_root": "generated/packets/ps-shell-cli-extension-bashly-bats-001",
+    "repo_relative_paths_only": true,
+    "chatgpt_may_realize": false
+  },
+  "inputs": [
+    {
+      "ref": "generated/problem_sets/ps-shell-cli-extension-bashly-bats-001/problem_set.json",
+      "role": "problem_set"
+    },
+    {
+      "ref": "generated/bundles/shell-cli-extension-bashly-bats.bundle.tar.gz",
+      "role": "validated_bundle"
+    },
+    {
+      "ref": "generated/bundles/shell-cli-extension-bashly-bats.bundle.tar.gz.sha256",
+      "role": "bundle_integrity"
+    },
+    {
+      "ref": "generated/registries/chatgpt-packet-family.index.json",
+      "role": "packet_type_catalog"
+    },
+    {
+      "ref": "structures/extensions/metadata-metaschema-lane.module.json",
+      "role": "upstream_source_module"
+    },
+    {
+      "ref": "policy/kernel/metadata-metaschema-lane.index.json",
+      "role": "upstream_kernel_policy"
+    },
+    {
+      "ref": "policy/data/metadata-lane-dependency.index.json",
+      "role": "upstream_lane_dependency_policy"
+    },
+    {
+      "ref": "generated/registries/metadata-metaschema-lane.index.json",
+      "role": "upstream_registry"
+    },
+    {
+      "ref": "generated/registries/metadata-lane-dependency.index.json",
+      "role": "upstream_dependency_registry"
+    },
+    {
+      "ref": "generated/state/admission/metadata-metaschema-lane/2026-03-29T22-16-18Z/decision.json",
+      "role": "upstream_admission_decision"
+    },
+    {
+      "ref": "generated/state/render/metadata-metaschema-lane/2026-03-29T22-16-18Z/render-report.json",
+      "role": "upstream_render_report"
+    },
+    {
+      "ref": "generated/state/integrity/metadata-metaschema-lane/2026-03-29T22-16-18Z/drift-report.json",
+      "role": "upstream_integrity_report"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+      "role": "ingress_contract"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+      "role": "pipeline_manifest"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+      "role": "execution_policy"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+      "role": "validation_manifest"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+      "role": "gate_policy"
+    },
+    {
+      "ref": "control/scm.pattern/authority.manifest.json",
+      "role": "authority_manifest"
+    },
+    {
+      "ref": "control/trust/root.signers.json",
+      "role": "root_signers"
+    },
+    {
+      "ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+      "role": "delegation"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.definition.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/scm.pattern.binding.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.request.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/root.trust.evidence.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/regen.record.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/artifact.manifest.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.approval.schema.json",
+      "role": "packet_schema"
+    },
+    {
+      "ref": "generated/schemas/chatgpt-pipeline/packet/packet.review.decision.schema.json",
+      "role": "packet_schema"
+    }
+  ],
+  "deliverables": {
+    "required_now": [
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/packet.definition.json",
+        "kind": "packet_definition"
+      },
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/scm.pattern.binding.json",
+        "kind": "scm_pattern_binding"
+      },
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/packet.review.request.json",
+        "kind": "packet_review_request"
+      },
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/root.trust.evidence.json",
+        "kind": "root_trust_evidence"
+      },
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/regen.record.json",
+        "kind": "regen_record"
+      },
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/artifact.manifest.json",
+        "kind": "artifact_manifest"
+      },
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/packet.approval.json",
+        "kind": "compatibility_placeholder",
+        "transitional": true,
+        "authoritative": false
+      },
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/human/packet.definition.md",
+        "kind": "derived_human_definition"
+      }
+    ],
+    "conditional": [
+      {
+        "ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/packet.review.decision.json",
+        "kind": "packet_review_decision",
+        "required_when": "human_review_decision_issued == true"
+      }
+    ]
+  },
+  "kernel_trust_requirements": {
+    "root_signers_ref": "control/trust/root.signers.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_validation_ref": "control/scm.pattern/authority.manifest.validation.json",
+    "authority_manifest_signature_ref": "control/scm.pattern/authority.manifest.signature.json",
+    "delegation_ref": "control/trust/delegations/chatgpt.packet-sidecar.json",
+    "packet_local_evidence_ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/root.trust.evidence.json"
+  },
+  "review_lifecycle": {
+    "review_request_ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/packet.review.request.json",
+    "review_decision_ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/packet.review.decision.json",
+    "current_gate": "AWAITING_HUMAN_REVIEW",
+    "allowed_outcomes": [
+      "APPROVED",
+      "REVISE",
+      "REJECTED"
+    ],
+    "non_authoritative_placeholder_ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/packet.approval.json"
+  },
+  "admissibility_rules": [
+    "The shell/CLI bundle must be present unchanged in the repo-local bundle path.",
+    "The landed metadata metaschema lane admission decision must report PASS.",
+    "The landed metadata metaschema lane integrity report must report PASS.",
+    "Packet type roles must resolve against the approved ChatGPT packet family registry.",
+    "The packet lane must remain semantically downstream of the metadata metaschema model.",
+    "All required packet artifacts must validate against the live packet schemas.",
+    "All refs must resolve as repo-relative paths before admission may pass.",
+    "Realization remains blocked until a human-issued review decision exists."
+  ],
+  "staleness_rules": {
+    "stale_when": [
+      "bundle digest changes",
+      "shell_cli slice bundle changes",
+      "metadata metaschema lane basis changes",
+      "trust boundary content changes",
+      "packet schema content changes"
+    ],
+    "formatting_only_changes_do_not_stale": true
+  },
+  "regeneration": {
+    "policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "regen_record_ref": "generated/packets/ps-shell-cli-extension-bashly-bats-001/machine/regen.record.json",
+    "skip_when_inputs_unchanged": true
+  }
+}

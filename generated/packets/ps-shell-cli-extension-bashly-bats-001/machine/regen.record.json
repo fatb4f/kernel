@@ -1,0 +1,27 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.2.0",
+  "packet_id": "ps-shell-cli-extension-bashly-bats-001",
+  "policy": "Regeneration is blocked unless the shell/CLI slice bundle, upstream metadata metaschema lane basis, trust boundary, or packet schemas change materially.",
+  "required_inputs": {
+    "problem_set_ref": "generated/problem_sets/ps-shell-cli-extension-bashly-bats-001/problem_set.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
+    "pipeline_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+  },
+  "output_fingerprints": {
+    "packet.definition.json": "6c975f274d9b9cdc40a3fe9b0e697ed3023855806930e3d3fea1438f030471fe",
+    "scm.pattern.binding.json": "d0be82f02743d791dd95d2d37f1004b000f04d4c8c3a68c585b265107e9d24c0",
+    "packet.review.request.json": "a4b8dcf7aff1e51ec4721701eef1f0ea48556e1eb48b8d00ac10756310b692f9",
+    "root.trust.evidence.json": "857f83e8a4752ef08cecc46c6dd12b07389971eac4ae6761fe903a092dd478e8",
+    "artifact.manifest.json": "27f2abfa19af4cfc729627176f7cd6380ea242f116171bdc593cf35668898429",
+    "packet.approval.json": "cedd47149f0961bbfc5f1ea5c583631510f0d45934937196442b9886c97377ab",
+    "packet.definition.md": "7dbdbd164d747b36d6a3dab2986535ea526f8373458b1caf6f23bf7a09c4489d"
+  },
+  "approval_basis_fingerprint": "6c975f274d9b9cdc40a3fe9b0e697ed3023855806930e3d3fea1438f030471fe",
+  "status": "GENERATED",
+  "notes": "Formatting-only changes do not stale approval basis. Human review decision, if later issued, must target the approval basis fingerprint recorded here. Upstream metadata metaschema lane refs are part of the approval basis."
+}

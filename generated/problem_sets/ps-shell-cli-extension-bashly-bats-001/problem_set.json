@@ -1,0 +1,124 @@
+{
+  "kind": "kernel.problem_set",
+  "problem_set_id": "ps-shell-cli-extension-bashly-bats-001",
+  "version": "0.1.0",
+  "status": "draft",
+  "identity": {
+    "name": "shell_cli_extension_bashly_bats",
+    "title": "Amend kernel with shell/CLI extension first slice: Bashly + Bats",
+    "owners": [
+      "kernel",
+      "codex_home",
+      "local_runtime"
+    ]
+  },
+  "objective": "Adopt the shell/CLI extension first amendment slice for Bashly implementation projection and Bats verification projection as a kernel review packet grounded in the existing metadata metaschema lane.",
+  "scope": {
+    "in_scope": [
+      "kernel amendment proposal packet",
+      "shell/CLI extension profile",
+      "schema-backed extension constraints",
+      "Bashly implementation projection slice",
+      "Bats verification projection slice",
+      "validated transport bundle"
+    ],
+    "out_of_scope": [
+      "argc projection rollout",
+      "Argbash projection rollout",
+      "ShellSpec projection rollout",
+      "runtime implementation",
+      "direct realization without human review"
+    ]
+  },
+  "constraints": [
+    "The transport bundle payload must remain byte-identical during packet generation.",
+    "The canonical metadata model remains the authority baseline.",
+    "Shell assets remain projection-only and do not become semantic authority.",
+    "The first amendment slice is limited to Bashly as implementation target and Bats as verification consumer.",
+    "The scm.pattern packet lane remains a downstream operational carrier and must not define shell semantics.",
+    "Packet input and deliverable kinds must remain aligned with the approved ChatGPT packet family registry.",
+    "All packet refs must remain repo-relative.",
+    "ChatGPT may author packet artifacts only and may not realize them."
+  ],
+  "assumptions": [
+    "The codex_home proposal slice is transported into kernel as a validated bundle basis.",
+    "The landed metadata metaschema lane remains the upstream semantic authority for this extension slice.",
+    "Human review remains authoritative before any kernel adoption beyond the packet lane."
+  ],
+  "requested_outputs": [
+    "amendment packet",
+    "review request",
+    "trust evidence",
+    "artifact manifest",
+    "regen record"
+  ],
+  "authority_refs": [
+    "kernel.spec.json",
+    "generated/schemas/chatgpt-pipeline/workflow/problem_set.schema.json",
+    "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+    "generated/registries/chatgpt-packet-family.index.json",
+    "structures/extensions/metadata-metaschema-lane.module.json",
+    "policy/kernel/metadata-metaschema-lane.index.json",
+    "policy/data/metadata-lane-dependency.index.json",
+    "generated/registries/metadata-metaschema-lane.index.json",
+    "generated/registries/metadata-lane-dependency.index.json"
+  ],
+  "acceptance_criteria": [
+    "The shell/CLI extension bundle is included unchanged in the transport bundle.",
+    "The packet emits the canonical machine and human artifact family.",
+    "Packet input and deliverable roles are traceable to the approved ChatGPT packet family registry.",
+    "The packet validates against the live packet schemas and trust boundary.",
+    "The packet remains review-only until an authoritative human decision exists.",
+    "The Bashly implementation slice and Bats verification slice remain bounded as the only amendment-facing backend scope in this packet."
+  ],
+  "review_criteria": [
+    "The canonical metadata model remains authoritative.",
+    "Shell assets remain derived projection artifacts.",
+    "The Bashly and Bats slice remains bounded and non-authoritative.",
+    "Schema-backed extension constraints remain explicit.",
+    "The bundle payload remains unchanged from the codex_home proposal basis."
+  ],
+  "scope_controls": {
+    "target_repos": [
+      "kernel"
+    ],
+    "forbidden_repos": [
+      "gpt-registry"
+    ],
+    "target_surfaces": [
+      "generated/problem_sets",
+      "generated/packets",
+      "generated/bundles"
+    ],
+    "forbidden_surfaces": [
+      "gpt-registry/**",
+      "AGENTS.md"
+    ],
+    "target_artifact_classes": [
+      "problem_set",
+      "packet_definition",
+      "packet_review_request",
+      "root_trust_evidence",
+      "artifact_manifest",
+      "regen_record"
+    ],
+    "forbidden_artifact_classes": [
+      "direct_realization",
+      "authority_promotion_without_review"
+    ]
+  },
+  "change_control": {
+    "normalized_json": true,
+    "stale_when": [
+      "bundle digest change",
+      "shell_cli proposal slice change",
+      "trust boundary change",
+      "packet schema content change",
+      "metadata metaschema lane basis change"
+    ]
+  },
+  "fingerprint": {
+    "algorithm": "sha256",
+    "value": "c194e3d9459888bd0c9f7f7fc52dacaefa5525fe29420dcff09808ab60658bba"
+  }
+}
