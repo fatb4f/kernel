@@ -1,0 +1,26 @@
+{
+  "artifact_type": "kernel.closeout.execution_log",
+  "artifact_version": "0.1.0",
+  "control_object_id": "scm.pattern",
+  "run_id": "2026-03-30T06-30-57Z",
+  "packet_id": "ps-git-substrate-adapters-v1-001",
+  "packet_root": "generated/packets/ps-git-substrate-adapters-v1-001",
+  "steps": [
+    {
+      "name": "resolve realization run",
+      "status": "PASS",
+      "realization_run_root": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z"
+    },
+    {
+      "name": "verify realization status",
+      "status": "PASS",
+      "workflow_state": "REALIZED_VIA_SCM_PATTERN",
+      "realization": "PASS"
+    },
+    {
+      "name": "close packet runtime state",
+      "status": "PASS",
+      "closeout_state": "CLOSED"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "artifact_type": "kernel.closed_state",
+  "artifact_version": "0.1.0",
+  "control_object_id": "scm.pattern",
+  "run_id": "2026-03-30T06-30-57Z",
+  "packet_id": "ps-git-substrate-adapters-v1-001",
+  "packet_root": "generated/packets/ps-git-substrate-adapters-v1-001",
+  "closeout": "PASS",
+  "workflow_state": "CLOSED",
+  "review_state": "DEFINITION_APPROVED",
+  "realization_run_ref": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z",
+  "realization_manifest_ref": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_manifest.json",
+  "realization_report_ref": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_report.json",
+  "summary": "The Git-substrate packet has an explicit scm.pattern realization run and is now closed at the local runtime layer."
+}
