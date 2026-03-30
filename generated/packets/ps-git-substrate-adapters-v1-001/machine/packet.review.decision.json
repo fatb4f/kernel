@@ -1,0 +1,28 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.decision",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-git-substrate-adapters-v1-001",
+  "issued_by": {
+    "role": "human_reviewer",
+    "reviewer_id": "_404",
+    "source": "interactive approval"
+  },
+  "verdict": "APPROVED",
+  "approval_authority": true,
+  "review_basis_fingerprint": {
+    "algorithm": "sha256",
+    "value": "27c5cccbfa78dfcdb5cba48367ebfccd575ccaebf19711265e073ac079defa33"
+  },
+  "stale_on": [
+    "approval_basis_fingerprint mismatch",
+    "bundle digest change",
+    "git_substrate_adapters_v1 bundle change",
+    "metadata metaschema lane basis change",
+    "trust boundary content change",
+    "normalized realization schema content change",
+    "packet schema content change"
+  ],
+  "formatting_only_changes_do_not_stale": true,
+  "issued_at": "2026-03-30T06:08:19Z",
+  "notes": "Human approval issued for the first Git-substrate realization slice carrying the git_substrate_role profile, normalized realization contract reuse, the unified Git runner, and split gix and sem transform surfaces."
+}
