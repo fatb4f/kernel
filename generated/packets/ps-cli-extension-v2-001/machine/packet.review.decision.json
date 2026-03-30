@@ -1,0 +1,28 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.decision",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-cli-extension-v2-001",
+  "issued_by": {
+    "role": "human_reviewer",
+    "reviewer_id": "_404",
+    "source": "interactive approval"
+  },
+  "verdict": "APPROVED",
+  "approval_authority": true,
+  "review_basis_fingerprint": {
+    "algorithm": "sha256",
+    "value": "664e8b8c20a688a62310fd4165bc04ee011e7b2af88f130be0227bece1e5f18f"
+  },
+  "stale_on": [
+    "approval_basis_fingerprint mismatch",
+    "bundle digest change",
+    "cli_extension_v2 bundle change",
+    "preserved v1 slice review basis change",
+    "metadata metaschema lane basis change",
+    "trust boundary content change",
+    "packet schema content change"
+  ],
+  "formatting_only_changes_do_not_stale": true,
+  "issued_at": "2026-03-30T03:31:00Z",
+  "notes": "Human approval issued for the runtime-neutral CLI extension v2 packet after portable bundle repair and preservation of the approved Bashly+Bats v1 slice in the review basis."
+}
