@@ -1,0 +1,27 @@
+{
+  "kind": "gpt_handoff.regen.record",
+  "spec_version": "0.2.0",
+  "packet_id": "ps-cli-extension-v2-001",
+  "policy": "Regeneration is blocked unless the runtime-neutral CLI extension v2 bundle, upstream metadata metaschema lane basis, preserved v1 shell slice basis, trust boundary, or packet schemas change materially.",
+  "required_inputs": {
+    "problem_set_ref": "generated/problem_sets/ps-cli-extension-v2-001/problem_set.json",
+    "authority_manifest_ref": "control/scm.pattern/authority.manifest.json",
+    "authority_manifest_schema_ref": "generated/schemas/chatgpt-pipeline/packet/authority.manifest.schema.json",
+    "pipeline_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.packet.pipeline.manifest.json",
+    "execution_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.execution.policy.json",
+    "validation_manifest_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.validation.manifest.json",
+    "gate_policy_ref": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json"
+  },
+  "output_fingerprints": {
+    "packet.definition.json": "664e8b8c20a688a62310fd4165bc04ee011e7b2af88f130be0227bece1e5f18f",
+    "scm.pattern.binding.json": "9554a9c8cad6a5302cae18d9d59afa2eac2ffc26cf2d85301eea068bcdd167ad",
+    "packet.review.request.json": "c9d8b3330014c619778a8c0b7fd62a43a762b517eefdb2bc5d1c486e3a9c3438",
+    "root.trust.evidence.json": "9fa2747e07d92e22e9f6b5c49880f839f9a5a881e28c0a15adde8e87fe4a3db4",
+    "artifact.manifest.json": "978c5beaf5cac11cb6f5a9c00a44bab69eb4e2624cf980eabe71bf301e5ad053",
+    "packet.approval.json": "736031569b1818e9755dccca4123fce3b3fff240627c6f940b933ece2c8e1f44",
+    "packet.definition.md": "0795df66fc834b6b3edf0a8b4bac87a4221578aebf8c816e17a2a4147ace9c3c"
+  },
+  "approval_basis_fingerprint": "664e8b8c20a688a62310fd4165bc04ee011e7b2af88f130be0227bece1e5f18f",
+  "status": "GENERATED",
+  "notes": "Formatting-only changes do not stale approval basis. Human review decision, if later issued, must target the approval basis fingerprint recorded here. Upstream metadata metaschema lane refs and preserved v1 slice refs are part of the approval basis."
+}

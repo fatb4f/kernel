@@ -1,0 +1,26 @@
+{
+  "artifact_type": "kernel.admission.decision",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-packet-file-runner",
+  "run_id": "2026-03-30T03-19-04Z",
+  "decision": "ALLOW",
+  "summary": "Packet file contract validated successfully. Dry-run stopped at review boundary.",
+  "policy_bundle_id": "generated/schemas/chatgpt-pipeline/workflow/chatgpt.gate.policy.json",
+  "input_digests": {
+    "packet_definition": {
+      "algorithm": "sha256",
+      "value": "088e7f8474fa437c0b114b45ad81b23cf6e4f6912e538e9f45a52c4c97ee58ea"
+    }
+  },
+  "tool_versions": {
+    "python": "3.14.3",
+    "runner": "scripts/run_chatgpt_packet_file.py"
+  },
+  "result": {
+    "review_gate": "PASS",
+    "realization_gate": "WAITING_HUMAN_REVIEW",
+    "next_step": "Issue authoritative packet.review.decision.json before realization.",
+    "decision_present": false,
+    "decision_stale": false
+  }
+}
