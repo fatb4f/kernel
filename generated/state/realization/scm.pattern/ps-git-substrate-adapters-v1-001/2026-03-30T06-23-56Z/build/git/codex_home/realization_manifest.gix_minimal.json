@@ -1,0 +1,16 @@
+{
+  "document_type": "realization_manifest",
+  "status": "source_surfaces_emitted",
+  "emitted": [
+    {
+      "surface_id": "gix_repo_state",
+      "repo_path": "repo_state.json",
+      "output_path": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/git/codex_home/repo_state.json"
+    },
+    {
+      "surface_id": "gix_diff_state",
+      "repo_path": "diff_state.json",
+      "output_path": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/git/codex_home/diff_state.json"
+    }
+  ]
+}

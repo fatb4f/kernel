@@ -1,0 +1,14 @@
+{
+  "document_type": "realization_report",
+  "status": "source_surfaces_emitted",
+  "checks": {
+    "repo_state": {
+      "status": "ok",
+      "clean": true
+    },
+    "diff_state": {
+      "status": "ok",
+      "file_count": 0
+    }
+  }
+}

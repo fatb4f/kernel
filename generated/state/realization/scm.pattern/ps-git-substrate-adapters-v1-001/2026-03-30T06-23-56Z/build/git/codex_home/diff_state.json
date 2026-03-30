@@ -1,0 +1,11 @@
+{
+  "document_type": "diff_state",
+  "repository_path": "/home/_404/src/codex_home",
+  "comparison_ref": "origin/main",
+  "comparison_base": "269d38c448f1ef9038fd5feb99c1ea7bbd902cb9",
+  "head": "269d38c448f1ef9038fd5feb99c1ea7bbd902cb9",
+  "changed_files": [],
+  "file_count": 0,
+  "numstat": [],
+  "state_kind": "diff_state"
+}

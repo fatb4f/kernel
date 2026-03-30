@@ -1,0 +1,17 @@
+{
+  "artifact_type": "kernel.realization.decision",
+  "artifact_version": "0.1.0",
+  "control_object_id": "scm.pattern",
+  "run_id": "2026-03-30T06-23-56Z",
+  "packet_id": "ps-git-substrate-adapters-v1-001",
+  "decision": "ALLOW",
+  "summary": "Git-substrate packet realized locally through scm.pattern using the approved packet basis.",
+  "packet_validation_run_ref": "generated/state/admission/chatgpt-packet-file-runner/2026-03-30T06-23-56Z",
+  "realization_manifest_ref": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_manifest.json",
+  "realization_report_ref": "generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_report.json",
+  "result": {
+    "review_gate": "PASS",
+    "realization_gate": "REALIZED_VIA_SCM_PATTERN",
+    "next_step": "Packet realization outputs are recorded under generated/state/realization/scm.pattern/."
+  }
+}

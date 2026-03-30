@@ -1,0 +1,44 @@
+{
+  "artifact_type": "kernel.realization.execution_log",
+  "artifact_version": "0.1.0",
+  "control_object_id": "scm.pattern",
+  "run_id": "2026-03-30T06-23-56Z",
+  "packet_id": "ps-git-substrate-adapters-v1-001",
+  "packet_root": "generated/packets/ps-git-substrate-adapters-v1-001",
+  "steps": [
+    {
+      "name": "validate packet readiness",
+      "status": "PASS",
+      "runner": "scripts/run_chatgpt_packet_file.py",
+      "result": {
+        "run_id": "2026-03-30T06-23-56Z",
+        "mode": "DRY_RUN",
+        "packet_root": "generated/packets/ps-git-substrate-adapters-v1-001",
+        "log_root": "generated/state/admission/chatgpt-packet-file-runner/2026-03-30T06-23-56Z",
+        "packet_id": "ps-git-substrate-adapters-v1-001",
+        "review_gate": "PASS",
+        "realization_gate": "READY_FOR_REALIZATION",
+        "next_step": "Local runtime may realize through scm.pattern."
+      }
+    },
+    {
+      "name": "realize git substrate slice",
+      "status": "PASS",
+      "runner": "/home/_404/src/codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "result": {
+        "status": "success",
+        "realized_targets": 3,
+        "manifest": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_manifest.json",
+        "report": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_report.json"
+      }
+    }
+  ],
+  "stdout": {
+    "packet_validation": "{\n  \"run_id\": \"2026-03-30T06-23-56Z\",\n  \"mode\": \"DRY_RUN\",\n  \"packet_root\": \"generated/packets/ps-git-substrate-adapters-v1-001\",\n  \"log_root\": \"generated/state/admission/chatgpt-packet-file-runner/2026-03-30T06-23-56Z\",\n  \"packet_id\": \"ps-git-substrate-adapters-v1-001\",\n  \"review_gate\": \"PASS\",\n  \"realization_gate\": \"READY_FOR_REALIZATION\",\n  \"next_step\": \"Local runtime may realize through scm.pattern.\"\n}",
+    "realization": "{\n  \"status\": \"success\",\n  \"realized_targets\": 3,\n  \"manifest\": \"/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_manifest.json\",\n  \"report\": \"/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/realization_report.json\"\n}"
+  },
+  "stderr": {
+    "packet_validation": "",
+    "realization": ""
+  }
+}

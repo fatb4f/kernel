@@ -1,0 +1,11 @@
+{
+  "document_type": "realization_manifest",
+  "status": "source_surfaces_emitted",
+  "emitted": [
+    {
+      "surface_id": "sem_semantic_diff",
+      "repo_path": "semantic_diff.json",
+      "output_path": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/git/codex_home/semantic_diff.json"
+    }
+  ]
+}

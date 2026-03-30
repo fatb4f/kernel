@@ -1,0 +1,13 @@
+{
+  "artifact_type": "kernel.admitted_state",
+  "artifact_version": "0.1.0",
+  "control_object_id": "chatgpt-packet-file-runner",
+  "run_id": "2026-03-30T06-23-56Z",
+  "mode": "DRY_RUN",
+  "packet_id": "ps-git-substrate-adapters-v1-001",
+  "packet_root": "generated/packets/ps-git-substrate-adapters-v1-001",
+  "admission": "PASS",
+  "review_gate": "PASS",
+  "realization_gate": "READY_FOR_REALIZATION",
+  "next_step": "Local runtime may realize through scm.pattern."
+}

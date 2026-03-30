@@ -1,0 +1,16 @@
+{
+  "document_type": "semantic_diff",
+  "repository_path": "repo:/home/_404/src/codex_home",
+  "upstream_diff_ref": "object:codex_home_diff_state",
+  "review_basis_rule": "review_basis_must_reference_repo_and_diff_state_artifacts",
+  "change_summary": {
+    "file_count": 0,
+    "by_status": {},
+    "by_extension": {}
+  },
+  "review_basis": {
+    "requires_repo_state_and_diff_state": true,
+    "comparison_ref": "origin/main",
+    "comparison_base": "269d38c448f1ef9038fd5feb99c1ea7bbd902cb9"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "document_type": "realization_manifest",
+  "schema_version": "v2",
+  "workflow_command": "control realize git-substrate-adapters-v1",
+  "deterministic": true,
+  "primary_operator_surface": "control_realize_git_substrate_adapters_v1.py",
+  "targets": [
+    {
+      "target_id": "codex_home_gix_repo_state",
+      "backend": "gix",
+      "adapter_family": "git_implementation",
+      "projection_role": "implementation_target",
+      "artifact_kind": "state_projection",
+      "repo_path": "build/git/codex_home/repo_state.json",
+      "output_path": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/git/codex_home/repo_state.json",
+      "source_project_root": "/home/_404/src/codex_home",
+      "semantic_inputs": [
+        "object:codex_home_repo_state"
+      ],
+      "generated_by": "control_realize_git_substrate_adapters_v1.py"
+    },
+    {
+      "target_id": "codex_home_gix_diff_state",
+      "backend": "gix",
+      "adapter_family": "git_implementation",
+      "projection_role": "implementation_target",
+      "artifact_kind": "state_projection",
+      "repo_path": "build/git/codex_home/diff_state.json",
+      "output_path": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/git/codex_home/diff_state.json",
+      "source_project_root": "/home/_404/src/codex_home",
+      "semantic_inputs": [
+        "object:codex_home_diff_state"
+      ],
+      "generated_by": "control_realize_git_substrate_adapters_v1.py"
+    },
+    {
+      "target_id": "codex_home_semantic_diff_enrichment",
+      "backend": "sem",
+      "adapter_family": "git_implementation",
+      "projection_role": "implementation_target",
+      "artifact_kind": "enrichment_projection",
+      "repo_path": "build/git/codex_home/semantic_diff.json",
+      "output_path": "/home/_404/src/kernel/generated/state/realization/scm.pattern/ps-git-substrate-adapters-v1-001/2026-03-30T06-23-56Z/build/git/codex_home/semantic_diff.json",
+      "source_project_root": "/home/_404/src/codex_home",
+      "upstream_deterministic_input": "object:codex_home_diff_state",
+      "semantic_inputs": [
+        "object:codex_home_semantic_diff",
+        "object:codex_home_review_basis"
+      ],
+      "generated_by": "control_realize_git_substrate_adapters_v1.py"
+    }
+  ]
+}

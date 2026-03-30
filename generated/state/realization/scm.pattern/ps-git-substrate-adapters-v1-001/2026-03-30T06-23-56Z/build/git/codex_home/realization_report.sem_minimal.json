@@ -1,0 +1,11 @@
+{
+  "document_type": "realization_report",
+  "status": "source_surfaces_emitted",
+  "checks": {
+    "semantic_diff": {
+      "status": "ok",
+      "upstream_diff_ref": "object:codex_home_diff_state",
+      "file_count": 0
+    }
+  }
+}
