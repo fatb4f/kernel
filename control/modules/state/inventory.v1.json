@@ -1,0 +1,141 @@
+{
+  "artifact_type": "module_inventory",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "module_root": "control/modules/state",
+  "namespace_grammar": "class_first_qualified_v1",
+  "document_mode": "present_state",
+  "scope": "Observed present-state inventory for the state-first architecture slice rooted in existing Git substrate adapters, ACP-facing transport assumptions, and Marimo-facing registry assumptions.",
+  "surfaces": [
+    {
+      "surface_id": "state.interface.git.gix",
+      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "exists": true,
+      "kind": "projection_backend",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "classification": "projection",
+      "evidence_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json"
+      ],
+      "source_scope": "external_basis",
+      "consumer": "state read normalization"
+    },
+    {
+      "surface_id": "state.interface.semantic.sem",
+      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+      "exists": true,
+      "kind": "projection_backend",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "classification": "projection",
+      "evidence_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+      ],
+      "source_scope": "external_basis",
+      "consumer": "state hydration enrichment"
+    },
+    {
+      "surface_id": "state.snapshot.unified",
+      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "exists": true,
+      "kind": "unified_runtime_aggregator",
+      "bridge_class": "interop-bridge",
+      "runtime_actor_class": "generator",
+      "classification": "projection",
+      "evidence_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/test_control_realize_git_substrate_adapters_v1.py"
+      ],
+      "source_scope": "external_basis",
+      "consumer": "state snapshot aggregation"
+    },
+    {
+      "surface_id": "state.transport.acp",
+      "path": "control/modules/state/namespace.contract.v1.json",
+      "exists": true,
+      "kind": "transport_contract_stub",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "validator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "control/modules/state/workflow_dag.v1.md"
+      ],
+      "source_scope": "owned",
+      "consumer": "structured request and response transport"
+    },
+    {
+      "surface_id": "state.registry.marimo",
+      "path": "control/modules/state/namespace.contract.v1.json",
+      "exists": true,
+      "kind": "registry_contract_stub",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "control/modules/state/workflow_dag.v1.md"
+      ],
+      "source_scope": "owned",
+      "consumer": "snapshot registration and hydration consumer"
+    },
+    {
+      "surface_id": "generator.state.workflow_dag",
+      "path": "control/modules/state/workflow_dag.v1.md",
+      "exists": true,
+      "kind": "workflow_document",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "classification": "template",
+      "evidence_refs": [
+        "control/modules/state/module.root.v1.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "architecture review"
+    },
+    {
+      "surface_id": "generator.state.dependency_order",
+      "path": "control/modules/state/dependency_order.v1.json",
+      "exists": true,
+      "kind": "dependency_graph",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "control/modules/state/module.root.v1.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "implementation sequencing"
+    },
+    {
+      "surface_id": "generator.state.interop_matrix",
+      "path": "control/modules/state/interop_matrix.v1.json",
+      "exists": true,
+      "kind": "interop_matrix",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "control/modules/state/module.root.v1.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "interface and wrapper analysis"
+    },
+    {
+      "surface_id": "packet.state.architecture",
+      "path": "generated/packets/ps-state-read-plane-v1-001/machine/packet.definition.json",
+      "exists": true,
+      "kind": "review_packet",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "validator",
+      "classification": "template",
+      "evidence_refs": [
+        "generated/problem_sets/ps-state-read-plane-v1-001/problem_set.json"
+      ],
+      "source_scope": "derived",
+      "consumer": "kernel review and adoption"
+    }
+  ],
+  "notes": [
+    "Present-state inventory treats ACP and Marimo as architectural consumers/transport contracts, not yet as implemented module roots.",
+    "The state service is defined north-star first and reuses existing Git adapter surfaces as substrate inputs."
+  ]
+}

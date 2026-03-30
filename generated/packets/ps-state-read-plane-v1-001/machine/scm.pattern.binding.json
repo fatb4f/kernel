@@ -1,0 +1,8 @@
+{
+  "artifact_type": "gpt_handoff.scm.pattern.binding",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-state-read-plane-v1-001",
+  "realization_surface": "scm.pattern",
+  "allowed_now": false,
+  "reason": "This packet is architecture-only and review-only. It may be admitted structurally but is not a realization packet."
+}

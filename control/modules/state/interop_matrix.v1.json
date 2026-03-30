@@ -1,0 +1,93 @@
+{
+  "artifact_type": "interop_matrix",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "summary": "Map entities, adapters, interfaces, wrappers, transport, registry, and packet surfaces for the state-first architecture.",
+  "rows": [
+    {
+      "entity": "operator",
+      "kind": "human_or_agent_requester",
+      "surface_id": "state.service.get",
+      "wrapper": "just module",
+      "adapter_or_interface": "python state wrapper",
+      "transport": "direct local invocation or ACP request",
+      "output": "structured state request",
+      "classification": "semantic"
+    },
+    {
+      "entity": "just_module_entrypoint",
+      "kind": "wrapper",
+      "surface_id": "state.service.get",
+      "wrapper": "just state.get / just state.hydrate",
+      "adapter_or_interface": "python state wrapper",
+      "transport": "local process boundary",
+      "output": "normalized Python invocation",
+      "classification": "template"
+    },
+    {
+      "entity": "python_state_wrapper",
+      "kind": "wrapper",
+      "surface_id": "state.service.hydrate",
+      "wrapper": "python orchestrator",
+      "adapter_or_interface": "state.interface.git.gix + state.interface.semantic.sem",
+      "transport": "function/process boundary",
+      "output": "unified state envelope",
+      "classification": "semantic"
+    },
+    {
+      "entity": "gix",
+      "kind": "adapter",
+      "surface_id": "state.interface.git.gix",
+      "wrapper": "emit_gix_runtime.py",
+      "adapter_or_interface": "deterministic Git substrate read",
+      "transport": "local process boundary",
+      "output": "repo_state + diff_state",
+      "classification": "projection"
+    },
+    {
+      "entity": "sem",
+      "kind": "adapter",
+      "surface_id": "state.interface.semantic.sem",
+      "wrapper": "emit_sem_runtime.py",
+      "adapter_or_interface": "semantic enrichment",
+      "transport": "local process boundary",
+      "output": "semantic_diff + review_basis",
+      "classification": "projection"
+    },
+    {
+      "entity": "acp",
+      "kind": "transport",
+      "surface_id": "state.transport.acp",
+      "wrapper": "request/response envelope",
+      "adapter_or_interface": "structured transport only",
+      "transport": "ACP",
+      "output": "schema-versioned envelope",
+      "classification": "semantic"
+    },
+    {
+      "entity": "marimo_registry",
+      "kind": "registry_consumer",
+      "surface_id": "state.registry.marimo",
+      "wrapper": "registry and hydration lifecycle",
+      "adapter_or_interface": "snapshot registration and view derivation",
+      "transport": "ACP response consumption",
+      "output": "registered snapshots + hydrated views",
+      "classification": "semantic"
+    },
+    {
+      "entity": "kernel_packet",
+      "kind": "review_boundary",
+      "surface_id": "packet.state.architecture",
+      "wrapper": "packet artifact family",
+      "adapter_or_interface": "review-only architecture adoption",
+      "transport": "kernel packet lane",
+      "output": "review packet",
+      "classification": "template"
+    }
+  ],
+  "notes": [
+    "The matrix intentionally treats ACP as transport only.",
+    "Marimo consumes snapshots and hydration metadata rather than substrate-specific internals.",
+    "Write operations are out of scope for this architecture slice."
+  ]
+}

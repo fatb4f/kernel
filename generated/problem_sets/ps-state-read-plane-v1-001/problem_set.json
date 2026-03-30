@@ -1,0 +1,106 @@
+{
+  "kind": "kernel.problem_set",
+  "problem_set_id": "ps-state-read-plane-v1-001",
+  "version": "0.1.0",
+  "status": "draft",
+  "identity": {
+    "name": "state_read_plane_v1",
+    "title": "Adopt state-first read-plane architecture slice under control/modules",
+    "owners": [
+      "kernel",
+      "local_runtime"
+    ],
+    "tracking_issue": 15
+  },
+  "objective": "Adopt a state-first architecture slice rooted in get_state and hydrate_state, with ACP as transport and Marimo as registry/view consumer, and carry it through a bounded kernel review packet.",
+  "scope": {
+    "in_scope": [
+      "control/modules/state root",
+      "state-first workflow DAG",
+      "dependency ordering",
+      "interop matrix for entities, adapters, interfaces, wrappers, transport, and registry boundaries",
+      "review-only packet artifact family"
+    ],
+    "out_of_scope": [
+      "repo write workflows",
+      "full ACP implementation",
+      "full Marimo implementation",
+      "filesystem-wide module migration",
+      "direct realization without review"
+    ]
+  },
+  "constraints": [
+    "The read path is the product and must remain primary.",
+    "get_state must remain side-effect free and idempotent.",
+    "hydrate_state may refresh and enrich snapshots but may not mutate repositories.",
+    "ACP is transport only and may not become the model layer.",
+    "Marimo consumes structured state snapshots and hydration metadata only.",
+    "gix remains the deterministic Git fact source.",
+    "sem remains downstream semantic enrichment over deterministic diff input.",
+    "The operator entrypoint is a just module that wraps Python."
+  ],
+  "assumptions": [
+    "Lifecycle approvals for this packet tranche are pre-granted through tracking issue #15 unless a new authority boundary is introduced.",
+    "Existing git substrate adapters remain available as substrate inputs while the state-first architecture is defined.",
+    "control/modules schema family remains the enforcement basis for module artifacts."
+  ],
+  "requested_outputs": [
+    "state module architecture artifacts",
+    "review packet",
+    "artifact manifest",
+    "regen record",
+    "tracking alignment to issue #15"
+  ],
+  "authority_refs": [
+    "kernel.spec.json",
+    "schemas/control/module_root.schema.json",
+    "schemas/control/module_inventory.schema.json",
+    "schemas/control/module_namespace_contract.schema.json",
+    "control/modules/README.md",
+    "control/policy/token_burn_and_structured_output.registry.json",
+    "control/scm.pattern/authority.manifest.json"
+  ],
+  "acceptance_criteria": [
+    "control/modules/state exists with module root, inventory, and namespace contract artifacts",
+    "workflow DAG is authored before implementation expansion",
+    "dependency order is explicit",
+    "interop matrix distinguishes entities, adapters, interfaces, wrappers, transport, and registry",
+    "packet artifacts are emitted under generated/problem_sets and generated/packets",
+    "tracking issue #15 is referenced from the packet basis"
+  ],
+  "review_criteria": [
+    "The state-first read plane is simpler than a general Git capability surface.",
+    "ACP remains transport only.",
+    "Marimo remains registry/view consumer only.",
+    "gix and sem remain substrate interfaces rather than authority surfaces.",
+    "The packet stays architecture-only and review-only."
+  ],
+  "scope_controls": {
+    "target_repos": [
+      "kernel"
+    ],
+    "target_surfaces": [
+      "control/modules/state",
+      "generated/problem_sets",
+      "generated/packets"
+    ],
+    "forbidden_surfaces": [
+      "gpt-registry/**",
+      "AGENTS.md"
+    ],
+    "target_artifact_classes": [
+      "module_root",
+      "module_inventory",
+      "module_namespace_contract",
+      "workflow_dag",
+      "dependency_order",
+      "interop_matrix",
+      "problem_set",
+      "packet_definition",
+      "packet_review_request",
+      "artifact_manifest",
+      "regen_record",
+      "root_trust_evidence"
+    ]
+  }
+}

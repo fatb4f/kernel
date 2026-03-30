@@ -1,0 +1,242 @@
+{
+  "artifact_type": "module_namespace_contract",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "module_root": "control/modules/state",
+  "namespace_grammar": "class_first_qualified_v1",
+  "document_mode": "target_state",
+  "purpose": "Target-state contract for a state-first architecture rooted in get_state and hydrate_state, with ACP as transport and Marimo as registry/view consumer.",
+  "contract_inputs": {
+    "owned_paths": [
+      "control/modules/state/module.root.v1.json",
+      "control/modules/state/inventory.v1.json",
+      "control/modules/state/namespace.contract.v1.json",
+      "control/modules/state/workflow_dag.v1.md",
+      "control/modules/state/dependency_order.v1.json",
+      "control/modules/state/interop_matrix.v1.json",
+      "control/modules/state/migration.plan.v1.md",
+      "control/modules/state/structure.v1.md"
+    ],
+    "derived_paths": [
+      "generated/problem_sets/ps-state-read-plane-v1-001/*",
+      "generated/packets/ps-state-read-plane-v1-001/*"
+    ],
+    "external_basis_refs": [
+      "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+      "../codex_home/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json",
+      "../codex_home/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+    ]
+  },
+  "generator": {
+    "semantic": [
+      "generator.semantic.state.contract"
+    ],
+    "projection": [
+      "generator.projection.state.interface.gix",
+      "generator.projection.state.interface.sem"
+    ],
+    "template": [
+      "generator.template.state.workflow_dag",
+      "generator.template.state.packet"
+    ]
+  },
+  "surface_contracts": [
+    {
+      "surface_id": "state.service.get",
+      "kind": "state_service_operation",
+      "responsibility": "Return a canonical snapshot of unified repo state with explicit freshness and provenance.",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "generator",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+        "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
+      ],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "state.service.hydrate",
+      "kind": "state_service_operation",
+      "responsibility": "Refresh or enrich a canonical snapshot without performing repo writes.",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "python-runtime-controller",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+        "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
+      ],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "state.interface.git.gix",
+      "kind": "substrate_interface",
+      "responsibility": "Expose deterministic repo-state and diff-state reads from the Git substrate.",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py"
+      ],
+      "classification": "projection",
+      "required": true,
+      "generator_ref": "generator.projection.state.interface.gix"
+    },
+    {
+      "surface_id": "state.interface.semantic.sem",
+      "kind": "substrate_interface",
+      "responsibility": "Expose semantic enrichment over deterministic diff inputs without changing canonical Git facts.",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
+      ],
+      "classification": "projection",
+      "required": true,
+      "generator_ref": "generator.projection.state.interface.sem"
+    },
+    {
+      "surface_id": "state.transport.acp",
+      "kind": "transport_boundary",
+      "responsibility": "Carry request and response envelopes, schema versioning, freshness metadata, and snapshot identity only.",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "validator",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "state.registry.marimo",
+      "kind": "registry_consumer_boundary",
+      "responsibility": "Register snapshots, manage hydration lifecycle, and provide view derivation over structured state envelopes.",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "state.snapshot.unified",
+      "kind": "snapshot_object",
+      "responsibility": "Provide the schema-stable unified state envelope returned by get_state and hydrate_state.",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
+      ],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "controller.state.hydrate",
+      "kind": "controller_surface",
+      "responsibility": "Coordinate hydration as refresh and enrichment only, never as repo mutation.",
+      "bridge_class": "interop-bridge",
+      "runtime_actor_class": "python-runtime-controller",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "validator.state.schema",
+      "kind": "schema_validation_surface",
+      "responsibility": "Validate state request/response envelopes, freshness metadata, and provenance fields.",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "validator",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "generator.state.workflow_dag",
+      "kind": "architecture_workflow",
+      "responsibility": "Describe the north-star architecture and workflow ordering for the state-first plane.",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "owned_paths": [
+        "control/modules/state/workflow_dag.v1.md"
+      ],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "template",
+      "required": true,
+      "generator_ref": "generator.template.state.workflow_dag"
+    },
+    {
+      "surface_id": "generator.state.dependency_order",
+      "kind": "dependency_graph",
+      "responsibility": "Define implementation ordering and hard prerequisites for the state-first plane.",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "owned_paths": [
+        "control/modules/state/dependency_order.v1.json"
+      ],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "generator.state.interop_matrix",
+      "kind": "interop_matrix",
+      "responsibility": "Map entities, adapters, interfaces, wrappers, transport, registry, and outputs across the state plane.",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "owned_paths": [
+        "control/modules/state/interop_matrix.v1.json"
+      ],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "packet.state.architecture",
+      "kind": "review_packet",
+      "responsibility": "Carry the architecture, dependency order, and interop matrix through kernel review as a bounded packet.",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "validator",
+      "owned_paths": [],
+      "derived_paths": [
+        "generated/problem_sets/ps-state-read-plane-v1-001/*",
+        "generated/packets/ps-state-read-plane-v1-001/*"
+      ],
+      "external_basis_refs": [],
+      "classification": "template",
+      "required": true,
+      "generator_ref": "generator.template.state.packet"
+    }
+  ],
+  "notes": [
+    "Read-state plane first, write plane later.",
+    "ACP is transport only.",
+    "Marimo is registry and view consumer, not substrate authority."
+  ]
+}

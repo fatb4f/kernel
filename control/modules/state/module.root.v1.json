@@ -1,0 +1,68 @@
+{
+  "artifact_type": "module_root",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "domain_id": "state",
+  "module_version": "v1",
+  "module_root": "control/modules/state",
+  "namespace_grammar": "class_first_qualified_v1",
+  "owned_paths": [
+    "control/modules/state/module.root.v1.json",
+    "control/modules/state/inventory.v1.json",
+    "control/modules/state/namespace.contract.v1.json",
+    "control/modules/state/workflow_dag.v1.md",
+    "control/modules/state/dependency_order.v1.json",
+    "control/modules/state/interop_matrix.v1.json",
+    "control/modules/state/migration.plan.v1.md",
+    "control/modules/state/structure.v1.md"
+  ],
+  "derived_paths": [
+    "generated/problem_sets/ps-state-read-plane-v1-001/*",
+    "generated/packets/ps-state-read-plane-v1-001/*"
+  ],
+  "external_basis_refs": [
+    "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+    "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+    "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+    "../codex_home/control/proposals/git_substrate_adapters_v1/git_projection_common.py",
+    "../codex_home/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json",
+    "../codex_home/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+  ],
+  "surfaces": [
+    "state.service.get",
+    "state.service.hydrate",
+    "state.interface.git.gix",
+    "state.interface.semantic.sem",
+    "state.transport.acp",
+    "state.registry.marimo",
+    "state.snapshot.unified",
+    "controller.state.hydrate",
+    "validator.state.schema",
+    "generator.state.workflow_dag",
+    "generator.state.dependency_order",
+    "generator.state.interop_matrix",
+    "packet.state.architecture"
+  ],
+  "generator": {
+    "semantic": [
+      "generator.semantic.state.contract"
+    ],
+    "projection": [
+      "generator.projection.state.interface.gix",
+      "generator.projection.state.interface.sem"
+    ],
+    "template": [
+      "generator.template.state.workflow_dag",
+      "generator.template.state.packet"
+    ]
+  },
+  "state_refs": [
+    "state.service.get",
+    "state.service.hydrate",
+    "state.snapshot.unified"
+  ],
+  "notes": [
+    "This module defines the state-first architecture for get_state and hydrate_state over ACP with Marimo as registry consumer.",
+    "The just-module entrypoint is assumed and treated as an implementation detail above the Python wrapper layer."
+  ]
+}

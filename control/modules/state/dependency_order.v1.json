@@ -1,0 +1,101 @@
+{
+  "artifact_type": "dependency_order",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "objective": "Establish implementation ordering for the state-first architecture so DAG, interfaces, and packet framing land before runtime expansion.",
+  "ordered_steps": [
+    {
+      "step_id": "step_01",
+      "name": "north_star_workflow_dag",
+      "depends_on": [],
+      "outputs": [
+        "control/modules/state/workflow_dag.v1.md"
+      ],
+      "reason": "The DAG is the architecture north star and prevents drift in downstream contract work."
+    },
+    {
+      "step_id": "step_02",
+      "name": "state_surface_contract",
+      "depends_on": [
+        "step_01"
+      ],
+      "outputs": [
+        "control/modules/state/namespace.contract.v1.json"
+      ],
+      "reason": "The contract defines get_state, hydrate_state, ACP, Marimo, and substrate boundaries."
+    },
+    {
+      "step_id": "step_03",
+      "name": "interop_matrix",
+      "depends_on": [
+        "step_01",
+        "step_02"
+      ],
+      "outputs": [
+        "control/modules/state/interop_matrix.v1.json"
+      ],
+      "reason": "Interop mapping needs stable surfaces before adapter and wrapper analysis is meaningful."
+    },
+    {
+      "step_id": "step_04",
+      "name": "request_response_state_contract",
+      "depends_on": [
+        "step_02",
+        "step_03"
+      ],
+      "outputs": [
+        "future state.v1 request/response contract"
+      ],
+      "reason": "The stable envelope must come after surface and interop boundaries are explicit."
+    },
+    {
+      "step_id": "step_05",
+      "name": "python_wrapper_binding",
+      "depends_on": [
+        "step_04"
+      ],
+      "outputs": [
+        "future just->python wrapper binding"
+      ],
+      "reason": "The wrapper should bind to the state contract, not invent it."
+    },
+    {
+      "step_id": "step_06",
+      "name": "acp_transport_binding",
+      "depends_on": [
+        "step_04",
+        "step_05"
+      ],
+      "outputs": [
+        "future ACP request/response binding"
+      ],
+      "reason": "Transport should carry the state contract after the wrapper is stable."
+    },
+    {
+      "step_id": "step_07",
+      "name": "marimo_registry_binding",
+      "depends_on": [
+        "step_04",
+        "step_06"
+      ],
+      "outputs": [
+        "future Marimo registration and hydration binding"
+      ],
+      "reason": "Registry behavior should depend on stable envelope and transport semantics."
+    },
+    {
+      "step_id": "step_08",
+      "name": "kernel_review_packet",
+      "depends_on": [
+        "step_01",
+        "step_02",
+        "step_03"
+      ],
+      "outputs": [
+        "generated/problem_sets/ps-state-read-plane-v1-001/problem_set.json",
+        "generated/packets/ps-state-read-plane-v1-001/*"
+      ],
+      "reason": "Packet review should validate the architecture before implementation binding expands."
+    }
+  ]
+}

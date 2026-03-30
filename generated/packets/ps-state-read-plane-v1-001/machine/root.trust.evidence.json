@@ -1,0 +1,28 @@
+{
+  "artifact_type": "gpt_handoff.root.trust.evidence",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-state-read-plane-v1-001",
+  "tracking_issue": 15,
+  "evidence": [
+    {
+      "ref": "control/modules/state/module.root.v1.json",
+      "role": "module_root"
+    },
+    {
+      "ref": "control/modules/state/namespace.contract.v1.json",
+      "role": "target_contract"
+    },
+    {
+      "ref": "control/modules/state/workflow_dag.v1.md",
+      "role": "north_star_workflow"
+    },
+    {
+      "ref": "control/scm.pattern/authority.manifest.json",
+      "role": "authority_manifest"
+    }
+  ],
+  "notes": [
+    "This packet relies on local module artifacts and existing trust boundary surfaces.",
+    "No new authority boundary is introduced in this slice."
+  ]
+}

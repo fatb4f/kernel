@@ -1,0 +1,19 @@
+{
+  "artifact_type": "gpt_handoff.regen.record",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-state-read-plane-v1-001",
+  "tracking_issue": 15,
+  "inputs": [
+    "generated/problem_sets/ps-state-read-plane-v1-001/problem_set.json",
+    "control/modules/state/module.root.v1.json",
+    "control/modules/state/inventory.v1.json",
+    "control/modules/state/namespace.contract.v1.json",
+    "control/modules/state/workflow_dag.v1.md",
+    "control/modules/state/dependency_order.v1.json",
+    "control/modules/state/interop_matrix.v1.json"
+  ],
+  "notes": [
+    "Regeneration is stale when any state module architecture artifact changes.",
+    "Tracking lifecycle is anchored to issue #15."
+  ]
+}

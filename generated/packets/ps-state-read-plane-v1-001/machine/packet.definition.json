@@ -1,0 +1,122 @@
+{
+  "artifact_type": "gpt_handoff.packet.definition",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-state-read-plane-v1-001",
+  "title": "Packet handoff: state-first read-plane architecture slice v1",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "summary": "Packet derived from the control/modules/state architecture slice. It carries the north-star workflow DAG, dependency ordering, and interop matrix into a bounded review packet and references issue #15 as the lifecycle tracker.",
+  "ownership": {
+    "authority_owner": "kernel",
+    "packet_author": "ChatGPT",
+    "validation_owner": "local_runtime",
+    "realization_owner": "scm.pattern"
+  },
+  "constraints": [
+    "The packet remains architecture-only and review-only.",
+    "The state-first read path remains primary.",
+    "ACP remains transport only.",
+    "Marimo remains registry/view consumer only.",
+    "ChatGPT may author packet artifacts only and may not realize them."
+  ],
+  "tracking": {
+    "issue_number": 15,
+    "issue_ref": "https://github.com/fatb4f/kernel/issues/15"
+  },
+  "inputs": [
+    {
+      "ref": "generated/problem_sets/ps-state-read-plane-v1-001/problem_set.json",
+      "role": "problem_set"
+    },
+    {
+      "ref": "control/modules/state/module.root.v1.json",
+      "role": "module_root"
+    },
+    {
+      "ref": "control/modules/state/inventory.v1.json",
+      "role": "module_inventory"
+    },
+    {
+      "ref": "control/modules/state/namespace.contract.v1.json",
+      "role": "module_namespace_contract"
+    },
+    {
+      "ref": "control/modules/state/workflow_dag.v1.md",
+      "role": "workflow_dag"
+    },
+    {
+      "ref": "control/modules/state/dependency_order.v1.json",
+      "role": "dependency_order"
+    },
+    {
+      "ref": "control/modules/state/interop_matrix.v1.json",
+      "role": "interop_matrix"
+    },
+    {
+      "ref": "schemas/control/module_root.schema.json",
+      "role": "module_schema"
+    },
+    {
+      "ref": "schemas/control/module_inventory.schema.json",
+      "role": "module_schema"
+    },
+    {
+      "ref": "schemas/control/module_namespace_contract.schema.json",
+      "role": "module_schema"
+    },
+    {
+      "ref": "control/modules/README.md",
+      "role": "module_root_readme"
+    },
+    {
+      "ref": "control/scm.pattern/authority.manifest.json",
+      "role": "authority_manifest"
+    }
+  ],
+  "deliverables": {
+    "required_now": [
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/machine/packet.definition.json",
+        "kind": "packet_definition"
+      },
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/machine/scm.pattern.binding.json",
+        "kind": "scm_pattern_binding"
+      },
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/machine/packet.review.request.json",
+        "kind": "packet_review_request"
+      },
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/machine/root.trust.evidence.json",
+        "kind": "root_trust_evidence"
+      },
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/machine/regen.record.json",
+        "kind": "regen_record"
+      },
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/machine/artifact.manifest.json",
+        "kind": "artifact_manifest"
+      },
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/machine/packet.approval.json",
+        "kind": "compatibility_placeholder",
+        "transitional": true,
+        "authoritative": false
+      },
+      {
+        "ref": "generated/packets/ps-state-read-plane-v1-001/human/packet.definition.md",
+        "kind": "derived_human_definition"
+      }
+    ]
+  },
+  "review_lifecycle": {
+    "current_gate": "AWAITING_HUMAN_REVIEW",
+    "allowed_outcomes": [
+      "APPROVED",
+      "REVISE",
+      "REJECTED"
+    ]
+  }
+}

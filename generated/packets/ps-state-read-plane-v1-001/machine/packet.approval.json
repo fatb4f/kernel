@@ -1,0 +1,8 @@
+{
+  "artifact_type": "gpt_handoff.packet.approval",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-state-read-plane-v1-001",
+  "authoritative": false,
+  "status": "placeholder_until_human_review",
+  "tracking_issue": 15
+}

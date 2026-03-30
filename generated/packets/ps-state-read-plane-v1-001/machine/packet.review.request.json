@@ -1,0 +1,13 @@
+{
+  "artifact_type": "gpt_handoff.packet.review.request",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-state-read-plane-v1-001",
+  "review_scope": "Review the state-first read-plane architecture slice against the new control/modules/state artifacts, module schemas, and issue #15 tracking scope.",
+  "questions": [
+    "Is the read-state plane correctly primary over any general Git capability framing?",
+    "Are get_state and hydrate_state scoped narrowly enough for a first state.v1 contract?",
+    "Does the DAG keep ACP and Marimo in the correct downstream roles?",
+    "Is the dependency ordering sufficient before any wrapper, ACP, or Marimo implementation work begins?"
+  ],
+  "tracking_issue": 15
+}

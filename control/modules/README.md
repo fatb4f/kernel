@@ -11,6 +11,7 @@ Rules:
 
 Current first domain root:
 - `git`
+- `state`
 
 This namespace is intentionally focused on the Git substrate lane first so the repo can prove:
 - token-burn reduction through stable module naming

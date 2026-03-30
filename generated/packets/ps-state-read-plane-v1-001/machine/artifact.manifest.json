@@ -1,0 +1,52 @@
+{
+  "artifact_type": "gpt_handoff.artifact.manifest",
+  "artifact_version": "0.2.0",
+  "packet_id": "ps-state-read-plane-v1-001",
+  "workflow_state": "DEFINITION_UNDER_REVIEW",
+  "review_state": "DEFINITION_UNDER_REVIEW",
+  "required_artifacts": [
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/machine/packet.definition.json",
+      "kind": "packet_definition"
+    },
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/machine/scm.pattern.binding.json",
+      "kind": "scm_pattern_binding"
+    },
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/machine/packet.review.request.json",
+      "kind": "packet_review_request"
+    },
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/machine/root.trust.evidence.json",
+      "kind": "root_trust_evidence"
+    },
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/machine/regen.record.json",
+      "kind": "regen_record"
+    },
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/machine/artifact.manifest.json",
+      "kind": "artifact_manifest"
+    },
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/machine/packet.approval.json",
+      "kind": "compatibility_placeholder",
+      "transitional": true,
+      "authoritative": false
+    },
+    {
+      "ref": "generated/packets/ps-state-read-plane-v1-001/human/packet.definition.md",
+      "kind": "derived_human_definition"
+    }
+  ],
+  "supporting_inputs": [
+    "generated/problem_sets/ps-state-read-plane-v1-001/problem_set.json",
+    "control/modules/state/module.root.v1.json",
+    "control/modules/state/inventory.v1.json",
+    "control/modules/state/namespace.contract.v1.json",
+    "control/modules/state/workflow_dag.v1.md",
+    "control/modules/state/dependency_order.v1.json",
+    "control/modules/state/interop_matrix.v1.json"
+  ]
+}
