@@ -117,17 +117,16 @@ def render_json(template: Path, admitted_state: Path, output: Path) -> str:
     return runtime
 
 
-def parse_args() -> argparse.Namespace:
+def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Admit and render a normalized problem_set surface.")
     parser.add_argument("problem_set", nargs="?", type=Path, default=DEFAULT_PROBLEM_SET)
     parser.add_argument("--run-id", default="", help="Optional explicit run identifier")
-    return parser.parse_args()
+    return parser
 
 
-def main() -> int:
-    args = parse_args()
-    run_id = args.run_id or utc_run_id()
-    problem_set_path = args.problem_set.resolve()
+def run(problem_set_path: Path, run_id_value: str = "") -> dict:
+    run_id = run_id_value or utc_run_id()
+    problem_set_path = problem_set_path.resolve()
     problem_set = validate_problem_set(problem_set_path)
 
     for phase in ["source-validation", "normalization", "admission", "render", "integrity"]:
@@ -288,9 +287,14 @@ def main() -> int:
             ],
         },
     )
+    return {"rendered_doc": rel(rendered_doc), "rendered_summary": rel(rendered_summary), "run_id": run_id}
 
-    print(rel(rendered_doc))
-    print(rel(rendered_summary))
+
+def main() -> int:
+    args = build_arg_parser().parse_args()
+    result = run(args.problem_set, args.run_id)
+    print(result["rendered_doc"])
+    print(result["rendered_summary"])
     return 0
 
 

@@ -347,7 +347,7 @@ def write_log_artifacts(
     return log_root
 
 
-def main() -> int:
+def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Dry-run packet runner for chatgpt-pipeline packet files.")
     parser.add_argument(
         "packet",
@@ -357,10 +357,13 @@ def main() -> int:
     )
     parser.add_argument("--run-id", default=utc_run_id())
     parser.add_argument("--execute", action="store_true", help="Reserved for future non-dry-run execution.")
-    args = parser.parse_args()
+    return parser
 
-    dry_run = not args.execute
-    packet_root = packet_root_from_arg(args.packet)
+
+def run(packet: str, run_id: str, execute: bool) -> dict:
+    run_id = run_id or utc_run_id()
+    dry_run = not execute
+    packet_root = packet_root_from_arg(packet)
     artifacts = verify_required_machine_artifacts(packet_root)
 
     schema_validations = validate_packet_family(artifacts)
@@ -380,7 +383,7 @@ def main() -> int:
 
     log_root = write_log_artifacts(
         packet_root=packet_root,
-        run_id=args.run_id,
+        run_id=run_id,
         dry_run=dry_run,
         packet_definition=packet_definition,
         refs=refs,
@@ -390,21 +393,22 @@ def main() -> int:
         gate_state=gate_state,
     )
 
-    print(
-        json.dumps(
-            {
-                "run_id": args.run_id,
-                "mode": "DRY_RUN" if dry_run else "EXECUTE",
-                "packet_root": str(packet_root.relative_to(REPO_ROOT)),
-                "log_root": str(log_root.relative_to(REPO_ROOT)),
-                "packet_id": packet_definition["packet_id"],
-                "review_gate": gate_state["review_gate"],
-                "realization_gate": gate_state["realization_gate"],
-                "next_step": gate_state["next_step"],
-            },
-            indent=2,
-        )
-    )
+    return {
+        "run_id": run_id,
+        "mode": "DRY_RUN" if dry_run else "EXECUTE",
+        "packet_root": str(packet_root.relative_to(REPO_ROOT)),
+        "log_root": str(log_root.relative_to(REPO_ROOT)),
+        "packet_id": packet_definition["packet_id"],
+        "review_gate": gate_state["review_gate"],
+        "realization_gate": gate_state["realization_gate"],
+        "next_step": gate_state["next_step"],
+    }
+
+
+def main() -> int:
+    parser = build_arg_parser()
+    args = parser.parse_args()
+    print(json.dumps(run(args.packet, args.run_id, args.execute), indent=2))
     return 0
 
 
