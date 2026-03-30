@@ -8,8 +8,8 @@ Rules:
 - generated state stays under `generated/` and is not part of authored module namespaces
 - packet artifacts remain workflow inputs/outputs, not module implementations
 
-Current first namespace:
-- `__kernel.git__`
+Current first domain root:
+- `git`
 
 This namespace is intentionally focused on the Git substrate lane first so the repo can prove:
 - token-burn reduction through stable module naming
@@ -17,8 +17,8 @@ This namespace is intentionally focused on the Git substrate lane first so the r
 - cleaner projection targets for adapter-backed entrypoints
 
 Initial authored layout target:
-- `control/modules/__kernel.git__/inventory.v1.json`
-- `control/modules/__kernel.git__/namespace.contract.v1.json`
-- `control/modules/__kernel.git__/structure.v1.md`
+- `control/modules/git/inventory.v1.json`
+- `control/modules/git/namespace.contract.v1.json`
+- `control/modules/git/structure.v1.md`
 
 The implementation move from `scripts/` into namespaced modules is a follow-on step.

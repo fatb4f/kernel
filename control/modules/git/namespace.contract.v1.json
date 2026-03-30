@@ -1,0 +1,130 @@
+{
+  "artifact_type": "module_namespace_contract",
+  "artifact_version": "v1",
+  "module_root": "control/modules/git",
+  "domain_id": "git",
+  "status": "done",
+  "purpose": "Define the first stable kernel module root around the Git-substrate lane using kernel-aligned surface names.",
+  "authority_boundary": {
+    "authoritative_inputs": [
+      "control/scm.pattern/authority.manifest.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.definition.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/scm.pattern.binding.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.review.request.json",
+      "generated/packets/ps-git-substrate-adapters-v1-001/machine/packet.review.decision.json"
+    ],
+    "derived_exec_state": [
+      "generated/state/admission/chatgpt-packet-file-runner/*",
+      "generated/state/realization/scm.pattern/*",
+      "generated/state/closeout/scm.pattern/*"
+    ],
+    "adapter_outputs_are_projection_only": true
+  },
+  "surface_contracts": [
+    {
+      "surface_id": "packet.admit",
+      "kind": "interface_envelope",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "python-runtime-controller",
+      "owned_paths": [
+        "scripts/run_chatgpt_packet_file.py"
+      ],
+      "responsibility": "Admission and gate-state evaluation for packet files."
+    },
+    {
+      "surface_id": "packet.realize",
+      "kind": "interface_envelope",
+      "bridge_class": "interop-bridge",
+      "runtime_actor_class": "python-runtime-controller",
+      "owned_paths": [
+        "scripts/realize_git_substrate_packet.py"
+      ],
+      "responsibility": "Local scm.pattern realization wrapper for the Git-substrate packet."
+    },
+    {
+      "surface_id": "packet.closeout",
+      "kind": "interface_envelope",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "python-runtime-controller",
+      "owned_paths": [
+        "scripts/close_git_substrate_packet.py"
+      ],
+      "responsibility": "Local scm.pattern closeout wrapper for the Git-substrate packet."
+    },
+    {
+      "surface_id": "packet.contract",
+      "kind": "interface_envelope",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "validator",
+      "owned_paths": [
+        "generated/packets/ps-git-substrate-adapters-v1-001/*"
+      ],
+      "responsibility": "Packet contract inputs and review boundary artifacts for the Git-substrate slice."
+    },
+    {
+      "surface_id": "state/interface.gix",
+      "kind": "codegen_artifact",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "owned_paths": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py"
+      ],
+      "responsibility": "gix-backed interface over the state space."
+    },
+    {
+      "surface_id": "state/interface.sem",
+      "kind": "codegen_artifact",
+      "bridge_class": "codegen-bridge",
+      "runtime_actor_class": "adapter",
+      "owned_paths": [
+        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
+      ],
+      "responsibility": "sem-backed interface over the state space."
+    },
+    {
+      "surface_id": "state.admission",
+      "kind": "derived_exec_state",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "emitter",
+      "owned_paths": [
+        "generated/state/admission/chatgpt-packet-file-runner/*"
+      ],
+      "responsibility": "Derived admission execution state."
+    },
+    {
+      "surface_id": "state.realization",
+      "kind": "derived_exec_state",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "emitter",
+      "owned_paths": [
+        "generated/state/realization/scm.pattern/*"
+      ],
+      "responsibility": "Derived realization execution state."
+    },
+    {
+      "surface_id": "state.closeout",
+      "kind": "derived_exec_state",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "emitter",
+      "owned_paths": [
+        "generated/state/closeout/scm.pattern/*"
+      ],
+      "responsibility": "Derived closeout execution state."
+    },
+    {
+      "surface_id": "evidence.authority.manifest",
+      "kind": "evidence_stream",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "validator",
+      "owned_paths": [
+        "control/scm.pattern/*"
+      ],
+      "responsibility": "Authority manifests and trust-bound control inputs relevant to Git-substrate realization."
+    }
+  ],
+  "token_burn_mitigation": {
+    "problem": "Git-substrate behavior is currently discovered by following script names, packet paths, generated state, and external emitter paths separately.",
+    "mitigation": "Canonical surface names under control/modules/git provide one stable lookup surface for interface envelopes, derived exec state, evidence streams, and state interfaces.",
+    "success_signal": "Future Git-substrate work can bind to packet.*, state.*, evidence.*, and state/interface.* surfaces instead of rediscovering ad hoc path relationships."
+  }
+}
