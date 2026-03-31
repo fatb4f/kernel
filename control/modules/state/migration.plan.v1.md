@@ -13,10 +13,12 @@ It is separate from:
 
 | Source surface | Current basis | Target surface | Action | Status |
 | --- | --- | --- | --- | --- |
-| unified Git runtime aggregation | `../codex_home/.../control_realize_git_substrate_adapters_v1.py` | `state.snapshot.unified` | reuse as substrate basis until state.v1 wrapper exists | planned |
-| deterministic Git facts | `../codex_home/.../emit_gix_runtime.py` | `state.interface.git.gix` | bind into get_state wrapper later | planned |
-| semantic enrichment | `../codex_home/.../emit_sem_runtime.py` | `state.interface.semantic.sem` | bind into hydrate_state wrapper later | planned |
-| local operator surface | ad hoc shell/python entrypoints | `just state.get` / `just state.hydrate` | introduce as just-module entrypoint after state.v1 contract exists | planned |
+| unified Git runtime aggregation | `../dotfiles/.../control_realize_git_substrate_adapters_v1.py` | `state.snapshot.unified` | reuse as substrate basis until state.v1 wrapper exists | planned |
+| deterministic Git facts | `../dotfiles/.../emit_gix_runtime.py` | `state.interface.git.gix` | bind into get_state wrapper later | planned |
+| semantic enrichment | `../dotfiles/.../emit_sem_runtime.py` | `state.interface.semantic.sem` | bind into hydrate_state wrapper later | planned |
+| Marimo host binding | conceptual only | `state.host.marimo` | define default operational host binding before notebook or app realization layout is standardized | planned |
+| local operator surface | ad hoc shell/python entrypoints | `just state.get` / `just state.hydrate` | introduce as parity operator entrypoints after state.v1 contract exists | planned |
+| runtime substrate | conceptual only | `state.env.uv` | bind uv as launcher and dependency substrate after runtime.binding.v1 exists | planned |
 | ACP transport | conceptual only | `state.transport.acp` | add request/response envelope once state.v1 is stable | planned |
 | Marimo registry binding | conceptual only | `state.registry.marimo` | bind after ACP envelope and snapshot identity rules exist | planned |
 
@@ -26,3 +28,4 @@ It is separate from:
 - Do not expose a generic Git shell.
 - Do not let ACP become the model layer.
 - Do not let Marimo depend on gix or sem implementation quirks.
+- Do not let `just` become the semantic center.

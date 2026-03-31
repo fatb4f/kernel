@@ -16,8 +16,8 @@ It is separate from:
 | packet admission entrypoint | `scripts/run_chatgpt_packet_file.py` | `packet.git.admit` | keep current path until a namespaced module implementation exists | planned |
 | packet realization entrypoint | `scripts/realize_git_substrate_packet.py` | `packet.git.realize` | keep current path until a namespaced module implementation exists | planned |
 | packet closeout entrypoint | `scripts/close_git_substrate_packet.py` | `packet.git.closeout` | keep current path until a namespaced module implementation exists | planned |
-| gix projection backend | `../codex_home/.../emit_gix_runtime.py` | `state.git.interface.gix` | retain as external basis until kernel owns a local projection backend | planned |
-| sem projection backend | `../codex_home/.../emit_sem_runtime.py` | `state.git.interface.sem` | retain as external basis until kernel owns a local projection backend | planned |
+| gix projection backend | `../dotfiles/.../emit_gix_runtime.py` | `state.git.interface.gix` | retain as external basis until kernel owns a local projection backend | planned |
+| sem projection backend | `../dotfiles/.../emit_sem_runtime.py` | `state.git.interface.sem` | retain as external basis until kernel owns a local projection backend | planned |
 
 ## Constraints
 

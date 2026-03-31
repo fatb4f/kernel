@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fatb4f.github.io/kernel/schemas/control/session.v1.schema.json",
+  "title": "session.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "session_id",
+    "host",
+    "transport",
+    "staleness"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "session"
+    },
+    "artifact_version": {
+      "const": "v1"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "host": {
+      "type": "string",
+      "enum": [
+        "marimo"
+      ]
+    },
+    "transport": {
+      "type": "string",
+      "enum": [
+        "direct",
+        "mcp",
+        "acp"
+      ]
+    },
+    "staleness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "fresh",
+            "stale",
+            "unknown"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "lineage_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

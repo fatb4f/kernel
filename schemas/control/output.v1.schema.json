@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fatb4f.github.io/kernel/schemas/control/output.v1.schema.json",
+  "title": "output.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_type",
+    "artifact_version",
+    "encoding",
+    "schema_ref"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "output"
+    },
+    "artifact_version": {
+      "const": "v1"
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [
+        "json",
+        "ndjson",
+        "jsonl"
+      ]
+    },
+    "schema_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "streaming": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

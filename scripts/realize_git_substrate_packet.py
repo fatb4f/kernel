@@ -10,8 +10,16 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PACKET_ROOT = REPO_ROOT / "generated" / "packets" / "ps-git-substrate-adapters-v1-001"
-DEFAULT_CODEX_HOME_RUNNER = (
-    REPO_ROOT.parent / "codex_home" / "control" / "proposals" / "git_substrate_adapters_v1" / "control_realize_git_substrate_adapters_v1.py"
+DEFAULT_CODEX_RUNNER = (
+    REPO_ROOT.parent
+    / "dotfiles"
+    / "chezmoi"
+    / "dot_config"
+    / "codex"
+    / "control"
+    / "proposals"
+    / "git_substrate_adapters_v1"
+    / "control_realize_git_substrate_adapters_v1.py"
 )
 CONTROL_OBJECT_ID = "scm.pattern"
 
@@ -44,7 +52,7 @@ def run_json(cmd: list[str], cwd: Path) -> tuple[dict, str, str]:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Local scm.pattern realization wrapper for the Git-substrate packet.")
     parser.add_argument("--packet-root", default=str(DEFAULT_PACKET_ROOT))
-    parser.add_argument("--runner", default=str(DEFAULT_CODEX_HOME_RUNNER))
+    parser.add_argument("--runner", default=str(DEFAULT_CODEX_RUNNER))
     parser.add_argument("--run-id", default=utc_run_id())
     return parser.parse_args(argv)
 

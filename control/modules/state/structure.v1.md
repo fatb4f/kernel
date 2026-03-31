@@ -9,7 +9,9 @@ It is intentionally narrow:
 - deterministic Git facts from `gix`
 - semantic enrichment from `sem`
 - ACP as structured transport only
-- Marimo as registry, hydration, and view consumer
+- Marimo as default operational host binding plus registry, hydration, and view consumer
+- `uv` as runtime environment substrate
+- `just` as parity operator verb layer
 - kernel packet review for the architecture slice
 
 It does not attempt:
@@ -50,5 +52,7 @@ It does not attempt:
 - physical root remains domain-first: `control/modules/state`
 - semantic ids remain class-first and qualified
 - ACP is transport only
-- Marimo is registry/view consumer only
+- Marimo is the default host binding operationally, not semantic authority
+- `uv` remains the environment substrate, not semantic authority
+- `just` remains the operator verb layer, not semantic authority
 - state service semantics are primary; Git adapter/runtime details remain downstream

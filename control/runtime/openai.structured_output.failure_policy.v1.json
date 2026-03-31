@@ -1,0 +1,27 @@
+{
+  "artifact_type": "openai_structured_output_failure_policy",
+  "artifact_version": "v1",
+  "provider": "openai",
+  "cases": {
+    "refusal": {
+      "behavior": "fail_closed",
+      "retry": false
+    },
+    "incomplete_output": {
+      "behavior": "retry",
+      "max_retries": 1
+    },
+    "validation_failure": {
+      "behavior": "fail_closed",
+      "retry": false
+    },
+    "transport_failure": {
+      "behavior": "retry",
+      "max_retries": 2
+    }
+  },
+  "notes": [
+    "Transport success is not contract success.",
+    "Runtime fallback policy remains Codex-in-dotfiles-owned."
+  ]
+}

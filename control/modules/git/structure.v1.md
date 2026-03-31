@@ -47,9 +47,9 @@ Current operator entrypoints mapped into the module root:
 - `scripts/close_git_substrate_packet.py` -> `packet.git.closeout`
 
 External adapter basis mapped into the module root:
-- `codex_home/.../emit_gix_runtime.py` -> `state.git.interface.gix`
-- `codex_home/.../emit_sem_runtime.py` -> `state.git.interface.sem`
-- `codex_home/.../control_realize_git_substrate_adapters_v1.py` -> `generator.interface.runtime`
+- `dotfiles/.../emit_gix_runtime.py` -> `state.git.interface.gix`
+- `dotfiles/.../emit_sem_runtime.py` -> `state.git.interface.sem`
+- `dotfiles/.../control_realize_git_substrate_adapters_v1.py` -> `generator.interface.runtime`
 
 Generated runtime state mapped into the module root, but not authored:
 - `generated/state/admission/...` -> `state.git.admission`

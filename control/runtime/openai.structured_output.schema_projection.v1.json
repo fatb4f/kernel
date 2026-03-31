@@ -1,0 +1,30 @@
+{
+  "artifact_type": "openai_structured_output_schema_projection",
+  "artifact_version": "v1",
+  "provider": "openai",
+  "strict": true,
+  "projected_schemas": [
+    {
+      "kernel_schema": "state.v1",
+      "projection_name": "state_v1_response",
+      "projection_version": "v1",
+      "compatibility": "openai_safe_subset_required"
+    },
+    {
+      "kernel_schema": "session.v1",
+      "projection_name": "session_v1_response",
+      "projection_version": "v1",
+      "compatibility": "openai_safe_subset_required"
+    },
+    {
+      "kernel_schema": "output.v1",
+      "projection_name": "output_v1_response",
+      "projection_version": "v1",
+      "compatibility": "openai_safe_subset_required"
+    }
+  ],
+  "rules": [
+    "Do not send raw kernel schemas unless already compatible with the OpenAI-supported subset.",
+    "Projected schema name and version must be stable."
+  ]
+}

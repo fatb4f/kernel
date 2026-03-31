@@ -9,42 +9,42 @@
   "surfaces": [
     {
       "surface_id": "state.interface.git.gix",
-      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "path": "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
       "exists": true,
       "kind": "projection_backend",
       "bridge_class": "codegen-bridge",
       "runtime_actor_class": "adapter",
       "classification": "projection",
       "evidence_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json"
       ],
       "source_scope": "external_basis",
       "consumer": "state read normalization"
     },
     {
       "surface_id": "state.interface.semantic.sem",
-      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+      "path": "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
       "exists": true,
       "kind": "projection_backend",
       "bridge_class": "codegen-bridge",
       "runtime_actor_class": "adapter",
       "classification": "projection",
       "evidence_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
       ],
       "source_scope": "external_basis",
       "consumer": "state hydration enrichment"
     },
     {
       "surface_id": "state.snapshot.unified",
-      "path": "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "path": "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
       "exists": true,
       "kind": "unified_runtime_aggregator",
       "bridge_class": "interop-bridge",
       "runtime_actor_class": "generator",
       "classification": "projection",
       "evidence_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/test_control_realize_git_substrate_adapters_v1.py"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/test_control_realize_git_substrate_adapters_v1.py"
       ],
       "source_scope": "external_basis",
       "consumer": "state snapshot aggregation"

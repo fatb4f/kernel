@@ -20,9 +20,9 @@
     "generated/state/closeout/scm.pattern/ps-git-substrate-adapters-v1-001/*"
   ],
   "external_basis_refs": [
-    "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
-    "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
-    "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
   ],
   "surfaces": [
     "packet.git.admit",

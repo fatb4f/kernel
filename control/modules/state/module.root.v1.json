@@ -21,12 +21,12 @@
     "generated/packets/ps-state-read-plane-v1-001/*"
   ],
   "external_basis_refs": [
-    "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
-    "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
-    "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
-    "../codex_home/control/proposals/git_substrate_adapters_v1/git_projection_common.py",
-    "../codex_home/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json",
-    "../codex_home/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/git_projection_common.py",
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json",
+    "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
   ],
   "surfaces": [
     "state.service.get",

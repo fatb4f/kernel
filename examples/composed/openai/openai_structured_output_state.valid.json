@@ -1,0 +1,23 @@
+{
+  "schema_version": "state.v1",
+  "snapshot_id": "snap-123",
+  "repo_ref": {
+    "root": "/repo",
+    "head": "abc123",
+    "branch": "main"
+  },
+  "observed_at": "2026-03-30T21:00:00Z",
+  "freshness": {
+    "mode": "fresh"
+  },
+  "state": {
+    "git": {},
+    "semantic": {},
+    "workspace": {}
+  },
+  "provenance": {
+    "backend": "combined",
+    "inputs": [],
+    "warnings": []
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fatb4f.github.io/kernel/schemas/control/state.v1.schema.json",
+  "title": "state.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "repo_ref",
+    "observed_at",
+    "freshness",
+    "state",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "state.v1"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "head": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        }
+      }
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "cached",
+            "fresh",
+            "hydrated"
+          ]
+        },
+        "source_snapshot_id": {
+          "type": "string"
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "git",
+        "semantic",
+        "workspace"
+      ],
+      "properties": {
+        "git": {
+          "type": "object"
+        },
+        "semantic": {
+          "type": "object"
+        },
+        "workspace": {
+          "type": "object"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "backend",
+        "inputs",
+        "warnings"
+      ],
+      "properties": {
+        "backend": {
+          "type": "string",
+          "enum": [
+            "gix",
+            "sem",
+            "combined"
+          ]
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

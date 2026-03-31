@@ -1,0 +1,24 @@
+{
+  "artifact_type": "openai_structured_output_binding",
+  "artifact_version": "v1",
+  "provider": "openai",
+  "applies_to": [
+    "state.v1",
+    "session.v1",
+    "output.v1"
+  ],
+  "required_artifacts": [
+    "openai.structured_output.schema_projection.v1.json",
+    "openai.structured_output.failure_policy.v1.json",
+    "openai.structured_output.model_profile.v1.json"
+  ],
+  "transport_wrappers": [
+    "responses_api"
+  ],
+  "strict": true,
+  "post_validate": true,
+  "notes": [
+    "Semantic schema meaning remains kernel-owned.",
+    "Runtime invocation and retries remain Codex-in-dotfiles-owned."
+  ]
+}

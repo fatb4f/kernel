@@ -1,0 +1,6 @@
+{
+  "artifact_type": "output",
+  "artifact_version": "v1",
+  "encoding": "json",
+  "schema_ref": "state.v1"
+}

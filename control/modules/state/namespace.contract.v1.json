@@ -5,7 +5,7 @@
   "module_root": "control/modules/state",
   "namespace_grammar": "class_first_qualified_v1",
   "document_mode": "target_state",
-  "purpose": "Target-state contract for a state-first architecture rooted in get_state and hydrate_state, with ACP as transport and Marimo as registry/view consumer.",
+  "purpose": "Target-state contract for a state-first architecture rooted in get_state and hydrate_state, with ACP as transport, Marimo as default host binding plus registry/view consumer, uv as environment substrate, and just as parity operator verb layer.",
   "contract_inputs": {
     "owned_paths": [
       "control/modules/state/module.root.v1.json",
@@ -22,11 +22,11 @@
       "generated/packets/ps-state-read-plane-v1-001/*"
     ],
     "external_basis_refs": [
-      "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
-      "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
-      "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
-      "../codex_home/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json",
-      "../codex_home/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json",
+      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
     ]
   },
   "generator": {
@@ -52,8 +52,8 @@
       "owned_paths": [],
       "derived_paths": [],
       "external_basis_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
-        "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
       ],
       "classification": "semantic",
       "required": true,
@@ -68,8 +68,8 @@
       "owned_paths": [],
       "derived_paths": [],
       "external_basis_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
-        "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
       ],
       "classification": "semantic",
       "required": true,
@@ -84,7 +84,7 @@
       "owned_paths": [],
       "derived_paths": [],
       "external_basis_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py"
       ],
       "classification": "projection",
       "required": true,
@@ -99,7 +99,7 @@
       "owned_paths": [],
       "derived_paths": [],
       "external_basis_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
       ],
       "classification": "projection",
       "required": true,
@@ -121,8 +121,47 @@
     {
       "surface_id": "state.registry.marimo",
       "kind": "registry_consumer_boundary",
-      "responsibility": "Register snapshots, manage hydration lifecycle, and provide view derivation over structured state envelopes.",
+      "responsibility": "Register snapshots, manage hydration lifecycle, and provide view derivation over structured state envelopes from the default Marimo host binding.",
       "bridge_class": "record-contract",
+      "runtime_actor_class": "generator",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "state.host.marimo",
+      "kind": "host_binding",
+      "responsibility": "Define Marimo as the default operational host shell over state contracts without elevating host behavior into semantic authority.",
+      "bridge_class": "interop-bridge",
+      "runtime_actor_class": "python-runtime-controller",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "state.env.uv",
+      "kind": "environment_binding",
+      "responsibility": "Define uv as the runtime and dependency substrate for state-plane realizations.",
+      "bridge_class": "interop-bridge",
+      "runtime_actor_class": "python-runtime-controller",
+      "owned_paths": [],
+      "derived_paths": [],
+      "external_basis_refs": [],
+      "classification": "semantic",
+      "required": true,
+      "generator_ref": "generator.semantic.state.contract"
+    },
+    {
+      "surface_id": "state.operator.just",
+      "kind": "operator_entry_surface",
+      "responsibility": "Define just as the parity operator verb layer for named state-plane entrypoints.",
+      "bridge_class": "interop-bridge",
       "runtime_actor_class": "generator",
       "owned_paths": [],
       "derived_paths": [],
@@ -140,7 +179,7 @@
       "owned_paths": [],
       "derived_paths": [],
       "external_basis_refs": [
-        "../codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
+        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
       ],
       "classification": "semantic",
       "required": true,
@@ -237,6 +276,7 @@
   "notes": [
     "Read-state plane first, write plane later.",
     "ACP is transport only.",
-    "Marimo is registry and view consumer, not substrate authority."
+    "Marimo is the default host binding operationally, not substrate authority.",
+    "uv is the runtime substrate and just is the parity operator verb layer."
   ]
 }

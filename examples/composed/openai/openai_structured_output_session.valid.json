@@ -1,0 +1,10 @@
+{
+  "artifact_type": "session",
+  "artifact_version": "v1",
+  "session_id": "sess-123",
+  "host": "marimo",
+  "transport": "mcp",
+  "staleness": {
+    "mode": "fresh"
+  }
+}
