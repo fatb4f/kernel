@@ -1,0 +1,38 @@
+{
+  "artifact_type": "session_metadata_contract",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "contract_id": "state.session.metadata.v1",
+  "schema_ref": "schemas/control/session.v1.schema.json",
+  "fields": {
+    "host": {
+      "meaning": "Operational host binding for the state-plane session.",
+      "allowed": [
+        "marimo"
+      ]
+    },
+    "transport": {
+      "meaning": "Boundary class used to carry the session.",
+      "allowed": [
+        "direct",
+        "mcp",
+        "acp"
+      ]
+    },
+    "staleness.mode": {
+      "meaning": "Freshness class of the currently observed state session.",
+      "allowed": [
+        "fresh",
+        "stale",
+        "unknown"
+      ]
+    },
+    "lineage_refs": {
+      "meaning": "Runtime lineage hints that do not override kernel semantic contract truth."
+    }
+  },
+  "notes": [
+    "Session metadata is transport- and host-aware but remains subordinate to state contract semantics.",
+    "Runtime-specific identifiers may be emitted, but host/runtime notes do not redefine field meaning."
+  ]
+}

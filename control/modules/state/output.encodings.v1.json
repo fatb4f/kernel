@@ -1,0 +1,18 @@
+{
+  "artifact_type": "output_encoding_contract",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "contract_id": "state.output.encodings.v1",
+  "schema_ref": "schemas/control/output.v1.schema.json",
+  "policy": "structured_outputs_required",
+  "primary_encoding": "json",
+  "stream_encodings": [
+    "ndjson",
+    "jsonl"
+  ],
+  "notes": [
+    "State-plane runtime responses must have a structured machine-readable form.",
+    "Human-readable notebook rendering may be layered above this contract without replacing it.",
+    "Line-oriented encodings are projection choices over the same semantic response family."
+  ]
+}

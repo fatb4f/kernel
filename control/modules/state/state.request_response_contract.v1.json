@@ -1,0 +1,65 @@
+{
+  "artifact_type": "state_request_response_contract",
+  "artifact_version": "v1",
+  "module_id": "state",
+  "contract_id": "state.request_response.v1",
+  "purpose": "Authoritative request/response contract reference for the state-first read plane rooted in get_state and hydrate_state.",
+  "operations": [
+    {
+      "operation_id": "get_state",
+      "surface_id": "state.service.get",
+      "request_shape": {
+        "transport_hint": [
+          "direct",
+          "mcp",
+          "acp"
+        ],
+        "required_fields": [
+          "repo_ref.root"
+        ],
+        "optional_fields": [
+          "repo_ref.head",
+          "repo_ref.branch",
+          "freshness.mode"
+        ]
+      },
+      "response_shape": {
+        "payload_schema_ref": "schemas/control/state.v1.schema.json",
+        "session_schema_ref": "schemas/control/session.v1.schema.json",
+        "output_schema_ref": "schemas/control/output.v1.schema.json"
+      }
+    },
+    {
+      "operation_id": "hydrate_state",
+      "surface_id": "state.service.hydrate",
+      "request_shape": {
+        "transport_hint": [
+          "direct",
+          "acp"
+        ],
+        "required_fields": [
+          "repo_ref.root"
+        ],
+        "optional_fields": [
+          "repo_ref.head",
+          "repo_ref.branch",
+          "freshness.source_snapshot_id"
+        ]
+      },
+      "response_shape": {
+        "payload_schema_ref": "schemas/control/state.v1.schema.json",
+        "session_schema_ref": "schemas/control/session.v1.schema.json",
+        "output_schema_ref": "schemas/control/output.v1.schema.json"
+      }
+    }
+  ],
+  "transport_rules": {
+    "default": "direct",
+    "read_exposure": "mcp",
+    "actuation_crossing": "acp"
+  },
+  "notes": [
+    "This artifact promotes the request/response contract family into the state module authority surface.",
+    "Runtime realizations may add host-specific or evidence-specific wrappers, but must not drift from the payload, session, and output schema refs defined here."
+  ]
+}

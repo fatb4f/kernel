@@ -78,6 +78,50 @@
       "consumer": "snapshot registration and hydration consumer"
     },
     {
+      "surface_id": "state.contract.request_response",
+      "path": "control/modules/state/state.request_response_contract.v1.json",
+      "exists": true,
+      "kind": "request_response_contract",
+      "bridge_class": "message-contract",
+      "runtime_actor_class": "validator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "schemas/control/state.v1.schema.json",
+        "schemas/control/session.v1.schema.json",
+        "schemas/control/output.v1.schema.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "state request and response authority"
+    },
+    {
+      "surface_id": "state.contract.session",
+      "path": "control/modules/state/session.metadata.v1.json",
+      "exists": true,
+      "kind": "session_contract_reference",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "validator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "schemas/control/session.v1.schema.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "session metadata authority"
+    },
+    {
+      "surface_id": "state.contract.output",
+      "path": "control/modules/state/output.encodings.v1.json",
+      "exists": true,
+      "kind": "output_contract_reference",
+      "bridge_class": "record-contract",
+      "runtime_actor_class": "validator",
+      "classification": "semantic",
+      "evidence_refs": [
+        "schemas/control/output.v1.schema.json"
+      ],
+      "source_scope": "owned",
+      "consumer": "structured output encoding authority"
+    },
+    {
       "surface_id": "generator.state.workflow_dag",
       "path": "control/modules/state/workflow_dag.v1.md",
       "exists": true,

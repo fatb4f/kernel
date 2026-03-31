@@ -1,0 +1,30 @@
+{
+  "artifact_type": "runtime_binding",
+  "artifact_version": "v1",
+  "binding_id": "state.default-python-agent-code-mode",
+  "module_scope": "state",
+  "host": "marimo",
+  "env_substrate": "uv",
+  "operator_entry": "just",
+  "transport": [
+    "direct",
+    "mcp",
+    "acp"
+  ],
+  "encoding": [
+    "json",
+    "ndjson",
+    "jsonl"
+  ],
+  "lineage": {
+    "state_module_refs": [
+      "control/modules/state/state.request_response_contract.v1.json",
+      "control/modules/state/session.metadata.v1.json",
+      "control/modules/state/output.encodings.v1.json"
+    ]
+  },
+  "notes": [
+    "This is the kernel-owned runtime binding contract reference for the default Python state-plane host.",
+    "Runtime realizations may elaborate entrypoint paths and evidence bundle policy, but must remain aligned to this binding."
+  ]
+}

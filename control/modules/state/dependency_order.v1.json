@@ -44,7 +44,9 @@
         "step_03"
       ],
       "outputs": [
-        "future state.v1 request/response contract"
+        "control/modules/state/state.request_response_contract.v1.json",
+        "control/modules/state/session.metadata.v1.json",
+        "control/modules/state/output.encodings.v1.json"
       ],
       "reason": "The stable envelope must come after surface and interop boundaries are explicit."
     },

@@ -10,6 +10,9 @@
     "control/modules/state/module.root.v1.json",
     "control/modules/state/inventory.v1.json",
     "control/modules/state/namespace.contract.v1.json",
+    "control/modules/state/state.request_response_contract.v1.json",
+    "control/modules/state/session.metadata.v1.json",
+    "control/modules/state/output.encodings.v1.json",
     "control/modules/state/workflow_dag.v1.md",
     "control/modules/state/dependency_order.v1.json",
     "control/modules/state/interop_matrix.v1.json",
@@ -35,6 +38,9 @@
     "state.interface.semantic.sem",
     "state.transport.acp",
     "state.registry.marimo",
+    "state.contract.request_response",
+    "state.contract.session",
+    "state.contract.output",
     "state.snapshot.unified",
     "controller.state.hydrate",
     "validator.state.schema",
@@ -63,6 +69,7 @@
   ],
   "notes": [
     "This module defines the state-first architecture for get_state and hydrate_state over ACP with Marimo as registry consumer.",
+    "The request/response, session, and output contract references are now owned directly under control/modules/state.",
     "The just-module entrypoint is assumed and treated as an implementation detail above the Python wrapper layer."
   ]
 }
