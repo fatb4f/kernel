@@ -1,0 +1,55 @@
+{
+  "artifact_type": "compatibility_assessment",
+  "artifact_version": "v2",
+  "proposal_id": "cli-extension-profile-v2",
+  "overall_classification": "compatible_with_migration",
+  "summary": "The v2 refactor preserves the underlying metadata authority structure and generalizes the profile layer from shell-first naming to runtime-neutral CLI naming. The main compatibility sensitivity is the rename from shell_cli_role to cli_role and the corresponding lineage wording shift.",
+  "assessment_areas": [
+    {
+      "area": "role_namespace",
+      "change": "rename shell_cli_role to cli_role",
+      "classification": "compatible_with_migration",
+      "rationale": "The semantic intent is preserved, but existing v1 artifacts require either migration or alias-aware readers."
+    },
+    {
+      "area": "lineage_wording",
+      "change": "replace shell_assets_remain_projection_only with runtime_assets_remain_projection_only",
+      "classification": "additive",
+      "rationale": "This is profile-layer wording generalization and does not change the underlying authority boundary."
+    },
+    {
+      "area": "adapter_family_split",
+      "change": "split implementation and verification backends by runtime family",
+      "classification": "additive",
+      "rationale": "The split generalizes backend classification without removing the existing shell family."
+    },
+    {
+      "area": "example_artifacts",
+      "change": "add runtime-neutral semantic and projection examples",
+      "classification": "additive",
+      "rationale": "New example artifacts extend the profile and do not invalidate the existing shell-first examples."
+    }
+  ],
+  "migration_rules": [
+    {
+      "rule_id": "v1_shell_cli_role_to_v2_cli_role",
+      "applies_to": [
+        "extension_profile",
+        "example semantic artifacts",
+        "projection manifests"
+      ],
+      "decision": "Readers and generators should treat shell_cli_role as a v1 alias for cli_role during the migration window."
+    },
+    {
+      "rule_id": "preserve_v1_shell_slice",
+      "applies_to": [
+        "approved Bashly+Bats packet slice"
+      ],
+      "decision": "The approved v1 shell slice remains valid and must not be retroactively invalidated by v2 profile adoption."
+    }
+  ],
+  "notes": [
+    "This assessment applies at the extension profile layer, not the base metadata schemas.",
+    "The base canonical semantic model and projection artifact manifest schemas remain unchanged."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "artifact_type": "adapter_closeout",
+  "artifact_version": "v1",
+  "proposal_id": "git-substrate-adapters-v1",
+  "status": "done",
+  "summary": "The first real-runtime adapter tranche for gix and sem is complete. Both backends are integrated, validated as projection-only runtime surfaces, and closed for this proposal slice.",
+  "adapter_status": [
+    {
+      "backend": "gix",
+      "status": "done",
+      "runtime_mode": "real_runtime",
+      "implementation_surface": "proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "runtime_basis": [
+        "proposals/git_substrate_adapters_v1/gix_runtime_helper/Cargo.toml",
+        "proposals/git_substrate_adapters_v1/gix_runtime_helper/src/main.rs"
+      ],
+      "verification_evidence": [
+        "proposals/git_substrate_adapters_v1/test_emit_gix_runtime.py",
+        "proposals/git_substrate_adapters_v1/test_control_realize_git_substrate_adapters_v1.py"
+      ]
+    },
+    {
+      "backend": "sem",
+      "status": "done",
+      "runtime_mode": "real_runtime",
+      "implementation_surface": "proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+      "runtime_basis": [
+        "/home/_404/src/ataraxy/sem",
+        "proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json"
+      ],
+      "verification_evidence": [
+        "proposals/git_substrate_adapters_v1/test_emit_sem_runtime.py",
+        "proposals/git_substrate_adapters_v1/test_control_realize_git_substrate_adapters_v1.py"
+      ]
+    }
+  ],
+  "closed_scope": [
+    "first real-runtime gix integration",
+    "first real-runtime sem integration",
+    "unified runner aggregation across gix and sem",
+    "normalized manifest/report reuse for the git substrate lane"
+  ],
+  "remaining_follow_on": [
+    "migrate the highest-priority shell and Python entrypoints from the recorded port inventories",
+    "decide whether additional hardening should become a new proposal slice instead of extending this tranche"
+  ],
+  "notes": [
+    "Closeout applies to the adapter integration tranche only.",
+    "This does not promote gix or sem outputs to authority.",
+    "This does not imply repo-wide script cutover."
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canonical_semantic_model.schema.json",
+  "title": "Canonical Semantic Model",
+  "description": "Projection-neutral canonical semantic model assembled from rooted sources and structural units.",
+  "type": "object",
+  "required": [
+    "document_type",
+    "model_id",
+    "version",
+    "title",
+    "summary",
+    "root_ref",
+    "source_registry_ref",
+    "structural_units_ref",
+    "objects",
+    "relations",
+    "open_questions",
+    "projection_targets"
+  ],
+  "properties": {
+    "document_type": {
+      "const": "canonical_semantic_model"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root_ref": {
+      "type": "string",
+      "pattern": "^root:"
+    },
+    "source_registry_ref": {
+      "type": "string",
+      "pattern": "^artifact:|^source_registry:"
+    },
+    "structural_units_ref": {
+      "type": "string",
+      "pattern": "^artifact:|^structural_units:"
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/semantic_object"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/semantic_relation"
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/open_question"
+      }
+    },
+    "projection_targets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/projection_target"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "snake_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "string_list": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "normalized_term_ref": {
+      "type": "string",
+      "pattern": "^term:[a-z0-9_]+$|^anchor:[A-Za-z0-9._-]+$"
+    },
+    "typed_ref": {
+      "type": "object",
+      "required": [
+        "ref",
+        "kind"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "root",
+            "source_node",
+            "structural_unit",
+            "semantic_object",
+            "semantic_relation",
+            "projection_target",
+            "projected_artifact"
+          ]
+        },
+        "repo_path": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "semantic_object": {
+      "type": "object",
+      "required": [
+        "ref",
+        "object_id",
+        "object_kind",
+        "title",
+        "summary",
+        "content",
+        "source_refs",
+        "unit_refs",
+        "normalized_term_refs"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "pattern": "^object:"
+        },
+        "object_id": {
+          "$ref": "#/$defs/snake_id"
+        },
+        "object_kind": {
+          "type": "string",
+          "enum": [
+            "source",
+            "unit",
+            "section",
+            "term",
+            "question",
+            "policy",
+            "relation_node",
+            "collection",
+            "artifact_target",
+            "other"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "labels": {
+          "$ref": "#/$defs/string_list"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/typed_ref"
+          }
+        },
+        "unit_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^unit:"
+          }
+        },
+        "normalized_term_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/normalized_term_ref"
+          }
+        },
+        "attributes": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "semantic_relation": {
+      "type": "object",
+      "required": [
+        "ref",
+        "relation_id",
+        "relation_kind",
+        "from_ref",
+        "to_ref"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "pattern": "^relation:"
+        },
+        "relation_id": {
+          "$ref": "#/$defs/snake_id"
+        },
+        "relation_kind": {
+          "type": "string",
+          "enum": [
+            "derived_from",
+            "maps_to",
+            "supports",
+            "defines",
+            "contains",
+            "references",
+            "projects_to",
+            "other"
+          ]
+        },
+        "from_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "open_question": {
+      "type": "object",
+      "required": [
+        "ref",
+        "question_id",
+        "question",
+        "context",
+        "source_refs"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "pattern": "^question:"
+        },
+        "question_id": {
+          "$ref": "#/$defs/snake_id"
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/typed_ref"
+          }
+        },
+        "unit_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^unit:"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "projection_target": {
+      "type": "object",
+      "required": [
+        "ref",
+        "target_id",
+        "target_kind",
+        "source_object_refs"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "pattern": "^target:"
+        },
+        "target_id": {
+          "$ref": "#/$defs/snake_id"
+        },
+        "target_kind": {
+          "type": "string",
+          "enum": [
+            "markdown_document",
+            "json_document",
+            "summary_markdown",
+            "summary_json",
+            "schema_fragment",
+            "codegen_input",
+            "config_projection",
+            "inventory_view",
+            "trace_map",
+            "other"
+          ]
+        },
+        "source_object_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^object:"
+          }
+        },
+        "output_ref": {
+          "$ref": "#/$defs/typed_ref"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

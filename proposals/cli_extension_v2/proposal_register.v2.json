@@ -1,0 +1,195 @@
+{
+  "artifact_type": "proposal_register",
+  "artifact_version": "v2",
+  "proposal_id": "cli-extension-profile-v2",
+  "status": "ready_for_amendment_review",
+  "promotion_gate": "proposal_register",
+  "proposal_class": "metadata_extension_profile_refactor",
+  "scope": {
+    "in_scope": [
+      "runtime-neutral CLI semantic extension profile over the existing metadata model",
+      "runtime-neutral role namespace using cli_role",
+      "runtime-family projection-target classification for shell and Python implementation backends",
+      "runtime-family projection-consumer classification for shell and Python verification backends"
+    ],
+    "out_of_scope": [
+      "rewriting the approved Bashly+Bats first amendment slice",
+      "kernel amendment in this v2 draft",
+      "Python implementation rollout",
+      "pytest rollout"
+    ]
+  },
+  "artifacts": [
+    {
+      "ref": "proposals/cli_extension_v2/basis/metadata/canonical_semantic_model.schema.json",
+      "kind": "schema_artifact",
+      "role": "authoritative_base_model"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/metadata/projection_artifact_manifest.schema.json",
+      "kind": "schema_artifact",
+      "role": "projection_binding_contract"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/shell_cli_extension/extension_profile.v1.json",
+      "kind": "profile_artifact",
+      "role": "v1_shell_first_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/shell_cli_extension/jsonargparse_projection_matrix.v1.json",
+      "kind": "adapter_artifact",
+      "role": "python_adapter_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/shell_cli_extension/python_cli_prospect.v1.md",
+      "kind": "prospect_artifact",
+      "role": "python_cli_generalization_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/spec_draft.v2.json",
+      "kind": "spec_artifact",
+      "role": "v2_spec_draft"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/extension_profile.v2.json",
+      "kind": "profile_artifact",
+      "role": "runtime_neutral_cli_profile"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/extension_constraints.v2.json",
+      "kind": "constraint_artifact",
+      "role": "runtime_neutral_constraint_layer"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/extension_constraints.v2.schema.json",
+      "kind": "schema_artifact",
+      "role": "runtime_neutral_constraint_schema"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/canonical_semantic_model.cli.example.json",
+      "kind": "example_artifact",
+      "role": "runtime_neutral_semantic_example"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/projection_artifact_manifest.cli.example.json",
+      "kind": "example_artifact",
+      "role": "runtime_neutral_projection_manifest_example"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/compatibility_assessment.v2.json",
+      "kind": "assessment_artifact",
+      "role": "v2_compatibility_assessment"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/realization_payload.v2.json",
+      "kind": "workflow_artifact",
+      "role": "runtime_neutral_realization_payload"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/realization_workflow_contract.v2.md",
+      "kind": "workflow_contract",
+      "role": "runtime_neutral_realization_contract"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/bashly_target_contract.minimal.v1.json",
+      "kind": "target_contract",
+      "role": "first_bashly_realization_target"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/bashly_target_contract.minimal.v1.md",
+      "kind": "target_contract_companion",
+      "role": "first_bashly_realization_target_human_readable"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/emit_bashly_minimal.py",
+      "kind": "transform_artifact",
+      "role": "first_bashly_minimal_transform"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/test_emit_bashly_minimal.py",
+      "kind": "verification_artifact",
+      "role": "first_bashly_minimal_transform_tests"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/jsonargparse_target_contract.minimal.v1.json",
+      "kind": "target_contract",
+      "role": "first_jsonargparse_realization_target"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/jsonargparse_target_contract.minimal.v1.md",
+      "kind": "target_contract_companion",
+      "role": "first_jsonargparse_realization_target_human_readable"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/emit_jsonargparse_minimal.py",
+      "kind": "transform_artifact",
+      "role": "first_jsonargparse_minimal_transform"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/test_emit_jsonargparse_minimal.py",
+      "kind": "verification_artifact",
+      "role": "first_jsonargparse_minimal_transform_tests"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/control_realize_cli_extension_v2.py",
+      "kind": "workflow_artifact",
+      "role": "primary_operator_surface"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/test_control_realize_cli_extension_v2.py",
+      "kind": "verification_artifact",
+      "role": "unified_realization_runner_tests"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/unified_realization_manifest.v2.schema.json",
+      "kind": "schema_artifact",
+      "role": "unified_manifest_contract"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/unified_realization_report.v2.schema.json",
+      "kind": "schema_artifact",
+      "role": "unified_report_contract"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/hof_prospect.v1.md",
+      "kind": "prospect_artifact",
+      "role": "projection_generation_orchestration_backend_prospect"
+    }
+  ],
+  "gate_expectations": {
+    "required_for_promotion": [
+      "cli_profile_extends_existing_metadata_model",
+      "runtime_assets_remain_projection_only",
+      "implementation_backends_are_classified_by_runtime_family",
+      "verification_backends_are_classified_by_runtime_family",
+      "cli_semantics_are_expressible_without_parallel_authority_model",
+      "runtime_neutral_constraints_exist",
+      "runtime_neutral_examples_exist",
+      "compatibility_assessment_exists",
+      "realization_payload_exists",
+      "realization_workflow_contract_exists",
+      "first_bashly_realization_target_is_wired",
+      "first_bashly_minimal_transform_exists",
+      "first_jsonargparse_realization_target_is_wired",
+      "first_jsonargparse_minimal_transform_exists",
+      "unified_realization_runner_exists",
+      "unified_realization_runner_is_primary_operator_surface",
+      "unified_manifest_contract_exists",
+      "unified_report_contract_exists",
+      "verification_projections_are_runner_owned"
+    ],
+    "still_required_before_amendment": []
+  },
+  "notes": [
+    "This v2 proposal is a forward refactor and does not invalidate the shell-first approved packet slice.",
+    "The existing metadata model remains the sole authority baseline.",
+    "Basis artifacts required for portable review are vendored under proposals/cli_extension_v2/basis.",
+    "The first concrete Bashly target is deliberately constrained to the upstream minimal example so transform work can start from the smallest truthful Bashly source tree.",
+    "The first Bashly emitter currently realizes source surfaces and reports downstream bashly-generate availability instead of pretending the second-stage build ran.",
+    "The first jsonargparse emitter currently realizes source surfaces and reports runtime availability honestly when jsonargparse is not installed in the environment.",
+    "The broader realization runner now orchestrates the bounded Bashly and jsonargparse slices and emits a unified build tree plus aggregate manifest/report.",
+    "The bounded emitters are internal projection surfaces; the unified realization runner is the primary operator surface for this lane.",
+    "The unified runner owns the Bats and pytest verification projections rather than exposing them as separate authority surfaces.",
+    "The unified verification projections are now synthesized from canonical verification and output semantics instead of being copied from child-emitter test sources."
+  ]
+}

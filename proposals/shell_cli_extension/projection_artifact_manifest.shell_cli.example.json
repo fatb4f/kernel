@@ -1,0 +1,64 @@
+{
+  "document_type": "projection_artifact_manifest",
+  "manifest_id": "shell_cli_extension_projection_manifest",
+  "version": "0.1.0",
+  "canonical_model_ref": "artifact:canonical_semantic_model.shell_cli.example.json",
+  "targets": [
+    {
+      "target_ref": {
+        "ref": "target:control_plane_bootstrap_bashly_config",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:control_plane_bootstrap_bashly_yml",
+        "kind": "projected_artifact",
+        "repo_path": "build/bashly/control_plane_bootstrap/bashly.yml"
+      },
+      "projection_kind": "config_projection",
+      "inputs": [
+        {
+          "ref": "object:control_plane_bootstrap_command",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_bootstrap_owner_option",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_bootstrap_project_title_env",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_bootstrap_output_contract",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Example implementation projection into a Bashly config."
+    },
+    {
+      "target_ref": {
+        "ref": "target:control_plane_bootstrap_bats_suite",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:control_plane_bootstrap_bats_suite",
+        "kind": "projected_artifact",
+        "repo_path": "build/tests/control_plane_bootstrap.bats"
+      },
+      "projection_kind": "other",
+      "inputs": [
+        {
+          "ref": "object:control_plane_bootstrap_command",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_bootstrap_bats_expectation",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Example verification projection into a Bats suite."
+    }
+  ]
+}

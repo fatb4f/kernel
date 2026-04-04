@@ -1,0 +1,81 @@
+{
+  "artifact_type": "amendment_slice",
+  "artifact_version": "v1",
+  "slice_id": "shell_cli_extension_bashly_bats_first_slice",
+  "proposal_id": "shell-cli-extension-profile",
+  "title": "Shell / CLI Extension First Amendment Slice: Bashly + Bats",
+  "status": "draft",
+  "summary": "Defines the first amendment-facing promotion slice for the shell/CLI extension profile using Bashly as the implementation projection target and Bats as the verification projection consumer.",
+  "scope": {
+    "in_scope": [
+      "command_surface projection to Bashly config artifacts",
+      "output_contract participation in Bashly projection inputs",
+      "verification_expectation projection to Bats test artifacts",
+      "first amendment-facing binding of shell_cli semantics to implementation and verification backends"
+    ],
+    "out_of_scope": [
+      "argc projection bindings",
+      "Argbash projection bindings",
+      "ShellSpec projection bindings",
+      "promotion of generated shell artifacts to authority status"
+    ]
+  },
+  "authoritative_inputs": [
+    {
+      "ref": "/home/_404/Downloads/metadata/canonical_semantic_model.schema.json",
+      "kind": "schema_artifact",
+      "role": "base_semantic_authority"
+    },
+    {
+      "ref": "/home/_404/Downloads/metadata/projection_artifact_manifest.schema.json",
+      "kind": "schema_artifact",
+      "role": "base_projection_binding_contract"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/extension_profile.v1.json",
+      "kind": "profile_artifact",
+      "role": "shell_cli_extension_profile"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/extension_constraints.schema.json",
+      "kind": "schema_artifact",
+      "role": "extension_constraint_schema"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/extension_constraints.example.json",
+      "kind": "example_artifact",
+      "role": "validated_extension_constraints"
+    }
+  ],
+  "slice_bindings": {
+    "semantic_example_ref": "proposals/shell_cli_extension/canonical_semantic_model.shell_cli.example.json",
+    "projection_manifest_ref": "proposals/shell_cli_extension/projection_artifact_manifest.shell_cli.example.json",
+    "implementation_backend": "bashly",
+    "verification_backend": "bats"
+  },
+  "emitted_artifact_targets": [
+    {
+      "target_ref": "target:control_plane_bootstrap_bashly_config",
+      "artifact_ref": "artifact:control_plane_bootstrap_bashly_yml",
+      "target_kind": "config_projection",
+      "projection_role": "implementation_target"
+    },
+    {
+      "target_ref": "target:control_plane_bootstrap_bats_suite",
+      "artifact_ref": "artifact:control_plane_bootstrap_bats_suite",
+      "target_kind": "other",
+      "projection_role": "verification_consumer"
+    }
+  ],
+  "validation_basis": [
+    "extension_constraints_example_validates_against_extension_constraints_schema",
+    "canonical_semantic_model_shell_cli_example_validates_against_base_metadata_schema",
+    "projection_artifact_manifest_shell_cli_example_validates_against_base_projection_manifest_schema"
+  ],
+  "promotion_readiness": {
+    "ready_for_amendment_review": true,
+    "remaining_follow_on_work": [
+      "define backend-specific projection examples for argc, Argbash, and ShellSpec as separate follow-on slices"
+    ]
+  }
+}

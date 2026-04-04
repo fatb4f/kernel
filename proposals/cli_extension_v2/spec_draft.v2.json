@@ -1,0 +1,111 @@
+{
+  "artifact_type": "spec_draft",
+  "artifact_version": "v2",
+  "proposal_id": "cli-extension-profile-v2",
+  "title": "CLI Extension Profile V2",
+  "status": "draft",
+  "summary": "Generalizes the existing shell-first extension profile into a runtime-neutral CLI extension profile over the existing metadata model so shell and Python implementation adapters can coexist without introducing a parallel authority model.",
+  "source_inputs": [
+    {
+      "ref": "proposals/cli_extension_v2/basis/shell_cli_extension/extension_profile.v1.json",
+      "kind": "profile_source",
+      "role": "shell_first_profile_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/shell_cli_extension/extension_constraints.example.json",
+      "kind": "constraint_source",
+      "role": "shell_first_constraint_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/shell_cli_extension/python_cli_prospect.v1.md",
+      "kind": "prospect_source",
+      "role": "python_cli_generalization_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/shell_cli_extension/jsonargparse_projection_matrix.v1.json",
+      "kind": "adapter_source",
+      "role": "python_adapter_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/metadata/canonical_semantic_model.schema.json",
+      "kind": "schema_source",
+      "role": "authoritative_metadata_middle"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/basis/metadata/projection_artifact_manifest.schema.json",
+      "kind": "schema_source",
+      "role": "projection_binding_contract"
+    }
+  ],
+  "normalized_shape": {
+    "authoritative_base_model": "canonical_semantic_model.schema.json",
+    "binding_surface": "projection_artifact_manifest.schema.json",
+    "extension_style": "runtime_neutral_cli_profile",
+    "new_parallel_authority_model": false
+  },
+  "core_model": {
+    "design_rules": [
+      "runtime_assets_are_projection_assets",
+      "cli_semantics_extend_the_existing_metadata_model",
+      "implementation_backends_are_projection_targets_not_authority",
+      "verification_backends_are_projection_consumers_not_authority",
+      "one_canonical_metadata_definition_per_entry_surface",
+      "runtime_specific_adapter_features_remain_adapter_side_until_cross_runtime_promotion_is_required"
+    ],
+    "intended_semantic_coverage": [
+      "command_surface",
+      "parameter_surface",
+      "environment_bindings",
+      "dependency_requirements",
+      "usage_examples",
+      "output_contracts",
+      "verification_expectations"
+    ],
+    "target_projection_backends": {
+      "shell_implementation": [
+        "bashly",
+        "argc",
+        "argbash"
+      ],
+      "python_implementation": [
+        "jsonargparse"
+      ],
+      "shell_verification": [
+        "bats",
+        "shellspec"
+      ],
+      "python_verification": [
+        "pytest"
+      ]
+    }
+  },
+  "open_items": [
+    {
+      "id": "open-001",
+      "title": "Migration boundary",
+      "detail": "Readers and generators need an explicit migration boundary for shell_cli_role versus cli_role during the v1-to-v2 transition."
+    }
+  ],
+  "resolved_items": [
+    {
+      "id": "resolved-001",
+      "title": "Authority location",
+      "detail": "CLI work continues to build on the existing metadata model rather than introducing a parallel CLI authority model."
+    },
+    {
+      "id": "resolved-002",
+      "title": "Python adapter target",
+      "detail": "jsonargparse is selected as the first Python implementation adapter target."
+    },
+    {
+      "id": "resolved-003",
+      "title": "Constraint refactor",
+      "detail": "The v2 constraint layer now generalizes the role namespace from shell_cli_role to cli_role."
+    },
+    {
+      "id": "resolved-004",
+      "title": "Runtime-neutral examples",
+      "detail": "Runtime-neutral semantic and projection manifest example artifacts now exist for the v2 profile."
+    }
+  ]
+}

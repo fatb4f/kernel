@@ -1,0 +1,104 @@
+{
+  "artifact_type": "extension_profile",
+  "artifact_version": "v1",
+  "profile_id": "git_substrate_adapters_v1",
+  "title": "Git Substrate Adapter Contract Profile",
+  "status": "implemented",
+  "base_model_refs": [
+    "proposals/cli_extension_v2/basis/metadata/canonical_semantic_model.schema.json",
+    "proposals/cli_extension_v2/basis/metadata/projection_artifact_manifest.schema.json"
+  ],
+  "lineage": {
+    "extends": "canonical_semantic_model",
+    "does_not_introduce_parallel_authority_model": true,
+    "runtime_assets_remain_projection_only": true
+  },
+  "semantic_profile": {
+    "object_strategy": "use_existing_object_kinds_with_git_substrate_role_attributes",
+    "supported_object_patterns": [
+      {
+        "object_kind": "artifact_target",
+        "git_substrate_role": "repo_state_surface",
+        "required_attributes": [
+          "repository_ref",
+          "state_kind"
+        ]
+      },
+      {
+        "object_kind": "artifact_target",
+        "git_substrate_role": "diff_state_surface",
+        "required_attributes": [
+          "repository_ref",
+          "comparison_ref"
+        ]
+      },
+      {
+        "object_kind": "artifact_target",
+        "git_substrate_role": "semantic_diff_surface",
+        "required_attributes": [
+          "repository_ref",
+          "upstream_diff_ref"
+        ]
+      },
+      {
+        "object_kind": "policy",
+        "git_substrate_role": "review_basis_surface",
+        "required_attributes": [
+          "basis_rule"
+        ]
+      }
+    ],
+    "relation_profile": [
+      {
+        "relation_kind": "defines",
+        "usage": "policy_defines_review_basis_or_diff_contract"
+      },
+      {
+        "relation_kind": "supports",
+        "usage": "deterministic_git_fact_surface_supports_semantic_enrichment"
+      },
+      {
+        "relation_kind": "projects_to",
+        "usage": "git_semantic_targets_project_to_gix_or_sem_outputs"
+      },
+      {
+        "relation_kind": "references",
+        "usage": "git_state_surfaces_reference_repository_or_comparison_inputs"
+      }
+    ]
+  },
+  "projection_profile": {
+    "git_implementation_targets": [
+      {
+        "backend": "gix",
+        "projection_role": "implementation_target",
+        "canonical_target_kind": "state_projection"
+      },
+      {
+        "backend": "sem",
+        "projection_role": "implementation_target",
+        "canonical_target_kind": "enrichment_projection"
+      }
+    ],
+    "hydration_targets": [
+      {
+        "backend": "marimo",
+        "projection_role": "hydration_consumer",
+        "canonical_target_kind": "hydration_projection"
+      }
+    ]
+  },
+  "open_items": [],
+  "resolved_items": [
+    "gix and sem are classified as projected Git-substrate adapters rather than authority surfaces",
+    "the normalized realization pattern from cli_extension_v2 is the intended implementation path",
+    "a Git-substrate semantic example exists for repo_state, diff_state, semantic_diff, and review_basis surfaces",
+    "a Git-substrate realization payload exists for the first gix and sem target set",
+    "a compatibility assessment exists for git_substrate_role and the new target kinds",
+    "a Git-substrate realization workflow contract exists for the first slice",
+    "a Git-substrate realization runner exists for the first slice",
+    "gix now has a real crate-backed runtime integration path",
+    "sem now has a real runtime integration path",
+    "the first real-runtime adapter tranche is explicitly closed"
+  ]
+}

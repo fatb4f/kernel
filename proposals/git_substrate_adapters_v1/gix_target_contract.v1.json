@@ -1,0 +1,38 @@
+{
+  "artifact_type": "target_contract",
+  "artifact_version": "v1",
+  "target_id": "gix_git_fact_surface",
+  "backend": "gix",
+  "status": "proposal_draft",
+  "contract_summary": "First deterministic Git fact target for emitting canonical repository, ref, and diff state artifacts as structured outputs.",
+  "contract_scope": {
+    "in_scope": [
+      "repository identity and worktree state",
+      "HEAD, branch, and ref-state capture",
+      "diff-state capture against an explicit comparison ref",
+      "structured repo_state and diff_state artifact emission"
+    ],
+    "out_of_scope": [
+      "semantic diff interpretation",
+      "review commentary synthesis",
+      "hydration notebook generation"
+    ]
+  },
+  "required_inputs": [
+    "repository_ref",
+    "comparison_ref"
+  ],
+  "required_outputs": [
+    "repo_state.json",
+    "diff_state.json"
+  ],
+  "determinism_rules": [
+    "output must be derived from explicit repository and comparison inputs",
+    "output must not rely on conversational reconstruction",
+    "output shape must remain stable across replay on unchanged Git state"
+  ],
+  "notes": [
+    "This is a target-contract draft only and does not implement gix.",
+    "gix remains the canonical Git fact surface and must precede semantic enrichment."
+  ]
+}

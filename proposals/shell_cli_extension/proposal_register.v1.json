@@ -1,0 +1,109 @@
+{
+  "artifact_type": "proposal_register",
+  "artifact_version": "v1",
+  "proposal_id": "shell-cli-extension-profile",
+  "status": "under_review",
+  "promotion_gate": "proposal_register",
+  "proposal_class": "metadata_extension_profile",
+  "scope": {
+    "in_scope": [
+      "shell and CLI semantic extension profile over the existing metadata model",
+      "projection-target classification for shell implementation backends",
+      "projection-consumer classification for shell verification backends",
+      "integration with shell inventory and shell projection contract"
+    ],
+    "out_of_scope": [
+      "kernel amendment",
+      "Bashly implementation rollout",
+      "argc implementation rollout",
+      "Argbash implementation rollout",
+      "Bats or ShellSpec test generation rollout"
+    ]
+  },
+  "artifacts": [
+    {
+      "ref": "/home/_404/Downloads/metadata/canonical_semantic_model.schema.json",
+      "kind": "schema_artifact",
+      "role": "authoritative_base_model"
+    },
+    {
+      "ref": "/home/_404/Downloads/metadata/projection_artifact_manifest.schema.json",
+      "kind": "schema_artifact",
+      "role": "projection_binding_contract"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/extension_constraints.schema.json",
+      "kind": "schema_artifact",
+      "role": "schema_backed_extension_constraints"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/extension_constraints.example.json",
+      "kind": "example_artifact",
+      "role": "validated_extension_constraint_example"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/amendment_slice.bashly_bats.v1.json",
+      "kind": "slice_artifact",
+      "role": "first_amendment_facing_slice"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/bashly_projection_matrix.v1.json",
+      "kind": "adapter_artifact",
+      "role": "bashly_projection_matrix"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/bashly_schema_crosswalk.v1.md",
+      "kind": "crosswalk_artifact",
+      "role": "human_readable_bashly_crosswalk"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/python_cli_prospect.v1.md",
+      "kind": "prospect_artifact",
+      "role": "python_cli_future_assessment"
+    },
+    {
+      "ref": "proposals/shell_cli_extension/jsonargparse_projection_matrix.v1.json",
+      "kind": "adapter_artifact",
+      "role": "jsonargparse_python_adapter_matrix"
+    },
+    {
+      "ref": "control/shell/shell_script_inventory.json",
+      "kind": "inventory_artifact",
+      "role": "current_projection_baseline"
+    },
+    {
+      "ref": "control/shell/shell_script_spec.md",
+      "kind": "spec_artifact",
+      "role": "shell_projection_contract"
+    },
+    {
+      "ref": "control/policy/token_burn_and_structured_output.md",
+      "kind": "policy_artifact",
+      "role": "shared_policy_surface"
+    },
+    {
+      "ref": "control/policy/token_burn_and_structured_output.registry.json",
+      "kind": "policy_registry",
+      "role": "machine_readable_policy_surface"
+    }
+  ],
+  "gate_expectations": {
+    "required_for_promotion": [
+      "shell_cli_profile_extends_existing_metadata_model",
+      "shell_assets_remain_projection_only",
+      "implementation_backends_are_classified_as_projection_targets",
+      "verification_backends_are_classified_as_projection_consumers",
+      "command_and_parameter_semantics_are_expressible_without_parallel_authority_model",
+      "projection_binding_strategy_is_explicit",
+      "schema_backed_extension_constraints_exist"
+    ],
+    "still_required_before_kernel": [
+      "formal projection binding examples for argc, Argbash, and ShellSpec as follow-on slices"
+    ]
+  },
+  "notes": [
+    "This proposal is guidance-first and does not yet promote any shell backend to canonical status.",
+    "The existing metadata model remains the sole authority baseline.",
+    "Shell inventory and shell spec are treated as downstream projection-control support surfaces."
+  ]
+}

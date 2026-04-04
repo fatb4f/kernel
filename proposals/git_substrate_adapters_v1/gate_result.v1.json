@@ -1,0 +1,33 @@
+{
+  "artifact_type": "proposal_gate_result",
+  "artifact_version": "v1",
+  "proposal_id": "git-substrate-adapters-v1",
+  "gate_status": "pass",
+  "result_summary": "The Git-substrate adapter tranche is complete for gix and sem. The authority split is clear, both backends have real local runtime paths, and the next migration work is grounded by explicit shell and Python port inventories.",
+  "passes": [
+    "existing metadata remains the authority baseline",
+    "gix is classified as the deterministic Git fact surface",
+    "sem is classified as the semantic diff enrichment surface",
+    "Git adapter outputs are kept in the projection lane",
+    "first target contracts for gix and sem exist",
+    "the normalized realization pattern from cli_extension_v2 is named as the intended reuse path",
+    "a Git-substrate semantic example exists for repo_state, diff_state, semantic_diff, and review_basis surfaces",
+    "a first Git-substrate realization payload exists for state_projection and enrichment_projection targets",
+    "a compatibility assessment exists for git_substrate_role and the new target kinds",
+    "a Git-substrate realization workflow contract exists for the first slice",
+    "a Git-substrate realization runner exists and emits normalized manifest/report artifacts",
+    "the Git transform logic is split into bounded gix and sem emitter surfaces under the runner",
+    "real-runtime contracts now exist for gix and sem",
+    "sem real runtime integration now exists through the local ataraxy/sem source tree",
+    "gix real runtime integration now exists through a repo-local Rust helper that uses the gix crate directly",
+    "the first real-runtime adapter tranche is explicitly closed through adapter_closeout.v1.json",
+    "a policy-enforced Git capability service contract exists with task-shaped operations and risk-tier gating",
+    "a workflow DAG exists for the service architecture and synced script-migration flow",
+    "shell and Python port inventories now exist for the next migration tranche"
+  ],
+  "underspecified_items": [],
+  "next_actions": [
+    "start migrating the highest-priority shell and Python entrypoints from the new port inventories"
+  ],
+  "promotion_decision": "ready_for_script_migration"
+}

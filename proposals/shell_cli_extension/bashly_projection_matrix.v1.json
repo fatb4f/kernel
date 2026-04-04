@@ -1,0 +1,359 @@
+{
+  "artifact_type": "projection_adapter_matrix",
+  "artifact_version": "v1",
+  "matrix_id": "shell_cli_extension_bashly_projection_matrix",
+  "adapter": {
+    "name": "bashly",
+    "adapter_role": "implementation_projection_target",
+    "adapter_version_observed": "1.3.8",
+    "source_refs": [
+      {
+        "label": "bashly.json",
+        "url": "https://github.com/bashly-framework/bashly/blob/master/schemas/bashly.json"
+      },
+      {
+        "label": "settings.json",
+        "url": "https://github.com/bashly-framework/bashly/blob/master/schemas/settings.json"
+      },
+      {
+        "label": "strings.json",
+        "url": "https://github.com/bashly-framework/bashly/blob/master/schemas/strings.json"
+      },
+      {
+        "label": "Getting Started",
+        "url": "https://bashly.dev/usage/getting-started/"
+      },
+      {
+        "label": "Command",
+        "url": "https://bashly.dev/configuration/command/"
+      },
+      {
+        "label": "Argument",
+        "url": "https://bashly.dev/configuration/argument/"
+      },
+      {
+        "label": "Flag",
+        "url": "https://bashly.dev/configuration/flag/"
+      },
+      {
+        "label": "Environment Variable",
+        "url": "https://bashly.dev/configuration/environment-variable/"
+      },
+      {
+        "label": "Dependency",
+        "url": "https://bashly.dev/configuration/dependency/"
+      },
+      {
+        "label": "Settings",
+        "url": "https://bashly.dev/usage/settings/"
+      },
+      {
+        "label": "Split Config",
+        "url": "https://bashly.dev/advanced/split-config/"
+      }
+    ]
+  },
+  "projection_scope": {
+    "in_scope": [
+      "bashly.json CLI-structure projection",
+      "settings.json adapter-control projection",
+      "strings.json emitted-string projection",
+      "command, subcommand, positional argument, flag, environment variable, dependency, example, settings, and strings primitives",
+      "first amendment-facing Bashly slice aligned with Bashly implementation projection"
+    ],
+    "out_of_scope": [
+      "generated shell script payload details",
+      "custom filters and validations implementation bodies",
+      "extensible scripts and plugin mechanics",
+      "non-Bashly backends"
+    ]
+  },
+  "schema_surfaces": [
+    {
+      "surface_id": "bashly_cli_surface",
+      "schema_file": "schemas/bashly.json",
+      "governs": "main CLI spec for bashly.yml / bashly.yaml",
+      "declared_metaschema": "http://json-schema.org/draft-07/schema",
+      "authority_class": "implementation_projection_surface",
+      "notes": "Primary Bashly surface for command tree, args, flags, environment variables, dependencies, examples, and command-level features."
+    },
+    {
+      "surface_id": "bashly_settings_surface",
+      "schema_file": "schemas/settings.json",
+      "governs": "generator settings for bashly-settings.yml / settings.yml",
+      "declared_metaschema": "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json",
+      "authority_class": "adapter_control_surface",
+      "notes": "Generation-time controls such as source_dir, target_dir, formatter, interface toggles, aliases, and environment-specific behavior."
+    },
+    {
+      "surface_id": "bashly_strings_surface",
+      "schema_file": "schemas/strings.json",
+      "governs": "optional emitted/runtime strings for bashly-strings.yml",
+      "declared_metaschema": "https://json.schemastore.org/metaschema-draft-07-unofficial-strict.json",
+      "authority_class": "presentation_projection_surface",
+      "notes": "Usage captions, option/argument labels, dependency errors, validation errors, and similar emitted strings."
+    }
+  ],
+  "required_config_files": [
+    {
+      "config_surface": "src/bashly.yml",
+      "role": "root_projection_source",
+      "required": true,
+      "schema_surface": "bashly_cli_surface",
+      "notes": "Primary CLI projection source governed by bashly.json."
+    },
+    {
+      "config_surface": "bashly-settings.yml | settings.yml",
+      "role": "render_settings",
+      "required": false,
+      "schema_surface": "bashly_settings_surface",
+      "notes": "Optional settings surface for generation behavior, formatter, interface toggles, and environment-specific overrides."
+    },
+    {
+      "config_surface": "imported_yaml_or_front_matter",
+      "role": "config_fragment_surface",
+      "required": false,
+      "schema_surface": "bashly_cli_surface",
+      "notes": "Optional split-config surface for imported YAML snippets or YAML front matter embedded in shell files."
+    },
+    {
+      "config_surface": "bashly-strings.yml",
+      "role": "strings_override_surface",
+      "required": false,
+      "schema_surface": "bashly_strings_surface",
+      "notes": "Optional strings override surface for emitted help and runtime text."
+    }
+  ],
+  "matrix_rows": [
+    {
+      "semantic_role": "command_surface",
+      "metadata_object_kind": "artifact_target",
+      "required_attributes": [
+        "command_path",
+        "handler_id",
+        "entry_surface"
+      ],
+      "bashly_schema_surface": "bashly_cli_surface",
+      "bashly_primitive": "command",
+      "bashly_config_path": [
+        "name",
+        "commands[].name",
+        "commands[].alias",
+        "commands[].help",
+        "commands[].group",
+        "commands[].default",
+        "commands[].filename"
+      ],
+      "required": true,
+      "projection_kind": "config_projection",
+      "lossiness": "partial",
+      "validation_rule": "command_path must map to exactly one Bashly root/subcommand chain; commands with nested commands may not also carry args or flags at the same node",
+      "notes": "Bashly command objects define root CLI and nested subcommands; alias, help, group, default, and filename are directly representable."
+    },
+    {
+      "semantic_role": "parameter_surface",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "parameter_kind",
+        "command_ref"
+      ],
+      "bashly_schema_surface": "bashly_cli_surface",
+      "bashly_primitive": "argument",
+      "bashly_config_path": [
+        "args[].name",
+        "args[].help",
+        "args[].required",
+        "args[].default",
+        "args[].allowed",
+        "args[].validate",
+        "args[].repeatable"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "low",
+      "validation_rule": "parameter_kind == positional must project to args[]; once an optional argument exists, later required positional arguments are invalid",
+      "notes": "Argument values are exposed in Bashly as args[name]."
+    },
+    {
+      "semantic_role": "parameter_surface",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "parameter_kind",
+        "command_ref"
+      ],
+      "bashly_schema_surface": "bashly_cli_surface",
+      "bashly_primitive": "flag",
+      "bashly_config_path": [
+        "flags[].long",
+        "flags[].short",
+        "flags[].help",
+        "flags[].arg",
+        "flags[].required",
+        "flags[].default",
+        "flags[].allowed",
+        "flags[].repeatable",
+        "flags[].conflicts",
+        "flags[].needs",
+        "flags[].private",
+        "flags[].completions",
+        "flags[].validate",
+        "flags[].unique"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "low",
+      "validation_rule": "parameter_kind in [option, flag] must project to flags[]; at least one of long or short is required",
+      "notes": "Flags defined on a command with subcommands are global flags in Bashly."
+    },
+    {
+      "semantic_role": "environment_binding",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "env_name"
+      ],
+      "bashly_schema_surface": "bashly_cli_surface",
+      "bashly_primitive": "environment_variable",
+      "bashly_config_path": [
+        "environment_variables[].name",
+        "environment_variables[].help",
+        "environment_variables[].required",
+        "environment_variables[].default",
+        "environment_variables[].private",
+        "environment_variables[].allowed",
+        "environment_variables[].validate"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "low",
+      "validation_rule": "env_name must be lower-case metadata input that projects to Bashly environment variable name semantics",
+      "notes": "Bashly capitalizes environment variable names in usage while storing the definition in configuration."
+    },
+    {
+      "semantic_role": "dependency_requirement",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "dependency_name"
+      ],
+      "bashly_schema_surface": "bashly_cli_surface",
+      "bashly_primitive": "dependency",
+      "bashly_config_path": [
+        "dependencies",
+        "dependencies.<name>.command",
+        "dependencies.<name>.help"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "low",
+      "validation_rule": "single-command dependencies may project to array or hash form; alternate-command dependencies require explicit hash syntax",
+      "notes": "Dependency resolution is available to generated command code via the deps associative array."
+    },
+    {
+      "semantic_role": "usage_example",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "command_line"
+      ],
+      "bashly_schema_surface": "bashly_cli_surface",
+      "bashly_primitive": "example",
+      "bashly_config_path": [
+        "examples"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "low",
+      "validation_rule": "examples must bind to the owning command node and remain renderable as string or string array",
+      "notes": "Bashly can show examples in help and optionally on argument errors."
+    },
+    {
+      "semantic_role": "output_contract",
+      "metadata_object_kind": "policy",
+      "required_attributes": [
+        "output_mode"
+      ],
+      "bashly_schema_surface": "bashly_settings_surface",
+      "bashly_primitive": "settings_contract",
+      "bashly_config_path": [
+        "show_examples_on_error",
+        "formatter",
+        "env"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "partial",
+      "validation_rule": "structured output preferences are not native Bashly CLI primitives and must be carried as adapter settings or generated code conventions rather than promoted into command authority",
+      "notes": "Bashly models CLI parsing strongly, but structured stdout/stderr contracts remain indirect at settings level."
+    },
+    {
+      "semantic_role": "verification_expectation",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "expectation_kind"
+      ],
+      "bashly_schema_surface": "bashly_cli_surface",
+      "bashly_primitive": "none_direct",
+      "bashly_config_path": [],
+      "required": false,
+      "projection_kind": "verification_follow_on",
+      "lossiness": "high",
+      "validation_rule": "verification expectations are not projected into Bashly config; they project separately into Bats or other verification consumers",
+      "notes": "This is a deliberate adapter boundary, not a missing Bashly feature."
+    },
+    {
+      "semantic_role": "projection_adapter_settings",
+      "metadata_object_kind": "policy",
+      "required_attributes": [],
+      "bashly_schema_surface": "bashly_settings_surface",
+      "bashly_primitive": "settings",
+      "bashly_config_path": [
+        "compact_short_flags",
+        "conjoined_flag_args",
+        "private_reveal_key",
+        "usage_colors",
+        "formatter",
+        "env"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "low",
+      "validation_rule": "settings are adapter-level modifiers and should be derived from shared projection policy, not authored as shell semantic authority",
+      "notes": "These are Bashly adapter controls, not domain semantics."
+    },
+    {
+      "semantic_role": "usage_and_error_strings",
+      "metadata_object_kind": "policy",
+      "required_attributes": [],
+      "bashly_schema_surface": "bashly_strings_surface",
+      "bashly_primitive": "strings_override",
+      "bashly_config_path": [
+        "usage",
+        "options",
+        "arguments",
+        "commands",
+        "examples",
+        "environment_variables",
+        "validation_errors",
+        "dependency_errors"
+      ],
+      "required": false,
+      "projection_kind": "presentation_projection",
+      "lossiness": "partial",
+      "validation_rule": "string overrides must remain emitted-text concerns and may not back-author shell semantics already present in the canonical metadata model",
+      "notes": "strings.json is presentation/runtime text only; it should not become a parallel semantics lane."
+    }
+  ],
+  "adapter_findings": {
+    "fit_summary": "Bashly is a strong implementation projection target on its bashly.json CLI surface for command trees, flags, positional arguments, environment variables, dependencies, help text, and examples. Its settings.json surface is adapter control only, and its strings.json surface is presentation-only. Structured output and verification semantics remain separate projection layers.",
+    "first_slice_decision": {
+      "implementation_target": "bashly",
+      "verification_consumer": "bats",
+      "status": "aligned_with_first_amendment_slice"
+    },
+    "promotion_rules": [
+      "bashly.json is the primary implementation projection surface for shell/CLI semantics.",
+      "Bashly settings remain adapter controls and do not become metadata authority.",
+      "Bashly strings remain presentation/runtime projection only and do not become metadata authority.",
+      "Generated Bashly configuration and generated shell scripts remain projection artifacts.",
+      "Verification expectations stay outside the Bashly config surface and project to Bats in the first slice."
+    ]
+  }
+}

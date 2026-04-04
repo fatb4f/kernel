@@ -57,11 +57,11 @@ These should remain thin semantic contracts.
 
 Kernel should continue to reference, but not absorb, the following runtime-basis artifacts from the Codex tree hosted in `dotfiles`:
 
-- `../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py`
-- `../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py`
-- `../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py`
-- `../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json`
-- `../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json`
+- `proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py`
+- `proposals/git_substrate_adapters_v1/emit_gix_runtime.py`
+- `proposals/git_substrate_adapters_v1/emit_sem_runtime.py`
+- `proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json`
+- `proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json`
 - `../dotfiles/chezmoi/dot_config/codex/control/runtime/runtime_surface_cleanup_plan.v1.md`
 
 ## Cross-Repo Rule

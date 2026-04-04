@@ -1,0 +1,134 @@
+{
+  "artifact_type": "extension_profile",
+  "artifact_version": "v1",
+  "profile_id": "shell_cli_extension_profile",
+  "title": "Shell / CLI Semantic Extension Profile",
+  "status": "draft",
+  "base_model_refs": [
+    "/home/_404/Downloads/metadata/canonical_semantic_model.schema.json",
+    "/home/_404/Downloads/metadata/projection_artifact_manifest.schema.json"
+  ],
+  "lineage": {
+    "extends": "canonical_semantic_model",
+    "does_not_introduce_parallel_authority_model": true,
+    "shell_assets_remain_projection_only": true
+  },
+  "semantic_profile": {
+    "object_strategy": "use_existing_object_kinds_with_shell_cli_role_attributes",
+    "supported_object_patterns": [
+      {
+        "object_kind": "artifact_target",
+        "shell_cli_role": "command_surface",
+        "required_attributes": [
+          "command_path",
+          "handler_id",
+          "summary"
+        ]
+      },
+      {
+        "object_kind": "other",
+        "shell_cli_role": "parameter_surface",
+        "required_attributes": [
+          "parameter_kind",
+          "command_ref"
+        ]
+      },
+      {
+        "object_kind": "other",
+        "shell_cli_role": "environment_binding",
+        "required_attributes": [
+          "env_name"
+        ]
+      },
+      {
+        "object_kind": "other",
+        "shell_cli_role": "dependency_requirement",
+        "required_attributes": [
+          "dependency_name"
+        ]
+      },
+      {
+        "object_kind": "other",
+        "shell_cli_role": "usage_example",
+        "required_attributes": [
+          "command_line"
+        ]
+      },
+      {
+        "object_kind": "policy",
+        "shell_cli_role": "output_contract",
+        "required_attributes": [
+          "output_mode"
+        ]
+      },
+      {
+        "object_kind": "other",
+        "shell_cli_role": "verification_expectation",
+        "required_attributes": [
+          "expectation_kind"
+        ]
+      }
+    ],
+    "relation_profile": [
+      {
+        "relation_kind": "contains",
+        "usage": "command_contains_parameter_or_example"
+      },
+      {
+        "relation_kind": "defines",
+        "usage": "policy_defines_output_or_validation_contract"
+      },
+      {
+        "relation_kind": "supports",
+        "usage": "dependency_or_verification_supports_command_surface"
+      },
+      {
+        "relation_kind": "projects_to",
+        "usage": "semantic_shell_targets_project_to_backend_artifacts"
+      },
+      {
+        "relation_kind": "references",
+        "usage": "command_or_parameter_references_env_or_dependency_objects"
+      }
+    ]
+  },
+  "projection_profile": {
+    "implementation_targets": [
+      {
+        "backend": "bashly",
+        "projection_role": "implementation_target",
+        "canonical_target_kind": "config_projection"
+      },
+      {
+        "backend": "argc",
+        "projection_role": "implementation_target",
+        "canonical_target_kind": "config_projection"
+      },
+      {
+        "backend": "argbash",
+        "projection_role": "implementation_target",
+        "canonical_target_kind": "config_projection"
+      }
+    ],
+    "verification_targets": [
+      {
+        "backend": "bats",
+        "projection_role": "verification_consumer",
+        "canonical_target_kind": "other"
+      },
+      {
+        "backend": "shellspec",
+        "projection_role": "verification_consumer",
+        "canonical_target_kind": "other"
+      }
+    ]
+  },
+  "constraint_layer": {
+    "schema_ref": "proposals/shell_cli_extension/extension_constraints.schema.json",
+    "example_ref": "proposals/shell_cli_extension/extension_constraints.example.json",
+    "status": "present_and_validated"
+  },
+  "open_items": [
+    "decide whether verification targets warrant a narrower target_kind than other"
+  ]
+}

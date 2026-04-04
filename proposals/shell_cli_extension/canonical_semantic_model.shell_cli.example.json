@@ -1,0 +1,262 @@
+{
+  "document_type": "canonical_semantic_model",
+  "model_id": "shell_cli_extension_example",
+  "version": "0.1.0",
+  "title": "Shell CLI Extension Example",
+  "summary": "Example semantic model showing how shell and CLI semantics fit inside the existing canonical semantic model without introducing a parallel shell authority model.",
+  "root_ref": "root:/home/_404/src",
+  "source_registry_ref": "artifact:shell_script_inventory.json",
+  "structural_units_ref": "artifact:shell_cli_structural_units.example.json",
+  "objects": [
+    {
+      "ref": "object:control_plane_bootstrap_command",
+      "object_id": "control_plane_bootstrap_command",
+      "object_kind": "artifact_target",
+      "title": "Control Plane Bootstrap Command",
+      "summary": "Command surface for bootstrapping the Control Plane project.",
+      "content": "Bootstraps the GitHub Control Plane project, links repos, creates fields, syncs labels, and syncs milestones.",
+      "source_refs": [
+        {
+          "ref": "source:bootstrap_control_plane_project_sh",
+          "kind": "source_node",
+          "repo_path": "control/github/bootstrap_control_plane_project.sh"
+        }
+      ],
+      "unit_refs": [
+        "unit:bootstrap_command_0001"
+      ],
+      "normalized_term_refs": [
+        "term:structured_outputs",
+        "anchor:adapter.git.gix"
+      ],
+      "labels": [
+        "shell_cli",
+        "command_surface"
+      ],
+      "attributes": {
+        "shell_cli_role": "command_surface",
+        "command_path": [
+          "control-plane",
+          "bootstrap"
+        ],
+        "handler_id": "bootstrap_control_plane_project",
+        "entry_surface": "shell_projection_asset",
+        "projection_only": true,
+        "preferred_implementation_backend": "bashly"
+      }
+    },
+    {
+      "ref": "object:control_plane_bootstrap_owner_option",
+      "object_id": "control_plane_bootstrap_owner_option",
+      "object_kind": "other",
+      "title": "Owner Option",
+      "summary": "Owner selection option for the bootstrap command.",
+      "content": "Sets the GitHub owner used for project creation and repo linking.",
+      "source_refs": [
+        {
+          "ref": "source:bootstrap_control_plane_project_sh",
+          "kind": "source_node",
+          "repo_path": "control/github/bootstrap_control_plane_project.sh"
+        }
+      ],
+      "unit_refs": [
+        "unit:bootstrap_owner_option_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "shell_cli",
+        "parameter_surface"
+      ],
+      "attributes": {
+        "shell_cli_role": "parameter_surface",
+        "parameter_kind": "option",
+        "command_ref": "object:control_plane_bootstrap_command",
+        "long_flag": "--owner",
+        "env_binding": "OWNER",
+        "required": false
+      }
+    },
+    {
+      "ref": "object:control_plane_bootstrap_project_title_env",
+      "object_id": "control_plane_bootstrap_project_title_env",
+      "object_kind": "other",
+      "title": "Project Title Environment Binding",
+      "summary": "Environment binding for the bootstrap project title.",
+      "content": "PROJECT_TITLE provides the project title input to the bootstrap command.",
+      "source_refs": [
+        {
+          "ref": "source:bootstrap_control_plane_project_sh",
+          "kind": "source_node",
+          "repo_path": "control/github/bootstrap_control_plane_project.sh"
+        }
+      ],
+      "unit_refs": [
+        "unit:bootstrap_project_title_env_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "shell_cli",
+        "environment_binding"
+      ],
+      "attributes": {
+        "shell_cli_role": "environment_binding",
+        "env_name": "PROJECT_TITLE",
+        "required": false
+      }
+    },
+    {
+      "ref": "object:control_plane_bootstrap_output_contract",
+      "object_id": "control_plane_bootstrap_output_contract",
+      "object_kind": "policy",
+      "title": "Bootstrap Output Contract",
+      "summary": "Bootstrap command should emit structured output wherever practical.",
+      "content": "The bootstrap command should expose a structured machine-readable result surface for downstream tooling.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_policy",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.md"
+        }
+      ],
+      "unit_refs": [
+        "unit:bootstrap_output_contract_0001"
+      ],
+      "normalized_term_refs": [
+        "term:structured_outputs"
+      ],
+      "labels": [
+        "shell_cli",
+        "output_contract"
+      ],
+      "attributes": {
+        "shell_cli_role": "output_contract",
+        "output_mode": "structured_preferred",
+        "preferred_formats": [
+          "json"
+        ]
+      }
+    },
+    {
+      "ref": "object:control_plane_bootstrap_bats_expectation",
+      "object_id": "control_plane_bootstrap_bats_expectation",
+      "object_kind": "other",
+      "title": "Bootstrap Verification Expectation",
+      "summary": "Verification expectation for bootstrap help and success paths.",
+      "content": "Verification should cover help output, required tooling, and successful structured bootstrap response.",
+      "source_refs": [
+        {
+          "ref": "source:shell_script_spec",
+          "kind": "source_node",
+          "repo_path": "control/shell/shell_script_spec.md"
+        }
+      ],
+      "unit_refs": [
+        "unit:bootstrap_verification_expectation_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "shell_cli",
+        "verification_expectation"
+      ],
+      "attributes": {
+        "shell_cli_role": "verification_expectation",
+        "expectation_kind": "black_box_cli_contract",
+        "preferred_verification_backend": "bats"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "ref": "relation:bootstrap_contains_owner_option",
+      "relation_id": "bootstrap_contains_owner_option",
+      "relation_kind": "contains",
+      "from_ref": "object:control_plane_bootstrap_command",
+      "to_ref": "object:control_plane_bootstrap_owner_option"
+    },
+    {
+      "ref": "relation:bootstrap_references_project_title_env",
+      "relation_id": "bootstrap_references_project_title_env",
+      "relation_kind": "references",
+      "from_ref": "object:control_plane_bootstrap_command",
+      "to_ref": "object:control_plane_bootstrap_project_title_env"
+    },
+    {
+      "ref": "relation:output_contract_defines_bootstrap_output",
+      "relation_id": "output_contract_defines_bootstrap_output",
+      "relation_kind": "defines",
+      "from_ref": "object:control_plane_bootstrap_output_contract",
+      "to_ref": "object:control_plane_bootstrap_command"
+    },
+    {
+      "ref": "relation:verification_supports_bootstrap_command",
+      "relation_id": "verification_supports_bootstrap_command",
+      "relation_kind": "supports",
+      "from_ref": "object:control_plane_bootstrap_bats_expectation",
+      "to_ref": "object:control_plane_bootstrap_command"
+    },
+    {
+      "ref": "relation:bootstrap_projects_to_bashly",
+      "relation_id": "bootstrap_projects_to_bashly",
+      "relation_kind": "projects_to",
+      "from_ref": "object:control_plane_bootstrap_command",
+      "to_ref": "target:control_plane_bootstrap_bashly_config"
+    },
+    {
+      "ref": "relation:bootstrap_projects_to_bats",
+      "relation_id": "bootstrap_projects_to_bats",
+      "relation_kind": "projects_to",
+      "from_ref": "object:control_plane_bootstrap_bats_expectation",
+      "to_ref": "target:control_plane_bootstrap_bats_suite"
+    }
+  ],
+  "open_questions": [
+    {
+      "ref": "question:shell_cli_profile_required_constraints",
+      "question_id": "shell_cli_profile_required_constraints",
+      "question": "Which shell CLI attributes should become schema-required in a formal extension constraint layer?",
+      "context": "The current example shows the shell CLI profile through attributes, but the exact requiredness rules still need to be formalized.",
+      "source_refs": [
+        {
+          "ref": "source:shell_cli_spec_draft",
+          "kind": "source_node",
+          "repo_path": "proposals/shell_cli_extension/spec_draft.v1.json"
+        }
+      ],
+      "unit_refs": []
+    }
+  ],
+  "projection_targets": [
+    {
+      "ref": "target:control_plane_bootstrap_bashly_config",
+      "target_id": "control_plane_bootstrap_bashly_config",
+      "target_kind": "config_projection",
+      "source_object_refs": [
+        "object:control_plane_bootstrap_command",
+        "object:control_plane_bootstrap_owner_option",
+        "object:control_plane_bootstrap_project_title_env",
+        "object:control_plane_bootstrap_output_contract"
+      ],
+      "output_ref": {
+        "ref": "artifact:control_plane_bootstrap_bashly_yml",
+        "kind": "projected_artifact",
+        "repo_path": "build/bashly/control_plane_bootstrap/bashly.yml"
+      },
+      "notes": "Implementation projection target for Bashly."
+    },
+    {
+      "ref": "target:control_plane_bootstrap_bats_suite",
+      "target_id": "control_plane_bootstrap_bats_suite",
+      "target_kind": "other",
+      "source_object_refs": [
+        "object:control_plane_bootstrap_command",
+        "object:control_plane_bootstrap_bats_expectation"
+      ],
+      "output_ref": {
+        "ref": "artifact:control_plane_bootstrap_bats_suite",
+        "kind": "projected_artifact",
+        "repo_path": "build/tests/control_plane_bootstrap.bats"
+      },
+      "notes": "Verification projection target for Bats."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "artifact_type": "spec_draft",
+  "artifact_version": "v1",
+  "proposal_id": "git-substrate-adapters-v1",
+  "title": "Git Substrate Adapters V1",
+  "status": "implemented",
+  "summary": "Defines and closes the first proposal boundary for Git-substrate projected adapters so deterministic Git-state and semantic-diff surfaces are realized without elevating adapter outputs into authority.",
+  "source_inputs": [
+    {
+      "ref": "control/policy/token_burn_and_structured_output.registry.json",
+      "kind": "policy_source",
+      "role": "git_substrate_policy_basis"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/realization_workflow_contract.v2.md",
+      "kind": "workflow_source",
+      "role": "normalized_realization_pattern"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/unified_realization_manifest.v2.schema.json",
+      "kind": "schema_source",
+      "role": "normalized_manifest_contract"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/unified_realization_report.v2.schema.json",
+      "kind": "schema_source",
+      "role": "normalized_report_contract"
+    }
+  ],
+  "normalized_shape": {
+    "authoritative_base_model": "canonical_semantic_model.schema.json",
+    "binding_surface": "projection_artifact_manifest.schema.json",
+    "extension_style": "git_substrate_adapter_contracts",
+    "new_parallel_authority_model": false
+  },
+  "core_model": {
+    "design_rules": [
+      "git_adapter_outputs_are_projection_artifacts",
+      "deterministic_git_facts_precede_semantic_enrichment",
+      "repo_state_and_diff_state_should_be_emitted_as_structured_artifacts",
+      "semantic_diff_enrichment_must_not_replace_canonical_git_facts",
+      "implementation_should_reuse_existing_realization_pattern"
+    ],
+    "intended_semantic_coverage": [
+      "repo_state_surface",
+      "diff_state_surface",
+      "ref_state_surface",
+      "semantic_diff_surface",
+      "review_basis_surface"
+    ],
+    "target_projection_backends": {
+      "git_implementation": [
+        "gix",
+        "sem"
+      ],
+      "git_hydration_consumers": [
+        "marimo"
+      ]
+    }
+  },
+  "open_items": [],
+  "resolved_items": [
+    {
+      "id": "resolved-001",
+      "title": "Authority location",
+      "detail": "The existing metadata model remains the sole authority baseline; gix and sem outputs are projection artifacts only."
+    },
+    {
+      "id": "resolved-002",
+      "title": "Adapter classification",
+      "detail": "gix is the deterministic Git fact surface and sem is the semantic diff enrichment surface."
+    },
+    {
+      "id": "resolved-003",
+      "title": "Git semantic example",
+      "detail": "A first canonical semantic example now exists for repo_state, diff_state, semantic_diff, and review_basis surfaces."
+    },
+    {
+      "id": "resolved-004",
+      "title": "Git realization payload",
+      "detail": "A first realization payload now exists for state_projection and enrichment_projection targets."
+    },
+    {
+      "id": "resolved-005",
+      "title": "Compatibility posture",
+      "detail": "A compatibility assessment now exists for the git_substrate_role namespace and the new projection target kinds."
+    },
+    {
+      "id": "resolved-006",
+      "title": "Realization workflow contract",
+      "detail": "A Git-substrate realization workflow contract now exists and explicitly reuses the normalized manifest/report pattern."
+    },
+    {
+      "id": "resolved-007",
+      "title": "Realization runner",
+      "detail": "A first Git-substrate realization runner now exists and emits repo_state, diff_state, semantic_diff, plus normalized manifest/report artifacts."
+    },
+    {
+      "id": "resolved-008",
+      "title": "Narrower transform surfaces",
+      "detail": "The runner-owned Git transforms have been split into bounded gix and sem emitter artifacts while keeping the unified runner as the primary operator surface."
+    },
+    {
+      "id": "resolved-009",
+      "title": "gix real runtime integration",
+      "detail": "gix now has a real crate-backed runtime path through the repo-local Rust helper that emits repo_state and diff_state."
+    },
+    {
+      "id": "resolved-010",
+      "title": "sem real runtime integration",
+      "detail": "sem now has a real runtime path through the local sem source tree and emits semantic_diff plus review_basis."
+    },
+    {
+      "id": "resolved-011",
+      "title": "Adapter closeout",
+      "detail": "The first real-runtime adapter tranche is explicitly closed through adapter_closeout.v1.json; remaining work is script migration, not adapter framing."
+    }
+  ]
+}

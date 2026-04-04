@@ -1,0 +1,233 @@
+{
+  "document_type": "canonical_semantic_model",
+  "model_id": "git_substrate_adapters_v1_example",
+  "version": "0.1.0",
+  "title": "Git Substrate Adapter Example",
+  "summary": "Example semantic model for deterministic Git-state capture and semantic diff enrichment without promoting adapter outputs into authority.",
+  "root_ref": "root:/home/_404/src",
+  "source_registry_ref": "artifact:git_substrate_sources",
+  "structural_units_ref": "artifact:git_substrate_structural_units",
+  "objects": [
+    {
+      "ref": "object:codex_home_repo_state",
+      "object_id": "codex_home_repo_state",
+      "object_kind": "artifact_target",
+      "title": "codex_home Repository State Surface",
+      "summary": "Deterministic repository-state surface for the codex_home worktree.",
+      "content": "Captures repository identity, HEAD, worktree cleanliness, and active branch for deterministic downstream Git-state consumption.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_registry",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.registry.json"
+        }
+      ],
+      "unit_refs": [
+        "unit:git_repo_state_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "git",
+        "repo_state_surface"
+      ],
+      "attributes": {
+        "git_substrate_role": "repo_state_surface",
+        "repository_ref": "repo:self",
+        "state_kind": "repo_state",
+        "projection_only": true,
+        "preferred_backend": "gix"
+      }
+    },
+    {
+      "ref": "object:codex_home_diff_state",
+      "object_id": "codex_home_diff_state",
+      "object_kind": "artifact_target",
+      "title": "codex_home Diff State Surface",
+      "summary": "Deterministic diff-state surface for codex_home against origin/main.",
+      "content": "Captures explicit comparison state for deterministic diff emission and downstream semantic enrichment.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_registry",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.registry.json"
+        }
+      ],
+      "unit_refs": [
+        "unit:git_diff_state_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "git",
+        "diff_state_surface"
+      ],
+      "attributes": {
+        "git_substrate_role": "diff_state_surface",
+        "repository_ref": "repo:self",
+        "comparison_ref": "origin/main",
+        "state_kind": "diff_state",
+        "projection_only": true,
+        "preferred_backend": "gix"
+      }
+    },
+    {
+      "ref": "object:codex_home_semantic_diff",
+      "object_id": "codex_home_semantic_diff",
+      "object_kind": "artifact_target",
+      "title": "codex_home Semantic Diff Surface",
+      "summary": "Semantic diff enrichment surface for codex_home based on deterministic diff-state inputs.",
+      "content": "Enriches deterministic Git diff state with change grouping and higher-order review semantics without replacing canonical Git facts.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_registry",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.registry.json"
+        }
+      ],
+      "unit_refs": [
+        "unit:git_semantic_diff_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "git",
+        "semantic_diff_surface"
+      ],
+      "attributes": {
+        "git_substrate_role": "semantic_diff_surface",
+        "repository_ref": "repo:self",
+        "upstream_diff_ref": "object:codex_home_diff_state",
+        "projection_only": true,
+        "preferred_backend": "sem"
+      }
+    },
+    {
+      "ref": "object:codex_home_review_basis",
+      "object_id": "codex_home_review_basis",
+      "object_kind": "policy",
+      "title": "codex_home Review Basis Surface",
+      "summary": "Review-basis policy surface for deriving packet and change-review inputs from Git-state artifacts.",
+      "content": "Defines that review basis must name the upstream repo_state and diff_state artifacts and preserve the approval-basis lineage.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_registry",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.registry.json"
+        }
+      ],
+      "unit_refs": [
+        "unit:git_review_basis_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "git",
+        "review_basis_surface"
+      ],
+      "attributes": {
+        "git_substrate_role": "review_basis_surface",
+        "basis_rule": "review_basis_must_reference_repo_and_diff_state_artifacts",
+        "preferred_enrichment_backend": "sem"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "ref": "relation:repo_state_supports_diff_state",
+      "relation_id": "repo_state_supports_diff_state",
+      "relation_kind": "supports",
+      "from_ref": "object:codex_home_repo_state",
+      "to_ref": "object:codex_home_diff_state"
+    },
+    {
+      "ref": "relation:diff_state_supports_semantic_diff",
+      "relation_id": "diff_state_supports_semantic_diff",
+      "relation_kind": "supports",
+      "from_ref": "object:codex_home_diff_state",
+      "to_ref": "object:codex_home_semantic_diff"
+    },
+    {
+      "ref": "relation:review_basis_defines_semantic_diff",
+      "relation_id": "review_basis_defines_semantic_diff",
+      "relation_kind": "defines",
+      "from_ref": "object:codex_home_review_basis",
+      "to_ref": "object:codex_home_semantic_diff"
+    },
+    {
+      "ref": "relation:repo_state_projects_to_gix",
+      "relation_id": "repo_state_projects_to_gix",
+      "relation_kind": "projects_to",
+      "from_ref": "object:codex_home_repo_state",
+      "to_ref": "target:codex_home_gix_repo_state"
+    },
+    {
+      "ref": "relation:diff_state_projects_to_gix",
+      "relation_id": "diff_state_projects_to_gix",
+      "relation_kind": "projects_to",
+      "from_ref": "object:codex_home_diff_state",
+      "to_ref": "target:codex_home_gix_diff_state"
+    },
+    {
+      "ref": "relation:semantic_diff_projects_to_sem",
+      "relation_id": "semantic_diff_projects_to_sem",
+      "relation_kind": "projects_to",
+      "from_ref": "object:codex_home_semantic_diff",
+      "to_ref": "target:codex_home_semantic_diff_enrichment"
+    }
+  ],
+  "open_questions": [
+    {
+      "ref": "question:git_substrate_v1_target_shape",
+      "question_id": "git_substrate_v1_target_shape",
+      "question": "Which Git-state fields should be promoted from backend-specific output into a cross-backend substrate profile?",
+      "context": "The first Git substrate slice should stay narrow enough to avoid inventing a parallel Git authority schema too early.",
+      "source_refs": [
+        {
+          "ref": "source:git_substrate_spec_draft",
+          "kind": "source_node",
+          "repo_path": "proposals/git_substrate_adapters_v1/spec_draft.v1.json"
+        }
+      ],
+      "unit_refs": []
+    }
+  ],
+  "projection_targets": [
+    {
+      "ref": "target:codex_home_gix_repo_state",
+      "target_id": "codex_home_gix_repo_state",
+      "target_kind": "state_projection",
+      "source_object_refs": [
+        "object:codex_home_repo_state"
+      ],
+      "output_ref": {
+        "ref": "artifact:codex_home_repo_state_json",
+        "kind": "projected_artifact",
+        "repo_path": "build/git/codex_home/repo_state.json"
+      }
+    },
+    {
+      "ref": "target:codex_home_gix_diff_state",
+      "target_id": "codex_home_gix_diff_state",
+      "target_kind": "state_projection",
+      "source_object_refs": [
+        "object:codex_home_diff_state"
+      ],
+      "output_ref": {
+        "ref": "artifact:codex_home_diff_state_json",
+        "kind": "projected_artifact",
+        "repo_path": "build/git/codex_home/diff_state.json"
+      }
+    },
+    {
+      "ref": "target:codex_home_semantic_diff_enrichment",
+      "target_id": "codex_home_semantic_diff_enrichment",
+      "target_kind": "enrichment_projection",
+      "source_object_refs": [
+        "object:codex_home_semantic_diff",
+        "object:codex_home_review_basis"
+      ],
+      "output_ref": {
+        "ref": "artifact:codex_home_semantic_diff_json",
+        "kind": "projected_artifact",
+        "repo_path": "build/git/codex_home/semantic_diff.json"
+      }
+    }
+  ]
+}

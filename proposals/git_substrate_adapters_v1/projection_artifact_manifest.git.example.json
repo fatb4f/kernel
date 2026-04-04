@@ -1,0 +1,72 @@
+{
+  "document_type": "projection_artifact_manifest",
+  "manifest_id": "git_substrate_v1_projection_manifest",
+  "version": "0.1.0",
+  "canonical_model_ref": "artifact:canonical_semantic_model.git.example.json",
+  "targets": [
+    {
+      "target_ref": {
+        "ref": "target:codex_home_gix_repo_state",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:codex_home_repo_state_json",
+        "kind": "projected_artifact",
+        "repo_path": "build/git/codex_home/repo_state.json"
+      },
+      "projection_kind": "state_projection",
+      "inputs": [
+        {
+          "ref": "object:codex_home_repo_state",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Deterministic repository-state projection into a gix-backed state artifact."
+    },
+    {
+      "target_ref": {
+        "ref": "target:codex_home_gix_diff_state",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:codex_home_diff_state_json",
+        "kind": "projected_artifact",
+        "repo_path": "build/git/codex_home/diff_state.json"
+      },
+      "projection_kind": "state_projection",
+      "inputs": [
+        {
+          "ref": "object:codex_home_diff_state",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Deterministic diff-state projection into a gix-backed state artifact."
+    },
+    {
+      "target_ref": {
+        "ref": "target:codex_home_semantic_diff_enrichment",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:codex_home_semantic_diff_json",
+        "kind": "projected_artifact",
+        "repo_path": "build/git/codex_home/semantic_diff.json"
+      },
+      "projection_kind": "enrichment_projection",
+      "inputs": [
+        {
+          "ref": "object:codex_home_semantic_diff",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:codex_home_review_basis",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Semantic diff enrichment projection into a sem-backed artifact."
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shell_cli_extension_constraints.schema.json",
+  "title": "Shell CLI Extension Constraints",
+  "description": "Schema-backed constraint layer for the shell/CLI extension profile over the existing metadata model.",
+  "type": "object",
+  "required": [
+    "document_type",
+    "constraint_id",
+    "version",
+    "base_model_refs",
+    "object_role_constraints",
+    "relation_constraints",
+    "projection_constraints"
+  ],
+  "properties": {
+    "document_type": {
+      "const": "shell_cli_extension_constraints"
+    },
+    "constraint_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_model_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "object_role_constraints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/object_role_constraint"
+      }
+    },
+    "relation_constraints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/relation_constraint"
+      }
+    },
+    "projection_constraints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/projection_constraint"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "shell_cli_role": {
+      "type": "string",
+      "enum": [
+        "command_surface",
+        "parameter_surface",
+        "environment_binding",
+        "dependency_requirement",
+        "usage_example",
+        "output_contract",
+        "verification_expectation"
+      ]
+    },
+    "object_kind": {
+      "type": "string",
+      "enum": [
+        "source",
+        "unit",
+        "section",
+        "term",
+        "question",
+        "policy",
+        "relation_node",
+        "collection",
+        "artifact_target",
+        "other"
+      ]
+    },
+    "relation_kind": {
+      "type": "string",
+      "enum": [
+        "derived_from",
+        "maps_to",
+        "supports",
+        "defines",
+        "contains",
+        "references",
+        "projects_to",
+        "other"
+      ]
+    },
+    "target_kind": {
+      "type": "string",
+      "enum": [
+        "markdown_document",
+        "json_document",
+        "summary_markdown",
+        "summary_json",
+        "schema_fragment",
+        "codegen_input",
+        "config_projection",
+        "inventory_view",
+        "trace_map",
+        "other"
+      ]
+    },
+    "object_role_constraint": {
+      "type": "object",
+      "required": [
+        "shell_cli_role",
+        "allowed_object_kind",
+        "required_attributes"
+      ],
+      "properties": {
+        "shell_cli_role": {
+          "$ref": "#/$defs/shell_cli_role"
+        },
+        "allowed_object_kind": {
+          "$ref": "#/$defs/object_kind"
+        },
+        "required_attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_]+$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "relation_constraint": {
+      "type": "object",
+      "required": [
+        "relation_kind",
+        "usage"
+      ],
+      "properties": {
+        "relation_kind": {
+          "$ref": "#/$defs/relation_kind"
+        },
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "projection_constraint": {
+      "type": "object",
+      "required": [
+        "backend",
+        "projection_role",
+        "allowed_target_kind"
+      ],
+      "properties": {
+        "backend": {
+          "type": "string",
+          "enum": [
+            "bashly",
+            "argc",
+            "argbash",
+            "bats",
+            "shellspec"
+          ]
+        },
+        "projection_role": {
+          "type": "string",
+          "enum": [
+            "implementation_target",
+            "verification_consumer"
+          ]
+        },
+        "allowed_target_kind": {
+          "$ref": "#/$defs/target_kind"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

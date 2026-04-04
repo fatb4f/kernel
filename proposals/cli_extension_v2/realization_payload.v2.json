@@ -1,0 +1,99 @@
+{
+  "document_type": "realization_payload",
+  "payload_id": "cli_extension_v2_realization",
+  "version": "0.2.0",
+  "authority_inputs": {
+    "canonical_model_ref": "artifact:canonical_semantic_model.cli.example.json",
+    "constraint_ref": "artifact:extension_constraints.v2.json",
+    "profile_ref": "artifact:extension_profile.v2.json",
+    "projection_manifest_ref": "artifact:projection_artifact_manifest.cli.example.json"
+  },
+  "realization_scope": {
+    "allowed_adapter_families": [
+      "shell_implementation",
+      "python_implementation",
+      "shell_verification",
+      "python_verification"
+    ],
+    "allowed_backends": [
+      "bashly",
+      "jsonargparse",
+      "bats",
+      "pytest"
+    ],
+    "repo_root_ref": "root:/home/_404/src",
+    "output_root": "build/",
+    "deterministic": true
+  },
+  "targets": [
+    {
+      "target_id": "control_plane_inspect_bashly",
+      "backend": "bashly",
+      "adapter_family": "shell_implementation",
+      "projection_role": "implementation_target",
+      "inputs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_format_option",
+        "object:control_plane_inspect_profile_env",
+        "object:control_plane_inspect_output_contract"
+      ],
+      "artifact_kind": "config_projection",
+      "repo_path": "build/bashly/control_plane_inspect/bashly.yml"
+    },
+    {
+      "target_id": "control_plane_inspect_jsonargparse",
+      "backend": "jsonargparse",
+      "adapter_family": "python_implementation",
+      "projection_role": "implementation_target",
+      "inputs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_format_option",
+        "object:control_plane_inspect_profile_env",
+        "object:control_plane_inspect_output_contract"
+      ],
+      "artifact_kind": "codegen_input",
+      "repo_path": "build/python/control_plane_inspect/parser.py"
+    },
+    {
+      "target_id": "control_plane_inspect_bats",
+      "backend": "bats",
+      "adapter_family": "shell_verification",
+      "projection_role": "verification_consumer",
+      "inputs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_verification_expectation"
+      ],
+      "artifact_kind": "verification_projection",
+      "repo_path": "build/tests/shell/control_plane_inspect.bats"
+    },
+    {
+      "target_id": "control_plane_inspect_pytest",
+      "backend": "pytest",
+      "adapter_family": "python_verification",
+      "projection_role": "verification_consumer",
+      "inputs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_verification_expectation"
+      ],
+      "artifact_kind": "verification_projection",
+      "repo_path": "build/tests/python/test_control_plane_inspect.py"
+    }
+  ],
+  "workflow": {
+    "command": "control realize cli-extension-v2",
+    "deterministic": true,
+    "overwrite_policy": "replace_generated_only",
+    "manifest_update": "required"
+  },
+  "success_criteria": [
+    "all required artifacts emitted",
+    "projection manifest updated or confirmed current",
+    "no unbound required semantic roles",
+    "no adapter-family mismatch",
+    "deterministic replay produces identical outputs"
+  ],
+  "notes": [
+    "This payload defines the realization contract around runtime-neutral CLI projections and does not specify backend internals.",
+    "The approved v1 Bashly+Bats slice remains valid independently of this v2 realization payload."
+  ]
+}

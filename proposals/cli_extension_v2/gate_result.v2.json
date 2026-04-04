@@ -1,0 +1,34 @@
+{
+  "artifact_type": "proposal_gate_result",
+  "artifact_version": "v2",
+  "proposal_id": "cli-extension-profile-v2",
+  "gate_status": "pass",
+  "result_summary": "The runtime-neutral v2 direction is coherent and preserves the existing metadata authority baseline while generalizing the shell-first profile toward shell and Python adapter families. It is now backed by runtime-neutral constraints, example artifacts, a compatibility assessment, a primary unified realization runner, and normalized unified manifest/report contracts.",
+  "passes": [
+    "existing metadata model remains the authority baseline",
+    "runtime assets are classified as projection-only",
+    "shell and Python implementation adapters are separated by runtime family",
+    "shell and Python verification consumers are separated by runtime family",
+    "jsonargparse is named as the first Python implementation adapter target",
+    "runtime-neutral cli_role-based constraints exist and validate against a dedicated schema",
+    "runtime-neutral semantic and projection example artifacts exist",
+    "compatibility assessment classifies the v2 refactor as compatible with migration",
+    "a runtime-neutral realization payload exists for adapter-facing follow-on slices",
+    "a realization workflow contract exists for deterministic projection engineering",
+    "the first concrete Bashly target is wired to the upstream minimal example",
+    "the first Bashly minimal transform emits deterministic source surfaces and is covered by local tests",
+    "the first jsonargparse minimal transform emits deterministic source surfaces and is covered by local tests",
+    "a broader realization runner now orchestrates the bounded Bashly and jsonargparse slices into one unified build tree",
+    "the unified realization runner is explicitly the primary operator surface for this lane",
+    "the bounded emitters are treated as internal projection surfaces rather than operator authority",
+    "the unified realization manifest and report contracts now exist as explicit schema artifacts",
+    "verification projections are emitted under runner ownership rather than as separate operator surfaces",
+    "runner-owned verification projections are synthesized from canonical verification semantics instead of copied from child-emitter test sources"
+  ],
+  "underspecified_items": [],
+  "next_actions": [
+    "promote the unified manifest/report schemas into the next amendment-facing realization packet when this lane is packetized again",
+    "open the Git-substrate adapter-contract lane for gix and sem on top of the now-stabilized realization pattern"
+  ],
+  "promotion_decision": "ready_for_amendment_review"
+}

@@ -2,7 +2,7 @@
   "document_type": "realization_report",
   "schema_version": "v2",
   "status": "success",
-  "payload_path": "/home/_404/src/codex_home/control/proposals/git_substrate_adapters_v1/realization_payload.v1.json",
+  "payload_path": "/home/_404/src/kernel/proposals/git_substrate_adapters_v1/realization_payload.v1.json",
   "primary_operator_surface": "control_realize_git_substrate_adapters_v1.py",
   "realized_count": 3,
   "targets": [

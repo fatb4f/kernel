@@ -1,0 +1,229 @@
+{
+  "artifact_type": "port_inventory",
+  "artifact_version": "v1",
+  "inventory_id": "python_port_inventory",
+  "status": "in_progress",
+  "target_backend": "jsonargparse",
+  "selection_rule": "Only operator-facing or stable workflow entrypoints are candidates. Proposal-local tests and minimal emitters remain projection internals, not migration targets.",
+  "candidates": [
+    {
+      "path": "kernel/scripts/run_chatgpt_packet_file.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "ported_adapter_surface_available",
+      "priority": "high",
+      "notes": "jsonargparse-backed surface now exists at kernel/scripts/run_chatgpt_packet_file_jsonargparse.py. Behavior is shared with the legacy runner; primary cutover is still pending."
+    },
+    {
+      "path": "kernel/scripts/run_problem_set_surface.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "ported_adapter_surface_available",
+      "priority": "high",
+      "notes": "jsonargparse-backed surface now exists at kernel/scripts/run_problem_set_surface_jsonargparse.py. Behavior is shared with the legacy runner; primary cutover is still pending."
+    },
+    {
+      "path": "kernel/scripts/run_reviewed_structural_draft_surface.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Likely fits the same Python CLI family once the first port pattern is stable."
+    },
+    {
+      "path": "kernel/scripts/run_reviewed_structural_export_slice.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Good follow-on after the first packet/problem-set ports."
+    },
+    {
+      "path": "kernel/scripts/run_json_structure_contract_surface.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Same operator-surface class as the other Python runners."
+    },
+    {
+      "path": "kernel/scripts/run_chatgpt_problem_set.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Likely benefits from shared parser and config handling."
+    },
+    {
+      "path": "kernel/scripts/execute_chatgpt_pipeline_operational_bundle.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "high",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "medium",
+      "notes": "Broader operational bundle driver; defer until the smaller Python ports settle."
+    },
+    {
+      "path": "kernel/scripts/author_problem_set.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Authoring utility and reasonable Python CLI fit."
+    },
+    {
+      "path": "kernel/scripts/sync_problem_set_issue.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Good candidate once auth/config handling is normalized."
+    },
+    {
+      "path": "kernel/scripts/realize_git_substrate_packet.py",
+      "current_role": "runtime_wrapper",
+      "complexity": "low",
+      "backend_fit": "partial",
+      "recommendation": "keep_for_now",
+      "priority": "low",
+      "notes": "Kernel-side runtime wrapper, not the first place to impose a jsonargparse surface."
+    },
+    {
+      "path": "kernel/scripts/close_git_substrate_packet.py",
+      "current_role": "runtime_wrapper",
+      "complexity": "low",
+      "backend_fit": "partial",
+      "recommendation": "keep_for_now",
+      "priority": "low",
+      "notes": "Same rationale as the realization wrapper."
+    },
+    {
+      "path": "codex_home/skills/scripts/compose_workflow.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Clear CLI semantics and likely good fit for jsonargparse."
+    },
+    {
+      "path": "codex_home/skills/scripts/build_registry.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Likely a good shared Python CLI target."
+    },
+    {
+      "path": "codex_home/skills/plan/scripts/generate_plan_packet.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Packet-generation utility and good Python CLI fit."
+    },
+    {
+      "path": "codex_home/skills/plan/scripts/validate_plan_packet.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Validation utility with explicit flags/inputs."
+    },
+    {
+      "path": "codex_home/skills/loop/scripts/validate_loop_packet.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Validation runner and good Python CLI candidate."
+    },
+    {
+      "path": "codex_home/skills/loop/scripts/validate_handoff.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Likely compatible with the same shared CLI pattern."
+    },
+    {
+      "path": "codex_home/skills/loop/scripts/validate_contract_bridge.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Same utility class as the other validation runners."
+    },
+    {
+      "path": "codex_home/skills/implement/scripts/generate_implement_packet.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Good packet-generation candidate for the Python adapter lane."
+    },
+    {
+      "path": "codex_home/skills/implement/scripts/validate_implement_packet.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Validation utility with explicit CLI semantics."
+    },
+    {
+      "path": "codex_home/skills/json-tool/scripts/validate_json_contract.py",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Likely straightforward jsonargparse fit."
+    }
+  ],
+  "excluded": [
+    {
+      "path": "proposals/cli_extension_v2/emit_bashly_minimal.py",
+      "reason": "Projection internal, not a user-facing script to port."
+    },
+    {
+      "path": "proposals/cli_extension_v2/emit_jsonargparse_minimal.py",
+      "reason": "Projection internal, not a migration target."
+    },
+    {
+      "path": "proposals/cli_extension_v2/control_realize_cli_extension_v2.py",
+      "reason": "Already the new projection runner surface."
+    },
+    {
+      "path": "proposals/git_substrate_adapters_v1/emit_gix_minimal.py",
+      "reason": "Projection internal for the Git adapter lane."
+    },
+    {
+      "path": "proposals/git_substrate_adapters_v1/emit_sem_minimal.py",
+      "reason": "Projection internal for the Git adapter lane."
+    },
+    {
+      "path": "proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "reason": "Already the new projection runner surface."
+    },
+    {
+      "path": "kernel/generated/state/admission/chatgpt-pipeline-operational-packet/2026-03-27T11-58-02Z/local_runtime/validate_and_admit.py",
+      "reason": "Generated state artifact, not an authored script."
+    }
+  ]
+}

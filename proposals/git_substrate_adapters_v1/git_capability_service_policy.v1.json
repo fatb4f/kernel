@@ -1,0 +1,168 @@
+{
+  "artifact_type": "service_policy",
+  "artifact_version": "v1",
+  "service_id": "git_capability_service",
+  "status": "drafted",
+  "summary": "Operationalize git substrate access as a policy-enforced capability service with deterministic policy outside the model and thin approved execution over gix and sem.",
+  "control_model": {
+    "layers": [
+      {
+        "layer": "planner",
+        "responsibility": "Produce task-shaped intents such as inspect repo state, prepare patch, propose branch, or propose commit."
+      },
+      {
+        "layer": "policy_engine",
+        "responsibility": "Deterministically authorize or deny actions using repo, branch, path, user, and environment rules."
+      },
+      {
+        "layer": "executor",
+        "responsibility": "Run only approved operations through thin runtime surfaces backed by gix and sem and return structured results."
+      }
+    ],
+    "policy_placement": "Keep Git policy in Rust helpers or the Python orchestrator, never in the model."
+  },
+  "risk_tiers": [
+    {
+      "tier": "R0",
+      "name": "read_only",
+      "default_action": "allow",
+      "gate": "none",
+      "operations": [
+        "head",
+        "status",
+        "list_branches",
+        "diff_names",
+        "changed_files",
+        "resolve_revision",
+        "commit_metadata"
+      ]
+    },
+    {
+      "tier": "R1",
+      "name": "workspace_local_write",
+      "default_action": "deny_outside_sandbox",
+      "gate": "sandbox_only",
+      "operations": [
+        "apply_patch",
+        "create_branch"
+      ]
+    },
+    {
+      "tier": "R2",
+      "name": "repo_visible_write",
+      "default_action": "require_explicit_approval",
+      "gate": "user_or_service_approval",
+      "operations": [
+        "commit_changes",
+        "open_pr"
+      ]
+    },
+    {
+      "tier": "R3",
+      "name": "remote_or_destructive",
+      "default_action": "blocked",
+      "gate": "human_review_or_protected_policy",
+      "operations": [
+        "push",
+        "force_push",
+        "reset",
+        "rebase",
+        "merge",
+        "delete_branch",
+        "delete_tag",
+        "arbitrary_ref_update"
+      ]
+    }
+  ],
+  "environment_gates": [
+    {
+      "environment": "sandbox",
+      "allow": [
+        "R0",
+        "bounded_R1"
+      ],
+      "deny": [
+        "remote_writes"
+      ]
+    },
+    {
+      "environment": "staging",
+      "allow": [
+        "R0",
+        "R1_with_explicit_approval",
+        "R2_with_explicit_approval"
+      ],
+      "deny": [
+        "direct_protected_branch_writes"
+      ]
+    },
+    {
+      "environment": "production",
+      "allow": [
+        "R0"
+      ],
+      "deny": [
+        "R3",
+        "unreviewed_R2"
+      ]
+    }
+  ],
+  "write_safeguards": [
+    "re-read repo state before every write",
+    "verify current HEAD and branch before execution",
+    "verify touched file set against allowed paths",
+    "verify no protected refs or protected paths are in scope",
+    "generate dry-run summary before write execution",
+    "bind approval to diff hash or tree hash"
+  ],
+  "audit_requirements": [
+    "record planner intent",
+    "record normalized capability request",
+    "record policy decision and reason",
+    "record repo, branch, and path scope",
+    "record diff summary and execution result",
+    "record commit SHA or PR link when durable changes are created"
+  ],
+  "kill_switches": [
+    "disable_all_writes",
+    "disable_remote_actions",
+    "disable_repo",
+    "disable_operation_type",
+    "force_sandbox_only_mode"
+  ],
+  "rollout_phases": [
+    {
+      "phase": "phase_0",
+      "scope": "read_only_only",
+      "operations": [
+        "head",
+        "status",
+        "list_branches",
+        "diff_names"
+      ]
+    },
+    {
+      "phase": "phase_1",
+      "scope": "sandbox_write_prep",
+      "operations": [
+        "apply_patch",
+        "create_branch"
+      ]
+    },
+    {
+      "phase": "phase_2",
+      "scope": "controlled_repo_visible_writes",
+      "operations": [
+        "commit_changes"
+      ]
+    },
+    {
+      "phase": "phase_3",
+      "scope": "pr_automation",
+      "operations": [
+        "open_pr"
+      ]
+    }
+  ],
+  "policy_decision_rule": "The model may inspect freely, may prepare changes in sandbox, may never directly alter shared history, and may only create durable repo changes through explicit approved workflows."
+}

@@ -24,7 +24,7 @@
     {
       "name": "realize git substrate slice",
       "status": "PASS",
-      "runner": "/home/_404/src/codex_home/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "runner": "/home/_404/src/kernel/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
       "result": {
         "status": "success",
         "realized_targets": 3,

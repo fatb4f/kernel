@@ -1,0 +1,122 @@
+{
+  "artifact_type": "adapter_target_contract",
+  "artifact_version": "v1",
+  "target_contract_id": "bashly_minimal_first_slice",
+  "status": "wired",
+  "adapter": {
+    "name": "bashly",
+    "adapter_family": "shell_implementation",
+    "projection_role": "implementation_target"
+  },
+  "basis": {
+    "upstream_example": "bashly/examples/minimal",
+    "reason": "Use the smallest Bashly project source tree that still proves spec projection, root partial projection, and bashly generate as a second-stage build."
+  },
+  "projection_scope": {
+    "in_scope": [
+      "root command projection",
+      "positional argument projection",
+      "flag projection",
+      "usage example projection",
+      "root partial projection",
+      "bashly generate as downstream build step"
+    ],
+    "out_of_scope": [
+      "settings.yml emission",
+      "bashly-strings.yml emission",
+      "subcommand trees",
+      "shared library partials",
+      "environment variable projection",
+      "dependency projection",
+      "ERB or import preprocessing",
+      "docs rendering",
+      "completion generation"
+    ]
+  },
+  "required_source_surfaces": [
+    {
+      "surface_id": "bashly_cli_source",
+      "repo_path": "src/bashly.yml",
+      "schema_surface": "bashly_cli_surface",
+      "required": true,
+      "notes": "Primary Bashly CLI source emitted from canonical metadata."
+    },
+    {
+      "surface_id": "bashly_root_partial",
+      "repo_path": "src/root_command.sh",
+      "schema_surface": "bashly_partial_surface",
+      "required": true,
+      "notes": "Required root command behavior partial for a commandless minimal Bashly app."
+    }
+  ],
+  "optional_source_surfaces": [
+    {
+      "surface_id": "bashly_settings_source",
+      "repo_path": "settings.yml",
+      "schema_surface": "bashly_settings_surface",
+      "required": false,
+      "notes": "Explicitly out of scope for the first slice."
+    },
+    {
+      "surface_id": "bashly_strings_source",
+      "repo_path": "bashly-strings.yml",
+      "schema_surface": "bashly_strings_surface",
+      "required": false,
+      "notes": "Explicitly out of scope for the first slice."
+    }
+  ],
+  "canonical_bindings": [
+    {
+      "cli_role": "command_surface",
+      "target_surface": "bashly_cli_source",
+      "target_fields": [
+        "name",
+        "help",
+        "version"
+      ]
+    },
+    {
+      "cli_role": "parameter_surface",
+      "target_surface": "bashly_cli_source",
+      "target_fields": [
+        "args[]",
+        "flags[]"
+      ]
+    },
+    {
+      "cli_role": "usage_example",
+      "target_surface": "bashly_cli_source",
+      "target_fields": [
+        "examples"
+      ]
+    },
+    {
+      "cli_role": "implementation_behavior",
+      "target_surface": "bashly_root_partial",
+      "target_fields": [
+        "root_command.sh body"
+      ]
+    }
+  ],
+  "downstream_build": {
+    "command": "bashly generate",
+    "working_directory_rule": "run from the Bashly project root containing src/bashly.yml",
+    "generated_artifact_kind": "bashly_generated_script",
+    "notes": "The generated script is downstream of the emitted Bashly source surfaces and is not an authority surface."
+  },
+  "validation_minimum": [
+    "--help path",
+    "one success path",
+    "one argument or flag failure path"
+  ],
+  "success_conditions": [
+    "src/bashly.yml is emitted deterministically",
+    "src/root_command.sh is emitted deterministically",
+    "bashly generate completes against the emitted source tree",
+    "generated script exercises the minimal validation set"
+  ],
+  "notes": [
+    "This contract binds the first Bashly adapter slice to the upstream minimal example rather than the broader settings or library examples.",
+    "This contract is intentionally narrower than the full Bashly projection matrix."
+  ]
+}

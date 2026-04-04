@@ -1,0 +1,120 @@
+{
+  "document_type": "projection_artifact_manifest",
+  "manifest_id": "cli_extension_v2_projection_manifest",
+  "version": "0.2.0",
+  "canonical_model_ref": "artifact:canonical_semantic_model.cli.example.json",
+  "targets": [
+    {
+      "target_ref": {
+        "ref": "target:control_plane_inspect_bashly_config",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:control_plane_inspect_bashly_yml",
+        "kind": "projected_artifact",
+        "repo_path": "build/bashly/control_plane_inspect/bashly.yml"
+      },
+      "projection_kind": "config_projection",
+      "inputs": [
+        {
+          "ref": "object:control_plane_inspect_command",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_format_option",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_profile_env",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_output_contract",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Shell implementation projection into a Bashly config."
+    },
+    {
+      "target_ref": {
+        "ref": "target:control_plane_inspect_jsonargparse_parser",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:control_plane_inspect_jsonargparse_py",
+        "kind": "projected_artifact",
+        "repo_path": "build/python/control_plane_inspect/parser.py"
+      },
+      "projection_kind": "codegen_projection",
+      "inputs": [
+        {
+          "ref": "object:control_plane_inspect_command",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_format_option",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_profile_env",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_output_contract",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Python implementation projection into a jsonargparse parser module."
+    },
+    {
+      "target_ref": {
+        "ref": "target:control_plane_inspect_bats_suite",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:control_plane_inspect_bats_suite",
+        "kind": "projected_artifact",
+        "repo_path": "build/tests/control_plane_inspect.bats"
+      },
+      "projection_kind": "other",
+      "inputs": [
+        {
+          "ref": "object:control_plane_inspect_command",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_verification_expectation",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Shell verification projection into a Bats suite."
+    },
+    {
+      "target_ref": {
+        "ref": "target:control_plane_inspect_pytest_suite",
+        "kind": "projection_target"
+      },
+      "artifact_ref": {
+        "ref": "artifact:control_plane_inspect_pytest_suite",
+        "kind": "projected_artifact",
+        "repo_path": "build/python/tests/test_control_plane_inspect.py"
+      },
+      "projection_kind": "other",
+      "inputs": [
+        {
+          "ref": "object:control_plane_inspect_command",
+          "kind": "semantic_object"
+        },
+        {
+          "ref": "object:control_plane_inspect_verification_expectation",
+          "kind": "semantic_object"
+        }
+      ],
+      "deterministic": true,
+      "notes": "Python verification projection into a pytest suite."
+    }
+  ]
+}

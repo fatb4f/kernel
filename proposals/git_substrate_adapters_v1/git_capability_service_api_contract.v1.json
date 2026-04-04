@@ -1,0 +1,162 @@
+{
+  "artifact_type": "service_api_contract",
+  "artifact_version": "v1",
+  "service_id": "git_capability_service",
+  "status": "drafted",
+  "summary": "Task-shaped API contract for policy-enforced Git capabilities over gix and sem without exposing a generic Git shell.",
+  "service_shape": {
+    "interface_style": "task_shaped",
+    "executor_boundary": "approved operations only",
+    "response_style": "plain_structured_data",
+    "shell_escape_allowed": false
+  },
+  "operations": [
+    {
+      "operation": "repo_status",
+      "risk_tier": "R0",
+      "backend": "gix",
+      "inputs": [
+        "repo_path"
+      ],
+      "outputs": [
+        "status_summary",
+        "changed_files"
+      ]
+    },
+    {
+      "operation": "head",
+      "risk_tier": "R0",
+      "backend": "gix",
+      "inputs": [
+        "repo_path"
+      ],
+      "outputs": [
+        "head_ref",
+        "head_commit"
+      ]
+    },
+    {
+      "operation": "changed_files",
+      "risk_tier": "R0",
+      "backend": "gix",
+      "inputs": [
+        "repo_path",
+        "comparison_ref"
+      ],
+      "outputs": [
+        "paths"
+      ]
+    },
+    {
+      "operation": "create_patch",
+      "risk_tier": "R1",
+      "backend": "gix",
+      "inputs": [
+        "repo_path",
+        "instructions",
+        "allowed_paths"
+      ],
+      "outputs": [
+        "patch_text",
+        "diff_summary"
+      ]
+    },
+    {
+      "operation": "create_branch",
+      "risk_tier": "R1",
+      "backend": "gix",
+      "inputs": [
+        "repo_path",
+        "branch_purpose"
+      ],
+      "outputs": [
+        "branch_name",
+        "base_ref"
+      ]
+    },
+    {
+      "operation": "commit_changes",
+      "risk_tier": "R2",
+      "backend": "gix",
+      "inputs": [
+        "repo_path",
+        "commit_message",
+        "expected_files",
+        "approval_envelope"
+      ],
+      "outputs": [
+        "commit_sha",
+        "branch_name",
+        "diff_summary"
+      ]
+    },
+    {
+      "operation": "semantic_diff",
+      "risk_tier": "R0",
+      "backend": "sem",
+      "inputs": [
+        "repo_path",
+        "comparison_ref",
+        "upstream_diff_ref"
+      ],
+      "outputs": [
+        "semantic_diff",
+        "review_basis"
+      ]
+    },
+    {
+      "operation": "open_pr",
+      "risk_tier": "R2",
+      "backend": "orchestrator",
+      "inputs": [
+        "repo_path",
+        "base_branch",
+        "head_branch",
+        "summary",
+        "approval_envelope"
+      ],
+      "outputs": [
+        "pr_ref",
+        "pr_url"
+      ]
+    }
+  ],
+  "blocked_generic_operations": [
+    "arbitrary_checkout",
+    "arbitrary_reset",
+    "arbitrary_rebase",
+    "arbitrary_push",
+    "arbitrary_ref_update",
+    "shell_escape"
+  ],
+  "approval_envelope_contract": {
+    "required_fields": [
+      "intent",
+      "repo",
+      "target_branch",
+      "allowed_paths",
+      "expected_effects",
+      "approval_mode",
+      "request_id"
+    ],
+    "required_policy_checks": [
+      "repo_allowlisted",
+      "branch_matches_allowed_pattern",
+      "touched_paths_within_allowlist",
+      "operation_matches_approved_intent",
+      "no_protected_refs",
+      "dirty_state_explicitly_accepted_if_present"
+    ]
+  },
+  "execution_defaults": {
+    "shared_repo_mode": "branch_and_pr",
+    "protected_branch_writes": "blocked",
+    "direct_history_mutation": "blocked",
+    "remote_actions": "approval_required_or_blocked"
+  },
+  "notes": [
+    "Task-shaped functions are easier to authorize, audit, and test than raw Git verbs.",
+    "Git policy remains outside the model and outside generic prompt logic.",
+    "The executor returns structured results only."
+  ]
+}

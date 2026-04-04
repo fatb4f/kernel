@@ -1,0 +1,37 @@
+{
+  "artifact_type": "target_contract",
+  "artifact_version": "v1",
+  "target_id": "sem_semantic_diff_surface",
+  "backend": "sem",
+  "status": "proposal_draft",
+  "contract_summary": "First semantic diff enrichment target for deriving structured change interpretation from deterministic Git diff inputs without replacing canonical Git-state artifacts.",
+  "contract_scope": {
+    "in_scope": [
+      "semantic diff enrichment from explicit diff-state inputs",
+      "change grouping and interpretation outputs",
+      "review-basis support artifacts for higher-order workflows"
+    ],
+    "out_of_scope": [
+      "canonical Git fact capture",
+      "raw diff production",
+      "authority promotion of semantic interpretations"
+    ]
+  },
+  "required_inputs": [
+    "upstream_diff_ref",
+    "repository_ref"
+  ],
+  "required_outputs": [
+    "semantic_diff.json",
+    "review_basis.json"
+  ],
+  "determinism_rules": [
+    "output must name the upstream diff-state artifact it enriches",
+    "output must not redefine or overwrite canonical Git facts",
+    "output shape must remain stable for unchanged input artifacts"
+  ],
+  "notes": [
+    "This is a target-contract draft only and does not implement sem.",
+    "sem is downstream of deterministic Git fact capture and must remain enrichment-side."
+  ]
+}

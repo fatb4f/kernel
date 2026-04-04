@@ -1,0 +1,58 @@
+{
+  "artifact_type": "runtime_contract",
+  "artifact_version": "v1",
+  "runtime_id": "sem_runtime_contract",
+  "backend": "sem",
+  "status": "implemented",
+  "purpose": "Define and realize the first real enrichment-side adapter execution contract for semantic diff interpretation downstream of deterministic Git fact capture.",
+  "execution_contract": {
+    "required_inputs": [
+      "repository_ref",
+      "upstream_diff_ref"
+    ],
+    "required_outputs": [
+      "semantic_diff.json",
+      "review_basis.json"
+    ],
+    "ordering_rules": [
+      "sem must run only after deterministic diff capture succeeds",
+      "semantic_diff output must preserve an explicit upstream_deterministic_input reference",
+      "review_basis output must remain downstream and non-authoritative"
+    ],
+    "output_invariants": [
+      "semantic grouping does not overwrite canonical repo_state or diff_state",
+      "review basis artifacts remain reproducible from the same upstream diff input",
+      "semantic interpretations remain structurally separated from Git facts"
+    ]
+  },
+  "validation_contract": {
+    "required_checks": [
+      "upstream diff input exists and is named in the report",
+      "semantic_diff emission succeeds on codex_home inputs",
+      "review_basis emission succeeds and remains downstream-only",
+      "deterministic replay on unchanged upstream diff produces identical outputs"
+    ],
+    "failure_modes_to_surface": [
+      "missing upstream diff artifact",
+      "repository ref does not resolve",
+      "semantic enrichment runtime unavailable",
+      "output omits upstream_deterministic_input"
+    ]
+  },
+  "promotion_boundary": {
+    "allowed_now": [
+      "runtime contract definition",
+      "real enrichment verification",
+      "report fields that distinguish minimal from real enrichment execution"
+    ],
+    "not_yet_allowed": [
+      "claiming semantic enrichment is authoritative",
+      "running sem before gix diff capture",
+      "treating review_basis output as canonical Git state"
+    ]
+  },
+  "implementation_artifacts": {
+    "runtime_emitter": "proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+    "runtime_resolution": "resolve against the checked-out ataraxy/sem source tree before falling back to PATH"
+  }
+}

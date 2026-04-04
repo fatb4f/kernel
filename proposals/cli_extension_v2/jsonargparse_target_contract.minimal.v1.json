@@ -1,0 +1,108 @@
+{
+  "artifact_type": "adapter_target_contract",
+  "artifact_version": "v1",
+  "target_contract_id": "jsonargparse_minimal_first_slice",
+  "status": "wired",
+  "adapter": {
+    "name": "jsonargparse",
+    "adapter_family": "python_implementation",
+    "projection_role": "implementation_target"
+  },
+  "basis": {
+    "upstream_example": "cli_extension_v2 runtime-neutral semantic example",
+    "reason": "Use the smallest jsonargparse project surface that proves parser emission, env/config-aware adapter hooks, and pytest-facing verification source emission without widening to packaging or entrypoint build concerns."
+  },
+  "projection_scope": {
+    "in_scope": [
+      "root parser projection",
+      "option projection",
+      "environment binding projection",
+      "output contract influence on emitted parser behavior",
+      "minimal pytest verification source emission"
+    ],
+    "out_of_scope": [
+      "Python packaging or console_scripts entrypoints",
+      "multi-level subcommands",
+      "typed dataclass or class-based argument enrichment",
+      "config-file persistence implementation",
+      "runtime daemon integration",
+      "marimo hydration surfaces"
+    ]
+  },
+  "required_source_surfaces": [
+    {
+      "surface_id": "jsonargparse_parser_source",
+      "repo_path": "parser.py",
+      "schema_surface": "jsonargparse_parser_surface",
+      "required": true,
+      "notes": "Primary Python parser module emitted from canonical metadata."
+    },
+    {
+      "surface_id": "pytest_verification_source",
+      "repo_path": "test_control_plane_inspect.py",
+      "schema_surface": "python_verification_surface",
+      "required": true,
+      "notes": "Minimal pytest suite for the emitted parser surface."
+    }
+  ],
+  "canonical_bindings": [
+    {
+      "cli_role": "command_surface",
+      "target_surface": "jsonargparse_parser_source",
+      "target_fields": [
+        "ArgumentParser(prog=..., description=...)"
+      ]
+    },
+    {
+      "cli_role": "parameter_surface",
+      "target_surface": "jsonargparse_parser_source",
+      "target_fields": [
+        "add_argument(...)"
+      ]
+    },
+    {
+      "cli_role": "environment_binding",
+      "target_surface": "jsonargparse_parser_source",
+      "target_fields": [
+        "ArgumentParser(env_prefix=..., default_env=...)"
+      ]
+    },
+    {
+      "cli_role": "output_contract",
+      "target_surface": "jsonargparse_parser_source",
+      "target_fields": [
+        "render_output(...) behavior"
+      ]
+    },
+    {
+      "cli_role": "verification_expectation",
+      "target_surface": "pytest_verification_source",
+      "target_fields": [
+        "test_help_path",
+        "test_success_path",
+        "test_invalid_value_path"
+      ]
+    }
+  ],
+  "downstream_build": {
+    "command": "pytest -q test_control_plane_inspect.py",
+    "working_directory_rule": "run from the emitted project root containing parser.py and the generated pytest file",
+    "generated_artifact_kind": "python_runtime_projection",
+    "notes": "The emitted parser module remains projection-only; runtime verification proves the emitted source contract without promoting it to authority."
+  },
+  "validation_minimum": [
+    "--help path",
+    "one success path",
+    "one invalid option value path"
+  ],
+  "success_conditions": [
+    "parser.py is emitted deterministically",
+    "test_control_plane_inspect.py is emitted deterministically",
+    "the emitted parser expresses the canonical option and environment-binding semantics",
+    "pytest can exercise the minimal verification set when jsonargparse is available"
+  ],
+  "notes": [
+    "This contract is intentionally narrower than the full jsonargparse projection matrix.",
+    "Environment binding is preserved in the parser surface rather than dropped as in the first Bashly slice."
+  ]
+}

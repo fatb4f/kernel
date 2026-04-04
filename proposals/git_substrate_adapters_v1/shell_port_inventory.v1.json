@@ -1,0 +1,193 @@
+{
+  "artifact_type": "port_inventory",
+  "artifact_version": "v1",
+  "inventory_id": "shell_port_inventory",
+  "status": "in_progress",
+  "target_backend": "bashly",
+  "selection_rule": "Only operator-facing or reusable shell entrypoints are candidates. Shared helper files and packet-local runtime wrappers remain out of scope unless promoted explicitly.",
+  "candidates": [
+    {
+      "path": "codex_home/control/github/bootstrap_control_plane_project.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "strong",
+      "recommendation": "ported_adapter_surface_available",
+      "priority": "high",
+      "notes": "Bashly-backed adapter surface now exists at codex_home/control/github/bootstrap_control_plane_project_bashly/ with generated help/output path. Primary cutover is still pending."
+    },
+    {
+      "path": "kernel/scripts/run_metadata_metaschema_lane.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "high",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "medium",
+      "notes": "Large pipeline wrapper with many internal phases. Better after the first Bashly-backed operator ports."
+    },
+    {
+      "path": "kernel/scripts/run_prose_contract_workflow_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "medium",
+      "notes": "Likely good Bashly candidate once the shell port pattern is stable."
+    },
+    {
+      "path": "kernel/scripts/run_json_family_bridge_runtime_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "medium",
+      "notes": "Pipeline wrapper rather than a small CLI surface."
+    },
+    {
+      "path": "kernel/scripts/run_chatgpt_packet_family_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "medium",
+      "notes": "Fits the shell adapter lane once the packet-family UX is normalized."
+    },
+    {
+      "path": "kernel/scripts/run_completion_obligations_surface_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Runnable slice wrapper; lower leverage than the control-plane bootstrap script."
+    },
+    {
+      "path": "kernel/scripts/run_reason_code_surface_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Same class as the other slice wrappers."
+    },
+    {
+      "path": "kernel/scripts/run_normalization_surface_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Candidate after the shell runner pattern is generalized."
+    },
+    {
+      "path": "kernel/scripts/run_drift_integrity_surface_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Slice wrapper; not the first migration target."
+    },
+    {
+      "path": "kernel/scripts/run_policy_scope_surface_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Same class as the other slice wrappers."
+    },
+    {
+      "path": "kernel/scripts/run_closeout_status_registry_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Registry wrapper; defer until after a first wave of ports."
+    },
+    {
+      "path": "kernel/scripts/run_boundary_family_registry_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Registry wrapper; same deferral rationale."
+    },
+    {
+      "path": "kernel/scripts/run_core_closeout_status_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Useful operator surface, but lower priority than the control-plane bootstrap path."
+    },
+    {
+      "path": "kernel/scripts/run_reference_docs_executable_slice.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "medium",
+      "backend_fit": "partial",
+      "recommendation": "port_later",
+      "priority": "low",
+      "notes": "Defer until a stable multi-command Bashly pattern exists."
+    },
+    {
+      "path": "kernel/scripts/build_bundle.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "low",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Small operator surface and likely good fit once the first Bashly port is complete."
+    },
+    {
+      "path": "kernel/scripts/build_bundle_attestation.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "low",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Likely a good leaf-script Bashly target."
+    },
+    {
+      "path": "kernel/scripts/run_bundle.sh",
+      "current_role": "operator_entrypoint",
+      "complexity": "low",
+      "backend_fit": "strong",
+      "recommendation": "port_candidate",
+      "priority": "medium",
+      "notes": "Leaf wrapper and reasonable Bashly candidate."
+    }
+  ],
+  "excluded": [
+    {
+      "path": "kernel/scripts/reference_docs_common.sh",
+      "reason": "Shared shell library, not an operator CLI surface."
+    },
+    {
+      "path": "kernel/scripts/reference_docs_validate.sh",
+      "reason": "Internal helper in the reference-docs shell family; better folded after parent wrapper decisions."
+    },
+    {
+      "path": "kernel/scripts/reference_docs_normalize.sh",
+      "reason": "Internal helper in the reference-docs shell family."
+    },
+    {
+      "path": "kernel/scripts/reference_docs_admit.sh",
+      "reason": "Internal helper in the reference-docs shell family."
+    },
+    {
+      "path": "kernel/scripts/reference_docs_render.sh",
+      "reason": "Internal helper in the reference-docs shell family."
+    },
+    {
+      "path": "kernel/scripts/reference_docs_export.sh",
+      "reason": "Internal helper in the reference-docs shell family."
+    },
+    {
+      "path": "kernel/scripts/reference_docs_drift.sh",
+      "reason": "Internal helper in the reference-docs shell family."
+    }
+  ]
+}

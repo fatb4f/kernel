@@ -1,0 +1,238 @@
+{
+  "artifact_type": "proposal_register",
+  "artifact_version": "v1",
+  "proposal_id": "git-substrate-adapters-v1",
+  "status": "ready_for_script_migration",
+  "promotion_gate": "proposal_register",
+  "proposal_class": "git_substrate_adapter_contracts",
+  "scope": {
+    "in_scope": [
+      "Git-substrate projected adapter classification for gix and sem",
+      "target contracts for deterministic Git fact capture and semantic diff enrichment",
+      "reuse of the normalized realization pattern from cli_extension_v2",
+      "runtime-contract definition for real gix and sem execution",
+      "inventory of shell and Python script migration candidates"
+    ],
+    "out_of_scope": [
+      "repo-wide shell and Python entrypoint cutover",
+      "additional hardening beyond the first real-runtime adapter tranche",
+      "hydration notebook realization"
+    ]
+  },
+  "artifacts": [
+    {
+      "ref": "control/policy/token_burn_and_structured_output.registry.json",
+      "kind": "policy_artifact",
+      "role": "git_substrate_policy_basis"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/spec_draft.v1.json",
+      "kind": "spec_artifact",
+      "role": "git_substrate_spec_draft"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/extension_profile.v1.json",
+      "kind": "profile_artifact",
+      "role": "git_substrate_adapter_profile"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/canonical_semantic_model.git.example.json",
+      "kind": "example_artifact",
+      "role": "git_substrate_semantic_example"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/projection_artifact_manifest.git.example.json",
+      "kind": "example_artifact",
+      "role": "git_substrate_projection_manifest_example"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/realization_payload.v1.json",
+      "kind": "workflow_artifact",
+      "role": "git_substrate_realization_payload"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/compatibility_assessment.v1.json",
+      "kind": "assessment_artifact",
+      "role": "git_substrate_compatibility_assessment"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/realization_workflow_contract.v1.md",
+      "kind": "workflow_contract",
+      "role": "git_substrate_realization_contract"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "kind": "workflow_artifact",
+      "role": "git_substrate_primary_operator_surface"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/test_control_realize_git_substrate_adapters_v1.py",
+      "kind": "verification_artifact",
+      "role": "git_substrate_realization_runner_tests"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/git_projection_common.py",
+      "kind": "implementation_artifact",
+      "role": "git_projection_shared_helpers"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/emit_gix_minimal.py",
+      "kind": "transform_artifact",
+      "role": "deterministic_git_fact_transform"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/test_emit_gix_minimal.py",
+      "kind": "verification_artifact",
+      "role": "deterministic_git_fact_transform_tests"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/emit_sem_minimal.py",
+      "kind": "transform_artifact",
+      "role": "semantic_diff_enrichment_transform"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/test_emit_sem_minimal.py",
+      "kind": "verification_artifact",
+      "role": "semantic_diff_enrichment_transform_tests"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/gix_target_contract.v1.json",
+      "kind": "target_contract",
+      "role": "deterministic_git_fact_target"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/sem_target_contract.v1.json",
+      "kind": "target_contract",
+      "role": "semantic_diff_enrichment_target"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/gix_runtime_contract.v1.json",
+      "kind": "runtime_contract",
+      "role": "deterministic_git_fact_runtime_contract"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/sem_runtime_contract.v1.json",
+      "kind": "runtime_contract",
+      "role": "semantic_diff_enrichment_runtime_contract"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/adapter_closeout.v1.json",
+      "kind": "closeout_artifact",
+      "role": "git_substrate_adapter_closeout"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/git_capability_service_policy.v1.json",
+      "kind": "policy_artifact",
+      "role": "git_capability_service_policy"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/git_capability_service_api_contract.v1.json",
+      "kind": "service_contract",
+      "role": "git_capability_service_api"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/git_capability_service_workflow_dag.v1.md",
+      "kind": "workflow_artifact",
+      "role": "git_capability_service_workflow_dag"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "kind": "runtime_artifact",
+      "role": "deterministic_git_fact_runtime_probe"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/gix_runtime_helper/Cargo.toml",
+      "kind": "runtime_artifact",
+      "role": "deterministic_git_fact_helper_manifest"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/gix_runtime_helper/Cargo.lock",
+      "kind": "runtime_artifact",
+      "role": "deterministic_git_fact_helper_lockfile"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/gix_runtime_helper/src/main.rs",
+      "kind": "runtime_artifact",
+      "role": "deterministic_git_fact_helper_entrypoint"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/emit_sem_runtime.py",
+      "kind": "runtime_artifact",
+      "role": "semantic_diff_enrichment_runtime_emitter"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/test_emit_gix_runtime.py",
+      "kind": "verification_artifact",
+      "role": "deterministic_git_fact_runtime_tests"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/test_emit_sem_runtime.py",
+      "kind": "verification_artifact",
+      "role": "semantic_diff_enrichment_runtime_tests"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/shell_port_inventory.v1.json",
+      "kind": "inventory_artifact",
+      "role": "shell_port_inventory"
+    },
+    {
+      "ref": "proposals/git_substrate_adapters_v1/python_port_inventory.v1.json",
+      "kind": "inventory_artifact",
+      "role": "python_port_inventory"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/realization_workflow_contract.v2.md",
+      "kind": "workflow_artifact",
+      "role": "normalized_realization_pattern"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/unified_realization_manifest.v2.schema.json",
+      "kind": "schema_artifact",
+      "role": "normalized_manifest_contract"
+    },
+    {
+      "ref": "proposals/cli_extension_v2/unified_realization_report.v2.schema.json",
+      "kind": "schema_artifact",
+      "role": "normalized_report_contract"
+    }
+  ],
+  "gate_expectations": {
+    "required_for_promotion": [
+      "canonical_metadata_remains_authority",
+      "gix_is_classified_as_deterministic_git_fact_surface",
+      "sem_is_classified_as_semantic_diff_enrichment_surface",
+      "git_adapter_outputs_remain_projection_only",
+      "git_substrate_semantic_example_exists",
+      "git_substrate_realization_payload_exists",
+      "git_substrate_compatibility_assessment_exists",
+      "git_substrate_realization_contract_exists",
+      "git_substrate_realization_runner_exists",
+      "git_substrate_transforms_are_split_into_gix_and_sem_projection_surfaces",
+      "target_contracts_exist_for_gix_and_sem",
+      "runtime_contracts_exist_for_gix_and_sem",
+    "sem_real_runtime_path_is_integrated",
+    "gix_real_runtime_path_is_integrated",
+    "git_capability_service_policy_exists",
+    "git_capability_service_api_contract_exists",
+    "git_capability_service_workflow_dag_exists",
+    "shell_and_python_port_inventories_exist",
+    "normalized_realization_pattern_is_named_as_the_reuse_path"
+    ],
+    "still_required_before_amendment": []
+  },
+  "notes": [
+    "This proposal opened the Git-substrate lane without implementing adapters prematurely, then closed the first real-runtime adapter tranche explicitly.",
+    "gix and sem are projected adapters, not authority surfaces.",
+    "A first Git-substrate semantic example and realization payload now exist.",
+    "Compatibility posture and realization workflow contract now exist for the first slice.",
+    "A first Git-substrate realization runner now exists and emits normalized manifest/report artifacts.",
+    "Runner-owned Git transform logic is now split into bounded gix and sem emitter artifacts.",
+    "Real-runtime contracts for gix and sem now distinguish the completed first adapter tranche from the minimal proof path.",
+    "sem now has a real local runtime integration path via ataraxy/sem.",
+    "gix now has a real local runtime integration path via a repo-local Rust helper crate that uses the gix crate directly.",
+    "A policy-enforced Git capability service contract now exists to keep task authorization and risk gating outside the model.",
+    "The service architecture and synced script-migration flow are now captured in a workflow DAG with just treated as the entrypoint module.",
+    "Shell and Python port inventories now define the next repo-local migration tranche.",
+    "The next substantive step after this proposal is script migration, not more adapter framing."
+  ]
+}

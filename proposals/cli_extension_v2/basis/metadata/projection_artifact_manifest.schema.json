@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "projection_artifact_manifest.schema.json",
+  "title": "Projection Artifact Manifest",
+  "description": "Manifest binding projection targets to emitted artifacts from the canonical semantic model.",
+  "type": "object",
+  "required": [
+    "document_type",
+    "manifest_id",
+    "version",
+    "canonical_model_ref",
+    "targets"
+  ],
+  "properties": {
+    "document_type": {
+      "const": "projection_artifact_manifest"
+    },
+    "manifest_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string"
+    },
+    "canonical_model_ref": {
+      "type": "string",
+      "pattern": "^artifact:|^model:"
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/projection_binding"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "typed_ref": {
+      "type": "object",
+      "required": [
+        "ref",
+        "kind"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "projection_target",
+            "projected_artifact",
+            "semantic_object",
+            "semantic_relation"
+          ]
+        },
+        "repo_path": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "projection_binding": {
+      "type": "object",
+      "required": [
+        "target_ref",
+        "artifact_ref",
+        "projection_kind",
+        "inputs"
+      ],
+      "properties": {
+        "target_ref": {
+          "$ref": "#/$defs/typed_ref"
+        },
+        "artifact_ref": {
+          "$ref": "#/$defs/typed_ref"
+        },
+        "projection_kind": {
+          "type": "string",
+          "enum": [
+            "document_render",
+            "summary_render",
+            "schema_projection",
+            "codegen_projection",
+            "config_projection",
+            "inventory_projection",
+            "trace_projection",
+            "other"
+          ]
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/typed_ref"
+          }
+        },
+        "deterministic": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

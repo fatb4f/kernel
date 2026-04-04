@@ -1,0 +1,72 @@
+{
+  "artifact_type": "runtime_contract",
+  "artifact_version": "v1",
+  "runtime_id": "gix_runtime_contract",
+  "backend": "gix",
+  "status": "implemented",
+  "purpose": "Define and realize the first crate-backed adapter execution contract for deterministic Git fact capture beyond the current minimal projection emitter.",
+  "build_contract": {
+    "implementation_language": "rust_helper",
+    "build_backend": "cargo",
+    "crate_surface": "gix",
+    "toolchain_requirements": [
+      "rust toolchain",
+      "cargo",
+      "crate registry access for initial dependency resolution"
+    ],
+    "notes": [
+      "gix is consumed through a repo-local Rust helper crate, not through CLI parsing.",
+      "The Python emitter remains the operator surface, but Git facts are produced by crate-backed code."
+    ]
+  },
+  "execution_contract": {
+    "invocation_modes": [
+      "cargo run against the repo-local helper crate",
+      "prebuilt helper binary reuse once target/debug/gix_runtime_helper exists"
+    ],
+    "required_inputs": [
+      "repository_ref",
+      "comparison_ref"
+    ],
+    "required_outputs": [
+      "repo_state.json",
+      "diff_state.json"
+    ],
+    "output_invariants": [
+      "repository identity is explicit",
+      "HEAD and branch/ref state are explicit",
+      "diff output names the comparison ref",
+      "output shape is deterministic for unchanged Git state"
+    ]
+  },
+  "validation_contract": {
+    "required_checks": [
+      "runtime availability is explicit in the realization report",
+      "repo_state emission succeeds against codex_home",
+      "diff_state emission succeeds against an explicit comparison ref",
+      "deterministic replay on unchanged state produces identical outputs"
+    ],
+    "failure_modes_to_surface": [
+      "missing Rust or cargo toolchain",
+      "helper crate build failure",
+      "repository ref does not resolve",
+      "comparison ref does not resolve"
+    ]
+  },
+  "promotion_boundary": {
+    "allowed_now": [
+      "runtime contract definition",
+      "crate-backed real-runtime verification",
+      "report fields that distinguish minimal from real execution"
+    ],
+    "not_yet_allowed": [
+      "promoting gix output to authority",
+      "hiding helper build/runtime failures behind minimal emitters"
+    ]
+  },
+  "implementation_artifacts": {
+    "helper_manifest": "proposals/git_substrate_adapters_v1/gix_runtime_helper/Cargo.toml",
+    "helper_lockfile": "proposals/git_substrate_adapters_v1/gix_runtime_helper/Cargo.lock",
+    "helper_entrypoint": "proposals/git_substrate_adapters_v1/gix_runtime_helper/src/main.rs"
+  }
+}

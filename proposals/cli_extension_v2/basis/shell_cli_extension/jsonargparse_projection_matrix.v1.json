@@ -1,0 +1,217 @@
+{
+  "artifact_type": "projection_adapter_matrix",
+  "artifact_version": "v1",
+  "matrix_id": "shell_cli_extension_jsonargparse_projection_matrix",
+  "adapter": {
+    "name": "jsonargparse",
+    "adapter_role": "python_implementation_projection_target",
+    "adapter_version_observed": "4.x",
+    "source_refs": [
+      {
+        "label": "jsonargparse docs",
+        "url": "https://jsonargparse.readthedocs.io/en/stable/"
+      },
+      {
+        "label": "jsonargparse GitHub",
+        "url": "https://github.com/omni-us/jsonargparse"
+      }
+    ]
+  },
+  "projection_scope": {
+    "in_scope": [
+      "ArgumentParser and subcommand projection",
+      "typed parameter projection",
+      "environment-backed parser projection",
+      "config-file-aware CLI projection",
+      "first Python adapter prospect against the current shell/CLI extension profile"
+    ],
+    "out_of_scope": [
+      "Python packaging and entrypoint build systems",
+      "marimo hydration or notebook surfaces",
+      "pytest verification adapter details",
+      "runtime-specific instantiation beyond parser-facing semantics"
+    ]
+  },
+  "adapter_surfaces": [
+    {
+      "surface_id": "jsonargparse_parser_surface",
+      "governs": "ArgumentParser, add_argument, add_subcommands, add_subcommand, env/config parsing, and type-aware CLI behavior",
+      "authority_class": "implementation_projection_surface",
+      "notes": "Primary Python CLI projection surface for command tree, typed arguments, config files, and environment variable handling."
+    },
+    {
+      "surface_id": "jsonargparse_config_surface",
+      "governs": "config-file parsing, default_config_files, ActionConfigFile, print_config, dump/save behavior",
+      "authority_class": "config_projection_surface",
+      "notes": "Projection surface for config-aware CLI behavior rather than core semantic authority."
+    },
+    {
+      "surface_id": "jsonargparse_typehint_surface",
+      "governs": "type-hint-driven validation, dataclasses/classes/functions, subclass support, and nested namespaces",
+      "authority_class": "adapter_enrichment_surface",
+      "notes": "Strong adapter feature, but type-introspection specifics should stay adapter-side unless promoted to cross-runtime CLI semantics."
+    }
+  ],
+  "matrix_rows": [
+    {
+      "semantic_role": "command_surface",
+      "metadata_object_kind": "artifact_target",
+      "required_attributes": [
+        "command_path",
+        "handler_id",
+        "entry_surface"
+      ],
+      "adapter_surface": "jsonargparse_parser_surface",
+      "adapter_primitive": "ArgumentParser_plus_subcommands",
+      "adapter_config_path": [
+        "ArgumentParser(...)",
+        "add_subcommands(...)",
+        "subcommands.add_subcommand(...)"
+      ],
+      "required": true,
+      "projection_kind": "codegen_projection",
+      "lossiness": "low",
+      "validation_rule": "command_path must map to parser plus ordered subcommand nesting; handler_id should map to callable, function, or subparser binding convention",
+      "notes": "jsonargparse supports subcommands and multiple levels of subcommands directly."
+    },
+    {
+      "semantic_role": "parameter_surface",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "parameter_kind",
+        "command_ref"
+      ],
+      "adapter_surface": "jsonargparse_parser_surface",
+      "adapter_primitive": "add_argument",
+      "adapter_config_path": [
+        "add_argument(...)",
+        "type=...",
+        "default=...",
+        "required=..."
+      ],
+      "required": false,
+      "projection_kind": "codegen_projection",
+      "lossiness": "low",
+      "validation_rule": "parameter_kind must map to argparse-style positional or option forms; richer Python type information should remain additive, not required by the canonical authority layer",
+      "notes": "jsonargparse adds strong type-aware validation on top of argparse-style arguments."
+    },
+    {
+      "semantic_role": "environment_binding",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "env_name"
+      ],
+      "adapter_surface": "jsonargparse_parser_surface",
+      "adapter_primitive": "default_env_and_env_prefix",
+      "adapter_config_path": [
+        "ArgumentParser(env_prefix=..., default_env=...)",
+        "parse_env(...)"
+      ],
+      "required": false,
+      "projection_kind": "codegen_projection",
+      "lossiness": "low",
+      "validation_rule": "environment bindings should project through parser env configuration rather than become standalone runtime authority",
+      "notes": "Environment parsing is a first-class parser behavior in jsonargparse."
+    },
+    {
+      "semantic_role": "dependency_requirement",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "dependency_name"
+      ],
+      "adapter_surface": "jsonargparse_parser_surface",
+      "adapter_primitive": "none_direct",
+      "adapter_config_path": [],
+      "required": false,
+      "projection_kind": "runtime_follow_on",
+      "lossiness": "high",
+      "validation_rule": "dependency requirements are not a native jsonargparse parser primitive and should remain canonical policy or runtime wrapper concerns",
+      "notes": "Unlike Bashly dependencies, this usually projects into runtime checks or surrounding tooling."
+    },
+    {
+      "semantic_role": "usage_example",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "command_line"
+      ],
+      "adapter_surface": "jsonargparse_parser_surface",
+      "adapter_primitive": "help_and_docs_only",
+      "adapter_config_path": [
+        "parser.description",
+        "docstrings",
+        "external docs/examples"
+      ],
+      "required": false,
+      "projection_kind": "documentation_projection",
+      "lossiness": "partial",
+      "validation_rule": "usage examples are not a dedicated parser primitive and should remain documentation-facing unless explicitly rendered by generator code",
+      "notes": "jsonargparse uses help/docstrings strongly, but examples are not a first-class parser node like in Bashly."
+    },
+    {
+      "semantic_role": "output_contract",
+      "metadata_object_kind": "policy",
+      "required_attributes": [
+        "output_mode"
+      ],
+      "adapter_surface": "jsonargparse_config_surface",
+      "adapter_primitive": "print_config_and_dump_behavior",
+      "adapter_config_path": [
+        "print_config",
+        "parser_mode",
+        "dump(...)",
+        "save(...)"
+      ],
+      "required": false,
+      "projection_kind": "config_projection",
+      "lossiness": "partial",
+      "validation_rule": "config serialization and print_config can support configuration output, but application stdout contracts remain outside parser authority",
+      "notes": "jsonargparse is stronger than Bashly for config-structured output, but still does not define full application output semantics."
+    },
+    {
+      "semantic_role": "verification_expectation",
+      "metadata_object_kind": "other",
+      "required_attributes": [
+        "expectation_kind"
+      ],
+      "adapter_surface": "jsonargparse_parser_surface",
+      "adapter_primitive": "none_direct",
+      "adapter_config_path": [],
+      "required": false,
+      "projection_kind": "verification_follow_on",
+      "lossiness": "high",
+      "validation_rule": "verification expectations remain separate and should project to pytest or CLI black-box verification surfaces",
+      "notes": "This mirrors the Bashly/Bats split."
+    },
+    {
+      "semantic_role": "typed_parameter_enrichment",
+      "metadata_object_kind": "policy",
+      "required_attributes": [],
+      "adapter_surface": "jsonargparse_typehint_surface",
+      "adapter_primitive": "type_hints_dataclasses_classes_functions",
+      "adapter_config_path": [
+        "add_argument(type=...)",
+        "add_class_arguments(...)",
+        "add_function_arguments(...)",
+        "class_path",
+        "init_args"
+      ],
+      "required": false,
+      "projection_kind": "codegen_projection",
+      "lossiness": "partial",
+      "validation_rule": "type-hint-driven enrichment should remain adapter-side unless multiple runtime families require the same semantic abstraction",
+      "notes": "This is the strongest reason to treat jsonargparse as a serious Python adapter target."
+    }
+  ],
+  "adapter_findings": {
+    "fit_summary": "jsonargparse is a strong Python implementation projection target because it combines argparse-style command parsing with config-file support, environment parsing, nested namespaces, and rich type-hint-driven validation.",
+    "first_python_target_decision": {
+      "implementation_target": "jsonargparse",
+      "status": "recommended_first_python_adapter_target"
+    },
+    "promotion_rules": [
+      "jsonargparse remains an implementation projection target and not a metadata authority surface.",
+      "parser/config/type-hint features stay adapter-specific unless promoted through a runtime-neutral CLI semantic refactor.",
+      "marimo remains a hydration or derivation surface and is not the default Python CLI implementation adapter."
+    ]
+  }
+}

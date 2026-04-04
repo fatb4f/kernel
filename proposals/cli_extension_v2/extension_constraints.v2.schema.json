@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cli_extension_constraints.v2.schema.json",
+  "title": "Runtime-Neutral CLI Extension Constraints V2",
+  "description": "Schema-backed runtime-neutral extension constraints for the CLI extension profile.",
+  "type": "object",
+  "required": [
+    "document_type",
+    "constraint_id",
+    "version",
+    "base_model_refs",
+    "lineage",
+    "object_role_constraints",
+    "relation_constraints",
+    "projection_constraints"
+  ],
+  "properties": {
+    "document_type": {
+      "const": "cli_extension_constraints"
+    },
+    "constraint_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_model_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "replaces_constraint_namespace",
+        "new_constraint_namespace",
+        "runtime_assets_remain_projection_only"
+      ],
+      "properties": {
+        "replaces_constraint_namespace": {
+          "const": "shell_cli_role"
+        },
+        "new_constraint_namespace": {
+          "const": "cli_role"
+        },
+        "runtime_assets_remain_projection_only": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "object_role_constraints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/object_role_constraint"
+      }
+    },
+    "relation_constraints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/relation_constraint"
+      }
+    },
+    "projection_constraints": {
+      "type": "object",
+      "required": [
+        "shell_implementation_targets",
+        "python_implementation_targets",
+        "shell_verification_targets",
+        "python_verification_targets"
+      ],
+      "properties": {
+        "shell_implementation_targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/implementation_target"
+          }
+        },
+        "python_implementation_targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/implementation_target"
+          }
+        },
+        "shell_verification_targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/verification_target"
+          }
+        },
+        "python_verification_targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/verification_target"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "cli_role": {
+      "type": "string",
+      "enum": [
+        "command_surface",
+        "parameter_surface",
+        "environment_binding",
+        "dependency_requirement",
+        "usage_example",
+        "output_contract",
+        "verification_expectation"
+      ]
+    },
+    "object_kind": {
+      "type": "string",
+      "enum": [
+        "source",
+        "unit",
+        "section",
+        "term",
+        "question",
+        "policy",
+        "relation_node",
+        "collection",
+        "artifact_target",
+        "other"
+      ]
+    },
+    "relation_kind": {
+      "type": "string",
+      "enum": [
+        "derived_from",
+        "maps_to",
+        "supports",
+        "defines",
+        "contains",
+        "references",
+        "projects_to",
+        "other"
+      ]
+    },
+    "target_kind": {
+      "type": "string",
+      "enum": [
+        "markdown_document",
+        "json_document",
+        "summary_markdown",
+        "summary_json",
+        "schema_fragment",
+        "codegen_input",
+        "config_projection",
+        "inventory_view",
+        "trace_map",
+        "other"
+      ]
+    },
+    "object_role_constraint": {
+      "type": "object",
+      "required": [
+        "cli_role",
+        "allowed_object_kind",
+        "required_attributes"
+      ],
+      "properties": {
+        "cli_role": {
+          "$ref": "#/$defs/cli_role"
+        },
+        "allowed_object_kind": {
+          "$ref": "#/$defs/object_kind"
+        },
+        "required_attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_]+$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "relation_constraint": {
+      "type": "object",
+      "required": [
+        "relation_kind",
+        "usage"
+      ],
+      "properties": {
+        "relation_kind": {
+          "$ref": "#/$defs/relation_kind"
+        },
+        "usage": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "implementation_target": {
+      "type": "object",
+      "required": [
+        "backend",
+        "projection_role",
+        "allowed_target_kind"
+      ],
+      "properties": {
+        "backend": {
+          "type": "string",
+          "enum": [
+            "bashly",
+            "argc",
+            "argbash",
+            "jsonargparse"
+          ]
+        },
+        "projection_role": {
+          "const": "implementation_target"
+        },
+        "allowed_target_kind": {
+          "$ref": "#/$defs/target_kind"
+        }
+      },
+      "additionalProperties": false
+    },
+    "verification_target": {
+      "type": "object",
+      "required": [
+        "backend",
+        "projection_role",
+        "allowed_target_kind"
+      ],
+      "properties": {
+        "backend": {
+          "type": "string",
+          "enum": [
+            "bats",
+            "shellspec",
+            "pytest"
+          ]
+        },
+        "projection_role": {
+          "const": "verification_consumer"
+        },
+        "allowed_target_kind": {
+          "$ref": "#/$defs/target_kind"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

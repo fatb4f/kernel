@@ -1,0 +1,29 @@
+{
+  "artifact_type": "proposal_gate_result",
+  "artifact_version": "v1",
+  "proposal_id": "shell-cli-extension-profile",
+  "gate_status": "conditional_pass_with_underspecification",
+  "result_summary": "The shell/CLI extension direction is coherent, grounded in the existing metadata model, demonstrated with validated examples, compatibility-classified as non-breaking at the base-schema level, and now backed by an explicit schema-backed extension-constraint layer. The proposal is ready to move beyond the proposal register toward amendment review.",
+  "passes": [
+    "existing metadata model is kept as the authority baseline",
+    "shell assets are classified as projection assets",
+    "implementation backends are classified as projection targets",
+    "verification backends are classified as projection consumers",
+    "shell policy and inventory are aligned with the projection-only posture",
+    "a shell_cli extension profile has been defined against the existing canonical semantic model",
+    "an example canonical semantic model for shell_cli validates against the existing metadata schema",
+    "an example projection artifact manifest for shell_cli validates against the existing metadata schema",
+    "compatibility assessment classifies the current profile as non-breaking to the base metadata schemas",
+    "schema-backed extension constraints exist and validate",
+    "a first amendment-facing slice is defined for Bashly implementation projection and Bats verification projection",
+    "Bashly is reduced to adapter primitives, required config surfaces, and matrixed mappings against the metadata profile"
+  ],
+  "underspecified_items": [
+    "follow-on backend slices remain for argc, Argbash, and ShellSpec"
+  ],
+  "next_actions": [
+    "carry the Bashly and Bats slice into amendment review",
+    "define additional backend projection examples as separate follow-on slices"
+  ],
+  "promotion_decision": "ready_for_amendment_review"
+}

@@ -1,0 +1,313 @@
+{
+  "document_type": "canonical_semantic_model",
+  "model_id": "cli_extension_v2_example",
+  "version": "0.2.0",
+  "title": "Runtime-Neutral CLI Extension Example",
+  "summary": "Example semantic model showing runtime-neutral CLI semantics over the existing canonical semantic model without introducing a parallel authority model.",
+  "root_ref": "root:/home/_404/src",
+  "source_registry_ref": "artifact:cli_extension_v2_sources",
+  "structural_units_ref": "artifact:cli_extension_v2_structural_units",
+  "objects": [
+    {
+      "ref": "object:control_plane_inspect_command",
+      "object_id": "control_plane_inspect_command",
+      "object_kind": "artifact_target",
+      "title": "Control Plane Inspect Command",
+      "summary": "Runtime-neutral command surface for inspecting control plane state.",
+      "content": "Inspects control plane state and emits structured output suitable for shell or Python runtime adapters.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_policy",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.md"
+        }
+      ],
+      "unit_refs": [
+        "unit:cli_command_0001"
+      ],
+      "normalized_term_refs": [
+        "term:structured_outputs"
+      ],
+      "labels": [
+        "cli",
+        "command_surface"
+      ],
+      "attributes": {
+        "cli_role": "command_surface",
+        "command_path": [
+          "control-plane",
+          "inspect"
+        ],
+        "handler_id": "control_plane_inspect",
+        "entry_surface": "runtime_projection_asset",
+        "projection_only": true,
+        "preferred_shell_backend": "bashly",
+        "preferred_python_backend": "jsonargparse"
+      }
+    },
+    {
+      "ref": "object:control_plane_inspect_format_option",
+      "object_id": "control_plane_inspect_format_option",
+      "object_kind": "other",
+      "title": "Format Option",
+      "summary": "Parameter surface controlling output format.",
+      "content": "Allows the caller to request JSON or YAML output formats.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_policy",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.md"
+        }
+      ],
+      "unit_refs": [
+        "unit:cli_parameter_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "cli",
+        "parameter_surface"
+      ],
+      "attributes": {
+        "cli_role": "parameter_surface",
+        "parameter_kind": "option",
+        "command_ref": "object:control_plane_inspect_command",
+        "long_flag": "--format",
+        "choices": [
+          "json",
+          "yaml"
+        ],
+        "required": false
+      }
+    },
+    {
+      "ref": "object:control_plane_inspect_profile_env",
+      "object_id": "control_plane_inspect_profile_env",
+      "object_kind": "other",
+      "title": "Profile Environment Binding",
+      "summary": "Environment binding for the selected control plane profile.",
+      "content": "CONTROL_PLANE_PROFILE provides the default profile selection.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_policy",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.md"
+        }
+      ],
+      "unit_refs": [
+        "unit:cli_env_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "cli",
+        "environment_binding"
+      ],
+      "attributes": {
+        "cli_role": "environment_binding",
+        "env_name": "CONTROL_PLANE_PROFILE",
+        "required": false
+      }
+    },
+    {
+      "ref": "object:control_plane_inspect_output_contract",
+      "object_id": "control_plane_inspect_output_contract",
+      "object_kind": "policy",
+      "title": "Inspect Output Contract",
+      "summary": "The inspect command should prefer structured output and preserve deterministic shape.",
+      "content": "The inspect command emits deterministic structured data suitable for downstream tooling and hydration surfaces.",
+      "source_refs": [
+        {
+          "ref": "source:token_burn_and_structured_output_policy",
+          "kind": "source_node",
+          "repo_path": "control/policy/token_burn_and_structured_output.md"
+        }
+      ],
+      "unit_refs": [
+        "unit:cli_output_contract_0001"
+      ],
+      "normalized_term_refs": [
+        "term:structured_outputs"
+      ],
+      "labels": [
+        "cli",
+        "output_contract"
+      ],
+      "attributes": {
+        "cli_role": "output_contract",
+        "output_mode": "structured_required_where_practical",
+        "preferred_formats": [
+          "json",
+          "yaml"
+        ]
+      }
+    },
+    {
+      "ref": "object:control_plane_inspect_verification_expectation",
+      "object_id": "control_plane_inspect_verification_expectation",
+      "object_kind": "other",
+      "title": "Inspect Verification Expectation",
+      "summary": "Verification expectation for shell and Python runtime implementations.",
+      "content": "Verification should cover help output, env/config precedence, and deterministic structured responses.",
+      "source_refs": [
+        {
+          "ref": "source:python_cli_prospect",
+          "kind": "source_node",
+          "repo_path": "proposals/shell_cli_extension/python_cli_prospect.v1.md"
+        }
+      ],
+      "unit_refs": [
+        "unit:cli_verification_0001"
+      ],
+      "normalized_term_refs": [],
+      "labels": [
+        "cli",
+        "verification_expectation"
+      ],
+      "attributes": {
+        "cli_role": "verification_expectation",
+        "expectation_kind": "black_box_cli_contract",
+        "preferred_shell_verification_backend": "bats",
+        "preferred_python_verification_backend": "pytest"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "ref": "relation:inspect_contains_format_option",
+      "relation_id": "inspect_contains_format_option",
+      "relation_kind": "contains",
+      "from_ref": "object:control_plane_inspect_command",
+      "to_ref": "object:control_plane_inspect_format_option"
+    },
+    {
+      "ref": "relation:inspect_references_profile_env",
+      "relation_id": "inspect_references_profile_env",
+      "relation_kind": "references",
+      "from_ref": "object:control_plane_inspect_command",
+      "to_ref": "object:control_plane_inspect_profile_env"
+    },
+    {
+      "ref": "relation:inspect_output_contract_defines_command",
+      "relation_id": "inspect_output_contract_defines_command",
+      "relation_kind": "defines",
+      "from_ref": "object:control_plane_inspect_output_contract",
+      "to_ref": "object:control_plane_inspect_command"
+    },
+    {
+      "ref": "relation:inspect_verification_supports_command",
+      "relation_id": "inspect_verification_supports_command",
+      "relation_kind": "supports",
+      "from_ref": "object:control_plane_inspect_verification_expectation",
+      "to_ref": "object:control_plane_inspect_command"
+    },
+    {
+      "ref": "relation:inspect_projects_to_bashly",
+      "relation_id": "inspect_projects_to_bashly",
+      "relation_kind": "projects_to",
+      "from_ref": "object:control_plane_inspect_command",
+      "to_ref": "target:control_plane_inspect_bashly_config"
+    },
+    {
+      "ref": "relation:inspect_projects_to_jsonargparse",
+      "relation_id": "inspect_projects_to_jsonargparse",
+      "relation_kind": "projects_to",
+      "from_ref": "object:control_plane_inspect_command",
+      "to_ref": "target:control_plane_inspect_jsonargparse_parser"
+    },
+    {
+      "ref": "relation:inspect_projects_to_bats",
+      "relation_id": "inspect_projects_to_bats",
+      "relation_kind": "projects_to",
+      "from_ref": "object:control_plane_inspect_verification_expectation",
+      "to_ref": "target:control_plane_inspect_bats_suite"
+    },
+    {
+      "ref": "relation:inspect_projects_to_pytest",
+      "relation_id": "inspect_projects_to_pytest",
+      "relation_kind": "projects_to",
+      "from_ref": "object:control_plane_inspect_verification_expectation",
+      "to_ref": "target:control_plane_inspect_pytest_suite"
+    }
+  ],
+  "open_questions": [
+    {
+      "ref": "question:cli_v2_runtime_specific_fields",
+      "question_id": "cli_v2_runtime_specific_fields",
+      "question": "Which runtime-specific adapter features should remain adapter-side versus promoted to cross-runtime CLI semantics?",
+      "context": "The v2 profile generalizes role naming and backend families, but adapter-specific enrichment remains an open boundary.",
+      "source_refs": [
+        {
+          "ref": "source:cli_extension_v2_spec",
+          "kind": "source_node",
+          "repo_path": "proposals/cli_extension_v2/spec_draft.v2.json"
+        }
+      ],
+      "unit_refs": []
+    }
+  ],
+  "projection_targets": [
+    {
+      "ref": "target:control_plane_inspect_bashly_config",
+      "target_id": "control_plane_inspect_bashly_config",
+      "target_kind": "config_projection",
+      "source_object_refs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_format_option",
+        "object:control_plane_inspect_profile_env",
+        "object:control_plane_inspect_output_contract"
+      ],
+      "output_ref": {
+        "ref": "artifact:control_plane_inspect_bashly_yml",
+        "kind": "projected_artifact",
+        "repo_path": "build/bashly/control_plane_inspect/bashly.yml"
+      },
+      "notes": "Shell implementation projection target for Bashly."
+    },
+    {
+      "ref": "target:control_plane_inspect_jsonargparse_parser",
+      "target_id": "control_plane_inspect_jsonargparse_parser",
+      "target_kind": "codegen_input",
+      "source_object_refs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_format_option",
+        "object:control_plane_inspect_profile_env",
+        "object:control_plane_inspect_output_contract"
+      ],
+      "output_ref": {
+        "ref": "artifact:control_plane_inspect_jsonargparse_py",
+        "kind": "projected_artifact",
+        "repo_path": "build/python/control_plane_inspect/parser.py"
+      },
+      "notes": "Python implementation projection target for jsonargparse."
+    },
+    {
+      "ref": "target:control_plane_inspect_bats_suite",
+      "target_id": "control_plane_inspect_bats_suite",
+      "target_kind": "other",
+      "source_object_refs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_verification_expectation"
+      ],
+      "output_ref": {
+        "ref": "artifact:control_plane_inspect_bats_suite",
+        "kind": "projected_artifact",
+        "repo_path": "build/tests/control_plane_inspect.bats"
+      },
+      "notes": "Shell verification projection target for Bats."
+    },
+    {
+      "ref": "target:control_plane_inspect_pytest_suite",
+      "target_id": "control_plane_inspect_pytest_suite",
+      "target_kind": "other",
+      "source_object_refs": [
+        "object:control_plane_inspect_command",
+        "object:control_plane_inspect_verification_expectation"
+      ],
+      "output_ref": {
+        "ref": "artifact:control_plane_inspect_pytest_suite",
+        "kind": "projected_artifact",
+        "repo_path": "build/python/tests/test_control_plane_inspect.py"
+      },
+      "notes": "Python verification projection target for pytest."
+    }
+  ]
+}

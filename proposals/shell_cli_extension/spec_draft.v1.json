@@ -1,0 +1,100 @@
+{
+  "artifact_type": "spec_draft",
+  "artifact_version": "v1",
+  "proposal_id": "shell-cli-extension-profile",
+  "title": "Shell / CLI Extension Profile",
+  "status": "draft",
+  "summary": "Defines a shell and CLI semantic extension profile over the existing metadata model so shell entrypoints, parameters, verification expectations, and projection targets can be expressed without introducing a parallel shell authority model.",
+  "source_inputs": [
+    {
+      "ref": "control/policy/token_burn_and_structured_output.md",
+      "kind": "policy_source",
+      "role": "shared_token_burn_policy"
+    },
+    {
+      "ref": "control/policy/token_burn_and_structured_output.registry.json",
+      "kind": "policy_registry",
+      "role": "machine_readable_substrate_registry"
+    },
+    {
+      "ref": "control/shell/shell_script_inventory.json",
+      "kind": "inventory_source",
+      "role": "current_shell_projection_baseline"
+    },
+    {
+      "ref": "control/shell/shell_script_spec.md",
+      "kind": "spec_source",
+      "role": "shell_projection_contract"
+    },
+    {
+      "ref": "/home/_404/Downloads/metadata/canonical_semantic_model.schema.json",
+      "kind": "schema_source",
+      "role": "authoritative_metadata_middle"
+    },
+    {
+      "ref": "/home/_404/Downloads/metadata/projection_artifact_manifest.schema.json",
+      "kind": "schema_source",
+      "role": "projection_binding_contract"
+    }
+  ],
+  "normalized_shape": {
+    "authoritative_base_model": "canonical_semantic_model.schema.json",
+    "binding_surface": "projection_artifact_manifest.schema.json",
+    "extension_style": "domain_extension_profile",
+    "new_parallel_authority_model": false
+  },
+  "core_model": {
+    "design_rules": [
+      "shell_scripts_are_projection_assets",
+      "shell_and_cli_semantics_extend_the_existing_metadata_model",
+      "implementation_backends_are_projection_targets_not_authority",
+      "verification_backends_are_projection_consumers_not_authority",
+      "one_canonical_metadata_definition_per_entry_surface",
+      "no_hand_maintained_duplicate_backend_specs"
+    ],
+    "intended_semantic_coverage": [
+      "command_surface",
+      "parameter_surface",
+      "environment_bindings",
+      "dependency_declarations",
+      "examples",
+      "output_contracts",
+      "verification_expectations"
+    ],
+    "target_projection_backends": {
+      "implementation": [
+        "bashly",
+        "argc",
+        "argbash"
+      ],
+      "verification": [
+        "bats",
+        "shellspec"
+      ]
+    }
+  },
+  "open_items": [
+    {
+      "id": "open-001",
+      "title": "Projection binding granularity",
+      "detail": "The exact binding strategy from shell semantic targets to Bashly/argc/Argbash/Bats/ShellSpec outputs remains to be formalized beyond the demonstrated Bashly and Bats example posture."
+    }
+  ],
+  "resolved_items": [
+    {
+      "id": "resolved-001",
+      "title": "Authority location",
+      "detail": "Shell/CLI work must build on the existing metadata model rather than introducing a parallel shell authority model."
+    },
+    {
+      "id": "resolved-002",
+      "title": "Projection posture",
+      "detail": "Shell scripts, wrappers, and test harnesses are treated as projection targets or consumers, not metadata authority."
+    },
+    {
+      "id": "resolved-003",
+      "title": "Extension constraint posture",
+      "detail": "The shell/CLI extension profile is now backed by schema-validated extension constraints rather than prose-only conventions."
+    }
+  ]
+}

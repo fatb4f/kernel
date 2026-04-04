@@ -1,0 +1,56 @@
+{
+  "artifact_type": "compatibility_assessment",
+  "artifact_version": "v1",
+  "proposal_id": "git-substrate-adapters-v1",
+  "overall_classification": "compatible_with_migration",
+  "summary": "The Git-substrate adapter profile extends the existing metadata model without changing the base metadata schemas. The main compatibility sensitivity is the introduction of the git_substrate_role namespace and new projection target kinds for state and enrichment surfaces.",
+  "assessment_areas": [
+    {
+      "area": "role_namespace",
+      "change": "introduce git_substrate_role for Git-state and semantic-diff surfaces",
+      "classification": "compatible_with_migration",
+      "rationale": "The extension preserves the underlying object strategy, but readers and generators must either adopt the new namespace or remain scoped to pre-Git adapter domains."
+    },
+    {
+      "area": "projection_target_kinds",
+      "change": "introduce state_projection and enrichment_projection kinds",
+      "classification": "additive",
+      "rationale": "These target kinds extend the projection layer and do not invalidate the existing config/codegen/verification patterns."
+    },
+    {
+      "area": "authority_boundary",
+      "change": "classify gix and sem outputs as projection-only operational artifacts",
+      "classification": "additive",
+      "rationale": "This tightens authority discipline without changing the base metadata or packet structures."
+    },
+    {
+      "area": "realization_pattern_reuse",
+      "change": "reuse the normalized manifest/report and realization workflow pattern from cli_extension_v2",
+      "classification": "additive",
+      "rationale": "The Git-substrate lane adopts an existing realization pattern rather than introducing incompatible workflow semantics."
+    }
+  ],
+  "migration_rules": [
+    {
+      "rule_id": "git_substrate_role_is_extension_scoped",
+      "applies_to": [
+        "extension_profile",
+        "example semantic artifacts",
+        "realization payloads"
+      ],
+      "decision": "Readers and generators outside the Git-substrate lane may ignore git_substrate_role objects unless they explicitly opt into the Git adapter profile."
+    },
+    {
+      "rule_id": "preserve_existing_cli_lanes",
+      "applies_to": [
+        "cli_extension_v2",
+        "approved Bashly+Bats slice"
+      ],
+      "decision": "The Git-substrate lane must not invalidate or reinterpret the existing CLI realization and shell-first packet lanes."
+    }
+  ],
+  "notes": [
+    "This assessment applies at the extension-profile layer and does not amend the base metadata schemas.",
+    "The main migration work is reader/generator opt-in for git_substrate_role and the new target kinds."
+  ]
+}

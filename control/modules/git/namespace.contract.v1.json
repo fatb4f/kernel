@@ -25,9 +25,9 @@
       "generated/state/closeout/scm.pattern/ps-git-substrate-adapters-v1-001/*"
     ],
     "external_basis_refs": [
-      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
-      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
-      "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
+      "proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py",
+      "proposals/git_substrate_adapters_v1/emit_gix_runtime.py",
+      "proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
     ]
   },
   "generator": {
@@ -74,7 +74,7 @@
       ],
       "derived_paths": [],
       "external_basis_refs": [
-        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
+        "proposals/git_substrate_adapters_v1/control_realize_git_substrate_adapters_v1.py"
       ],
       "classification": "template",
       "required": true,
@@ -179,7 +179,7 @@
       "owned_paths": [],
       "derived_paths": [],
       "external_basis_refs": [
-        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_gix_runtime.py"
+        "proposals/git_substrate_adapters_v1/emit_gix_runtime.py"
       ],
       "classification": "projection",
       "required": true,
@@ -194,7 +194,7 @@
       "owned_paths": [],
       "derived_paths": [],
       "external_basis_refs": [
-        "../dotfiles/chezmoi/dot_config/codex/control/proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
+        "proposals/git_substrate_adapters_v1/emit_sem_runtime.py"
       ],
       "classification": "projection",
       "required": true,

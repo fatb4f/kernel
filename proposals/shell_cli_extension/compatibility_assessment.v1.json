@@ -1,0 +1,52 @@
+{
+  "artifact_type": "compatibility_assessment",
+  "artifact_version": "v1",
+  "proposal_id": "shell-cli-extension-profile",
+  "assessment_id": "shell_cli_extension_profile_compatibility_v1",
+  "base_policy_ref": "/home/_404/Downloads/metadata/compatibility_policy.schema.json",
+  "summary": "The current shell_cli extension profile is compatible with the existing metadata model because it does not modify required fields, ref patterns, object kinds, relation kinds, or projection kind enums in the base schemas. It specializes the existing model through profile-level conventions and validated examples.",
+  "classifications": [
+    {
+      "scope": "required_fields",
+      "classification": "compatible",
+      "decision": "No base schema required sets are changed in the current proposal state.",
+      "rationale": "The profile is expressed as proposal artifacts and examples rather than amendments to existing required fields."
+    },
+    {
+      "scope": "refs",
+      "classification": "compatible",
+      "decision": "No existing ref prefixes or patterns are changed.",
+      "rationale": "The example uses existing root, object, target, artifact, and source ref forms."
+    },
+    {
+      "scope": "object_kinds",
+      "classification": "compatible",
+      "decision": "No new base object_kind enum values are introduced.",
+      "rationale": "The profile uses existing object kinds such as artifact_target, policy, and other, with shell_cli_role carried in attributes."
+    },
+    {
+      "scope": "enum_values",
+      "classification": "compatible",
+      "decision": "No new relation_kind or target_kind enum values are required for the demonstrated profile.",
+      "rationale": "The examples use existing relation kinds and existing projection target kinds."
+    },
+    {
+      "scope": "projection_bindings",
+      "classification": "compatible",
+      "decision": "The demonstrated Bashly and Bats bindings are additive example targets over the existing projection manifest model.",
+      "rationale": "They add capability without changing existing binding semantics."
+    },
+    {
+      "scope": "content_constraints",
+      "classification": "review_required",
+      "decision": "Promotion into the metadata lane should review whether shell_cli_role conventions remain profile-only or should be tightened into schema-backed extension constraints.",
+      "rationale": "The current profile relies on attribute conventions that are validated by example but not yet by dedicated extension constraints."
+    }
+  ],
+  "overall_classification": "compatible_with_review_required_for_promotion",
+  "promotion_implication": {
+    "proposal_register": "may advance beyond pure concept status",
+    "kernel_amendment": "should wait until extension-constraint posture is decided",
+    "base_schema_breaking_change": false
+  }
+}

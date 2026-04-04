@@ -1,0 +1,115 @@
+{
+  "document_type": "shell_cli_extension_constraints",
+  "constraint_id": "shell_cli_extension_constraints",
+  "version": "0.1.0",
+  "base_model_refs": [
+    "/home/_404/Downloads/metadata/canonical_semantic_model.schema.json",
+    "/home/_404/Downloads/metadata/projection_artifact_manifest.schema.json"
+  ],
+  "object_role_constraints": [
+    {
+      "shell_cli_role": "command_surface",
+      "allowed_object_kind": "artifact_target",
+      "required_attributes": [
+        "command_path",
+        "handler_id",
+        "entry_surface"
+      ]
+    },
+    {
+      "shell_cli_role": "parameter_surface",
+      "allowed_object_kind": "other",
+      "required_attributes": [
+        "parameter_kind",
+        "command_ref"
+      ]
+    },
+    {
+      "shell_cli_role": "environment_binding",
+      "allowed_object_kind": "other",
+      "required_attributes": [
+        "env_name"
+      ]
+    },
+    {
+      "shell_cli_role": "dependency_requirement",
+      "allowed_object_kind": "other",
+      "required_attributes": [
+        "dependency_name"
+      ]
+    },
+    {
+      "shell_cli_role": "usage_example",
+      "allowed_object_kind": "other",
+      "required_attributes": [
+        "command_line"
+      ]
+    },
+    {
+      "shell_cli_role": "output_contract",
+      "allowed_object_kind": "policy",
+      "required_attributes": [
+        "output_mode"
+      ]
+    },
+    {
+      "shell_cli_role": "verification_expectation",
+      "allowed_object_kind": "other",
+      "required_attributes": [
+        "expectation_kind"
+      ]
+    }
+  ],
+  "relation_constraints": [
+    {
+      "relation_kind": "contains",
+      "usage": "command_contains_parameter_or_example"
+    },
+    {
+      "relation_kind": "defines",
+      "usage": "policy_defines_output_contract"
+    },
+    {
+      "relation_kind": "supports",
+      "usage": "verification_or_dependency_supports_command_surface"
+    },
+    {
+      "relation_kind": "references",
+      "usage": "command_references_env_or_dependency"
+    },
+    {
+      "relation_kind": "projects_to",
+      "usage": "shell_cli_semantics_project_to_backend_artifacts"
+    }
+  ],
+  "projection_constraints": [
+    {
+      "backend": "bashly",
+      "projection_role": "implementation_target",
+      "allowed_target_kind": "config_projection"
+    },
+    {
+      "backend": "argc",
+      "projection_role": "implementation_target",
+      "allowed_target_kind": "config_projection"
+    },
+    {
+      "backend": "argbash",
+      "projection_role": "implementation_target",
+      "allowed_target_kind": "config_projection"
+    },
+    {
+      "backend": "bats",
+      "projection_role": "verification_consumer",
+      "allowed_target_kind": "other"
+    },
+    {
+      "backend": "shellspec",
+      "projection_role": "verification_consumer",
+      "allowed_target_kind": "other"
+    }
+  ],
+  "notes": [
+    "This constraint document formalizes the shell_cli profile at the extension layer without modifying the base metadata schemas."
+  ]
+}
